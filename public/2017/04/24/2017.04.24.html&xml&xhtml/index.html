@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            HTML,XML和XHTML | 
+        
+        Han&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="韩宏斌">
+    <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+    <meta name="keywords" content="hexo,HTML,XML,XHTML">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Han&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="HTML,XML和XHTML | Han&#39;s blog">
+    <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+    <meta property="og:article:tag" content="HTML"> <meta property="og:article:tag" content="XML"> <meta property="og:article:tag" content="XHTML"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+    <!-- Baidu Analytics -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?hhb1994924';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XHTML"><span class="post-toc-number">1.</span> <span class="post-toc-text">XHTML</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML是什么"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">XHTML是什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么使用XHTML"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">为什么使用XHTML</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML语法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">XHTML语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML-DTD"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">XHTML DTD</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XHTML-1-0-Strict"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">XHTML 1.0 Strict</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XHTML-1-0-Transitional"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">XHTML 1.0 Transitional</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XHTML-1-0-Frameset"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">XHTML 1.0 Frameset</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何升级到XHTML"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">如何升级到XHTML</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML模块"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">XHTML模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XHTML模块化的原因"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">XHTML模块化的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XHTML模块-1"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">XHTML模块</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML-标准属性"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">XHTML 标准属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#核心属性-Core-Attributes"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">核心属性 (Core Attributes)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#语言属性-Language-Attributes"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">语言属性 (Language Attributes)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键盘属性-Keyboard-Attributes"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">键盘属性 (Keyboard Attributes)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XHTML-事件属性"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">XHTML 事件属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#窗口事件-Window-Events"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">窗口事件 (Window Events)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单元素事件-Form-Element-Events"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">表单元素事件 (Form Element Events)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键盘事件-Keyboard-Events"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">键盘事件 (Keyboard Events)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#鼠标事件-Mouse-Events"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">鼠标事件 (Mouse Events)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XML"><span class="post-toc-number">2.</span> <span class="post-toc-text">XML</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-XML"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">什么是 XML</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML与HTML-的主要差别"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">XML与HTML 的主要差别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML没有任何行为"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">XML没有任何行为</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML的用途"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">XML的用途</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML-树结构"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">XML 树结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一个XML文档实例"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">一个XML文档实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML-语法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">XML 语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML元素"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">XML元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML元素是什么"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">XML元素是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-命名规则"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">XML 命名规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最佳命名习惯"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">最佳命名习惯</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-是可扩展的"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">XML 是可扩展的</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML属性"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">XML属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML属性-1"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">XML属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-属性必须加引号"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">XML 属性必须加引号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-元素-vs-属性"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">XML 元素 vs. 属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML-查看"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">XML 查看</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML-JavaScript"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">XML JavaScript</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XMLHttpRequest-对象"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">XMLHttpRequest 对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是-XMLHttpRequest-对象？"><span class="post-toc-number">2.8.1.1.</span> <span class="post-toc-text">什么是 XMLHttpRequest 对象？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建XMLHttpRequest-对象"><span class="post-toc-number">2.8.1.2.</span> <span class="post-toc-text">创建XMLHttpRequest 对象</span></a></li></ol></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                HTML,XML和XHTML
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>韩宏斌</strong>
+        <span>4月 24, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/HTML/">HTML</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XHTML/">XHTML</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XML/">XML</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HTML,XML和XHTML&url=http://yoursite.com//2017/04/24/2017.04.24.html&amp;xml&amp;xhtml/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/04/24/2017.04.24.html&amp;xml&amp;xhtml/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/04/24/2017.04.24.html&amp;xml&amp;xhtml/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=HTML,XML和XHTML&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/04/24/2017.04.24.html&xml&xhtml/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/04/24/2017.04.24.html&xml&xhtml/index.html&text=HTML,XML和XHTML" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="XHTML"><a href="#XHTML" class="headerlink" title="XHTML"></a>XHTML</h1><h2 id="XHTML是什么"><a href="#XHTML是什么" class="headerlink" title="XHTML是什么"></a>XHTML是什么</h2><ul>
+<li>XHTML 指可扩展超文本标签语言（EXtensible HyperText Markup Language）。</li>
+<li>XHTML 的目标是取代 HTML。</li>
+<li>XHTML 与 HTML 4.01 几乎是相同的。</li>
+<li>XHTML 是更严格更纯净的 HTML 版本。</li>
+<li>XHTML 是作为一种 XML 应用被重新定义的 HTML。</li>
+<li>XHTML 是一个 W3C 标准。  <h2 id="为什么使用XHTML"><a href="#为什么使用XHTML" class="headerlink" title="为什么使用XHTML"></a>为什么使用XHTML</h2>简单地说，XHTML是HTML与XML的结合物。HTML用来显示数据，而XML用来描述数据。XHTML可以被所有的支持XML的设备读取，同时在其余的浏览器升级至支持 XML 之前，XHTML 使我们有能力编写出拥有良好结构的文档，这些文档可以很好地工作于所有的浏览器，并且可以向后兼容。<h2 id="XHTML语法"><a href="#XHTML语法" class="headerlink" title="XHTML语法"></a>XHTML语法</h2></li>
+<li>XHTML 元素必须被正确地嵌套。</li>
+<li>XHTML 元素必须被关闭。</li>
+<li>标签名必须用小写字母。</li>
+<li>XHTML 文档必须拥有根元素。</li>
+<li>属性名称必须小写。</li>
+<li>属性值必须加引号。</li>
+<li>属性不能简写。  </li>
+</ul>
+<p>下面是一个HTML的简写属性列表，以及在XHTML中的改写<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.1.png" alt=""></p>
+<ul>
+<li><p>用 Id 属性代替 name 属性。  </p>
+</li>
+<li><p>XHTML DTD 定义了强制使用的 HTML 元素。  </p>
+</li>
+</ul>
+<h2 id="XHTML-DTD"><a href="#XHTML-DTD" class="headerlink" title="XHTML DTD"></a>XHTML DTD</h2><p>XHTML定义了三种文件类型声明：   </p>
+<ul>
+<li>STRICT（严格类型）</li>
+<li>TRANSITIONAL（过渡类型）</li>
+<li>FRAMESET（框架类型）  </li>
+</ul>
+<h3 id="XHTML-1-0-Strict"><a href="#XHTML-1-0-Strict" class="headerlink" title="XHTML 1.0 Strict"></a>XHTML 1.0 Strict</h3><pre><code>&lt;!DOCTYPE html
+PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; 
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;  
+</code></pre><p>在此情况下使用：需要干净的标记，避免表现上的混乱。  </p>
+<h3 id="XHTML-1-0-Transitional"><a href="#XHTML-1-0-Transitional" class="headerlink" title="XHTML 1.0 Transitional"></a>XHTML 1.0 Transitional</h3><pre><code>&lt;!DOCTYPE html
+PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
+</code></pre><p>在此情况下使用：当需要利用 HTML 在表现上的特性时，并且当需要为那些不支持层叠样式表的浏览器编写 XHTML 时。  </p>
+<h3 id="XHTML-1-0-Frameset"><a href="#XHTML-1-0-Frameset" class="headerlink" title="XHTML 1.0 Frameset"></a>XHTML 1.0 Frameset</h3><pre><code>&lt;!DOCTYPE html
+PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;  
+</code></pre><h2 id="如何升级到XHTML"><a href="#如何升级到XHTML" class="headerlink" title="如何升级到XHTML"></a>如何升级到XHTML</h2><ul>
+<li>添加文件类型声明</li>
+<li>小写的标签和属性名</li>
+<li>给所有属性加上引号</li>
+<li>空标签：<code>&lt;hr&gt;,&lt;br&gt;,&lt;img&gt;</code>中需要加上/</li>
+<li>验证站点</li>
+</ul>
+<h2 id="XHTML模块"><a href="#XHTML模块" class="headerlink" title="XHTML模块"></a>XHTML模块</h2><h3 id="XHTML模块化的原因"><a href="#XHTML模块化的原因" class="headerlink" title="XHTML模块化的原因"></a>XHTML模块化的原因</h3><p>通过将 XHTML 分为若干模块，W3C 已经创造出数套小巧且定义良好的 XHTML 元素，这些元素既可被独立应用于简易设备，又可以与其他 XML 标准并入大型且更复杂的应用程序。<br>通过使用模块化的 XHTML，产品和软件设计者可以： </p>
+<ul>
+<li>选择被某种设备所支持的元素。</li>
+<li>在不打破 XHTML 标准的情况下，使用 XML 对 XHTML 进行扩展。</li>
+<li>针对小型设备，对 XHTML 进行简化。</li>
+<li>通过添加新的 XML 功能（比如 MathML, SVG, 语音和多媒体），针对复杂的应用对 XHTML 进行扩展。</li>
+<li>定义 XHTML 框架，比如 XHTML BASIC （针对移动设备的 XHTML 子集）。  </li>
+</ul>
+<h3 id="XHTML模块-1"><a href="#XHTML模块-1" class="headerlink" title="XHTML模块"></a>XHTML模块</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.2.png" alt=""></p>
+<h2 id="XHTML-标准属性"><a href="#XHTML-标准属性" class="headerlink" title="XHTML 标准属性"></a>XHTML 标准属性</h2><h3 id="核心属性-Core-Attributes"><a href="#核心属性-Core-Attributes" class="headerlink" title="核心属性 (Core Attributes)"></a>核心属性 (Core Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.3.png" alt="">  </p>
+<h3 id="语言属性-Language-Attributes"><a href="#语言属性-Language-Attributes" class="headerlink" title="语言属性 (Language Attributes)"></a>语言属性 (Language Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.4.png" alt=""> </p>
+<h3 id="键盘属性-Keyboard-Attributes"><a href="#键盘属性-Keyboard-Attributes" class="headerlink" title="键盘属性 (Keyboard Attributes)"></a>键盘属性 (Keyboard Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.5.png" alt="">  </p>
+<h2 id="XHTML-事件属性"><a href="#XHTML-事件属性" class="headerlink" title="XHTML 事件属性"></a>XHTML 事件属性</h2><p>HTML 4.0 的新特性之一是使 HTML 事件触发浏览器中的行为，比方说当用户点击一个 HTML 元素时启动一段 JavaScript 。以下就是可被插入 HTML 标签以定义事件行为的一系列属性。</p>
+<h3 id="窗口事件-Window-Events"><a href="#窗口事件-Window-Events" class="headerlink" title="窗口事件 (Window Events)"></a>窗口事件 (Window Events)</h3><p>仅对body和frameset元素有效<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.6.png" alt=""></p>
+<h3 id="表单元素事件-Form-Element-Events"><a href="#表单元素事件-Form-Element-Events" class="headerlink" title="表单元素事件 (Form Element Events)"></a>表单元素事件 (Form Element Events)</h3><p>仅对表单元素中有效。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.7.png" alt=""></p>
+<h3 id="键盘事件-Keyboard-Events"><a href="#键盘事件-Keyboard-Events" class="headerlink" title="键盘事件 (Keyboard Events)"></a>键盘事件 (Keyboard Events)</h3><p>在下列元素中无效：base, bdo, br, frame, frameset, head, html, iframe, meta, param, script, style, 以及 title 元素。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.8.png" alt=""></p>
+<h3 id="鼠标事件-Mouse-Events"><a href="#鼠标事件-Mouse-Events" class="headerlink" title="鼠标事件 (Mouse Events)"></a>鼠标事件 (Mouse Events)</h3><p>在下列元素中无效：base, bdo, br, frame, frameset, head, html, iframe, meta, param, script, style, title 元素。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.9.png" alt="">  </p>
+<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>XML被设计用来传输和存储数据。</p>
+<h2 id="什么是-XML"><a href="#什么是-XML" class="headerlink" title="什么是 XML"></a>什么是 XML</h2><ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）；</li>
+<li>XML 是一种标记语言，很类似 HTML；</li>
+<li>XML 的设计宗旨是传输数据，而非显示数据；</li>
+<li>XML 标签没有被预定义。您需要自行定义标签；</li>
+<li>XML 被设计为具有自我描述性；</li>
+<li>XML 是 W3C 的推荐标准。  </li>
+</ul>
+<h3 id="XML与HTML-的主要差别"><a href="#XML与HTML-的主要差别" class="headerlink" title="XML与HTML 的主要差别"></a>XML与HTML 的主要差别</h3><ul>
+<li>XML 不是 HTML 的替代；<br>XML 和 HTML 为不同的目的而设计；</li>
+<li>XML 被设计为传输和存储数据，其焦点是数据的内容；</li>
+<li>HTML 被设计用来显示数据，其焦点是数据的外观；</li>
+<li>HTML 旨在显示信息，而 XML 旨在传输信息。  </li>
+</ul>
+<h3 id="XML没有任何行为"><a href="#XML没有任何行为" class="headerlink" title="XML没有任何行为"></a>XML没有任何行为</h3><p>XML仅仅是纯文本，有能力处理文本的软件都可以处理XML，通过XML你可以发明自己的标签，同时，XML是对HTML的一种补充，所以并不会代替HTML，XML是独立于软件和硬件的信息传输工具。</p>
+<h2 id="XML的用途"><a href="#XML的用途" class="headerlink" title="XML的用途"></a>XML的用途</h2><p>XML常用于web开发的许多方面，比如简化数据的存储和共享，XML可以把数据从HTML分离。</p>
+<h2 id="XML-树结构"><a href="#XML-树结构" class="headerlink" title="XML 树结构"></a>XML 树结构</h2><p>XML文档形成了一种树结构，它从根部开始，然后扩展到枝叶。</p>
+<h3 id="一个XML文档实例"><a href="#一个XML文档实例" class="headerlink" title="一个XML文档实例"></a>一个XML文档实例</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don&apos;t forget the meeting!&lt;/body&gt;
+&lt;/note&gt;  
+</code></pre><ul>
+<li>第一行是 XML 声明。它定义 XML 的版本 (1.0) 和所使用的编码 (ISO-8859-1 = Latin-1/西欧字符集)；</li>
+<li>下一行描述文档的根元素（像在说：“本文档是一个便签”）；</li>
+<li>接下来 4 行描述根的 4 个子元素（to, from, heading 以及 body）；</li>
+<li>最后一行定义根元素的结尾。</li>
+</ul>
+<p>树结构：<br><img src="http://www.w3school.com.cn/i/ct_nodetree1.gif" alt="">    </p>
+<pre><code>&lt;bookstore&gt;
+&lt;book category=&quot;COOKING&quot;&gt;
+  &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt; 
+  &lt;author&gt;Giada De Laurentiis&lt;/author&gt; 
+  &lt;year&gt;2005&lt;/year&gt; 
+  &lt;price&gt;30.00&lt;/price&gt; 
+&lt;/book&gt;
+&lt;book category=&quot;CHILDREN&quot;&gt;
+  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt; 
+  &lt;author&gt;J K. Rowling&lt;/author&gt; 
+  &lt;year&gt;2005&lt;/year&gt; 
+  &lt;price&gt;29.99&lt;/price&gt; 
+&lt;/book&gt;
+&lt;book category=&quot;WEB&quot;&gt;
+  &lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt; 
+  &lt;author&gt;Erik T. Ray&lt;/author&gt; 
+  &lt;year&gt;2003&lt;/year&gt; 
+  &lt;price&gt;39.95&lt;/price&gt; 
+&lt;/book&gt;
+&lt;/bookstore&gt;  
+</code></pre><h2 id="XML-语法"><a href="#XML-语法" class="headerlink" title="XML 语法"></a>XML 语法</h2><ul>
+<li>所有XML 元素都必须有关闭标签</li>
+<li>XML 对大小写敏感</li>
+<li>XML 必须正确嵌套</li>
+<li>XML 必须有根元素 </li>
+<li>XML 的属性必须加引号 </li>
+<li>实体引用  </li>
+<li>XML 中的注释<code>&lt;!-- This is a comment --&gt;</code> </li>
+<li>在XML中，空格会被保留  </li>
+<li>XML 中以LF存储换行  </li>
+</ul>
+<h2 id="XML元素"><a href="#XML元素" class="headerlink" title="XML元素"></a>XML元素</h2><h3 id="XML元素是什么"><a href="#XML元素是什么" class="headerlink" title="XML元素是什么"></a>XML元素是什么</h3><p>XML 元素指的是从（且包括）开始标签直到（且包括）结束标签的部分。元素可包含其他元素、文本或者两者的混合物。元素也可以拥有属性。</p>
+<h3 id="XML-命名规则"><a href="#XML-命名规则" class="headerlink" title="XML 命名规则"></a>XML 命名规则</h3><ul>
+<li>名称可以含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始</li>
+<li>名称不能以字符 “xml”（或者 XML、Xml）开始</li>
+<li>名称不能包含空格</li>
+</ul>
+<h3 id="最佳命名习惯"><a href="#最佳命名习惯" class="headerlink" title="最佳命名习惯"></a>最佳命名习惯</h3><p>使名称具有描述性。使用下划线的名称也很不错。<br>名称应当比较简短，比如：<book_title>，而不是：<the_title_of_the_book>。<br>避免 “-“ 字符。如果您按照这样的方式进行命名：”first-name”，一些软件会认为你需要提取第一个单词。<br>避免 “.” 字符。如果您按照这样的方式进行命名：”first.name”，一些软件会认为 “name” 是对象 “first” 的属性。<br>避免 “:” 字符。冒号会被转换为命名空间来使用（稍后介绍）。<br>XML 文档经常有一个对应的数据库，其中的字段会对应 XML 文档中的元素。有一个实用的经验，即使用数据库的名称规则来命名 XML 文档中的元素。<br>非英语的字母比如 éòá 也是合法的 XML 元素名，不过需要留意当软件开发商不支持这些字符时可能出现的问题。  </the_title_of_the_book></book_title></p>
+<h3 id="XML-是可扩展的"><a href="#XML-是可扩展的" class="headerlink" title="XML 是可扩展的"></a>XML 是可扩展的</h3><p>XML 的优势之一，就是可以经常在不中断应用程序的情况下进行扩展。 </p>
+<h2 id="XML属性"><a href="#XML属性" class="headerlink" title="XML属性"></a>XML属性</h2><h3 id="XML属性-1"><a href="#XML属性-1" class="headerlink" title="XML属性"></a>XML属性</h3><p>属性通常提供不属于数据组成部分的信息。<br><code>&lt;file type=&quot;gif&quot;&gt;computer.gif&lt;/file&gt;</code><br>对于上面这个例子，文件类型与数据无关，但是对需要处理这个元素的软件来说却很重要。  </p>
+<h3 id="XML-属性必须加引号"><a href="#XML-属性必须加引号" class="headerlink" title="XML 属性必须加引号"></a>XML 属性必须加引号</h3><p>属性值必须被引号包围，不过单引号和双引号均可使用。</p>
+<h3 id="XML-元素-vs-属性"><a href="#XML-元素-vs-属性" class="headerlink" title="XML 元素 vs. 属性"></a>XML 元素 vs. 属性</h3><p> 元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。  </p>
+<h2 id="XML-查看"><a href="#XML-查看" class="headerlink" title="XML 查看"></a>XML 查看</h2><p>XML 文档不会携带有关如何显示数据的信息。<br>由于 XML 标签由 XML 文档的作者“发明”，浏览器无法确定像 <table> 这样一个标签究竟描述一个 HTML 表格还是一个餐桌。<br>在没有任何有关如何显示数据的信息的情况下，大多数的浏览器都会仅仅把 XML 文档显示为源代码。  </table></p>
+<h2 id="XML-JavaScript"><a href="#XML-JavaScript" class="headerlink" title="XML JavaScript"></a>XML JavaScript</h2><h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>XMLHttpRequest 对象用于在后台与服务器交换数据。</p>
+<h4 id="什么是-XMLHttpRequest-对象？"><a href="#什么是-XMLHttpRequest-对象？" class="headerlink" title="什么是 XMLHttpRequest 对象？"></a>什么是 XMLHttpRequest 对象？</h4><p>XMLHttpRequest 对象用于在后台与服务器交换数据。<br>XMLHttpRequest 对象是开发者的梦想，因为可以： </p>
+<ul>
+<li>在不重新加载页面的情况下更新网页</li>
+<li>在页面已加载后从服务器请求数据</li>
+<li>在页面已加载后从服务器接收数据</li>
+<li>在后台向服务器发送数据  </li>
+</ul>
+<h4 id="创建XMLHttpRequest-对象"><a href="#创建XMLHttpRequest-对象" class="headerlink" title="创建XMLHttpRequest 对象"></a>创建XMLHttpRequest 对象</h4><p>创建 XMLHttpRequest 对象的语法：<code>xmlhttp=new XMLHttpRequest();</code>  </p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/25/2017.04.25.vueresource/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/04/23/2017.04.23vue.js/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar1.png" alt="韩宏斌's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        hanhb1994924@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=QysiLSshcnp6d3pxdwM1KjNtMjJtICwu" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">20</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/hanhb1994924" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009632790145" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/1648593720" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/hhb1994/hhb1994.github.io" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/han-hong-bin-8/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Han's blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    <script src="/js/smoothscroll.js"></script>
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

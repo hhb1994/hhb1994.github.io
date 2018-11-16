@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            加快网站访问速度的方法 | 
+        
+        Han&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="韩宏斌">
+    <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+    <meta name="keywords" content="hexo,http">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Han&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="加快网站访问速度的方法 | Han&#39;s blog">
+    <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+    <meta property="og:article:tag" content="http"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+    <!-- Baidu Analytics -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?hhb1994924';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-减少HTTP请求数量"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.减少HTTP请求数量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-使用内容分布式网络（CDN）"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.使用内容分布式网络（CDN）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-给头部添加一个失效期或者Cache-Control"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.给头部添加一个失效期或者Cache-Control</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Gzip压缩组件"><span class="post-toc-number">4.</span> <span class="post-toc-text">4.Gzip压缩组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-把样式表放在前面"><span class="post-toc-number">5.</span> <span class="post-toc-text">5.把样式表放在前面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-把脚本放在最后"><span class="post-toc-number">6.</span> <span class="post-toc-text">6.把脚本放在最后</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-不使用CSS表达式"><span class="post-toc-number">7.</span> <span class="post-toc-text">7.不使用CSS表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-使用外部的JavaScript和CSS"><span class="post-toc-number">8.</span> <span class="post-toc-text">8.使用外部的JavaScript和CSS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-减少DNS查询"><span class="post-toc-number">9.</span> <span class="post-toc-text">9.减少DNS查询</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-缩小JavaScript和CSS"><span class="post-toc-number">10.</span> <span class="post-toc-text">10.缩小JavaScript和CSS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-避免重定向"><span class="post-toc-number">11.</span> <span class="post-toc-text">11.避免重定向</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-移除重复的脚本"><span class="post-toc-number">12.</span> <span class="post-toc-text">12.移除重复的脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-设定ETags"><span class="post-toc-number">13.</span> <span class="post-toc-text">13.设定ETags</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-让Ajax可以缓存"><span class="post-toc-number">14.</span> <span class="post-toc-text">14.让Ajax可以缓存</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-更早地刷新缓冲区"><span class="post-toc-number">15.</span> <span class="post-toc-text">15.更早地刷新缓冲区</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-在Ajax请求中使用GET方法"><span class="post-toc-number">16.</span> <span class="post-toc-text">16.在Ajax请求中使用GET方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#17-后加载组件"><span class="post-toc-number">17.</span> <span class="post-toc-text">17.后加载组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#18-利用浏览器的空闲时间来加载之后需要的组件"><span class="post-toc-number">18.</span> <span class="post-toc-text">18.利用浏览器的空闲时间来加载之后需要的组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#19-减少DOM-元素数量"><span class="post-toc-number">19.</span> <span class="post-toc-text">19.减少DOM 元素数量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#20-减少cookie的大小"><span class="post-toc-number">20.</span> <span class="post-toc-text">20.减少cookie的大小</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#21-减少dom的读取"><span class="post-toc-number">21.</span> <span class="post-toc-text">21.减少dom的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#22-不要再HTML中缩放图片"><span class="post-toc-number">22.</span> <span class="post-toc-text">22.不要再HTML中缩放图片</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#23-使用小的可缓存的favion-ico"><span class="post-toc-number">23.</span> <span class="post-toc-text">23.使用小的可缓存的favion.ico</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                加快网站访问速度的方法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>韩宏斌</strong>
+        <span>5月 24, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/http/">http</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=加快网站访问速度的方法&url=http://yoursite.com//2017/05/24/2017.05.24speedup/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/05/24/2017.05.24speedup/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/05/24/2017.05.24speedup/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=加快网站访问速度的方法&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/05/24/2017.05.24speedup/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/05/24/2017.05.24speedup/index.html&text=加快网站访问速度的方法" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>通过以下的方法，可以提高网站的访问速度，减少页面的加载时间。</p>
+<hr>
+<h2 id="1-减少HTTP请求数量"><a href="#1-减少HTTP请求数量" class="headerlink" title="1.减少HTTP请求数量"></a>1.减少HTTP请求数量</h2><p>80%的用户响应时间被花费在前端，而这其中的绝大多数时间是用于下载页面中的图片、样式表、脚本以及Flash这些组件。减少这些组件的数量就可以减少展示页面所需的请求数，而这是提高网页响应速度的关键。 </p>
+<ul>
+<li>合并文件，通过把所有脚本置于一个脚本文件里或者把所有样式表放于一个样式表文件中，从而减少Http请求的数量。</li>
+<li>CSS Sprites是减少图片请求的首选方案。把所有的背景图片合并到一张图中，使用CSS的<code>background-image</code> 和<code>background-position</code> 属性去控制展现恰当的图片区域。</li>
+<li>Image maps把多张图片组合成为一张图片。图片的总大小是不变的，但减少Http请求数会提高页面的响应速度。Image maps只能用于图片在网页中相邻的情况，比如导航条。制定image maps中的图片坐标是个很麻烦的过程，而且容易出错。同时给导航使用image maps也并不易读，所以并不推荐使用。</li>
+<li>内联图片使用data: URL scheme 把图片数据嵌入页面，但这会增加Html文档的大小。把内联图片合并到你被缓存的的样式表中是一个能既减少HTTP请求数又不会增加页面大小的方法。 </li>
+</ul>
+<p>减少页面的Http请求数量是第一步，而且对于提高用户初次访问体验是最重要的一步。  </p>
+<h2 id="2-使用内容分布式网络（CDN）"><a href="#2-使用内容分布式网络（CDN）" class="headerlink" title="2.使用内容分布式网络（CDN）"></a>2.使用内容分布式网络（CDN）</h2><p>用户80-90%的访问时间被花费在下载页面中的图片、样式表、脚本、Flash这些组件上。这是网站展示的黄金法则。那么与其重新设计网站的结构，不如先实现这些静态组件的分布。这不仅仅可以大幅减少响应时间，而且由于内容分布式网络（content delivery networks）的存在，这将是个很简单的工作。内容分布式网络（CDN）是一系列分布在不同地域的服务器的集合，能够更有效的给用户发送信息。它会根据一种衡量网域距离的方法，选取为某个用户发送数据的服务器。比如，到达用户最少跳或者最快相应速度的服务器会被选中。 </p>
+<h2 id="3-给头部添加一个失效期或者Cache-Control"><a href="#3-给头部添加一个失效期或者Cache-Control" class="headerlink" title="3.给头部添加一个失效期或者Cache-Control"></a>3.给头部添加一个失效期或者Cache-Control</h2><ul>
+<li>对于静态组件：把头部的缓存期设为某个遥远的未来，使其能够“永不过期”；</li>
+<li>对于动态组件：使用适当的Cache-Control头部帮助浏览器执行特定的请求。 </li>
+</ul>
+<p>网页设计越来越丰富，页面里包含了越来越多的脚本、样式表、图片和Flash。页面的初次访问者也许会发送多个HTTP请求，但通过给头部添加失效期，你可以使那些组件被缓存。这会避免下次浏览页面时的不必要的HTTP请求。给图片文件的头部设置失效时间更为常用，但包括脚本文件、样式表和Flash之类的所有组件的头部都应该被设置失效时间。浏览器（还有代理服务器）使用缓存以减少HTTP请求的数量和大小，提高网页的加载速度。服务器在HTTP相应中通过头部中的过期时间告知客户端一个组件可以被缓存多久。</p>
+<h2 id="4-Gzip压缩组件"><a href="#4-Gzip压缩组件" class="headerlink" title="4.Gzip压缩组件"></a>4.Gzip压缩组件</h2><p>使用gzip压缩通常会减少70%的HTTP响应大小。当前浏览器中大约90%的Internet通讯传输声明支持gzip。</p>
+<h2 id="5-把样式表放在前面"><a href="#5-把样式表放在前面" class="headerlink" title="5.把样式表放在前面"></a>5.把样式表放在前面</h2><p>把样式表放在文档的最后，会导致包括IE在内的大部分浏览器不进行逐步呈现。浏览器为了避免当样式改变时重绘元素而中止呈现。用户会十分无聊的看到一个空白的页面。</p>
+<h2 id="6-把脚本放在最后"><a href="#6-把脚本放在最后" class="headerlink" title="6.把脚本放在最后"></a>6.把脚本放在最后</h2><p>脚本可能会堵塞并发的下载。HTTP/1.1规范建议浏览器在每个域名下只进行两个并发下载。如果你把图片放在多个域名下，可以实现多于两个的并发下载。当脚本被下载时，即使使用不同的域名。浏览器也不会进行任何其它的下载。有些情况下把脚本放到底部并不太容易。比如，脚本使用document.write 来添加部分页面中的内容，就不能放到页面中更后面的位置。还可能有作用域的问题。很多情况下，还有一些变通的方法。<br>通常的建议是使用延迟脚本。DEFER属性表明脚本不包括document.write，而且提示浏览器继续展现。不幸的是，Firefox不支持DEFER属性。IE中，脚本可以被延迟，但并不如你期望的那么久。如果一个脚本可以被延迟，那么它也可以被放在页面的底部。这会让你的页面加载的更快。</p>
+<h2 id="7-不使用CSS表达式"><a href="#7-不使用CSS表达式" class="headerlink" title="7.不使用CSS表达式"></a>7.不使用CSS表达式</h2><p>使用一次性的表达式是减少CSS表达式的执行次数的一个方法，当表达式第一次执行时，CSS表达式会被一个确定的值代替。如果在页面生命周期中，样式属性必须动态的设定，使用事件处理替代CSS表达式是一个可选的方法。如果必须使用CSS表达式，要记得它们会执行上千次并影响页面的性能。</p>
+<h2 id="8-使用外部的JavaScript和CSS"><a href="#8-使用外部的JavaScript和CSS" class="headerlink" title="8.使用外部的JavaScript和CSS"></a>8.使用外部的JavaScript和CSS</h2><p>在实际应用中使用外部的文件往往产生更快的页面，因为浏览器会缓存JavaScript和CSS文件。而内联在页面里的JavaScript和CSS会在每次请求页面时下载。这会减少所需的HTTP请求数，但增大HTML文档的体积。而另一方面，如果放在外部文件里的JavaScript和CSS被浏览器缓存，则既不用增加HTTP请求的数量，HTML文档的体积也会减少。</p>
+<h2 id="9-减少DNS查询"><a href="#9-减少DNS查询" class="headerlink" title="9.减少DNS查询"></a>9.减少DNS查询</h2><p>当客户端的DNS缓存被清空（包括浏览器和操作系统的缓存），DNS查询的数量等同于网页中单独的域名的数量。包括页面中的链接，图片，脚本文件，样式表，Flash对象等。减少不同域名的数量则会减少DNS查询的数量。减少不同域名的数量可能减少页面并行的下载数量。减少DNS查询缩短了响应时间，但减少了并行下载数也许会增加响应时间。将组件分布在两到四个域名之间能很好的折中减少DNS查询提高的速度和维持较高水平的并行下载的效果。</p>
+<h2 id="10-缩小JavaScript和CSS"><a href="#10-缩小JavaScript和CSS" class="headerlink" title="10.缩小JavaScript和CSS"></a>10.缩小JavaScript和CSS</h2><p>缩小是指从代码中删除不必要的字母，减少文件体积从而提高加载速度。缩减代码时需要移除所有的注释，以及不需要的空白（空格，新行和tab）。这样处理JavaScript之后，会由于下载文件的体积被减少而提高响应的性能。不仅仅要压缩外部的脚本和样式表，内敛的<br>&lt; script&gt;和&lt; style&gt;部分也可以而且应当被压缩。</p>
+<h2 id="11-避免重定向"><a href="#11-避免重定向" class="headerlink" title="11.避免重定向"></a>11.避免重定向</h2><p>重定向降低了用户体验。在用户和HTML文档之间插入的重定向延误了页面的呈现和组件下载，因为它们都不可能在获得HTML文档之前开始。</p>
+<h2 id="12-移除重复的脚本"><a href="#12-移除重复的脚本" class="headerlink" title="12.移除重复的脚本"></a>12.移除重复的脚本</h2><p>当脚本被重复包含时，由于增加了不必要的HTTP请求和JavaScript的执行，影响了性能。</p>
+<h2 id="13-设定ETags"><a href="#13-设定ETags" class="headerlink" title="13.设定ETags"></a>13.设定ETags</h2><p>实体标签（ETags）是服务器和浏览器用于确定浏览器中缓存的组件和服务器中的是否对应的一种机制。</p>
+<h2 id="14-让Ajax可以缓存"><a href="#14-让Ajax可以缓存" class="headerlink" title="14.让Ajax可以缓存"></a>14.让Ajax可以缓存</h2><p>Ajax的好处之一是它能给用户提供瞬间的响应，因为它从服务端异步请求数据。但Ajax不能保证用户在等候那些异步的JavaScript和XML响应返回时什么都不做。在应用程序中，用户是否继续等待取决于Ajax怎样应用。为了提高性能，优化Ajax响应很重要。提高Ajax性能最重要的方式是使响应缓存。</p>
+<h2 id="15-更早地刷新缓冲区"><a href="#15-更早地刷新缓冲区" class="headerlink" title="15.更早地刷新缓冲区"></a>15.更早地刷新缓冲区</h2><p>当用户请求一个页面，服务端会花费200至500毫秒的时间组合HTML页面。在这期间，浏览器会静静等待数据到来。PHP中有flush（）函数，它允许你向浏览器发送部分就绪的HTML响应，这样浏览器可以在服务器处理余下的HTML页面时去获取组件。这样的好处主要在忙碌的后台和轻松的前台间可以看到。</p>
+<h2 id="16-在Ajax请求中使用GET方法"><a href="#16-在Ajax请求中使用GET方法" class="headerlink" title="16.在Ajax请求中使用GET方法"></a>16.在Ajax请求中使用GET方法</h2><p>POST方法在浏览器中分两步执行：先发送头部，然后发送数据。所以最好使用只发送一个TCP包（除非你有很多的cookie）的GET方法。IE中URL的最大长度是2000，所以如果你发送超过2000的数据就不能使用GET方法。</p>
+<h2 id="17-后加载组件"><a href="#17-后加载组件" class="headerlink" title="17.后加载组件"></a>17.后加载组件</h2><p> 有执行拖放、下拉和动画的JavaScript代码和菜单，它们可以稍后加载，因为用户在初始呈现之后才会在页面上拖动元素。其他的可以被后加载的地方包括隐藏的内容（当用户做某项操作才会展现的内容）和被折叠的图片。</p>
+<h2 id="18-利用浏览器的空闲时间来加载之后需要的组件"><a href="#18-利用浏览器的空闲时间来加载之后需要的组件" class="headerlink" title="18.利用浏览器的空闲时间来加载之后需要的组件"></a>18.利用浏览器的空闲时间来加载之后需要的组件</h2><p>利用浏览器的空闲时间来加载之后需要的组件（比如图片，样式表和脚本），当用户浏览下一个页面的时候，大部分组件都已经在缓存里了而页面会加载的更快。</p>
+<h2 id="19-减少DOM-元素数量"><a href="#19-减少DOM-元素数量" class="headerlink" title="19.减少DOM 元素数量"></a>19.减少DOM 元素数量</h2><p>复杂的页面意味着更多的字节需要被下载而且也意味着在JavaScript中遍历DOM更慢。比如你在页面中添加一个事件，让它在500或者5000个DOM元素中循环，它们的效率是不同的。</p>
+<h2 id="20-减少cookie的大小"><a href="#20-减少cookie的大小" class="headerlink" title="20.减少cookie的大小"></a>20.减少cookie的大小</h2><p>尽量减少cookie的体积对减少用户获得响应的时间十分重要。</p>
+<h2 id="21-减少dom的读取"><a href="#21-减少dom的读取" class="headerlink" title="21.减少dom的读取"></a>21.减少dom的读取</h2><p>利用Javascript读取DOM元素很慢，所以为了获得响应更快的页面，应该减少dom的读取，同时避免利用JavaScript定位布局。</p>
+<h2 id="22-不要再HTML中缩放图片"><a href="#22-不要再HTML中缩放图片" class="headerlink" title="22.不要再HTML中缩放图片"></a>22.不要再HTML中缩放图片</h2><p>不要使用大小超过需要的图片，即使你能够在HTML中设置它的属性。</p>
+<h2 id="23-使用小的可缓存的favion-ico"><a href="#23-使用小的可缓存的favion-ico" class="headerlink" title="23.使用小的可缓存的favion.ico"></a>23.使用小的可缓存的favion.ico</h2><p>favicon.icon是放在服务器根目录的一个图片，而且由于它是在同一服务器下的，Cookie也会随着每次请求一并发送。这张图片同样干扰下载队列，比如在IE中，当你在onload事件中请求额外的组件时，favicon会在这些额外组件之前下载。所以为了减少favicon.ico的不利影响，应当使用小图片，小于1k最好，并设置你认为合适的过期时间。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/24/2017.05.2huayu/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/23/2017.05.23/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar1.png" alt="韩宏斌's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        hanhb1994924@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=QysiLSshcnp6d3pxdwM1KjNtMjJtICwu" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">20</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/hanhb1994924" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009632790145" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/1648593720" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/hhb1994/hhb1994.github.io" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/han-hong-bin-8/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Han's blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    <script src="/js/smoothscroll.js"></script>
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
