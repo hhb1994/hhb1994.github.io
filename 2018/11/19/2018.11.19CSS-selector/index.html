@@ -239,7 +239,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-基本选择器"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.基本选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-多元素选择器"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.多元素选择器</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -402,7 +402,63 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>
+        <h2 id="一-基本选择器"><a href="#一-基本选择器" class="headerlink" title="一.基本选择器"></a>一.基本选择器</h2><ul>
+<li>通用元素选择器(*)</li>
+</ul>
+<p>通用元素选择器,匹配任何元素;</p>
+<ul>
+<li>标签选择器(E)</li>
+</ul>
+<p>匹配所有使用 E 标签的元素;</p>
+<ul>
+<li>class选择器(.class)</li>
+</ul>
+<p>匹配所有class属性中包含此class 的元素;</p>
+<ul>
+<li>id选择器(#id)</li>
+</ul>
+<p>匹配所有id属性为此id的元素</p>
+<p>实例:</p>
+<pre><code>* { margin:0; padding:0; }
+
+p { font-size:2em; }
+
+.info { background:#ff0; }
+
+p.info { background:#ff0; }
+
+p.info.error { color:#900; font-weight:bold; }
+
+#info { background:#ff0; }
+
+p#info { background:#ff0; }
+</code></pre><h2 id="二-多元素选择器"><a href="#二-多元素选择器" class="headerlink" title="二.多元素选择器"></a>二.多元素选择器</h2><ul>
+<li>多元素选择器(E,F)</li>
+</ul>
+<p>同时匹配所有的E元素和F元素,中间用逗号分隔.</p>
+<ul>
+<li>后代元素选择器(E F)</li>
+</ul>
+<p>匹配所有属于 E 元素后代的F 元素,用空格分开.</p>
+<ul>
+<li>子元素选择器(E&gt;F)</li>
+</ul>
+<p>匹配所有的E元素的子元素F.</p>
+<ul>
+<li>毗邻元素选择器(E+F)</li>
+</ul>
+<p>匹配所有紧随E元素之后的同级元素F.</p>
+<p>实例:</p>
+<pre><code>div p { color:#f00; }
+
+#nav li { display:inline; }
+
+#nav a { font-weight:bold; }
+
+div &gt; strong { color:#f00; }
+
+p + p { color:#f00; }
+</code></pre>
     
 
     
