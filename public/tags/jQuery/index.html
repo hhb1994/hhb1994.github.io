@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: jquery | 
+            标签: jQuery | 
         
         Han&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: jquery | Han&#39;s blog">
+    <meta property="og:title" content="标签: jQuery | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
     
 
@@ -236,17 +236,18 @@
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/23/2017.04.23vue.js/">Vue.js--基于$.ajax实现数据的跨域增删查改</a></p>
+        <p class="article-headline-p"><a href="/2017/04/21/2017.04.18radio&amp;dropdownlist/">jQuery获取单选框的值</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            概述我们知道在实例中有90%的数据都是来自服务端的，前端和服务端之间的数据交互一般是通过ajax请求来完成的。jQuery提供了较丰富的ajax方法，它不仅支...
+            使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  
+Radio
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2017/04/23/2017.04.23vue.js/" target="_self">继续阅读</a>
+            <a href="/2017/04/21/2017.04.18radio&amp;dropdownlist/" target="_self">继续阅读</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -258,7 +259,7 @@
             </div>
             <div>
                 <strong>韩宏斌</strong>
-                <span>4月 23, 2017</span>
+                <span>4月 21, 2017</span>
             </div>
         </div>
         <div id="post_entry-right-info">
@@ -379,7 +380,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -397,7 +398,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/插件/">插件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/插件/">插件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -431,7 +432,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">25</span>
+                <span class="sidebar-badge">27</span>
             </a>
         </li>
         
@@ -638,6 +639,17 @@ It will not impact the appearance and can give developers a lot of support :)
     $(window).load(function() {
         // Post_Toc parent position fixed
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
     });
 </script>
 
