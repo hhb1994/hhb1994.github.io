@@ -41,7 +41,7 @@ uiux:
 # JS Effect Switches
 js_effect:
     fade: true
-    smoothscroll: true
+    smoothscroll: false
 
 # Reading experience
 reading:
@@ -174,7 +174,7 @@ comment:
 # Available value:
 #     swiftype | google | local
 search:
-    use: google
+    use: local
     swiftype_key:
 
 # Analytics Systems
