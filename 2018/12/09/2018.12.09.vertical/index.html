@@ -10,7 +10,7 @@
     
     <title>
         
-            Vue.js——vue-resource | 
+            实现文字与图片并排显示 | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo,vue">
+    <meta name="keywords" content="hexo,css">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Vue.js——vue-resource | Han&#39;s blog">
+    <meta property="og:title" content="实现文字与图片并排显示 | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta property="og:article:tag" content="vue"> 
+    <meta property="og:article:tag" content="css"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -239,7 +239,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue-resource特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">vue-resource特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#体积小"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">体积小</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持主流浏览器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">支持主流浏览器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持Promise-API-和-URL-Templates"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">支持Promise API 和 URL Templates</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持拦截器"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">支持拦截器</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue-resource-使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">vue-resource 使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引入vue-resource"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">引入vue-resource</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本语法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">基本语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持的HTTP方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">支持的HTTP方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#options-对象"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">options 对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CURD-示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">CURD 示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#get-请求"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">get 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JSONP-请求"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">JSONP 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#POST-请求"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">POST 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PUT-请求"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">PUT 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DELETE-请求"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">DELETE 请求</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用resource-请求"><span class="post-toc-number">5.</span> <span class="post-toc-text">使用resource 请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GET-请求"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">GET 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#POST-请求-1"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">POST 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PUT-请求-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">PUT 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DELETE-请求-1"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">DELETE 请求</span></a></li></ol></li></ol>
+        
 
         <!--
         <li class="mdl-menu__item">
@@ -275,7 +275,7 @@
         
     
             <p class="article-headline-p">
-                Vue.js——vue-resource
+                实现文字与图片并排显示
             </p>
         </div>
 
@@ -294,7 +294,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>韩宏斌</strong>
-        <span>4月 25, 2017</span>
+        <span>12月 09, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -318,7 +318,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/vue/">vue</a>
+        <a class="post_tag-link" href="/tags/css/">css</a>
     </ul>
     
 
@@ -345,7 +345,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Vue.js——vue-resource&url=http://yoursite.com//2017/04/25/2017.04.25.vueresource/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=实现文字与图片并排显示&url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/04/25/2017.04.25.vueresource/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -366,7 +366,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/04/25/2017.04.25.vueresource/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -378,7 +378,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=Vue.js——vue-resource&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/04/25/2017.04.25.vueresource/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=实现文字与图片并排显示&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/12/09/2018.12.09.vertical/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -387,7 +387,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/04/25/2017.04.25.vueresource/index.html&text=Vue.js——vue-resource" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html&text=实现文字与图片并排显示" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -402,191 +402,17 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>vue-resource是Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。也就是说，$.ajax能做的事情，vue-resource插件一样也能做到，而且vue-resource的API更为简洁。另外，vue-resource还提供了非常有用的inteceptor功能，使用inteceptor可以在请求前和请求后附加一些行为，比如使用inteceptor在ajax请求时显示loading界面。  </p>
-<h1 id="vue-resource特点"><a href="#vue-resource特点" class="headerlink" title="vue-resource特点"></a>vue-resource特点</h1><h2 id="体积小"><a href="#体积小" class="headerlink" title="体积小"></a>体积小</h2><p>vue-resource非常小巧，在压缩以后只有大约12KB，服务端启用gzip压缩后只有4.5KB大小，这远比jQuery的体积要小得多。</p>
-<h2 id="支持主流浏览器"><a href="#支持主流浏览器" class="headerlink" title="支持主流浏览器"></a>支持主流浏览器</h2><p>和Vue.js一样，vue-resource除了不支持IE 9以下的浏览器，其他主流的浏览器都支持。</p>
-<h2 id="支持Promise-API-和-URL-Templates"><a href="#支持Promise-API-和-URL-Templates" class="headerlink" title="支持Promise API 和 URL Templates"></a>支持Promise API 和 URL Templates</h2><p>Promise是ES6的特性，Promise的中文含义为“先知”，Promise对象用于异步计算。<br>URI Templates表示URI模板，有些类似于ASP.NET MVC的路由模板。</p>
-<h2 id="支持拦截器"><a href="#支持拦截器" class="headerlink" title="支持拦截器"></a>支持拦截器</h2><p>拦截器是全局的，拦截器可以在请求发送前和发送请求后做一些处理。<br>拦截器在一些场景下会非常有用，比如请求发送前在headers中设置access_token，或者在请求失败时，提供共通的处理方式。</p>
-<h1 id="vue-resource-使用"><a href="#vue-resource-使用" class="headerlink" title="vue-resource 使用"></a>vue-resource 使用</h1><h2 id="引入vue-resource"><a href="#引入vue-resource" class="headerlink" title="引入vue-resource"></a>引入vue-resource</h2><pre><code>&lt;script src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;js/vue-resource.js&quot;&gt;&lt;/script&gt;  
-</code></pre><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>引入vue-resource后，可以基于全局的Vue对象使用http，也可以基于某个Vue实例使用http。  </p>
-<pre><code>// 基于全局Vue对象使用http
-Vue.http.get(&apos;/someUrl&apos;, [options]).then(successCallback, errorCallback);
-Vue.http.post(&apos;/someUrl&apos;, [body], [options]).then(successCallback, errorCallback);
-
-// 在一个Vue实例内使用$http
-this.$http.get(&apos;/someUrl&apos;, [options]).then(successCallback, errorCallback);
-this.$http.post(&apos;/someUrl&apos;, [body], [options]).then(successCallback, errorCallback);  
-</code></pre><p>在发送请求后，使用then方法来处理响应结果，then方法有两个参数，第一个参数是响应成功时的回调函数，第二个参数是响应失败时的回调函数。</p>
-<p>then方法的回调函数也有两种写法，第一种是传统的函数写法，第二种是更为简洁的ES 6的Lambda写法：<br>    // 传统写法<br>    this.$http.get(‘/someUrl’, [options]).then(function(response){<br>    // 响应成功回调<br>    }, function(response){<br>    // 响应错误回调<br>    });</p>
-<pre><code>// Lambda写法
-this.$http.get(&apos;/someUrl&apos;, [options]).then((response) =&gt; {
-// 响应成功回调
-}, (response) =&gt; {
-// 响应错误回调
-});
-</code></pre><h2 id="支持的HTTP方法"><a href="#支持的HTTP方法" class="headerlink" title="支持的HTTP方法"></a>支持的HTTP方法</h2><p>vue-resource的请求API是按照REST风格设计的，它提供了7种请求API：   </p>
-<ul>
-<li>get(url, [options])</li>
-<li>head(url, [options])</li>
-<li>delete(url, [options])</li>
-<li>jsonp(url, [options])</li>
-<li>post(url, [body], [options])</li>
-<li>put(url, [body], [options])</li>
-<li>patch(url, [body], [options])  </li>
-</ul>
-<p>除了jsonp以外，另外6种的API名称是标准的HTTP方法。当服务端使用REST API时，客户端的编码风格和服务端的编码风格近乎一致，这可以减少前端和后端开发人员的沟通成本。  </p>
-<h2 id="options-对象"><a href="#options-对象" class="headerlink" title="options 对象"></a>options 对象</h2><p>response对象包含以下属性：<br><img src="http://onep1caa3.bkt.clouddn.com/04.25.1.png" alt="">  </p>
-<h1 id="CURD-示例"><a href="#CURD-示例" class="headerlink" title="CURD 示例"></a>CURD 示例</h1><h2 id="get-请求"><a href="#get-请求" class="headerlink" title="get 请求"></a>get 请求</h2><pre><code>var demo = new Vue({
-el: &apos;#app&apos;,
-data: {
-gridColumns: [&apos;customerId&apos;, &apos;companyName&apos;, &apos;contactName&apos;, &apos;phone&apos;],
-gridData: [],
-apiUrl: &apos;http://211.149.193.19:8080/api/customers&apos;
-},
-ready: function() {
-this.getCustomers()
-},
-methods: {
-getCustomers: function() {
-this.$http.get(this.apiUrl)
-.then((response) =&gt; {
-this.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
+        <pre><code>&lt;div&gt;
+    &lt;img src=&quot;images/pic.png&quot;&gt;
+    &lt;span&gt;content&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><p>实现方式:</p>
+<p> css:</p>
+<pre><code>img{
+    vertical-align:middle
 }
-}
-})  
-</code></pre><p>这段程序的then方法只提供了successCallback，而省略了errorCallback。<br>catch方法用于捕捉程序的异常，catch方法和errorCallback是不同的，errorCallback只在响应失败时调用，而catch则是在整个请求到响应过程中，只要程序出错了就会被调用。</p>
-<p>在then方法的回调函数内，你也可以直接使用this，this仍然是指向Vue实例的： </p>
-<pre><code>getCustomers: function() {
-this.$http.get(this.apiUrl)
-.then((response) =&gt; {
-this.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
-}  
-</code></pre><h2 id="JSONP-请求"><a href="#JSONP-请求" class="headerlink" title="JSONP 请求"></a>JSONP 请求</h2><pre><code>getCustomers: function() {
-this.$http.jsonp(this.apiUrl).then(function(response){
-this.$set(&apos;gridData&apos;, response.data)
-})
-}  
-</code></pre><h2 id="POST-请求"><a href="#POST-请求" class="headerlink" title="POST 请求"></a>POST 请求</h2><pre><code>var demo = new Vue({
-el: &apos;#app&apos;,
-data: {
-show: false,
-gridColumns: [{
-name: &apos;customerId&apos;,
-isKey: true
-}, {
-name: &apos;companyName&apos;
-}, {
-name: &apos;contactName&apos;
-}, {
-name: &apos;phone&apos;
-}],
-gridData: [],
-apiUrl: &apos;http://211.149.193.19:8080/api/customers&apos;,
-item: {}
-},
-ready: function() {
-this.getCustomers()
-},
-methods: {
-closeDialog: function() {
-this.show = false
-},
-getCustomers: function() {
-var vm = this
-vm.$http.get(vm.apiUrl)
-.then((response) =&gt; {
-vm.$set(&apos;gridData&apos;, response.data)
-})
-},
-createCustomer: function() {
-var vm = this
-vm.$http.post(vm.apiUrl, vm.item)
-.then((response) =&gt; {
-vm.$set(&apos;item&apos;, {})
-vm.getCustomers()
-})
-this.show = false
-}
-}
-})  
-</code></pre><h2 id="PUT-请求"><a href="#PUT-请求" class="headerlink" title="PUT 请求"></a>PUT 请求</h2><pre><code>updateCustomer: function() {
-var vm = this
-vm.$http.put(this.apiUrl + &apos;/&apos; + vm.item.customerId, vm.item)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre><h2 id="DELETE-请求"><a href="#DELETE-请求" class="headerlink" title="DELETE 请求"></a>DELETE 请求</h2><pre><code>deleteCustomer: function(customer){
-var vm = this
-vm.$http.delete(this.apiUrl + &apos;/&apos; + customer.customerId)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre><h1 id="使用resource-请求"><a href="#使用resource-请求" class="headerlink" title="使用resource 请求"></a>使用resource 请求</h1><p>vue-resource提供了另外一种方式访问HTTP——resource服务，resource服务包含以下几种默认的action：  </p>
-<pre><code>get: {method: &apos;GET&apos;},
-save: {method: &apos;POST&apos;},
-query: {method: &apos;GET&apos;},
-update: {method: &apos;PUT&apos;},
-remove: {method: &apos;DELETE&apos;},
-delete: {method: &apos;DELETE&apos;}  
-</code></pre><p>resource对象也有两种访问方式：  </p>
-<ul>
-<li>全局访问：Vue.resource</li>
-<li>实例访问：this.$resource  </li>
-</ul>
-<h2 id="GET-请求"><a href="#GET-请求" class="headerlink" title="GET 请求"></a>GET 请求</h2><pre><code>getCustomers: function() {
+</code></pre><p><code>&quot;vertical-align&quot;</code> 这个属性只适用于 inline 和 inline-block, 对其他 postion 属性无效.</p>
 
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.get()
-.then((response) =&gt; {
-vm.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
-}  
-</code></pre><h2 id="POST-请求-1"><a href="#POST-请求-1" class="headerlink" title="POST 请求"></a>POST 请求</h2><pre><code>createCustomer: function() {
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.save(vm.apiUrl, vm.item)
-.then((response) =&gt; {
-vm.$set(&apos;item&apos;, {})
-vm.getCustomers()
-})
-this.show = false
-}  
-</code></pre><h2 id="PUT-请求-1"><a href="#PUT-请求-1" class="headerlink" title="PUT 请求"></a>PUT 请求</h2><pre><code>updateCustomer: function() {
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.update({ id: vm.item.customerId}, vm.item)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-} 
-</code></pre><h2 id="DELETE-请求-1"><a href="#DELETE-请求-1" class="headerlink" title="DELETE 请求"></a>DELETE 请求</h2><pre><code>deleteCustomer: function(customer){
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.remove({ id: customer.customerId})
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre>
     
 
     
@@ -609,21 +435,13 @@ vm.getCustomers()
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/05/23/2017.05.23/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/04/24/2017.04.24.html&xml&xhtml/" id="post_nav-older" class="next-content">
+        <a href="/2018/12/07/2018.12.07.pseudo/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
