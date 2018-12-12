@@ -10,7 +10,7 @@
     
     <title>
         
-            CSS 选择器/动画 | 
+            检测浏览器类型&amp;判断 IE 版本 | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo,CSS">
+    <meta name="keywords" content="hexo,浏览器">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CSS 选择器/动画 | Han&#39;s blog">
+    <meta property="og:title" content="检测浏览器类型&amp;判断 IE 版本 | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta property="og:article:tag" content="CSS"> 
+    <meta property="og:article:tag" content="浏览器"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -239,7 +239,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-基本选择器"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.基本选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-多元素选择器"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.多元素选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CSS-动画"><span class="post-toc-number">3.</span> <span class="post-toc-text">CSS 动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CSS-transition"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">CSS transition</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#还可以指定-transition-使用的属性-比如只适用于-height"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">还可以指定 transition 使用的属性,比如只适用于 height:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#transition-delay"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">transition-delay</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#transition-timing-function"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">transition-timing-function</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#transition-的各项属性"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">transition 的各项属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用注意"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">使用注意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#transition-的局限"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">transition 的局限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CSS-animation"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">CSS animation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本用法"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#animation-fill-mode"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">animation-fill-mode</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#animation-direction"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">animation-direction</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#animation-的各项属性"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">animation 的各项属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyframes-的写法"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">keyframes 的写法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#animation-play-state"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">animation-play-state</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JS-获取浏览器信息"><span class="post-toc-number">1.</span> <span class="post-toc-text">JS 获取浏览器信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#各大浏览器的-userAgent-值"><span class="post-toc-number">2.</span> <span class="post-toc-text">各大浏览器的 userAgent 值</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获取浏览器类型和版本"><span class="post-toc-number">3.</span> <span class="post-toc-text">获取浏览器类型和版本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#判断-IE-的方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">判断 IE 的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IE-条件注释"><span class="post-toc-number">5.</span> <span class="post-toc-text">IE 条件注释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键词释义"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">关键词释义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例如"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">例如</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -275,7 +275,7 @@
         
     
             <p class="article-headline-p">
-                CSS 选择器/动画
+                检测浏览器类型&判断 IE 版本
             </p>
         </div>
 
@@ -294,7 +294,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>韩宏斌</strong>
-        <span>11月 19, 2018</span>
+        <span>12月 12, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -318,7 +318,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS/">CSS</a>
+        <a class="post_tag-link" href="/tags/浏览器/">浏览器</a>
     </ul>
     
 
@@ -345,7 +345,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS 选择器/动画&url=http://yoursite.com//2018/11/19/2018.11.19CSS-selector/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=检测浏览器类型&amp;判断 IE 版本&url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/11/19/2018.11.19CSS-selector/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -366,7 +366,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/11/19/2018.11.19CSS-selector/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -378,7 +378,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=CSS 选择器/动画&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/11/19/2018.11.19CSS-selector/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=检测浏览器类型&amp;判断 IE 版本&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -387,7 +387,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/11/19/2018.11.19CSS-selector/index.html&text=CSS 选择器/动画" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html&text=检测浏览器类型&amp;判断 IE 版本" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -402,196 +402,126 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="一-基本选择器"><a href="#一-基本选择器" class="headerlink" title="一.基本选择器"></a>一.基本选择器</h2><ul>
-<li>通用元素选择器(*)</li>
-</ul>
-<p>通用元素选择器,匹配任何元素;</p>
+        <h1 id="JS-获取浏览器信息"><a href="#JS-获取浏览器信息" class="headerlink" title="JS 获取浏览器信息"></a>JS 获取浏览器信息</h1><pre><code>浏览器代码名称：navigator.appCodeName
+浏览器名称：navigator.appName
+浏览器版本号：navigator.appVersion
+对Java的支持：navigator.javaEnabled()
+MIME类型（数组）：navigator.mimeTypes
+系统平台：navigator.platform
+插件（数组）：navigator.plugins
+用户代理：navigator.userAgent
+</code></pre><h1 id="各大浏览器的-userAgent-值"><a href="#各大浏览器的-userAgent-值" class="headerlink" title="各大浏览器的 userAgent 值"></a>各大浏览器的 userAgent 值</h1><p>各大浏览器输出 navigator.userAgent 的值：</p>
 <ul>
-<li>标签选择器(E)</li>
+<li>IE 8：Mozilla/4.0 (compatible; <strong>MSIE 8.0</strong>; Windows NT 10.0; WOW64; Trident/8.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)</li>
+<li>IE 11：Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; <strong>rv:11.0)like Gecko</strong></li>
+<li>win EDGE：Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 <strong>Edge/12.10240</strong></li>
+<li>FireFox：Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 <strong>Firefox/49.0</strong></li>
+<li>Chrome：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) <strong>Chrome/54.0.2840.71</strong> Safari/537.36</li>
+<li>Opera：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36 <strong>OPR/41.0.2353.56</strong></li>
+<li>Safari：mozilla/5.0 (windows; u; windows nt 5.1; zh-cn) applewebkit/533.16 (khtml, like gecko) version/5.0 <strong>safari/533.16</strong></li>
+<li>360安全浏览器：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</li>
+<li>QQ浏览器：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.1708.400 <strong>QQBrowser/9.5.9635.400</strong></li>
 </ul>
-<p>匹配所有使用 E 标签的元素;</p>
+<p>总结:</p>
 <ul>
-<li>class选择器(.class)</li>
+<li>IE 10 之前的版本，匹配关键字 MSIE 8.0；</li>
+<li>IE 11 要通过 rv:11.0) like Gecko 来匹配；</li>
+<li>EDGE 通过 Edge/12.10240；</li>
+<li>Firefox 通过 Firefox/49.0；</li>
+<li>Chrome 通过 Chrome/54.0.2840.71，但是会发现，后面的浏览器都是基于 Chrome 内核（safari 除外），但是 Chrome 又是基于 safari 内核的。。</li>
+<li>Opera 通过 OPR/41.0.2353.56，但是网上普遍是通过 opera 字段.</li>
+<li>Safari 通过 safari/533.16 来匹配；</li>
+<li>360 和 QQ 都是基于 Chrome 内核的，当然 QQ 还能通过 QQBrowser/9.5.9635.400，如果你高兴去匹配的话。</li>
 </ul>
-<p>匹配所有class属性中包含此class 的元素;</p>
-<ul>
-<li>id选择器(#id)</li>
+<h1 id="获取浏览器类型和版本"><a href="#获取浏览器类型和版本" class="headerlink" title="获取浏览器类型和版本"></a>获取浏览器类型和版本</h1><pre><code>function getExplore(){
+  var Sys = {};  
+  var ua = navigator.userAgent.toLowerCase();  
+  var s;  
+  (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+  (s = ua.match(/msie ([\d\.]+)/)) ? Sys.ie = s[1] :  
+  (s = ua.match(/edge\/([\d\.]+)/)) ? Sys.edge = s[1] :
+  (s = ua.match(/firefox\/([\d\.]+)/)) ? Sys.firefox = s[1] :  
+  (s = ua.match(/(?:opera|opr).([\d\.]+)/)) ? Sys.opera = s[1] :  
+  (s = ua.match(/chrome\/([\d\.]+)/)) ? Sys.chrome = s[1] :  
+  (s = ua.match(/version\/([\d\.]+).*safari/)) ? Sys.safari = s[1] : 0;  
+  // 根据关系进行判断
+  if (Sys.ie) return (&apos;IE: &apos; + Sys.ie);  
+  if (Sys.edge) return (&apos;EDGE: &apos; + Sys.edge);
+  if (Sys.firefox) return (&apos;Firefox: &apos; + Sys.firefox);  
+  if (Sys.chrome) return (&apos;Chrome: &apos; + Sys.chrome);  
+  if (Sys.opera) return (&apos;Opera: &apos; + Sys.opera);  
+  if (Sys.safari) return (&apos;Safari: &apos; + Sys.safari);
+  return &apos;Unkonwn&apos;;
+}
+</code></pre><p>判断的顺序很重要,因为很多浏览器是多核的.</p>
+<p>简单判断浏览器类型,不需要版本号:</p>
+<pre><code>function getExploreName(){
+  var userAgent = navigator.userAgent;
+  if(userAgent.indexOf(&quot;Opera&quot;) &gt; -1 || userAgent.indexOf(&quot;OPR&quot;) &gt; -1){
+    return &apos;Opera&apos;;
+  }else if(userAgent.indexOf(&quot;compatible&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;MSIE&quot;) &gt; -1){
+    return &apos;IE&apos;;
+  }else if(userAgent.indexOf(&quot;Edge&quot;) &gt; -1){
+    return &apos;Edge&apos;;
+  }else if(userAgent.indexOf(&quot;Firefox&quot;) &gt; -1){
+    return &apos;Firefox&apos;;
+  }else if(userAgent.indexOf(&quot;Safari&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Chrome&quot;) == -1){
+    return &apos;Safari&apos;;
+  }else if(userAgent.indexOf(&quot;Chrome&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Safari&quot;) &gt; -1){
+    return &apos;Chrome&apos;;
+  }else if(!!window.ActiveXObject || &quot;ActiveXObject&quot; in window){
+    return &apos;IE&gt;=11&apos;;
+  }else{
+    return &apos;Unkonwn&apos;;
+  }
+}
+</code></pre><h1 id="判断-IE-的方法"><a href="#判断-IE-的方法" class="headerlink" title="判断 IE 的方法"></a>判断 IE 的方法</h1><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><pre><code>if(window.addEventListener){ 
+alert(&quot;not ie&quot;); 
+}else if(window.attachEvent){ 
+alert(&quot;is ie&quot;); 
+}else{ 
+alert(&quot;这种情况发生在不支持DHTML的老版本浏览器（现在一般都支持）&quot;) 
+}
+</code></pre><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><pre><code>if(document.all){ 
+alert(&quot;IE&quot;); 
+}else{ 
+alert(&quot;not ie&quot;); 
+}
+</code></pre><h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><pre><code>var navigatorName = &quot;Microsoft Internet Explorer&quot;; 
+if( navigator.appName == navigatorName ){ 
+alert(&quot;ie&quot;) 
+}else{
+alert(&quot;not ie&quot;) 
+}
+</code></pre><h2 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h2><pre><code>if(!+[1,])alert(&quot;这是ie浏览器&quot;); 
+else alert(&quot;这不是ie浏览器&quot;);
+</code></pre><h1 id="IE-条件注释"><a href="#IE-条件注释" class="headerlink" title="IE 条件注释"></a>IE 条件注释</h1><h2 id="关键词释义"><a href="#关键词释义" class="headerlink" title="关键词释义"></a>关键词释义</h2><pre><code>lt ：就是Less than的简写，也就是小于的意思。
+
+lte ：就是Less than or equal to的简写，也就是小于或等于的意思。
+
+gt ：就是Greater than的简写，也就是大于的意思。
+
+gte：就是Greater than or equal to的简写，也就是大于或等于的意思。
+
+!：就是不等于的意思，跟javascript里的不等于判断符相同。
+</code></pre><h2 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h2><ul>
+<li><p>1.只有 IE 可以识别</p>
+<pre><code>&lt;!--[if IE]&gt;
+ &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>2.只有特定版本才能识别</p>
+<pre><code>&lt;!--[if IE 8]&gt; 
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>3.等于或者高于特定版本才能识别</p>
+<pre><code>&lt;!--[if gte IE 7]&gt; 
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+&lt;![endif]--&gt;
+</code></pre></li>
 </ul>
-<p>匹配所有id属性为此id的元素</p>
-<p>实例:</p>
-<pre><code>* { margin:0; padding:0; }
 
-p { font-size:2em; }
-
-.info { background:#ff0; }
-
-p.info { background:#ff0; }
-
-p.info.error { color:#900; font-weight:bold; }
-
-#info { background:#ff0; }
-
-p#info { background:#ff0; }
-</code></pre><h2 id="二-多元素选择器"><a href="#二-多元素选择器" class="headerlink" title="二.多元素选择器"></a>二.多元素选择器</h2><ul>
-<li>多元素选择器(E,F)</li>
-</ul>
-<p>同时匹配所有的E元素和F元素,中间用逗号分隔.</p>
-<ul>
-<li>后代元素选择器(E F)</li>
-</ul>
-<p>匹配所有属于 E 元素后代的F 元素,用空格分开.</p>
-<ul>
-<li>子元素选择器(E&gt;F)</li>
-</ul>
-<p>匹配所有的E元素的子元素F.</p>
-<ul>
-<li>毗邻元素选择器(E+F)</li>
-</ul>
-<p>匹配所有紧随E元素之后的同级元素F.</p>
-<p>实例:</p>
-<pre><code>div p { color:#f00; }
-
-#nav li { display:inline; }
-
-#nav a { font-weight:bold; }
-
-div &gt; strong { color:#f00; }
-
-p + p { color:#f00; }
-</code></pre><h2 id="CSS-动画"><a href="#CSS-动画" class="headerlink" title="CSS 动画"></a>CSS 动画</h2><h3 id="CSS-transition"><a href="#CSS-transition" class="headerlink" title="CSS transition"></a>CSS transition</h3><p>transition 指定状态变化所需要的时间,例如:</p>
-<pre><code>img{
-    height:15px;
-    width:15px;
-    transition: 1s;
-}
-
-img:hover{
-    height: 450px;
-    width: 450px;
-}
-</code></pre><p>这样可以指定图片的访达过程需要1s🐸.</p>
-<h4 id="还可以指定-transition-使用的属性-比如只适用于-height"><a href="#还可以指定-transition-使用的属性-比如只适用于-height" class="headerlink" title="还可以指定 transition 使用的属性,比如只适用于 height:"></a>还可以指定 transition 使用的属性,比如只适用于 height:</h4><pre><code>img{
-    transition: 1s height;
-}
-</code></pre><p>这样只有高度变化需要1s 实现,其他变化依然瞬间实现.</p>
-<h4 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h4><pre><code>img{
-    transition: 1s height, 1s 1s width;
-}
-</code></pre><p>如上, width 在1s 以后才开始变化.</p>
-<h4 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h4><p> 状态变化速度,默认不是匀速的,而是逐渐放慢,称为 ease.</p>
-<pre><code>img{
-    transition: 1s ease;
-}
-</code></pre><p>除了 ease 以外,还包括:</p>
-<ul>
-<li>linear 匀速</li>
-<li>ease-in 加速</li>
-<li>ease-out 减速</li>
-<li>cubic-bezier 函数: 自定义速度模式</li>
-</ul>
-<h4 id="transition-的各项属性"><a href="#transition-的各项属性" class="headerlink" title="transition 的各项属性"></a>transition 的各项属性</h4><p>完整写法:</p>
-<pre><code>img{
-    transition: 1s 1s height ease;
-}
-</code></pre><p>单独定义:</p>
-<pre><code>img{
-    transition-property: height;
-    transition-duration: 1s;
-    transition-delay: 1s;
-    transition-timing-function: ease;
-}
-</code></pre><h4 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h4><ul>
-<li>各大浏览器都支持无前缀的 transition;</li>
-<li>不是所有的属性都支持 transition;</li>
-<li>transition 必须明确状态;</li>
-</ul>
-<h4 id="transition-的局限"><a href="#transition-的局限" class="headerlink" title="transition 的局限"></a>transition 的局限</h4><ul>
-<li>需要事件触发,无法在网页加载时自动生成;</li>
-<li>一次性,不能重发触发,除非一再触发;</li>
-<li>只能定义开始和结束状态,不能定义中间状态,即只有两个状态;</li>
-<li>一条 transition 只能定义一个属性的变化,不能涉及多个属性.</li>
-</ul>
-<h3 id="CSS-animation"><a href="#CSS-animation" class="headerlink" title="CSS animation"></a>CSS animation</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>首先, css animation 需要制定动画一个周期持续时间,以及动画效果的名称.</p>
-<pre><code>div:hover {
-  animation: 1s rainbow;
-}
-</code></pre><p>上面代码表示，当鼠标悬停在div元素上时，会产生名为rainbow的动画效果，持续时间为1秒。为此，我们还需要用keyframes关键字，定义rainbow效果。</p>
-<pre><code>@keyframes rainbow {
-  0% { background: #c00; }
-  50% { background: orange; }
-  100% { background: yellowgreen; }
-}
-</code></pre><p>上面代码表示，rainbow效果一共有三个状态，分别为起始（0%）、中点（50%）和结束（100%）。如果有需要，完全可以插入更多状态。</p>
-<p>默认情况下，动画只播放一次。加入infinite关键字，可以让动画无限次播放。</p>
-<p>默认情况下，动画只播放一次。加入infinite关键字，可以让动画无限次播放。</p>
-<h4 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h4><p>动画结束以后，会立即从结束状态跳回到起始状态。如果想让动画保持在结束状态，需要使用animation-fill-mode属性。</p>
-<ul>
-<li>none: 默认值,回到动画没开始的状态;</li>
-<li>backwoards: 让动画回到第一帧的状态;</li>
-<li>both: 根据 animation-direction 轮流应用 forwards 和 backwards 规则.</li>
-</ul>
-<h4 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h4><p>动画循环播放时，每次都是从结束状态跳回到起始状态，再开始播放。animation-direction属性，可以改变这种行为。</p>
-<p>下面看一个例子，来说明如何使用animation-direction。假定有一个动画是这样定义的。</p>
-<pre><code>@keyframes rainbow {
-  0% { background-color: yellow; }
-  100% { background: blue; }
-}
-</code></pre><p>默认情况下, animation-direction 等于 normal.</p>
-<p>此外，还可以等于取alternate、reverse、alternate-reverse等值。它们的含义见下图（假定动画连续播放三次）。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/201402/bg2014021401.png" alt=""></p>
-<h4 id="animation-的各项属性"><a href="#animation-的各项属性" class="headerlink" title="animation 的各项属性"></a>animation 的各项属性</h4><pre><code>div:hover {
-  animation: 1s 1s rainbow linear 3 forwards normal;
-}
-</code></pre><p>单独的属性:</p>
-<pre><code>div:hover {
-  animation-name: rainbow;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-delay: 1s;
-    animation-fill-mode:forwards;
-  animation-direction: normal;
-  animation-iteration-count: 3;
-</code></pre><p>}</p>
-<h4 id="keyframes-的写法"><a href="#keyframes-的写法" class="headerlink" title="keyframes 的写法"></a>keyframes 的写法</h4><p>用于定义动画的各个状态:</p>
-<pre><code>@keyframes rainbow {
-  0% { background: #c00 }
-  50% { background: orange }
-  100% { background: yellowgreen }
-}
-</code></pre><p>或者:</p>
-<pre><code>@keyframes rainbow {
-  from { background: #c00 }
-  50% { background: orange }
-  to { background: yellowgreen }
-}
-</code></pre><p>如果省略某个状态，浏览器会自动推算中间状态，所以下面都是合法的写法。</p>
-<pre><code>@keyframes rainbow {
-  50% { background: orange }
-  to { background: yellowgreen }
-}
-
-@keyframes rainbow {
-  to { background: yellowgreen }
-}
-</code></pre><p>甚至，可以把多个状态写在一行。</p>
-<pre><code>@keyframes pound {
-  from，to { transform: none; }
-  50% { transform: scale(1.2); }
-}
-</code></pre><p>另外一点需要注意的是，浏览器从一个状态向另一个状态过渡，是平滑过渡。steps函数可以实现分步过渡。</p>
-<pre><code>div:hover {
-  animation: 1s rainbow infinite steps(10);
-}
-</code></pre><h4 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h4><p>如果想让动画保持突然终止时的状态，就要使用animation-play-state属性。</p>
-<pre><code>div {
-    animation: spin 1s linear infinite;
-    animation-play-state: paused;
-}
-
-div:hover {
-  animation-play-state: running;
-}
-</code></pre>
     
 
     
@@ -614,21 +544,13 @@ div:hover {
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/11/20/2018.11.20semver/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/11/16/2018.11.16SSR/" id="post_nav-older" class="next-content">
+        <a href="/2018/12/09/2018.12.09.vertical/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
