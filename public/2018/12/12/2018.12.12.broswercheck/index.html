@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Plugin | 
+            检测浏览器类型&amp;判断 IE 版本 | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="hexo,浏览器">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Plugin | Han&#39;s blog">
+    <meta property="og:title" content="检测浏览器类型&amp;判断 IE 版本 | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    
+    <meta property="og:article:tag" content="浏览器"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -213,94 +213,364 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JS-获取浏览器信息"><span class="post-toc-number">1.</span> <span class="post-toc-text">JS 获取浏览器信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#各大浏览器的-userAgent-值"><span class="post-toc-number">2.</span> <span class="post-toc-text">各大浏览器的 userAgent 值</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获取浏览器类型和版本"><span class="post-toc-number">3.</span> <span class="post-toc-text">获取浏览器类型和版本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#判断-IE-的方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">判断 IE 的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IE-条件注释"><span class="post-toc-number">5.</span> <span class="post-toc-text">IE 条件注释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键词释义"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">关键词释义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例如"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">例如</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/11/21/2018.11.21plg/">常用插件</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            时间插件moment.js
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/11/21/2018.11.21plg/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>11月 21, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/插件/">插件</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                检测浏览器类型&判断 IE 版本
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>韩宏斌</strong>
+        <span>12月 12, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/浏览器/">浏览器</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=检测浏览器类型&amp;判断 IE 版本&url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=检测浏览器类型&amp;判断 IE 版本&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/12/12/2018.12.12.broswercheck/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/12/12/2018.12.12.broswercheck/index.html&text=检测浏览器类型&amp;判断 IE 版本" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="JS-获取浏览器信息"><a href="#JS-获取浏览器信息" class="headerlink" title="JS 获取浏览器信息"></a>JS 获取浏览器信息</h1><pre><code>浏览器代码名称：navigator.appCodeName
+浏览器名称：navigator.appName
+浏览器版本号：navigator.appVersion
+对Java的支持：navigator.javaEnabled()
+MIME类型（数组）：navigator.mimeTypes
+系统平台：navigator.platform
+插件（数组）：navigator.plugins
+用户代理：navigator.userAgent
+</code></pre><h1 id="各大浏览器的-userAgent-值"><a href="#各大浏览器的-userAgent-值" class="headerlink" title="各大浏览器的 userAgent 值"></a>各大浏览器的 userAgent 值</h1><p>各大浏览器输出 navigator.userAgent 的值：</p>
+<ul>
+<li>IE 8：Mozilla/4.0 (compatible; <strong>MSIE 8.0</strong>; Windows NT 10.0; WOW64; Trident/8.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)</li>
+<li>IE 11：Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; <strong>rv:11.0)like Gecko</strong></li>
+<li>win EDGE：Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 <strong>Edge/12.10240</strong></li>
+<li>FireFox：Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 <strong>Firefox/49.0</strong></li>
+<li>Chrome：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) <strong>Chrome/54.0.2840.71</strong> Safari/537.36</li>
+<li>Opera：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36 <strong>OPR/41.0.2353.56</strong></li>
+<li>Safari：mozilla/5.0 (windows; u; windows nt 5.1; zh-cn) applewebkit/533.16 (khtml, like gecko) version/5.0 <strong>safari/533.16</strong></li>
+<li>360安全浏览器：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</li>
+<li>QQ浏览器：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.1708.400 <strong>QQBrowser/9.5.9635.400</strong></li>
+</ul>
+<p>总结:</p>
+<ul>
+<li>IE 10 之前的版本，匹配关键字 MSIE 8.0；</li>
+<li>IE 11 要通过 rv:11.0) like Gecko 来匹配；</li>
+<li>EDGE 通过 Edge/12.10240；</li>
+<li>Firefox 通过 Firefox/49.0；</li>
+<li>Chrome 通过 Chrome/54.0.2840.71，但是会发现，后面的浏览器都是基于 Chrome 内核（safari 除外），但是 Chrome 又是基于 safari 内核的。。</li>
+<li>Opera 通过 OPR/41.0.2353.56，但是网上普遍是通过 opera 字段.</li>
+<li>Safari 通过 safari/533.16 来匹配；</li>
+<li>360 和 QQ 都是基于 Chrome 内核的，当然 QQ 还能通过 QQBrowser/9.5.9635.400，如果你高兴去匹配的话。</li>
+</ul>
+<h1 id="获取浏览器类型和版本"><a href="#获取浏览器类型和版本" class="headerlink" title="获取浏览器类型和版本"></a>获取浏览器类型和版本</h1><pre><code>function getExplore(){
+  var Sys = {};  
+  var ua = navigator.userAgent.toLowerCase();  
+  var s;  
+  (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+  (s = ua.match(/msie ([\d\.]+)/)) ? Sys.ie = s[1] :  
+  (s = ua.match(/edge\/([\d\.]+)/)) ? Sys.edge = s[1] :
+  (s = ua.match(/firefox\/([\d\.]+)/)) ? Sys.firefox = s[1] :  
+  (s = ua.match(/(?:opera|opr).([\d\.]+)/)) ? Sys.opera = s[1] :  
+  (s = ua.match(/chrome\/([\d\.]+)/)) ? Sys.chrome = s[1] :  
+  (s = ua.match(/version\/([\d\.]+).*safari/)) ? Sys.safari = s[1] : 0;  
+  // 根据关系进行判断
+  if (Sys.ie) return (&apos;IE: &apos; + Sys.ie);  
+  if (Sys.edge) return (&apos;EDGE: &apos; + Sys.edge);
+  if (Sys.firefox) return (&apos;Firefox: &apos; + Sys.firefox);  
+  if (Sys.chrome) return (&apos;Chrome: &apos; + Sys.chrome);  
+  if (Sys.opera) return (&apos;Opera: &apos; + Sys.opera);  
+  if (Sys.safari) return (&apos;Safari: &apos; + Sys.safari);
+  return &apos;Unkonwn&apos;;
+}
+</code></pre><p>判断的顺序很重要,因为很多浏览器是多核的.</p>
+<p>简单判断浏览器类型,不需要版本号:</p>
+<pre><code>function getExploreName(){
+  var userAgent = navigator.userAgent;
+  if(userAgent.indexOf(&quot;Opera&quot;) &gt; -1 || userAgent.indexOf(&quot;OPR&quot;) &gt; -1){
+    return &apos;Opera&apos;;
+  }else if(userAgent.indexOf(&quot;compatible&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;MSIE&quot;) &gt; -1){
+    return &apos;IE&apos;;
+  }else if(userAgent.indexOf(&quot;Edge&quot;) &gt; -1){
+    return &apos;Edge&apos;;
+  }else if(userAgent.indexOf(&quot;Firefox&quot;) &gt; -1){
+    return &apos;Firefox&apos;;
+  }else if(userAgent.indexOf(&quot;Safari&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Chrome&quot;) == -1){
+    return &apos;Safari&apos;;
+  }else if(userAgent.indexOf(&quot;Chrome&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Safari&quot;) &gt; -1){
+    return &apos;Chrome&apos;;
+  }else if(!!window.ActiveXObject || &quot;ActiveXObject&quot; in window){
+    return &apos;IE&gt;=11&apos;;
+  }else{
+    return &apos;Unkonwn&apos;;
+  }
+}
+</code></pre><h1 id="判断-IE-的方法"><a href="#判断-IE-的方法" class="headerlink" title="判断 IE 的方法"></a>判断 IE 的方法</h1><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><pre><code>if(window.addEventListener){ 
+alert(&quot;not ie&quot;); 
+}else if(window.attachEvent){ 
+alert(&quot;is ie&quot;); 
+}else{ 
+alert(&quot;这种情况发生在不支持DHTML的老版本浏览器（现在一般都支持）&quot;) 
+}
+</code></pre><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><pre><code>if(document.all){ 
+alert(&quot;IE&quot;); 
+}else{ 
+alert(&quot;not ie&quot;); 
+}
+</code></pre><h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><pre><code>var navigatorName = &quot;Microsoft Internet Explorer&quot;; 
+if( navigator.appName == navigatorName ){ 
+alert(&quot;ie&quot;) 
+}else{
+alert(&quot;not ie&quot;) 
+}
+</code></pre><h2 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h2><pre><code>if(!+[1,])alert(&quot;这是ie浏览器&quot;); 
+else alert(&quot;这不是ie浏览器&quot;);
+</code></pre><h1 id="IE-条件注释"><a href="#IE-条件注释" class="headerlink" title="IE 条件注释"></a>IE 条件注释</h1><h2 id="关键词释义"><a href="#关键词释义" class="headerlink" title="关键词释义"></a>关键词释义</h2><pre><code>lt ：就是Less than的简写，也就是小于的意思。
+
+lte ：就是Less than or equal to的简写，也就是小于或等于的意思。
+
+gt ：就是Greater than的简写，也就是大于的意思。
+
+gte：就是Greater than or equal to的简写，也就是大于或等于的意思。
+
+!：就是不等于的意思，跟javascript里的不等于判断符相同。
+</code></pre><h2 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h2><ul>
+<li><p>1.只有 IE 可以识别</p>
+<pre><code>&lt;!--[if IE]&gt;
+ &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>2.只有特定版本才能识别</p>
+<pre><code>&lt;!--[if IE 8]&gt; 
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>3.等于或者高于特定版本才能识别</p>
+<pre><code>&lt;!--[if gte IE 7]&gt; 
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+&lt;![endif]--&gt;
+</code></pre></li>
+</ul>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/12/19/2018.12.19.impress.js/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/12/09/2018.12.09.vertical/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -482,6 +752,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
