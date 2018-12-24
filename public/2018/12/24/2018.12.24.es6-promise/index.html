@@ -10,7 +10,7 @@
     
     <title>
         
-            分类: 软件 | 
+            ES6 之 promise | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="hexo,es6">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 软件 | Han&#39;s blog">
+    <meta property="og:title" content="ES6 之 promise | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    
+    <meta property="og:article:tag" content="es6"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -213,93 +213,289 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#promise-的特点"><span class="post-toc-number">1.</span> <span class="post-toc-text">promise 的特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象的状态不受外界影响"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">对象的状态不受外界影响</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一旦状态改变就不再变化"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">一旦状态改变就不再变化</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本用法"><span class="post-toc-number">2.</span> <span class="post-toc-text">基本用法</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/27/2017.03.27workflow/">神器workflow介绍</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            神器workflow
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/27/2017.03.27workflow/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>3月 27, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/软件/">软件</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                ES6 之 promise
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>韩宏斌</strong>
+        <span>12月 24, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/es6/">es6</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ES6 之 promise&url=http://yoursite.com//2018/12/24/2018.12.24.es6-promise/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/12/24/2018.12.24.es6-promise/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/12/24/2018.12.24.es6-promise/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=ES6 之 promise&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/12/24/2018.12.24.es6-promise/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/12/24/2018.12.24.es6-promise/index.html&text=ES6 之 promise" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>promise 是一步变成的一种解决方案,比传统的回调函数和事件更强大和合理, es6将其写入语言标准,统一了用法,并原生提供了 promise对象.从语法上来说, promise 是一个对象,从它可以获取异步操作的消息, promise 提供统一的 api, 各种异步操作都可以用同样的方法进行处理.</p>
+<h1 id="promise-的特点"><a href="#promise-的特点" class="headerlink" title="promise 的特点"></a>promise 的特点</h1><h2 id="对象的状态不受外界影响"><a href="#对象的状态不受外界影响" class="headerlink" title="对象的状态不受外界影响"></a>对象的状态不受外界影响</h2><p> promise 对象代表一个异步操作,有三种状态, pending(进行中),fulfilled(已成功)和 rejected(已失败).只有结果来决定当前是哪种状态.</p>
+<h2 id="一旦状态改变就不再变化"><a href="#一旦状态改变就不再变化" class="headerlink" title="一旦状态改变就不再变化"></a>一旦状态改变就不再变化</h2><p> promise 对象的改变,只有两种可能,从 pending 变为 fulfilled 和从 pending 变为 rejected, 发生这两种状态改变以后装填就不再变化了.如果改变已经发生了,再对 promise 对象添加回调函数,也会立即得到这个结果.</p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p> promise 对象是一个构造函数,用来生成 promise 实例.</p>
+<pre><code>const promise = new Promise(function(resolve, reject) {
+  // ... some code
+
+  if (/* 异步操作成功 */){
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+</code></pre><p>Promise 构造函数接受一个函数作为参数,该函数的两个参数分别为 resolve 和 reject, 这两个参数是两个函数.</p>
+<p>resolve 函数的作用是,将 promise 对象的状态从未完成装变为完成,即从 pending 变为 resolved. 在异步操作成功时调用,并将异步操作的结果,作为参数传递出去;</p>
+<p>reject 函数的作用是,将 promise 对象的状态从未完成变为失败,即从 pending 变为 rejected. 在异步操作失败时调用,并将异步操作爆出的信息,作为参数传递出去.</p>
+<p>Promise 实例生成以后,可以使用 .then  方法来接收两个回调函数作为参数,第一个回调函数是Promise对象的状态变为resolved时调用，第二个回调函数是Promise对象的状态变为rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。</p>
+<p>也可以使用 .catch 来接收 promise 变为 rejected 时的回调函数.</p>
+<pre><code>function test(resolve, reject) {
+    var timeOut = Math.random() * 2;
+    log(&apos;set timeout to: &apos; + timeOut + &apos; seconds.&apos;);
+    setTimeout(function () {
+        if (timeOut &lt; 1) {
+            log(&apos;call resolve()...&apos;);
+            resolve(&apos;200 OK&apos;);
+        }
+        else {
+            log(&apos;call reject()...&apos;);
+            reject(&apos;timeout in &apos; + timeOut + &apos; seconds.&apos;);
+        }
+    }, timeOut * 1000);
+};
+new Promise(test).then(function (result) {
+    console.log(&apos;成功：&apos; + result);
+}).catch(function (reason) {
+    console.log(&apos;失败：&apos; + reason);
+});
+</code></pre><p><code>test()</code>只关心自身的逻辑,并不关心具体的 resolve 和 rejected 将如何处理结果.也就是说 Promise 最大的好处,就是在异步执行的过程中,吧执行代码和处理结果清晰地分离了.</p>
+<p>Promise还可以做更多的事情，比如，有若干个异步任务，需要先做任务1，如果成功后再做任务2，任何任务失败则不再继续并执行错误处理函数。</p>
+<p>有些时候，多个异步任务是为了容错。比如，同时向两个URL读取用户的个人信息，只需要获得先返回的结果即可。这种情况下，用Promise.race()实现：</p>
+<pre><code>var p1 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 500, &apos;P1&apos;);
+});
+var p2 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 600, &apos;P2&apos;);
+});
+Promise.race([p1, p2]).then(function (result) {
+    console.log(result); // &apos;P1&apos;
+});
+</code></pre><p>由于p1执行较快，Promise的then()将获得结果’P1’。p2仍在继续执行，但执行结果将被丢弃。</p>
+<p>如果我们组合使用Promise，就可以把很多异步任务以并行和串行的方式组合起来执行。</p>
+<p>to be continued…</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/12/19/2018.12.19.impress.js/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
