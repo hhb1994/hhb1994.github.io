@@ -10,6 +10,8 @@
     
     <title>
         
+            部署SSR | 
+        
         Han&#39;s blog
     </title>
 
@@ -25,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="hexo,SSR">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -46,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Han&#39;s blog">
+    <meta property="og:title" content="部署SSR | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    
+    <meta property="og:article:tag" content="SSR"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -237,7 +239,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-注册主机"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.注册主机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-创建主机"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.创建主机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三-安装ssr脚本"><span class="post-toc-number">3.</span> <span class="post-toc-text">三.安装ssr脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四-配置-SSR-脚本"><span class="post-toc-number">4.</span> <span class="post-toc-text">四.配置 SSR 脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五-设置-speedsServer"><span class="post-toc-number">5.</span> <span class="post-toc-text">五.设置 speedsServer</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -273,7 +275,7 @@
         
     
             <p class="article-headline-p">
-                
+                部署SSR
             </p>
         </div>
 
@@ -316,7 +318,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/SSR/">SSR</a>
     </ul>
     
 
@@ -343,7 +345,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://yoursite.com//2019/01/09/2018.11.16SSR/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=部署SSR&url=http://yoursite.com//2019/01/09/2018.11.16SSR/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -376,7 +378,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2019/01/09/2018.11.16SSR/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=部署SSR&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2019/01/09/2018.11.16SSR/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -385,7 +387,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2019/01/09/2018.11.16SSR/index.html&text=" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2019/01/09/2018.11.16SSR/index.html&text=部署SSR" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -400,52 +402,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <pre><code> 1    ---
- 2    title: 部署SSR
- 3    tags: [SSR]
- 4    categories: 知识 
- 5    ---
- 6    
- 7    ## 一.注册主机
- 8    
- 9    这里我选用的是digital ocean的主机,选择一个月五刀的服务器就可以,注册的时候可以使用我的[邀请链接](https://m.do.co/c/e784ca31deb3) .
-10    
-11    
-12    ## 二.创建主机  
-13    选择 centOS 6.9 ,方便后续更换内核,如果在校园网中使用,记得勾选IPV6.
-14    
-15    添加SSH可以使用免密登录
-16    
-17    ## 三.安装ssr脚本  
-18    使用 SSH 连接远程主机
-19    
-20     
-21    `ssh root@ip`
-22    
-23    接着安装 SSR 脚本:
-24    
-25    在安装 SSR 之前需要更新 yum 和 wget.
-26    
-27    
-28        sudo yum update
-29        sudo yum install wget  
-30        wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.shchmod +x ssr.sh &amp;&amp; bash.ssr.sh
-31    
-32    ## 四.配置 SSR 脚本
-33    
-34    混淆等都是可选的.
-35    
-36    设备数,单线程限速,端口总限速等根据自己喜好设置.
-37    
-38    ## 五.设置 speedsServer
-39        uname -r #查看当前内核版本
-40        CentOS 6支持安装锐速的内核：2.6.32-504.3.3.el6.x86_64
-41        rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
-42        rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm--force
-43        rpm |grep kernel
-44        reboot
-45    
-46    
+        <h2 id="一-注册主机"><a href="#一-注册主机" class="headerlink" title="一.注册主机"></a>一.注册主机</h2><p>这里我选用的是digital ocean的主机,选择一个月五刀的服务器就可以,注册的时候可以使用我的<a href="https://m.do.co/c/e784ca31deb3" target="_blank" rel="external">邀请链接</a> .</p>
+<h2 id="二-创建主机"><a href="#二-创建主机" class="headerlink" title="二.创建主机"></a>二.创建主机</h2><p>选择 centOS 6.9 ,方便后续更换内核,如果在校园网中使用,记得勾选IPV6.</p>
+<p>添加SSH可以使用免密登录</p>
+<h2 id="三-安装ssr脚本"><a href="#三-安装ssr脚本" class="headerlink" title="三.安装ssr脚本"></a>三.安装ssr脚本</h2><p>使用 SSH 连接远程主机</p>
+<p><code>ssh root@ip</code></p>
+<p>接着安装 SSR 脚本:</p>
+<p>在安装 SSR 之前需要更新 yum 和 wget.</p>
+<pre><code>sudo yum update
+sudo yum install wget  
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.shchmod +x ssr.sh &amp;&amp; bash.ssr.sh
+</code></pre><h2 id="四-配置-SSR-脚本"><a href="#四-配置-SSR-脚本" class="headerlink" title="四.配置 SSR 脚本"></a>四.配置 SSR 脚本</h2><p>混淆等都是可选的.</p>
+<p>设备数,单线程限速,端口总限速等根据自己喜好设置.</p>
+<h2 id="五-设置-speedsServer"><a href="#五-设置-speedsServer" class="headerlink" title="五.设置 speedsServer"></a>五.设置 speedsServer</h2><pre><code>uname -r #查看当前内核版本
+CentOS 6支持安装锐速的内核：2.6.32-504.3.3.el6.x86_64
+rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
+rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm--force
+rpm |grep kernel
+reboot
 </code></pre>
     
 
@@ -585,7 +559,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/插件/">插件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">29</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/插件/">插件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">30</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
