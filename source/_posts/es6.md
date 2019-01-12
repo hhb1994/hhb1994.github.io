@@ -172,7 +172,17 @@ categories: 知识
 	}
 
 
+## findIndex()
+findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1。
+例如有数组:
 
+	let arr = [
+				{id:1,value:2},
+				{id:2,value:3},
+				.......
+			]
+想要删除 id=8的元素,可以用:
+`arr.splice(arr.findIndex(item => item.id === 8), 1)`
 
 
 
