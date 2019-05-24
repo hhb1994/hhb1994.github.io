@@ -10,7 +10,7 @@
     
     <title>
         
-            实现文字与图片并排显示 | 
+            JavaScript 中的 sort() | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo,css">
+    <meta name="keywords" content="hexo,JavaScript">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="实现文字与图片并排显示 | Han&#39;s blog">
+    <meta property="og:title" content="JavaScript 中的 sort() | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta property="og:article:tag" content="css"> 
+    <meta property="og:article:tag" content="JavaScript"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -239,7 +239,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sort"><span class="post-toc-number">1.</span> <span class="post-toc-text">sort()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#compareFunction-firstEl-secondEl-可选"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">compareFunction(firstEl,secondEl) (可选)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#fisrtEl"><span class="post-toc-number">1.1.1.1.1.</span> <span class="post-toc-text">fisrtEl</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#secondEl"><span class="post-toc-number">1.1.1.1.2.</span> <span class="post-toc-text">secondEl</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#返回值"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">返回值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#描述"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -275,7 +275,7 @@
         
     
             <p class="article-headline-p">
-                实现文字与图片并排显示
+                JavaScript 中的 sort()
             </p>
         </div>
 
@@ -294,7 +294,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>韩宏斌</strong>
-        <span>12月 09, 2018</span>
+        <span>5月 24, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -318,7 +318,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/css/">css</a>
+        <a class="post_tag-link" href="/tags/JavaScript/">JavaScript</a>
     </ul>
     
 
@@ -345,7 +345,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=实现文字与图片并排显示&url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JavaScript 中的 sort()&url=http://yoursite.com//2019/05/24/2019.05.24.sort/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2019/05/24/2019.05.24.sort/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -366,7 +366,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2019/05/24/2019.05.24.sort/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -378,7 +378,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=实现文字与图片并排显示&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/12/09/2018.12.09.vertical/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=JavaScript 中的 sort()&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2019/05/24/2019.05.24.sort/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -387,7 +387,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2018/12/09/2018.12.09.vertical/index.html&text=实现文字与图片并排显示" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2019/05/24/2019.05.24.sort/index.html&text=JavaScript 中的 sort()" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -402,16 +402,81 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <pre><code>&lt;div&gt;
-    &lt;img src=&quot;images/pic.png&quot;&gt;
-    &lt;span&gt;content&lt;/span&gt;
-&lt;/div&gt;
-</code></pre><p>实现方式:</p>
-<p> css:</p>
-<pre><code>img{
-    vertical-align:middle
+        <h1 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h1><blockquote>
+<p>sort() 方法用原地算法对数组的元素进行排序，并返回数组。排序算法现在是稳定的。默认排序顺序是根据字符串 Unicode 码点。</p>
+</blockquote>
+<p>样例:</p>
+<pre><code>var months = [&apos;March&apos;, &apos;Jan&apos;, &apos;Feb&apos;, &apos;Dec&apos;];
+months.sort();
+console.log(months);
+// expected output: Array [&quot;Dec&quot;, &quot;Feb&quot;, &quot;Jan&quot;, &quot;March&quot;]
+
+var array1 = [1, 30, 4, 21, 100000];
+array1.sort();
+console.log(array1);
+// expected output: Array [1, 100000, 21, 30, 4]
+</code></pre><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code>arr.sort([compareFunction])
+</code></pre><hr>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h4 id="compareFunction-firstEl-secondEl-可选"><a href="#compareFunction-firstEl-secondEl-可选" class="headerlink" title="compareFunction(firstEl,secondEl) (可选)"></a>compareFunction(firstEl,secondEl) (可选)</h4><h5 id="fisrtEl"><a href="#fisrtEl" class="headerlink" title="fisrtEl"></a>fisrtEl</h5><p>第一个要比较的元素</p>
+<h5 id="secondEl"><a href="#secondEl" class="headerlink" title="secondEl"></a>secondEl</h5><p>第二个要比较的元素</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>返回排序以后的算法,由于采用原地算法,不进行复制.</p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>如果没有指明 compareFunction ，那么元素会按照转换为的字符串的诸个字符的 Unicode 位点进行排序。例如 “Banana” 会被排列到 “cherry” 之前。当数字按由小到大排序时，9 出现在 80 之前，但因为（没有指明 compareFunction），比较的数字会先被转换为字符串，所以在 Unicode 顺序上 “80” 要比 “9” 要靠前。</p>
+<p>如果指明了 compareFunction ，那么数组会按照调用该函数的返回值排序。即 a 和 b 是两个将要被比较的元素：</p>
+<ul>
+<li>如果 compareFunction(a, b) 小于 0 ，那么 a 会被排列到 b 之前；</li>
+<li>如果 compareFunction(a, b) 等于 0 ， a 和 b 的相对位置不变。备注： ECMAScript 标准并不保证这一行为，而且也不是所有浏览器都会遵守（例如 Mozilla 在 2003 年之前的版本）；</li>
+<li>如果 compareFunction(a, b) 大于 0 ， b 会被排列到 a 之前。</li>
+<li><p>compareFunction(a, b) 必须总是对相同的输入返回相同的比较结果，否则排序的结果将是不确定的。</p>
+<pre><code>function compare(a, b) {
+if (a &lt; b ) {           // 按某种排序标准进行比较, a 小于 b
+    return -1;
 }
-</code></pre><p><code>&quot;vertical-align&quot;</code> 这个属性只适用于 inline 和 inline-block, 对其他 postion 属性无效.</p>
+if (a &gt; b ) {
+    return 1;
+}
+// a must be equal to b
+return 0;
+}
+</code></pre></li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>###sort()方法可以使用函数表达式方便地表示</p>
+<pre><code>var numbers = [4, 2, 5, 1, 3];
+numbers.sort((a, b) =&gt; a - b);
+console.log(numbers);
+
+// [1, 2, 3, 4, 5]
+</code></pre><p>###对象可以按照属性排序</p>
+<pre><code>var items = [
+{ name: &apos;Edward&apos;, value: 21 },
+{ name: &apos;Sharpe&apos;, value: 37 },
+{ name: &apos;And&apos;, value: 45 },
+{ name: &apos;The&apos;, value: -12 },
+{ name: &apos;Magnetic&apos; },
+{ name: &apos;Zeros&apos;, value: 37 }
+];
+
+// sort by value
+items.sort(function (a, b) {
+return (a.value - b.value)
+});
+
+// sort by name
+items.sort(function(a, b) {
+var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+if (nameA &lt; nameB) {
+    return -1;
+}
+if (nameA &gt; nameB) {
+    return 1;
+}
+
+
+// names must be equal
+
+return 0;
+});
+</code></pre><p>###按照指定的顺序排序<br>    sortList:[“事业编制”,”企业编制”,”二批企聘”];<br>    list:[{type:”企业编制”,number:12344}<br>    ,{type:”二批企聘”,number:52344},<br>    {type:”事业编制”,number:8567244}]<br>    list.sort((a,b)=&gt;{<br>        return sortList.indexOf(a.type)-sortList.indexOf(b.type)<br>    })<br>    // [{type:”事业编制”,number:8567244},{type:”企业编制”,number:12344},{type:”二批企聘”,number:52344}]</p>
 
     
 
@@ -435,21 +500,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/12/12/2018.12.12.broswercheck/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/12/07/2018.12.07.pseudo/" id="post_nav-older" class="next-content">
+        <a href="/2019/05/14/2019.05.14.cn2/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
