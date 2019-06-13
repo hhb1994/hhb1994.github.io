@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: mysql | 
+            初识 nginx | 
         
         Han&#39;s blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="韩宏斌">
     <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="hexo,服务器">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: mysql | Han&#39;s blog">
+    <meta property="og:title" content="初识 nginx | Han&#39;s blog">
     <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    
+    <meta property="og:article:tag" content="服务器"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -213,93 +213,351 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是-NGINX"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 NGINX</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx-的基本命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">nginx 的基本命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态内容"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">静态内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代理服务器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">代理服务器</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/07/2017.04.06mysql/">使用node.js+express+mysql实现简单的网页数据写入到数据库功能</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/07/2017.04.06mysql/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 07, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/随笔/">随笔</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                初识 nginx
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>韩宏斌</strong>
+        <span>6月 13, 2019</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/服务器/">服务器</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=初识 nginx&url=http://yoursite.com//2019/06/13/2019.06.13.nginx/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2019/06/13/2019.06.13.nginx/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2019/06/13/2019.06.13.nginx/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Han&#39;s blog&title=初识 nginx&summary=韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2019/06/13/2019.06.13.nginx/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2019/06/13/2019.06.13.nginx/index.html&text=初识 nginx" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="什么是-NGINX"><a href="#什么是-NGINX" class="headerlink" title="什么是 NGINX"></a>什么是 NGINX</h1><blockquote>
+<p>Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。</p>
+</blockquote>
+<p>Nginx 有一个主线程（ master process）和几个工作线程（worker process）。主线程的目的是加载和验证配置文件、维护工作线程。</p>
+<p>工作线程处理实际的请求，Nginx 采用基于事件的模型和依赖操作系统的机制在工作线程之间高效地分发请求。工作线程的数量可配置，也可自动调整为服务器CPU的数量。</p>
+<p>Nginx 及其模块的工作方式由配置文件确定。 默认情况下，配置文件名为 nginx.conf，放在 /usr/local/nginx/conf 、/etc/nginx 或者 /usr/local/etc/nginx 文件夹中。</p>
+<h2 id="nginx-的基本命令"><a href="#nginx-的基本命令" class="headerlink" title="nginx 的基本命令"></a>nginx 的基本命令</h2><pre><code>nginx -s &lt;signal&gt;
+</code></pre><p>其中-s意思是向主进程发送信号，signal可以为以下四个中的一个:</p>
+<ul>
+<li>stop — 快速关闭</li>
+<li>quit — 优雅关闭</li>
+<li>reload — 重新加载配置文件</li>
+<li>reopen — 重新打开日志文件</li>
+</ul>
+<p>当运行nginx -s quit时，Nginx 会等待工作进程处理完成当前请求，然后将其关闭。当你修改配置文件后，并不会立即生效，而是等待重启或者收到nginx -s reload信号。</p>
+<p>当 Nginx 收到 nginx -s reload 信号后，首先检查配置文件的语法。语法正确后，主线程会开启新的工作线程并向旧的工作线程发送关闭信号，如果语法不正确，则主线程回滚变化并继续使用旧的配置。当工作进程收到主进程的关闭信号后，会在处理完当前请求之后退出。</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Nginx 配置的核心是定义要处理的 URL 以及如何响应这些 URL 请求，即定义一系列的虚拟服务器（Virtual Servers）控制对来自特定域名或者 IP 的请求的处理。</p>
+<p>每一个虚拟服务器定义一系列的 location 控制处理特定的 URI 集合。每一个location定义了对映射到自己的请求的处理场景，可以返回一个文件或者代理此请求。</p>
+<p>Nginx 由不同的模块组成，这些模块由配置文件中指定的指令控制。 指令分为简单指令和块指令。</p>
+<p>一个简单指令包含指令名称和指令参数，以空格分隔，以分号（;）结尾。 块指令与简单指令类似，但是由大括号（{和}）包围。 如果块指令大括号中包含其他指令，则称该指令为上下文（如： events, http, server 和 location）。</p>
+<p>配置文件中的放在上下文之外的指令默认放在主配置文件中（类似继承主配置文件）。 events 和 http 放置在主配置文件中，server 放置在http块指令中，location放置在server块指令中。</p>
+<p>配置文件的注释以 # 开始。</p>
+<p>例如: </p>
+<pre><code>events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server {
+        listen       80;
+        server_name  localhost;
+        location ~ .*\.(flv|mp3|mp4|ts)$ {
+            add_header Content-Disposition &quot;attachment; filename=$request_filename&quot;;
+            root /replay/;
+            }
+        location / {
+            root   web/html/live;
+            index  index.html;
+            }
+        location /wap {
+            alias   /web/wap;
+            index  index.html;
+        }    
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+</code></pre><h2 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h2><p>Web 服务器一个重要的功能是服务静态文件（图像或静态HTML页面）。例如，Nginx 可以很方便的让服务器从/data/www 获取 html 文件，从/data/images获取图片来返回给客户端，这只需要在http块指令中的server块指令中设置两个location块指令。</p>
+<p>首先，创建 /data/www 目录，并放入 index.html，创建 /data/images 目录并在其中放置一些图片。</p>
+<p>接下来，打开配置文件。 创建一个 server 块：</p>
+<pre><code>http {
+server {
+}
+</code></pre><p>}</p>
+<p>上面的 location 块指定 / 前缀与请求中的 URI 对比。对于匹配的请求，URI 将被添加到 root 指令中指定的路径，即 /data/www，以此形成本地文件系统的路径，如访问<a href="http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。" target="_blank" rel="external">http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。</a> 如果 URI 匹配多个 location 块，Nginx 采用最长前缀匹配原则（类似计算机网络里面的IP匹配）， 上面的 location 块前缀长度为 1，因此只有当所有其他 location 块匹配时，才使用该块。<br>接下来，添加第二个位置块：</p>
+<pre><code>location /images/ {
+    root /data;
+}
+</code></pre><p>它将匹配以/images/（/ 也匹配这样的请求，但具有较短的前缀）开始的请求。</p>
+<p>server 块的最终配置如下：</p>
+<pre><code>server {
+    location / {
+        root /data/www;
+    }
+
+    location /images/ {
+        root /data;
+    }
+}
+</code></pre><p>到目前为止，这已经是一个可以正常运行的服务器，它监听端口80，并且可以在本地计算机上访问 <a href="http://localhost/。" target="_blank" rel="external">http://localhost/。</a> 对于 /images/ 开头的请求，服务器将从 /data/images 目录发送文件。 如，对于 <a href="http://localhost/images/example.png" target="_blank" rel="external">http://localhost/images/example.png</a> 请求，nginx 将响应 /data/images/example.png文件。 如果不存在，nginx 将返回404。URI 不以 /images/ 开头的请求将映射到 /data/www 目录。 例如，对于 <a href="http://localhost/some/example.html" target="_blank" rel="external">http://localhost/some/example.html</a> 请求，nginx 将响应 /data/www/some/example.html 文件。</p>
+<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>Nginx 的一个常见应用是将其设置为代理服务器（Proxy Server），即接受客户端的请求并将其转发给代理服务器，再接受代理服务器发来的响应，将它们发送到客户端。</p>
+<p>比如我们可以用一个 Nginx 实例实现对图片文件的请求使用本地文件系统，而其他请求转发到代理服务器。</p>
+<p>首先，向 Nginx 的配置文件中添加一个 server 块来定义代理服务器：</p>
+<pre><code>server {
+    listen 8080;
+    root /data/up1;
+
+    location / {
+    }
+}
+</code></pre><p>此服务器侦听端口8080，并将所有请求映射到本地文件系统上的 /data/up1 目录。 创建此目录并将 index.html 放入其中。 注意，root 指令放在 server 上下文中，这样 当 location 块中不含 root 指令时将使用所属 server 的 root 指令。</p>
+<p>接下来，使用上一节中的服务器配置，并将其修改为代理服务器配置。 在第一个位置块中，加上proxy_pass指令：</p>
+<pre><code>server {
+    location / {
+        # proxy_pass指令的参数为：协议+主机名+端口号
+        proxy_pass http://localhost:8080;
+    }
+
+    location /images/ {
+        root /data;
+    }
+}
+</code></pre><p>修改第二个 匹配 /images/ 前缀的 location 块，使其与请求图像文件的扩展名相匹配：</p>
+<pre><code>location ~ \.(gif|jpg|png)$ {
+    root /data/images;
+}
+</code></pre><p>该参数是一个正则表达式，匹配以.gif，.jpg或.png结尾的所有URI。 正则表达式应该以 ~ 开头。 相应的请求将映射到 /data/images 目录。</p>
+<p>当 Nginx 选择一个 location 块来处理请求时，它首先检查指定 location 块的前缀，记住具有最长前缀的 location 块，然后检查正则表达式。 如果与正则表达式匹配， Nginx 选择此 location 块，否则，选择先前记住的 location 块。</p>
+<p>代理服务器的最终配置如下：</p>
+<pre><code>server {
+    location / {
+        proxy_pass http://localhost:8080/;
+    }
+
+    location ~ \.(gif|jpg|png)$ {
+        root /data/images;
+    }
+}
+</code></pre><p>此服务器将过滤以.gif，.jpg或.png结尾的请求，并将它们映射到 /data/images 目录（通过向 root 指令的参数添加请求的URI），并将所有其他请求发送给上面配置的代理服务器。</p>
+<p>这样，图片和其他请求就可以使用不同的服务器来处理。</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/06/04/2019.06.04.Algorithm/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -481,6 +739,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
