@@ -1,1025 +1,2145 @@
-<!DOCTYPE html>
-<html lang="zh">
-    <head>
-    <!-- 
-        © Material Theme
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.3.0 -->
+<!doctype html>
 
-    <!-- Title -->
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <title>
-        
-        Han&#39;s blog
-    </title>
-
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-
-    <!-- Meta & Info -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="韩宏斌">
-    <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-    <meta name="keywords" content="hexo">
-
-    <!--iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Han&#39;s blog">
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Han&#39;s blog">
-    <meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
     
+  
 
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
+  
 
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
+  
 
-    <!-- Import CSS -->
-    <link rel="stylesheet" href="/css/material.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <!-- Config CSS -->
+  
 
+  
 
-<!-- Other Styles -->
-<style>
-  body, html {
-    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  }
-
-  a {
-    color: #00838F;
-  }
-
-  .mdl-card__media,
-  #search-label,
-  #search-form-label:after,
-  #scheme-Paradox .hot_tags-count,
-  #scheme-Paradox .sidebar_archives-count,
-  #scheme-Paradox .sidebar-colored .sidebar-header,
-  #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
-  }
-
-  /* Sidebar User Drop Down Menu Text Color */
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
-  }
-
-  #post_entry-right-info,
-  .sidebar-colored .sidebar-nav li:hover > a,
-  .sidebar-colored .sidebar-nav li:hover > a i,
-  .sidebar-colored .sidebar-nav li > a:hover,
-  .sidebar-colored .sidebar-nav li > a:hover i,
-  .sidebar-colored .sidebar-nav li > a:focus i,
-  .sidebar-colored .sidebar-nav > .open > a,
-  .sidebar-colored .sidebar-nav > .open > a:hover,
-  .sidebar-colored .sidebar-nav > .open > a:focus,
-  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
-  }
-
-  .toTop {
-    background: #757575 !important;
-  }
-
-  .material-layout .material-post>.material-nav,
-  .material-layout .material-index>.material-nav,
-  .material-nav a {
-    color: #757575;
-  }
-
-  #scheme-Paradox .MD-burger-layer {
-    background-color: #757575;
-  }
-
-  #scheme-Paradox #post-toc-trigger-btn {
-    color: #757575;
-  }
-
-  .post-toc a:hover {
-    color: #00838F;
-    text-decoration: underline;
-  }
-</style>
-
-
-<!-- Theme Background Related-->
-
-    <style>
-      body{
-        background-image: url(/img/bg.png);
-      }
-    </style>
-
-
-
-
-<!-- Fade Effect -->
-
-    <style>
-      .fade {
-        transition: all 800ms linear;
-        -webkit-transform: translate3d(0,0,0);
-        -moz-transform: translate3d(0,0,0);
-        -ms-transform: translate3d(0,0,0);
-        -o-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-        opacity: 1;
-      }
-
-      .fade.out{
-        opacity: 0;
-      }
-    </style>
-
-
-
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/queue.js"></script>
-
-    <!-- UC Browser Compatible -->
-    <script>
-        var agent = navigator.userAgent.toLowerCase();
-        if(agent.indexOf('ucbrowser')>0) {
-            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-        }
-    </script>
-
+  
     
-    <!-- Baidu Analytics -->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {var hm = document.createElement('script');
-        hm.src = 'https://hm.baidu.com/hm.js?hhb1994924';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
     
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
-    
 
-    <!-- Bing Background -->
-    
 
-    <!-- Custom Head -->
-    
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Han's blog">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Han's blog">
+<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/5/"/>
+
+
+
+
+
+  <title> Han's blog </title>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
     
-        <body id="scheme-Paradox" class="lazy">
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
+  
 
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
 
-                    <!-- Top Anchor -->
-                    <div id="top"></div>
-
-                    
-                        <!-- Hamburger Button -->
-                        <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
-                        </button>
-                    
-
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
-
-    <!-- Pin on top -->
-    
-
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/09/2017.04.09.vue/">vue知识点简单总结</a></p>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+  </div>
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            vue是什么？Vue.js是当下很火的一个JavaScript MVVM库，它是以数据驱动和组件化的思想构建的。相比于Angul...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/09/2017.04.09.vue/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/知识/">知识</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/07/2017.04.06mysql/">使用node.js+express+mysql实现简单的网页数据写入到数据库功能</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/07/2017.04.06mysql/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 07, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/随笔/">随笔</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/05/2017.04.05cookie&amp;session/">cookie与session的区别</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            cookie与session的定义当浏览网站的时候，WEB 服务器会...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/05/2017.04.05cookie&amp;session/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/知识/">知识</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/03/2017-04-03httpcode/">HTTP状态码总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            http状态码http状态码是表示服务器对请求的响应状态，主要分为以下几个部分
-
-1**：这类响应...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/03/2017-04-03httpcode/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 03, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/知识/">知识</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/02/2017.04.02bootstrap/">使用bootstrap实现图片轮播效果</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            什么是bootstrap？Bootstrap，来自 Twitter，是目前很受欢迎的前端框架...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/02/2017.04.02bootstrap/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>4月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/教程/">教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/27/2017.03.27workflow/">神器workflow介绍</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            神器workflow
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/27/2017.03.27workflow/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>3月 27, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/软件/">软件</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/27/2017.03.26-bibao/">详细解释javascript中闭包的概念</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            闭包是什么在 JavaScript 中，闭包是一个让人很难弄懂的概念。ECMAScript 中给闭包的定义是：闭包，指的是词法表示包括不被计...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/27/2017.03.26-bibao/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>3月 27, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/知识/">知识</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/27/2017.03.26/">使用hexo搭建静态个人博客</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            简单介绍hexo
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/27/2017.03.26/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar1.png" width="44px" height="44px" alt="韩宏斌's avatar">
-            </div>
-            <div>
-                <strong>韩宏斌</strong>
-                <span>3月 27, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/教程/">教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/page/4/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
-</script>
-
-    
-</div>
-
-
-                    
-                        <!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay"></div>
-
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
-    <div id="sidebar-main">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
-
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-        <i class="material-icons">clear_all</i>
-        <span class="mdl-button__ripple-container">
-            <span class="mdl-ripple">
-            </span>
-        </span>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
     </button>
-
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/avatar1.png" alt="韩宏斌's avatar">
-    </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        hanhb1994924@qq.com
-        <b class="caret"></b>
-    </a>
+  </div>
 </div>
 
+<nav class="site-nav">
+  
 
-        <!-- Sidebar Navigation  -->
-        <ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-                <li>
-                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=QysiLSshcnp6d3pxdwM1KjNtMjJtICwu" target="_blank" title="Email Me">
-                        
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        
-                        Email Me
-                    </a>
-                </li>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-        </ul>
-    </li>
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
 
-    <!-- Homepage -->
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
-        <li id="sidebar-first-li">
-            <a href="/" target="_self">
-                
-                    <i class="material-icons sidebar-material-icons">home</i>
-                
-                主页
-            </a>
-        </li>
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/2017.04.09.vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/09/2017.04.09.vue/" itemprop="url">
+                  vue知识点简单总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T20:51:30+08:00">
+                2017-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识/" itemprop="url" rel="index">
+                    <span itemprop="name">知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
 
-    <!-- Archives  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">inbox</i>
-                
-                    归档
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-            <li>
-                <a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">十二月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
-            </ul>
-        </li>
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
+          
+            <h2 id="vue是什么？"><a href="#vue是什么？" class="headerlink" title="vue是什么？"></a>vue是什么？</h2><p>Vue.js是当下很火的一个JavaScript MVVM库，它是以数据驱动和组件化的思想构建的。相比于Angular.js，Vue.js提供了更加简洁、更易于理解的API，使得我们能够快速地上手并使用Vue.js。<br>之前我们已经习惯了用jQuery操作DOM，在学习Vue.js时需要抛开手动操作DOM的思维，因为Vue.js是数据驱动的，无需手动操作DOM。它通过一些特殊的HTML语法，将DOM和数据绑定起来。一旦创建了绑定，DOM将和数据保持同步，每当变更了数据，DOM也会相应地更新。在使用Vue.js时，也可以结合其他库一起使用，比如jQuery。  </p>
+<h2 id="vue的mvvm模式"><a href="#vue的mvvm模式" class="headerlink" title="vue的mvvm模式"></a>vue的mvvm模式</h2><p><img src="http://onep1caa3.bkt.clouddn.com/04091.png" alt=""><br>（图片源自百度）<br>上面这张图在概括了MVVM（Model-View-ViewModel）模式的同时，还描述了在vue.js中ViewModel是如何和view以及model进行交互的。<br><strong>viewmodel是vue.js的核心，它是一个vue实例</strong><br>Vue实例是作用于某一个HTML元素上的，这个元素可以是HTML的body元素，也可以是指定了id的某个元素。当创建了ViewModel后，双向绑定是如何达成的呢？首先，我们将上图中的DOM Listeners和Data Bindings看作两个工具，它们是实现双向绑定的关键。<br>从View侧看，ViewModel中的DOM Listeners工具会帮我们监测页面上DOM元素的变化，如果有变化，则更改Model中的数据.<br>从Model侧看，当我们更新Model中的数据时，Data Bindings工具会帮我们更新页面中的DOM元素。  </p>
+<h2 id="使用vue的过程"><a href="#使用vue的过程" class="headerlink" title="使用vue的过程"></a>使用vue的过程</h2><ul>
+<li>1.定义view；</li>
+<li>2.定义model；</li>
+<li>3.创建一个vue实例或者“view model”，它用于连接view和model<br>在创建vue实例时，需要传入一个选项对象，选项对象可以包含元素，挂载元素，方法，模生命周期钩子等等。</li>
+</ul>
+<h2 id="双向绑定实例"><a href="#双向绑定实例" class="headerlink" title="双向绑定实例"></a>双向绑定实例</h2><p>使用<code>v-model</code>指令在表单元素上创建双向数据绑定。  </p>
+<blockquote>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+&lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;input type=&quot;text&quot; v-model=&quot;message&quot;/&gt;
+&lt;/div&gt;   
+</code></pre></blockquote>
+<p>这样可以把message绑定到文本框，当更改文本框的值时， <code>&lt;p&gt;&lt;/p&gt;</code> 中的内容也会被更新。如果改变message的值，文本框的值也会被更新。  </p>
+<h2 id="vue-js的常用指令"><a href="#vue-js的常用指令" class="headerlink" title="vue.js的常用指令"></a>vue.js的常用指令</h2><blockquote>
+<p>Vue.js的指令是以v-开头的，它们作用于HTML元素，指令提供了一些特殊的特性，将指令绑定在元素上时，指令会为绑定的目标元素添加一些特殊的行为，我们可以将指令看作特殊的HTML特性（attribute）。  </p>
+</blockquote>
+<h3 id="v-if指令"><a href="#v-if指令" class="headerlink" title="v-if指令"></a><code>v-if</code>指令</h3><p>条件渲染指令，根据表达式的真假来删除和插入元素。<br>如以下代码：  </p>
+<blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;app&quot;&gt;
+&lt;h1&gt;Hello, Vue.js!&lt;/h1&gt;
+&lt;h1 v-if=&quot;yes&quot;&gt;Yes!&lt;/h1&gt;
+&lt;h1 v-if=&quot;no&quot;&gt;No!&lt;/h1&gt;
+&lt;h1 v-if=&quot;age &gt;= 25&quot;&gt;Age: {{ age }}&lt;/h1&gt;
+&lt;h1 v-if=&quot;name.indexOf(&apos;jack&apos;) &gt;= 0&quot;&gt;Name: {{ name }}&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+var vm = new Vue({
+el: &apos;#app&apos;,
+data: {
+yes: true,
+no: false,
+age: 28,
+name: &apos;keepfool&apos;
+}
+})
+&lt;/script&gt;
+&lt;/html&gt;  
+</code></pre></blockquote>
+<p>数据的yes属性为true，所以”Yes!”会被输出；<br>数据的no属性为false，所以”No!”不会被输出；<br>运算式age &gt;= 25返回true，所以”Age: 28”会被输出；<br>运算式name.indexOf(‘jack’) &gt;= 0返回false，所以”Name: keepfool”不会被输出。<br>注意：v-if指令是根据条件表达式的值来执行元素的插入或者删除行为。这一点可以从渲染的HTML源代码看出来，面上只渲染了3个<h 1="">元素，v-if值为false的<h 1="">元素没有渲染到HTML。  </h></h></p>
+<h3 id="v-show指令"><a href="#v-show指令" class="headerlink" title="v-show指令"></a>v-show指令</h3><p>v-show也是条件渲染指令，和v-if指令不同的是，使用v-show指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性（不显示是css属性display:none）。  </p>
+<h3 id="v-else指令"><a href="#v-else指令" class="headerlink" title="v-else指令"></a>v-else指令</h3><p>可以用v-else指令为v-if或v-show添加一个“else块”。v-else元素必须立即跟在v-if或v-show元素的后面——否则它不能被识别。  </p>
+<h3 id="v-for指令"><a href="#v-for指令" class="headerlink" title="v-for指令"></a>v-for指令</h3><p>v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：<code>v-for=&quot;item in items&quot;</code>。  </p>
+<h3 id="v-bind指令"><a href="#v-bind指令" class="headerlink" title="v-bind指令"></a>v-bind指令</h3><p>v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class。  </p>
+<h3 id="v-on指令"><a href="#v-on指令" class="headerlink" title="v-on指令"></a>v-on指令</h3><p>v-on指令用于给监听DOM事件，它的用语法和v-bind是类似的，例如监听&lt; a&gt;元素的点击事件：<code>&lt;a v-on:click=&quot;doSomething&quot;&gt;</code><br>有两种形式调用方法：绑定一个方法（让事件指向方法的引用），或者使用内联语句。  </p>
+<h3 id="v-bind与v-on的缩写"><a href="#v-bind与v-on的缩写" class="headerlink" title="v-bind与v-on的缩写"></a>v-bind与v-on的缩写</h3><p>Vue.js为最常用的两个指令v-bind和v-on提供了缩写方式。v-bind指令可以缩写为一个冒号，v-on指令可以缩写为@符号。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/2017.04.06mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/07/2017.04.06mysql/" itemprop="url">
+                  使用node.js+express+mysql实现简单的网页数据写入到数据库功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T16:54:48+08:00">
+                2017-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
 
-    <!-- Categories  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
-                
-                分类
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                <a class="sidebar_archives-link" href="/categories/小说/">小说<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术/">技术<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/插件/">插件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/教程/">教程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识/">知识<span class="sidebar_archives-count">30</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">12</span></a>
-            </ul>
-        </li>
-        
-    
 
-    <!-- Pages  -->
-    
-        <li>
-            <a href="/tags" title="标签云">
-                
-                    <i class="material-icons sidebar-material-icons">cloud</i>
-                
-                标签云
-            </a>
-        </li>
-        
-    
-        <li>
-            <a href="/about" title="关于我">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                关于我
-            </a>
-        </li>
-        
-    
+    <div class="post-body" itemprop="articleBody">
 
-    <!-- Article Number  -->
-    
-        <li>
-            <a href="/archives">
-                文章总数
-                <span class="sidebar-badge">48</span>
-            </a>
-        </li>
+      
+      
+
+      
         
-    
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一星期时间。写下这篇文章，便于以后翻到看看自己有多菜哈哈。  </p>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><p>简单的网页数据保存到mysql数据库的功能。（在windows平台）  </p>
+<h2 id="项目环境准备"><a href="#项目环境准备" class="headerlink" title="项目环境准备"></a>项目环境准备</h2><h3 id="1-node-js和npm的安装"><a href="#1-node-js和npm的安装" class="headerlink" title="1.node.js和npm的安装"></a>1.node.js和npm的安装</h3><h3 id="2-express的安装"><a href="#2-express的安装" class="headerlink" title="2.express的安装"></a>2.express的安装</h3><ul>
+<li>express的安装可以使用npm，可以使用命令 <code>npm install express -g</code> 来进行express的全局安装。express是构建网页基本框架的工具。<h2 id="mysql数据库的设计"><a href="#mysql数据库的设计" class="headerlink" title="mysql数据库的设计"></a>mysql数据库的设计</h2><h3 id="1-mysql下载安装与启动"><a href="#1-mysql下载安装与启动" class="headerlink" title="1.mysql下载安装与启动"></a>1.mysql下载安装与启动</h3>mysql的下载安装可以到mysql官网进行，具体的安装流程要取决于你的电脑，安装方法网上有很多，这里给出一篇我随便在百度搜索到的<a href="http://www.cnblogs.com/fnlingnzb-learner/p/6009153.html" target="_blank" rel="external">文章</a>，需要注意到的是注册的时候要填写数据库用户名和密码，请牢记你的用户名和密码，同时建议把mysql添加到系统启动目录，这样可以实现开机自启，避免了每次开机在命令行输入<code>net start mysql</code> 的繁琐步骤。当开机以后在系统进程里面看到一个叫mysqld.exe的进程时，说明mysql启动成功了. <img src="http://onep1caa3.bkt.clouddn.com/1.png" alt=""><h3 id="2-数据库可视化工具的使用"><a href="#2-数据库可视化工具的使用" class="headerlink" title="2.数据库可视化工具的使用"></a>2.数据库可视化工具的使用</h3>为了减少操作的难度，我使用了可视化的数据库操作工具，这里推荐一款名为Navicat for MySql的可视化工具，使用起来十分方便。操作也很简单，登陆数据库的时候，用户填root,密码就是配置数据库时的密码， 链接名可以随便起，端口号为3306，主机名默认localhost不用修改。登陆以后可以实现增删数据库，增删表的操作。  </li>
+</ul>
+<p><img src="http://onep1caa3.bkt.clouddn.com/2.png" alt="">  </p>
+<h3 id="3-配置mysql"><a href="#3-配置mysql" class="headerlink" title="3.配置mysql"></a>3.配置mysql</h3><p>以我自己的数据库为例，新建数据库azkaban（这是我学弟项目的名字），在这个数据库里新建表excutors。<br><img src="http://onep1caa3.bkt.clouddn.com/3.png" alt=""><br>接着设计表元素，这里我添加了id，host,port,active四个选项接着保存表。<br><img src="http://onep1caa3.bkt.clouddn.com/4.png" alt="">  </p>
+<h2 id="项目设计"><a href="#项目设计" class="headerlink" title="项目设计"></a>项目设计</h2><p>我们要实现的目的比较简单。使用<code>express demo1</code>可以新建名为demo1的工程，工程目录如下.<br><img src="http://onep1caa3.bkt.clouddn.com/5.png" alt="">  </p>
+<p>接下来的步骤：  </p>
+<ul>
+<li>在package.json中田间mysql依赖： <code>&quot;mysql&quot;:&quot;latest&quot;</code> ,使用node.js中的<code>npm install</code> 命令安装依赖包。  </li>
+<li>编写录入信息界面register.jade文件,用来实现简单的信息录入界面以及使用$.ajax()的post方法向服务器发起登陆请求。代码如下：  </li>
+</ul>
+<blockquote>
+<pre><code>doctype html
+html
+head
+title
+link(rel=&apos;stylesheet&apos;, href=&apos;/bootstrap-3.3.7-dist/css/bootstrap.min.css&apos;)
+script(src=&apos;/javascripts/jquery-3.1.1.min.js&apos;)
+script(src=&apos;/bootstrap-3.3.7-dist/js/bootstrap.min.js&apos;)
+body(style=&apos;background: #dcd9da&apos;)
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      .panel.panel-default(style=&apos;margin-top: 60px&apos;)
+        .panel-heading(style=&apos;background: #0d6aad&apos;)
+          h3(align=&apos;center&apos;, style=&apos;color: #ffffff;&apos;)
+            | azkaban
+        .panel-body(style=&apos;background: #e0e1ea&apos;)
+          .form-group
+            .input-group
+              span.input-group-addon host
+              input#host.form-control(type=&apos;text&apos;)
+          .form-group
+            .input-group
+              span.input-group-addon port
+              input#port.form-control(type=&apos;port&apos;)
+
+          .form-group
+            .input-group
+              span.input-group-addon active
+              input#active.form-control(type=&apos;text&apos;)
+          .form-group
+            button#register.btn.btn-success.btn-block(type=&apos;button&apos;)
+              | log in
+          #popup.alert.alert-warning
+            a#close.close(href=&apos;#&apos;) &amp;times;
+            div(align=&apos;center&apos;)
+              strong#popup-content(style=&apos;color: #b12e30;&apos;)
+script(type=&apos;text/javascript&apos;).
+  $(document).ready(function () {
+    var host = $(&quot;#host&quot;);
+    var port = $(&quot;#port&quot;);
+    var active = $(&quot;#active&quot;);
+    var register = $(&quot;#register&quot;);
+    var popup = $(&quot;#popup&quot;);
+    var popupContent = $(&quot;#popup-content&quot;);
+    var close = $(&quot;#close&quot;);
+    popup.hide();
+    close.click(function () {
+      popup.hide();
+    });
+    register.click(function () {
+      if (host.val() == &quot;&quot; || port.val() == &quot;&quot; || active.val() == &quot;&quot;) {
+        popup.show();
+        popupContent.html(&quot;can&apos;t be empty！&quot;);}  
+      else {
+        $.ajax({
+          url: &quot;/register/userRegister&quot;,
+          data: {
+            host: $(&quot;#host&quot;).val(),
+            port: $(&quot;#port&quot;).val(),
+            active: $(&quot;#active&quot;).val()
+                },
+          type: &quot;POST&quot;,
+          timeout: 36000,
+          dataType: &quot;text&quot;,
+          success: function (data, textStatus) {
+            var dataJson = eval(&quot;(&quot; + data + &quot;)&quot;);
+            if (dataJson.code == 200) {
+              alert(&quot;success&quot;);
+            } else if (dataJson.code == 400) {
+              popup.show();
+              popupContent.html(&quot;fail,please retry！&quot;);
+            } else {
+              popup.show();
+              popupContent.html(&quot;error！&quot;);
+            }
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(&quot;error:&quot; + textStatus);
+          }
+        });
+      }
+    });
+  });
+</code></pre></blockquote>
+<ul>
+<li>编写录入信息路由register.js文件  </li>
+</ul>
+<hr>
+<blockquote>
+<pre><code>var express = require(&apos;express&apos;);
+var router = express.Router();
+
+var mysql = require(&apos;mysql&apos;);
+var config = require(&apos;../model/config&apos;);
+
+var pool = mysql.createPool(config.mysql);
+/* GET home page. */
+router.get(&apos;/&apos;, function (req, res, next) {
+  res.render(&apos;register&apos;, {title: &apos;register&apos;});
+});
+router.post(&apos;/userRegister&apos;, function (req, res, next) {
+  var host = req.body.host;
+  var port = req.body.port;
+  var active = req.body.active; 
+  pool.getConnection(function (err, connection) {
+var $sql1 = &quot;INSERT INTO executors(id, host, port, active) VALUES(0,?,?,?)&quot;;
+connection.query($sql1, [host, port, active], function (err, result) {
+  console.log(result);
+  if (result) {
+result = {
+  code: 200,
+  msg: &apos;success&apos;
+};
+  } else {
+result = {
+  code: 400,
+  msg: &apos;fail&apos;
+};
+  }
+  res.json(result);
+  connection.release();
+});
+
+});
+  });
+module.exports = router;  
+</code></pre></blockquote>
+<ul>
+<li>在app.js中增加register的界面和路由  </li>
+</ul>
+<p><img src="http://onep1caa3.bkt.clouddn.com/7.png" alt=""> </p>
+<ul>
+<li><p>设置连接数据库参数model/config.js 。在这里我使用用户azkaban创建了数据库azkaban。 </p>
+<blockquote>
+<pre><code>module.exports = {
+  mysql: {
+host: &apos;127.0.0.1&apos;,
+user: &apos;azkaban&apos;,
+password: &apos;&apos;,
+database: &apos;azkaban&apos;,
+port: 3306
+  }
+};
+</code></pre></blockquote>
+</li>
+<li><p>项目运行，在命令行输入<code>npm start</code>来启动应用，接着访问<a href="http://localhost:3000/register" target="_blank" rel="external">http://localhost:3000/register</a><br>查看网页。<br><img src="http://onep1caa3.bkt.clouddn.com/8.png" alt="">  </p>
+</li>
+<li>输入数据查看是否能录入到数据库<br><img src="http://onep1caa3.bkt.clouddn.com/9.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/10.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/11.png" alt=""><br>这样我们就完成一个简单的功能的实现！</li>
 </ul>
 
-
-        <!-- Sidebar Footer -->
-        <!--
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
-
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
-
-<!-- Sidebar Divider -->
-
-    <div class="sidebar-divider"></div>
-
-
-<!-- Theme Material -->
-
-
-<!-- Help & Support -->
-<!--
-
--->
-
-<!-- Feedback -->
-<!--
-
--->
-
-<!-- About Theme -->
-<!--
-
--->
-
+          
+        
+      
     </div>
 
-    <!-- Sidebar Image -->
-    
+    <div>
+      
+    </div>
 
-</aside>
+    <div>
+      
+    </div>
 
-                    
+    <div>
+      
+    </div>
 
-                    
-                        <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
+    <footer class="post-footer">
+      
 
-                    
+      
 
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
-    
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-        <a href="https://twitter.com/hanhb1994924" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
-                <span class="visuallyhidden">Twitter</span>
-            </button><!--
-     --></a>
-    
+      
 
-    <!-- Facebook -->
-    
-        <a href="https://www.facebook.com/profile.php?id=100009632790145" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
-                <span class="visuallyhidden">Facebook</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Google + -->
-    
-
-    <!-- Weibo -->
-    
-        <a href="http://weibo.com/1648593720" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
-                <span class="visuallyhidden">Weibo</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="https://github.com/hhb1994/hhb1994.github.io" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Zhihu -->
-    
-        <a href="https://www.zhihu.com/people/han-hong-bin-8/activities" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
-                <span class="visuallyhidden">Zhihu</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
-    
-</div>
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-        <!--Copyright-->
-        <div id="copyright">
-            Copyright&nbsp;©&nbsp;
-            <script type="text/javascript">
-                var fd = new Date();
-                document.write(fd.getFullYear());
-            </script>
-            &nbsp;Han's blog
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/2017.04.05cookie&session/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/05/2017.04.05cookie&session/" itemprop="url">
+                  cookie与session的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T20:15:18+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识/" itemprop="url" rel="index">
+                    <span itemprop="name">知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
 
-        <!-- Paradox Footer Right Section -->
 
-        <!--
-        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-        It will not impact the appearance and can give developers a lot of support :)
+    <div class="post-body" itemprop="articleBody">
 
-        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-        它不会影响美观并可以给开发者很大的支持。 :)
-        -->
+      
+      
 
-        <div class="mdl-mini-footer--right-section">
-            <div>
-                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+      
+        
+          
+            <h2 id="cookie与session的定义"><a href="#cookie与session的定义" class="headerlink" title="cookie与session的定义"></a>cookie与session的定义</h2><p>当浏览网站的时候，WEB 服务器会先送一小小资料放在你的计算机上，Cookie 会帮你在网站上所打的文字或是一些选择，都纪录下来。当下次你再光临同一个网站，WEB 服务器会先看看有没有它上次留下的 Cookie 资料，有的话，就会依据 Cookie里的内容来判断使用者，送出特定的网页内容给你。 Cookie 的使用很普遍，许多有提供个人化服务的网站，都是利用 Cookie来辨认使用者，以方便送出使用者量身定做的内容，像是 Web 接口的免费 email 网站，都要用到 Cookie。具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。  </p>
+<h2 id="cookie与session的机制"><a href="#cookie与session的机制" class="headerlink" title="cookie与session的机制"></a>cookie与session的机制</h2><h3 id="cookie的机制"><a href="#cookie的机制" class="headerlink" title="cookie的机制"></a>cookie的机制</h3><p>正统的cookie分发是通过扩展HTTP协议来实现的，服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。然而纯粹的客户端脚本如JavaScript或者VBScript也可以生成cookie。而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存里的cookie，不同的浏览器有不同的处理方式。  </p>
+<h3 id="session的机制"><a href="#session的机制" class="headerlink" title="session的机制"></a>session的机制</h3><p>session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器。一般这个cookie的名字都是类似于SEEESIONID。但cookie可以被人为的禁止，则必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。  </p>
+<h2 id="cookie与session的区别"><a href="#cookie与session的区别" class="headerlink" title="cookie与session的区别"></a>cookie与session的区别</h2><ul>
+<li><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+</li>
+<li><p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗<br> 考虑到安全应当使用session。</p>
+</li>
+<li><p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能<br> 考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+</li>
+<li><p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+</li>
+</ul>
+<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><ul>
+<li>将登陆信息等重要信息存放为SESSION</li>
+<li>其他信息如果需要保留，可以放在COOKIE中</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/03/2017-04-03httpcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/03/2017-04-03httpcode/" itemprop="url">
+                  HTTP状态码总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-03T19:50:06+08:00">
+                2017-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识/" itemprop="url" rel="index">
+                    <span itemprop="name">知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h2><p>http状态码是表示服务器对请求的响应状态，主要分为以下几个部分</p>
+<ul>
+<li><p>1**：这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束</p>
+</li>
+<li><p>2**：表示请求成功，</p>
+</li>
+<li><p>3**：表示重定向</p>
+</li>
+<li><p>4**：表示客户端错误</p>
+</li>
+<li><p>5**：表示服务器端错误</p>
+</li>
+</ul>
+<h2 id="具体内容"><a href="#具体内容" class="headerlink" title="具体内容"></a>具体内容</h2><p>100（continue），客户端应当继续发送请求。这个临时响应是用来通知客户端它的部分请求已经被服务器接收</p>
+<p>200（OK），表示请求成功，请求所希望的响应头或数据体将随此响应返回。</p>
+<p>202（Accepted），服务器已接受请求，但尚未处理。</p>
+<p>204（No-Content），服务器成功处理了请求，但不需要返回任何实体内容</p>
+<p>205（Reset-Content），服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。</p>
+<p>206（Partial-Content），服务器已经成功处理了部分 GET 请求。</p>
+<p>301（Moved-Permanently），永久性重定向</p>
+<p>302（Moved-Temporarily），暂时性重定向</p>
+<p>304（Not-Modified），浏览器端缓存的资源依然有效</p>
+<p>400（Bad-Reques），请求有误，当前请求无法被服务器理解。</p>
+<p>401（Unauthorized），当前请求需要用户验证。</p>
+<p>403（Forbidden），服务器已经理解请求，但是拒绝执行它。</p>
+<p>404（Not-Found），请求的资源没有被找到</p>
+<p>500（Interval Server Error），服务器内部错误</p>
+<p>502（Bad GateWay），网关出错</p>
+<p>503（Service Unavailable），由于临时的服务器维护或者过载，服务器当前无法处理请求。</p>
+<p>504（Gateway Timeout），作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/2017.04.02bootstrap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/02/2017.04.02bootstrap/" itemprop="url">
+                  使用bootstrap实现图片轮播效果
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T20:51:00+08:00">
+                2017-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/教程/" itemprop="url" rel="index">
+                    <span itemprop="name">教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是bootstrap？"><a href="#什么是bootstrap？" class="headerlink" title="什么是bootstrap？"></a>什么是bootstrap？</h2><p>Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC（微软全国广播公司）的Breaking News都使用了该项目。使用bootstrap的缺点是设计出来的网页给人一种钦定的感觉。。。  </p>
+<h2 id="使用bootstrap实现轮播效果"><a href="#使用bootstrap实现轮播效果" class="headerlink" title="使用bootstrap实现轮播效果"></a>使用bootstrap实现轮播效果</h2><ul>
+<li>由于bootstrap中有HTML5特性，所以要添加 <code>&lt;!DOCTYPE html&gt;</code>属性；<h3 id="基本轮播"><a href="#基本轮播" class="headerlink" title="基本轮播"></a>基本轮播</h3>代码如下：  <blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+  div.item img{
+width:100%;
+   }
+  div#carousel-example-generic{
+width:80%;
+margin:0 auto;
+  }
+&lt;/style&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot;&gt;
+&lt;ol class=&quot;carousel-indicators&quot;&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;3&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+&lt;div class=&quot;item active&quot;&gt;
+ &lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/1.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/2.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/3.jpg&quot; &gt;
+&lt;/div&gt;      
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/4.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;  
+</code></pre></blockquote>
+</li>
+</ul>
+<h3 id="带标题轮播"><a href="#带标题轮播" class="headerlink" title="带标题轮播"></a>带标题轮播</h3><p>代码如下：  </p>
+<blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+  div.item img{
+width:100%;
+   }
+  div#carousel-example-generic{
+width:80%;
+margin:0 auto;
+  }
+&lt;/style&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot;&gt;
+  &lt;!-- Indicators --&gt;
+  &lt;ol class=&quot;carousel-indicators&quot;&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;3&quot;&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;!-- Wrapper for slides --&gt;
+  &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+&lt;div class=&quot;item active&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/1.jpg&quot; &gt;
+&lt;div class=&quot;carousel-caption&quot;&gt;
+scene 1
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/2.jpg&quot; &gt;
+&lt;div class=&quot;carousel-caption&quot;&gt;
+scene 2
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/3.jpg&quot; &gt;
+&lt;div class=&quot;carousel-caption&quot;&gt;
+scene 3
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/4.jpg&quot; &gt;
+&lt;div class=&quot;carousel-caption&quot;&gt;
+scene 4
+&lt;/div&gt;
+&lt;/div&gt;      
+&lt;/div&gt;
+&lt;/div&gt;  
+</code></pre></blockquote>
+<h3 id="设置轮播速度"><a href="#设置轮播速度" class="headerlink" title="设置轮播速度"></a>设置轮播速度</h3><p>代码如下：  </p>
+<blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+  div.item img{
+width:100%;
+   }
+  div#carousel-example-generic{
+width:80%;
+margin:0 auto;
+  }
+&lt;/style&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot; data-interval=&quot;1000&quot;&gt;
+  &lt;!-- Indicators --&gt;
+  &lt;ol class=&quot;carousel-indicators&quot;&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;3&quot;&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;!-- Wrapper for slides --&gt;
+  &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+&lt;div class=&quot;item active&quot;&gt;
+  &lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/1.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/2.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/3.jpg&quot; &gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/4.jpg&quot; &gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;   
+</code></pre></blockquote>
+<h3 id="控制前后的轮播"><a href="#控制前后的轮播" class="headerlink" title="控制前后的轮播"></a>控制前后的轮播</h3><p>代码如下：   </p>
+<blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css&quot; 
+rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js&quot;&gt;&lt;/
+script&gt;
+&lt;style&gt;
+  div.item img{
+width:100%;
+   }
+  div#carousel-example-generic{
+width:80%;
+margin:0 auto;
+  }
+&lt;/style&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-
+ride=&quot;carousel&quot; data-interval=&quot;1000&quot;&gt;
+  &lt;!-- Indicators --&gt;
+  &lt;ol class=&quot;carousel-indicators&quot;&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; 
+class=&quot;active&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+&lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;3&quot;&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+
+ &lt;!-- Wrapper for slides --&gt;
+ &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+&lt;div class=&quot;item active&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/1.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/2.jpg&quot; &gt;
+&lt;/div&gt;
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/3.jpg&quot; &gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;item&quot;&gt;
+&lt;img src=&quot;http://onep1caa3.bkt.clouddn.com/4.jpg&quot; &gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt; 
+&lt;!-- Controls --&gt;
+&lt;a class=&quot;left carousel-control&quot; href=&quot;#carousel-example-generic&quot; 
+role=&quot;button&quot; data-slide=&quot;prev&quot;&gt;
+&lt;span class=&quot;glyphicon glyphicon-chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+
+&lt;/a&gt;
+&lt;a class=&quot;right carousel-control&quot; href=&quot;#carousel-example-generic&quot; 
+role=&quot;button&quot; data-slide=&quot;next&quot;&gt;
+ &lt;span class=&quot;glyphicon glyphicon-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;  
+&lt;/a&gt;
+&lt;/div&gt;  
+</code></pre><hr>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/2017.03.27workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/27/2017.03.27workflow/" itemprop="url">
+                  神器workflow介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T20:14:02+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件/" itemprop="url" rel="index">
+                    <span itemprop="name">软件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="神器workflow"><a href="#神器workflow" class="headerlink" title="神器workflow"></a>神器workflow</h2><h3 id="workflow是什么"><a href="#workflow是什么" class="headerlink" title="workflow是什么"></a>workflow是什么</h3><p>Workflow 是一款 iOS 端的付费应用，通过流程化自动处理各种事情，内置 150+ 动作，如开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程。前段时间Apple把workflow团队收购，这款软件从18RMB售价变为免费。将来Apple可能把workflow整合进ios11，简单来说，workflow在不越狱的情况下，可以完成在ios封闭环境下几乎不可能完成的任务。  </p>
+<p>举个例子，对于分享截图这一功能。虽然我早已能一气呵成地打出整套动作“手机截屏－打开照片.app－翻找截图－编辑图片－分享至他人－删除截屏”，但无奈的地方在于：其实整套动作中只有两个环节需要投入思考：“截图如何编辑？”＋“分享对象是谁？”，但仍不得不例行公事般重复其余操作，不仅毫无技术含量可言，更糟糕的是来回跳转 APP 总会生硬打断连贯性，效率低下。如果，在生活中你遇到类似的烦恼，那么肯定也曾幻想过有这么一款工具，能够帮助用户在手机上将重心集中在解决任务的关键步骤，而其他次要动作则直接自动执行，无需人为干预，进而达成任务目的，使之形成一套高效率的完整工作流（类似于 Apple 在 Mac 平台推出的 Automator）。这就是workflow的作用所在。它可以在一步操作的前提下帮你完成一整套上述操作。<br><img src="http://onep1caa3.bkt.clouddn.com/workflow.png" alt="">   </p>
+<hr>
+<p>　</p>
+<h3 id="workflow的优点"><a href="#workflow的优点" class="headerlink" title="workflow的优点"></a>workflow的优点</h3><ul>
+<li>效率为王：通过 Workflow 创建的工作流程，使得原本在手机上需要繁琐步骤才能完成的任务，现在很可能只需一键搞定；</li>
+<li>四通发达：Workflow 内置的 150+ 动作(不断更新中)涵盖了大部分手机功能，并进一步延伸至第三方 APP，如 开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程；</li>
+<li>化繁为简：图形化的美观界面将复杂的代码部分完全隐藏至背后，极大降低了使用门槛。通过简单的拖曳操作来设定想要实现的功能步骤，而无需用户懂得任何代码；</li>
+<li>凌波微步：创建后的任务流程可以保存至桌面、摆放至“共享”菜单中、甚至能将自己的作品共享至他人使用，极大拓宽了 Workflow 适用场景；</li>
+<li>大有可为：高级用户调用 Workflow 内置的特殊功能 ( SSH 运行脚本、API 等) 后，还能创造更多可能，如与对接并控制网站服务器。这也恰恰说明 Workflow 具有极强的拓展性。 </li>
+</ul>
+<hr>
+<h3 id="如何创建workflow工作流"><a href="#如何创建workflow工作流" class="headerlink" title="如何创建workflow工作流"></a>如何创建workflow工作流</h3><p>比如我要完成截屏-打开相册-选择照片-分享给好友-删除这一系列操作，使用workflow的话，我们需要先定义这个动作。即创建workflow工作流，下面是详细的步骤。  </p>
+<ul>
+<li>可以看到workflow会给出很多动作，我们的目标是选择相册最后一张图片分享给别人，第一步就是选择分享最后一张照片还是最后一张截图；</li>
+<li>由于ios权限设置，我们必须设置一个获得相片访问权限的步骤，接着获取相册最后一张图片，也就是第二步；<br><img src="http://onep1caa3.bkt.clouddn.com/workflow1.png" alt="">  </li>
+<li>接着选择分享方式，可以通过分享菜单或者airdrop分享；</li>
+<li>第四步就是分享；<br><img src="http://onep1caa3.bkt.clouddn.com/workflow2.png" alt=""> </li>
+<li>分享完成之后就是删除照片的步骤了。<br><img src="http://onep1caa3.bkt.clouddn.com/workflow3.png" alt="">  <h5 id="在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。"><a href="#在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。" class="headerlink" title="在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。"></a>在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。</h5></li>
+</ul>
+<hr>
+<h3 id="提供一些额外的工作流"><a href="#提供一些额外的工作流" class="headerlink" title="提供一些额外的工作流"></a>提供一些额外的工作流</h3><p>workflow中有很多工作流，你也可以创作自己的工作流，分享自己的工作流，下面就是我收集的一些工作流，点击网址以后选择用workflow打开，添加工作流之后就可以使用了。workflow暂时不支持icloud同步，但是注册一个workflow账号在不同设备登陆也可以实现工作流的同步。  </p>
+<p>多用途通用视频下载 <a href="https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56" target="_blank" rel="external">https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56</a> 多引擎搜索<a href="https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d" target="_blank" rel="external">https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d</a>  图片处理   </p>
+<p>﻿<br><a href="https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf" target="_blank" rel="external">https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf</a>﻿<br>﻿<br>快捷开关﻿<br><a href="https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e" target="_blank" rel="external">https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e</a>﻿<br>﻿<br>多功能扫码工具箱﻿<br><a href="https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe多用途通用" target="_blank" rel="external">https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe多用途通用</a>﻿<br>﻿<br>视频下载﻿<br><a href="https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56" target="_blank" rel="external">https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56</a>﻿<br>﻿<br>多引擎搜索﻿<br><a href="https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d" target="_blank" rel="external">https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d</a>﻿<br>﻿<br>图片处理﻿<br><a href="https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf" target="_blank" rel="external">https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf</a>﻿<br>﻿<br>快捷开关﻿<br><a href="https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e" target="_blank" rel="external">https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e</a>﻿<br>﻿<br>多功能扫码工具箱﻿<br><a href="https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe" target="_blank" rel="external">https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe</a>﻿<br>﻿<br>﻿<br>workflow下载类型  规则﻿<br>﻿<br>下载YouTube视频﻿<br><a href="https://workflow.is/workflows/73971870942c49da96cae6a490aea8e0" target="_blank" rel="external">https://workflow.is/workflows/73971870942c49da96cae6a490aea8e0</a>﻿<br>﻿<br><a href="https://workflow.is/workflows/617578d73f8244a5afed2a1665c8e320" target="_blank" rel="external">https://workflow.is/workflows/617578d73f8244a5afed2a1665c8e320</a>﻿<br>﻿<br>下载视频的tumblr﻿<br><a href="https://workflow.is/workflows/f8656cbb90524dffa1fe2eba8975946e" target="_blank" rel="external">https://workflow.is/workflows/f8656cbb90524dffa1fe2eba8975946e</a>﻿<br>﻿<br>展开网址的tumblr﻿<br><a href="https://workflow.is/workflows/62a9534d3ee1467080cd4136578d3d35" target="_blank" rel="external">https://workflow.is/workflows/62a9534d3ee1467080cd4136578d3d35</a>﻿<br>﻿<br>下载Twitter的GIF﻿<br><a href="https://workflow.is/workflows/aa9821c4bce44b6f8febcbda6245c1f0" target="_blank" rel="external">https://workflow.is/workflows/aa9821c4bce44b6f8febcbda6245c1f0</a>﻿<br>﻿<br>获取Twitter的视频﻿<br><a href="https://workflow.is/workflows/087a0abf12c049dd9ab256afaec790c0" target="_blank" rel="external">https://workflow.is/workflows/087a0abf12c049dd9ab256afaec790c0</a>﻿<br>﻿<br>从保存的Instagram﻿<br><a href="https://workflow.is/workflows/3a4f22ce8e794c7489a059224f3bc0b0" target="_blank" rel="external">https://workflow.is/workflows/3a4f22ce8e794c7489a059224f3bc0b0</a>﻿<br>﻿<br>应用图像至相机胶卷﻿<br><a href="https://workflow.is/workflows/613a8f5e6e714cc9aecaa4e76d981248" target="_blank" rel="external">https://workflow.is/workflows/613a8f5e6e714cc9aecaa4e76d981248</a>﻿<br>﻿<br>新浪微博视频  先复制视频页地址 在运行﻿<br><a href="https://workflow.is/workflows/fd7fe0b7548046e689e9776b2182a8b1" target="_blank" rel="external">https://workflow.is/workflows/fd7fe0b7548046e689e9776b2182a8b1</a>﻿<br>﻿<br>保存网页为pdf到ibook﻿<br><a href="https://workflow.is/workflows/2027271452ce4712853838f43550d326" target="_blank" rel="external">https://workflow.is/workflows/2027271452ce4712853838f43550d326</a>﻿<br>﻿<br>保存了几张照片﻿<br><a href="https://workflow.is/workflows/a6487b004917494b88fe0fc01f0ffbc6" target="_blank" rel="external">https://workflow.is/workflows/a6487b004917494b88fe0fc01f0ffbc6</a>﻿<br>﻿<br>﻿<br>workflow分享类型  规则﻿<br>﻿<br>分享音乐到Instagram的﻿<br><a href="https://workflow.is/workflows/402507226b8844258dee694d58b126e9" target="_blank" rel="external">https://workflow.is/workflows/402507226b8844258dee694d58b126e9</a>﻿<br>﻿<br>分享最新照片﻿<br><a href="https://workflow.is/workflows/5f9c56bfe6de447598a6d0440697c470" target="_blank" rel="external">https://workflow.is/workflows/5f9c56bfe6de447598a6d0440697c470</a>﻿<br>﻿<br>分享音乐到Instagram的﻿<br><a href="https://workflow.is/workflows/402507226b8844258dee694d58b126e9" target="_blank" rel="external">https://workflow.is/workflows/402507226b8844258dee694d58b126e9</a>﻿<br>﻿<br>workflow备份类型  规则﻿<br>﻿<br>AB Backup备份﻿<br><a href="https://workflow.is/workflows/3db6bdcda3104b3b9bbaea8ddf655670" target="_blank" rel="external">https://workflow.is/workflows/3db6bdcda3104b3b9bbaea8ddf655670</a>﻿<br>﻿<br>备份workflow工作流﻿<br><a href="https://workflow.is/workflows/c5421ebe19bd4bf885da8b74d2cbaded" target="_blank" rel="external">https://workflow.is/workflows/c5421ebe19bd4bf885da8b74d2cbaded</a>﻿<br>﻿<br>保存到iCloud﻿<br><a href="https://workflow.is/workflows/08f3cc0e184844339eb2f5caa58a316b" target="_blank" rel="external">https://workflow.is/workflows/08f3cc0e184844339eb2f5caa58a316b</a>﻿<br>﻿<br>workflow音乐类型  规则﻿<br>﻿<br>播放我的音乐﻿<br><a href="https://workflow.is/workflows/39d58771c84c4a50af50b3a0e1f7bda7" target="_blank" rel="external">https://workflow.is/workflows/39d58771c84c4a50af50b3a0e1f7bda7</a>﻿<br>﻿<br>加入我的音乐﻿<br><a href="https://workflow.is/workflows/5bf4367cdef74e3cbe5d4078bdac9882" target="_blank" rel="external">https://workflow.is/workflows/5bf4367cdef74e3cbe5d4078bdac9882</a>﻿<br>﻿<br>添加一些歌曲﻿<br><a href="https://workflow.is/workflows/c5f6d0b19e7e4463af581c0011860443" target="_blank" rel="external">https://workflow.is/workflows/c5f6d0b19e7e4463af581c0011860443</a>﻿<br>﻿<br>获取歌曲信息﻿<br><a href="https://workflow.is/workflows/70900391fdd6423ab2e6d925abf148cc" target="_blank" rel="external">https://workflow.is/workflows/70900391fdd6423ab2e6d925abf148cc</a>﻿<br>﻿<br>随机播放﻿<br><a href="https://workflow.is/workflows/7e2dab4135c24808b36a5384cde60b7d" target="_blank" rel="external">https://workflow.is/workflows/7e2dab4135c24808b36a5384cde60b7d</a>﻿<br>﻿<br>现在播放﻿<br><a href="https://workflow.is/workflows/3d954aa947474ed8b93d13f5b9d18625" target="_blank" rel="external">https://workflow.is/workflows/3d954aa947474ed8b93d13f5b9d18625</a>﻿<br>﻿<br>workflow搜索类型  规则﻿<br>﻿<br>搜索电话号码﻿<br><a href="https://workflow.is/workflows/aa509941b57d48d4b51a0c2b1c06cf8c" target="_blank" rel="external">https://workflow.is/workflows/aa509941b57d48d4b51a0c2b1c06cf8c</a>﻿<br>﻿<br>谷歌高级搜索﻿<br><a href="https://workflow.is/workflows/6e7e0853ae664c5ea7a0bae7dad6941e" target="_blank" rel="external">https://workflow.is/workflows/6e7e0853ae664c5ea7a0bae7dad6941e</a>﻿<br>﻿<br>﻿<br>自定义搜索﻿<br><a href="https://workflow.is/workflows/ac4b4abac0a2490e872b7134f5f9ca8a" target="_blank" rel="external">https://workflow.is/workflows/ac4b4abac0a2490e872b7134f5f9ca8a</a>﻿<br>﻿<br>workflow手电筒类型  规则﻿<br>﻿<br>﻿<br>手电筒﻿<br><a href="https://workflow.is/workflows/31699d9bf6054e028c69286cdf932ce6" target="_blank" rel="external">https://workflow.is/workflows/31699d9bf6054e028c69286cdf932ce6</a>﻿<br>﻿<br>莫尔斯电码编码器手电筒﻿<br><a href="https://workflow.is/workflows/3f723d2d0e0a4c45b920281cf7d30284" target="_blank" rel="external">https://workflow.is/workflows/3f723d2d0e0a4c45b920281cf7d30284</a>﻿<br>﻿<br>workflow距离类型  规则﻿<br>﻿<br>旅行距离﻿<br><a href="https://workflow.is/workflows/5e86637a392147449e7f0aebb3b18cf4" target="_blank" rel="external">https://workflow.is/workflows/5e86637a392147449e7f0aebb3b18cf4</a>﻿<br>﻿<br>Biking Distance（骑行距离）﻿<br><a href="https://workflow.is/workflows/90b54056340742f2bd24ed45f894d22e" target="_blank" rel="external">https://workflow.is/workflows/90b54056340742f2bd24ed45f894d22e</a>﻿<br>﻿<br>workflow剪切板/书签类型  规则﻿<br>﻿<br>﻿<br>剪切板列表﻿<br><a href="https://workflow.is/workflows/db3321f2eec84c4eb2caf29a6df81286" target="_blank" rel="external">https://workflow.is/workflows/db3321f2eec84c4eb2caf29a6df81286</a>﻿<br>﻿<br>剪贴板翻译﻿<br><a href="https://workflow.is/workflows/5de0062c54c041a386be048dd84fa361" target="_blank" rel="external">https://workflow.is/workflows/5de0062c54c041a386be048dd84fa361</a>﻿<br>﻿<br>﻿<br>复制到剪贴板﻿<br><a href="https://workflow.is/workflows/3242da310c4a45ec8270a09e49e6aa37" target="_blank" rel="external">https://workflow.is/workflows/3242da310c4a45ec8270a09e49e6aa37</a>﻿<br>﻿<br>书签﻿<br><a href="https://workflow.is/workflows/86a36fe10ac54a0cbe21c0016e762dee" target="_blank" rel="external">https://workflow.is/workflows/86a36fe10ac54a0cbe21c0016e762dee</a>﻿<br>﻿<br>插接板书签离线﻿<br><a href="https://workflow.is/workflows/78e3d1afef39487db3d4a96d55e9a131" target="_blank" rel="external">https://workflow.is/workflows/78e3d1afef39487db3d4a96d55e9a131</a>﻿<br>﻿<br>﻿<br>workflow电池类型  规则﻿<br>电池﻿<br><a href="https://workflow.is/workflows/febeed3ed07a4c78b9e77c2f48136a2a" target="_blank" rel="external">https://workflow.is/workflows/febeed3ed07a4c78b9e77c2f48136a2a</a>﻿<br>﻿<br>低功耗模式﻿<br><a href="https://workflow.is/workflows/640ae7eb22f143a093c77215a6e373e2" target="_blank" rel="external">https://workflow.is/workflows/640ae7eb22f143a093c77215a6e373e2</a>﻿<br>﻿<br>workflow未分类类  规则﻿<br>﻿<br>IP和位置﻿<br>从通知中心中轻松找到你的IP和地理位置。﻿<br><a href="https://workflow.is/workflows/ea529c591a2740169388c0d2b8ca6505" target="_blank" rel="external">https://workflow.is/workflows/ea529c591a2740169388c0d2b8ca6505</a>﻿<br>﻿<br>调整照片和删除原始﻿<br>调整的原始照片，然后删除了原稿。非常适合在手机上节省磁盘空间。﻿<br><a href="https://workflow.is/workflows/014c0e9d263247979bc6a1c9894e07e4" target="_blank" rel="external">https://workflow.is/workflows/014c0e9d263247979bc6a1c9894e07e4</a>﻿<br>﻿<br>删除多张图片﻿<br><a href="https://workflow.is/workflows/c545d9c33b0f40d8a80712b282a19eb3" target="_blank" rel="external">https://workflow.is/workflows/c545d9c33b0f40d8a80712b282a19eb3</a>﻿<br>﻿<br>更新浪涌/ shadowrocket主配置﻿<br><a href="https://workflow.is/workflows/55ecb14722f94d7c8c44ce3ce24d81c8" target="_blank" rel="external">https://workflow.is/workflows/55ecb14722f94d7c8c44ce3ce24d81c8</a>﻿<br>﻿<br>计时器﻿<br><a href="https://workflow.is/workflows/93fd0318d0e14cdaa32c5d021effaa8b" target="_blank" rel="external">https://workflow.is/workflows/93fd0318d0e14cdaa32c5d021effaa8b</a>﻿<br>﻿<br>扩展和共享网址﻿<br><a href="https://workflow.is/workflows/acad8115a5564d6ea336b70b87dcab72" target="_blank" rel="external">https://workflow.is/workflows/acad8115a5564d6ea336b70b87dcab72</a>﻿<br>﻿<br>合并PDF文件﻿<br><a href="https://workflow.is/workflows/adbb5f464fba4bc68a42a31bf91d1c4c" target="_blank" rel="external">https://workflow.is/workflows/adbb5f464fba4bc68a42a31bf91d1c4c</a>﻿<br>﻿<br>抛硬币﻿<br><a href="https://workflow.is/workflows/4e37faab34864e1883c533754c788066" target="_blank" rel="external">https://workflow.is/workflows/4e37faab34864e1883c533754c788066</a>﻿<br>﻿<br>货币换算﻿<br><a href="https://workflow.is/workflows/50f0132cbe654370bc35189e1cf31b86" target="_blank" rel="external">https://workflow.is/workflows/50f0132cbe654370bc35189e1cf31b86</a>﻿<br>﻿<br>今天的天气﻿<br><a href="https://workflow.is/workflows/cf6db9a3c90c4bc7adec27f739480937" target="_blank" rel="external">https://workflow.is/workflows/cf6db9a3c90c4bc7adec27f739480937</a>﻿<br>﻿<br>翻译﻿<br><a href="https://workflow.is/workflows/a51df78f80414edf8469727f892d662d" target="_blank" rel="external">https://workflow.is/workflows/a51df78f80414edf8469727f892d662d</a>﻿<br>﻿<br>打开链接并复制密码﻿<br><a href="https://workflow.is/workflows/e5846d5f70db404a914db7c6ae07e6c8" target="_blank" rel="external">https://workflow.is/workflows/e5846d5f70db404a914db7c6ae07e6c8</a>﻿<br>﻿<br>通知中心翻页﻿<br><a href="https://workflow.is/workflows/7afbf6fa09204e5e837d52cab41f0497" target="_blank" rel="external">https://workflow.is/workflows/7afbf6fa09204e5e837d52cab41f0497</a>﻿<br>﻿<br>读书打卡﻿<br><a href="https://workflow.is/workflows/051cbf0e7741444b88ba1c77d35bd08d" target="_blank" rel="external">https://workflow.is/workflows/051cbf0e7741444b88ba1c77d35bd08d</a>﻿<br>﻿<br>﻿<br>流量查询﻿<br><a href="https://workflow.is/workflows/068d7774623245a8849b5a051c41ee6d" target="_blank" rel="external">https://workflow.is/workflows/068d7774623245a8849b5a051c41ee6d</a>﻿<br>﻿<br>查询和访问﻿<br><a href="https://workflow.is/workflows/dd00747828a14ebfbddb9aac32432acd" target="_blank" rel="external">https://workflow.is/workflows/dd00747828a14ebfbddb9aac32432acd</a>﻿<br>﻿<br>翻译文本﻿<br><a href="https://workflow.is/workflows/8d478a36a8eb41c782cbb74769eeb9b1" target="_blank" rel="external">https://workflow.is/workflows/8d478a36a8eb41c782cbb74769eeb9b1</a>﻿<br>﻿<br>安装字体﻿<br><a href="https://workflow.is/workflows/f9da142fe53946cd985459f96d2637e9" target="_blank" rel="external">https://workflow.is/workflows/f9da142fe53946cd985459f96d2637e9</a>﻿<br>﻿<br>网易音乐分享到推特﻿<br><a href="https://workflow.is/workflows/dc191b2487e147e489072c801592b10f" target="_blank" rel="external">https://workflow.is/workflows/dc191b2487e147e489072c801592b10f</a>﻿<br>﻿<br>通用下载﻿<br><a href="https://workflow.is/workflows/e645d621172347dabbe177fa24ef6a4b" target="_blank" rel="external">https://workflow.is/workflows/e645d621172347dabbe177fa24ef6a4b</a>﻿<br>﻿<br>举报 iMessage 垃圾短信﻿<br><a href="https://workflow.is/workflows/98fa7fba0e104daab0c7473d3519cfcd" target="_blank" rel="external">https://workflow.is/workflows/98fa7fba0e104daab0c7473d3519cfcd</a>﻿<br>﻿<br>分享最新一张图片﻿<br><a href="https://workflow.is/workflows/4b5e92f0777d4f59a37dbf2de267b79f" target="_blank" rel="external">https://workflow.is/workflows/4b5e92f0777d4f59a37dbf2de267b79f</a>﻿<br>﻿<br>扫描二维码﻿<br><a href="https://workflow.is/workflows/2be2c6a4cb1348c684d51075adba803b" target="_blank" rel="external">https://workflow.is/workflows/2be2c6a4cb1348c684d51075adba803b</a>﻿<br>﻿<br>向同一个剪贴板里添加内容﻿<br><a href="https://workflow.is/workflows/40f931a7526d4243bb703571565edf9c" target="_blank" rel="external">https://workflow.is/workflows/40f931a7526d4243bb703571565edf9c</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/2017.03.26-bibao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/27/2017.03.26-bibao/" itemprop="url">
+                  详细解释javascript中闭包的概念
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T18:42:04+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识/" itemprop="url" rel="index">
+                    <span itemprop="name">知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h2><p>在 JavaScript 中，闭包是一个让人很难弄懂的概念。ECMAScript 中给闭包的定义是：闭包，指的是词法表示包括不被计算的变量的函数，也就是说，函数可以使用函数之外定义的变量。</p>
+<ul>
+<li>闭包是一个函数</li>
+<li>闭包可以使用在它外面定义的变量</li>
+<li>闭包存在定义该变量的作用域中</li>
+</ul>
+<h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><p>变量可分为全局变量和局部变量。  </p>
+<ul>
+<li>全局变量的作用域就是全局性的，在 js 的任何地方都可以使用全局变量。 </li>
+<li>在函数中使用 var 关键字声明变量，这时的变量即是局部变量，它的作用域只在声明该变量的函数内，在函数外面是访问不到该变量的。    </li>
+</ul>
+<h2 id="变量生存周期"><a href="#变量生存周期" class="headerlink" title="变量生存周期"></a>变量生存周期</h2><ul>
+<li>全局变量，生命周期是永久的。  </li>
+<li><p>局部变量，当定义该变量的函数调用结束时，该变量就会被垃圾回收机制回收而销毁。再次调用该函数时又会重新定义了一个新变量.。 </p>
+<pre><code>var func = function()
+{
+var a = &apos;linxin&apos;;
+console.log(a);
+}
+func();  
+</code></pre></li>
+</ul>
+<p>a 为局部变量，在 func 调用完之后，a 就会被销毁了。</p>
+<pre><code>var func = function(){
+ var a = &apos;linxin&apos;;
+var func1 = function(){
+a += &apos; a&apos;;
+console.log(a);
+}
+return func1;
+}
+var func2 = func();
+func2();                    // linxin a
+func2();                    // linxin a a
+func2();                    // linxin a a a  
+</code></pre><p>可以看出，在第一次调用完 func2 之后，func 中的变量 a 变成 ‘linxin a’，而没有被销毁。因为此时 func1 形成了一个闭包，导致了 a 的生命周期延续了。</p>
+<p>闭包是一个函数，比如上面的 func1 函数<br>闭包使用其他函数定义的变量，使其不被销毁。比如上面 func1 调用了变量 a  </p>
+<p>闭包存在定义该变量的作用域中，变量 a 存在 func 的作用域中，那么 func1 也必然存在这个作用域中。<br>现在可以说，满足这三个条件的就是闭包了。  </p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>下面我们通过一个简单而又经典的例子来进一步熟悉闭包。</p>
+<pre><code>for (var i = 0; i &lt; 4; i++) {
+    setTimeout(function () {
+        console.log(i)
+    }, 0)
+}
+</code></pre><p>我们可能会简单的以为控制台会打印出 0 1 2 3，可事实却打印出了 4 4 4 4，这又是为什么呢？我们发现，setTimeout 函数时异步的，等到函数执行时，for循环已经结束了，此时的 i 的值为 4，所以 function() { console.log(i) } 去找变量 i，只能拿到 4。</p>
+<p>我想起上一个例子中，闭包使 a 变量的值被保存起来了，那么这里我们也可以用闭包把 0 1 2 3 保存起来。</p>
+<pre><code>for (var i = 0; i &lt; 4; i++) {
+    (function (i) {
+        setTimeout(function () {
+            console.log(i)
+        }, 0)
+    })(i)
+}
+</code></pre><p>当 i=0 时，把 0 作为参数传进匿名函数中，此时 function(i){} 此匿名函数中的 i 的值为 0，等到 setTimeout 执行时顺着外层去找 i，这时就能拿到 0。如此循环，就能拿到想要的 0 1 2 3。</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>在闭包中调用局部变量，会导致这个局部变量无法及时被销毁，相当于全局变量一样会一直占用着内存。如果需要回收这些变量占用的内存，可以手动将变量设置为null。</p>
+<p>然而在使用闭包的过程中，比较容易形成 JavaScript 对象和 DOM 对象的循环引用，就有可能造成内存泄露。这是因为浏览器的垃圾回收机制中，如果两个对象之间形成了循环引用，那么它们都无法被回收。</p>
+<pre><code>function func() {
+    var test = document.getElementById(&apos;test&apos;);
+    test.onclick = function () {
+        console.log(&apos;hello world&apos;);
+    }
+}
+</code></pre><p>在上面例子中，func 函数中用匿名函数创建了一个闭包。变量 test 是 JavaScript 对象，引用了 id 为 test 的 DOM 对象，DOM 对象的 onclick 属性又引用了闭包，而闭包又可以调用 test ，因而形成了循环引用，导致两个对象都无法被回收。要解决这个问题，只需要把循环引用中的变量设为 null 即可。</p>
+<pre><code>function func() {
+    var test = document.getElementById(&apos;test&apos;);
+    test.onclick = function () {
+        console.log(&apos;hello world&apos;);
+    }
+    test = null;
+}
+</code></pre><p>如果在 func 函数中不使用匿名函数创建闭包，而是通过引用一个外部函数，也不会出现循环引用的问题。</p>
+<pre><code>function func() {
+    var test = document.getElementById(&apos;test&apos;);
+    test.onclick = funcTest;
+}
+function funcTest(){
+    console.log(&apos;hello world&apos;);
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/2017.03.26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/27/2017.03.26/" itemprop="url">
+                  使用hexo搭建静态个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T18:41:14+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/教程/" itemprop="url" rel="index">
+                    <span itemprop="name">教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简单介绍hexo"><a href="#简单介绍hexo" class="headerlink" title="简单介绍hexo"></a>简单介绍hexo</h2><p><a href="https://hexo.io/" target="_blank" rel="external">hexo</a>是一个开源的静态博客生成器,用node.js开发,作者是台湾大学生tommy351。这篇文章主要介绍在windows平台上用node.js框架搭建blog的方法。</p>
+<h2 id="为什么使用静态博客"><a href="#为什么使用静态博客" class="headerlink" title="为什么使用静态博客"></a>为什么使用静态博客</h2><p>不少人选择在虚拟主机或vps上面搭建动态博客。但是这些主机商通常“免费的不稳定,稳定的不免费”。之前我图方便在淘宝上购买了香港的免备案服务器，除了网络带宽，流量受到限制，还随时会面临服务器商跑路的风险。如果我们能够找到这样的空间,在自己保留最大控制权前提下,由别人托管,会省去不少事情。 </p>
+<p>静态博客编译之后是纯html页面,优点就是支持它的环境十分好找,例如github、gitcafe、七牛云存储等站点都支持静态页面托管,自然是我们的首选了。我自己的<a href="hhb123.top">博客</a>就是托管在github仓库上的。  </p>
+<p>但是静态博客并非没有缺点。动态博客更新文章时,脚本是不变的,只需要更新数据库。静态博客要频繁改动文件,不支持增量式上传的东西,比如ftp,就难于管理。此外,还要十分熟悉git各种命令,才能部署页面，接下来我们就开始blog的部署。</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li>node.js框架</li>
+<li>gitbub账户&amp;仓库</li>
+<li>git  </li>
+<li>域名</li>
+</ul>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="1-node-js框架的安装"><a href="#1-node-js框架的安装" class="headerlink" title="1.node.js框架的安装"></a>1.node.js框架的安装</h3><p>node.js框架的安装可以到<a href="http://nodejs.cn/download/" target="_blank" rel="external">node.js官网</a>,对于windows平台，下载安装包之后直接点击安装即可.<br><img src="http://onep1caa3.bkt.clouddn.com/node.js%E4%B8%8B%E8%BD%BD.png" alt=""><br>安装完成以后按window+r，输入cmd打开命令行窗口，输入 <code>npm</code>，这时若弹出node.js 的使用指南说明安装完成。<br><img src="http://onep1caa3.bkt.clouddn.com/%E6%A3%80%E9%AA%8Cnode.js%E5%AE%89%E8%A3%85.png" alt=""></p>
+<h3 id="2-hexo的安装"><a href="#2-hexo的安装" class="headerlink" title="2.hexo的安装"></a>2.hexo的安装</h3><ul>
+<li>1.在命令提示窗口中使用命令  <code>npm install -g hexo</code><br>来安装 hexo。</li>
+<li>2.在你喜欢的位置创建文件夹用来存放网页内容，如：D/hexo，接着转到这个文件夹，使用命令提示行输入 hexo init。 这个文件夹就是你的 blog 的源文件夹;  </li>
+</ul>
+<ul>
+<li>3.生成静态页面，执行命令   <code>npm generate</code> （或者<code>npm g</code>);</li>
+<li>4.执行命令   <code>hexo server</code><br>在本地建立网站，默认端口为4000，打开任意浏览器，键入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> (或者127.0.0.1：4000)，这是就可以在本地访问搭建好的网页了；<br><img src="http://onep1caa3.bkt.clouddn.com/hexo%20server.png" alt="http://onep1caa3.bkt.clouddn.com/hexo%20server.png"></li>
+</ul>
+<h3 id="3-github仓库的建立"><a href="#3-github仓库的建立" class="headerlink" title="3.github仓库的建立"></a>3.github仓库的建立</h3><p>github仓库的建立比较简单，大家可以参照<a href="http://www.cnblogs.com/keZhenxu94/p/5288488.html" target="_blank" rel="external">这篇文章</a>；注意建立的仓库的名字必须与你自己的用户名对应，即仓库名必须为【your_user_name.github.io】。<br><img src="http://onep1caa3.bkt.clouddn.com/github%E4%BB%93%E5%BA%93.png" alt=""></p>
+<h3 id="4-准备将本地网站clone到你的github仓库中"><a href="#4-准备将本地网站clone到你的github仓库中" class="headerlink" title="4.准备将本地网站clone到你的github仓库中"></a>4.准备将本地网站clone到你的github仓库中</h3><p>  在本地预览自己的网页感觉没什么问题以后，就可以开始把自己的个人博客clone到github仓库上。  </p>
+<p>建立关联，需要修改之前建立网站的源文件夹的一个名为_config.yml的文件，这个文件可以用大多数文本编辑器打开，我用的是brackets，这个软件很适合初学者学习前端的基本知识，因为它有即时预览模式，在编辑网页的同时可以看到网页的变化。闲话不多说，打开这个文件之后，看到前面有些设置选项，这些暂时都不管，拉到最下面，添加如下代码   </p>
+<pre><code>deploy:
+
+type: git
+
+repo: https://github.com/hhb1994/hhb1994.github.io.git
+
+branch: master  
+</code></pre><p> 其中repo后面跟的应该是你的github仓库的地址。请注意，type，repo，branch冒号后面一定要加一个半角空格，不加的话不能上传。之前没有注意到这个问题，弄了很久都没有成功。  </p>
+<h3 id="5-使用SSH登陆"><a href="#5-使用SSH登陆" class="headerlink" title="5.使用SSH登陆"></a>5.使用SSH登陆</h3><p>使用ssh可以免去每次更新网站都输入账户密码的麻烦，详细的本地生成ssh并绑定你的github账户的教程请看<a href="http://blog.csdn.net/keyboardota/article/details/7603630" target="_blank" rel="external">这里</a>，需要注意的是，如果你有一个以上的仓库，必须把ssh绑定到你要上传网站的那个仓库里面，如果你直接从设置里面绑定，执行 <code>hexo deploy</code>时会报错。正确的做法时选择你上传网站的仓库，在这个仓库的setting里面绑定ssh。如果之前是全局绑定了ssh，需要先解绑，再在你选择的仓库进行绑定。<br><img src="http://onep1caa3.bkt.clouddn.com/ssh%E3%80%82github.png" alt=""></p>
+<h3 id="6-开始上传"><a href="#6-开始上传" class="headerlink" title="6.开始上传"></a>6.开始上传</h3><p>执行命令<br><code>hexo deploy</code>(或者<code>hexo d</code>)，就开始了上传流程，上传完毕之后，就可以打开网页hhb1994.github.io（换成你的仓库地址）访问你的博客了。  </p>
+<h2 id="域名的重定向"><a href="#域名的重定向" class="headerlink" title="域名的重定向"></a>域名的重定向</h2><p>如果你想把这个博客和你购买的域名绑定在一起（可以到万网购买域名，价格也比较实惠，在这里我是绑定万网购买的域名），请打开万网，登陆你的账户以后找到域名设置-域名解析，添加三条解析。</p>
+<ul>
+<li>1.记录类型：CNAME，主机记录：www，记录值：hhb1994924.github.io；</li>
+<li>2.记录类型：A，主机记录：@，记录值：192.30.252.154；</li>
+<li>3.记录类型：A，主机记录：@，记录值：192.30.252.153；<br><img src="http://onep1caa3.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90.png" alt=""></li>
+</ul>
+<p>添加之后，还需要在hexo/source中添加CNAME文件，文件名为CNAME，注意没有缩略名，用文本编辑器打开这个文件，输入hhb123.top(换成你自己购买的域名)，接着用命令提示行输入   </p>
+<pre><code>hexo clean  
+
+hexo deploy  
+</code></pre><p>稍等一会，就可以在浏览器输入hhb123.top来访问个人博客了。 </p>
+<h2 id="添加文章"><a href="#添加文章" class="headerlink" title="添加文章"></a>添加文章</h2><p>可以直接在D:\hexo\source_posts中添加.md文件，再执行   </p>
+<pre><code>hexo clean  
+hexo deploy
+</code></pre><p>就可以上传文章了，.md文件使用markdown格式，这种格式注重内容而不是形式，语法结构也比较简单，很快就可以学会，<a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="external">这里</a>有教程。编辑markdown格式的编辑器有很多，windows平台上的markpad，markdownpad都是不错的选择，另外还有一些网页上面的markdown编辑器，效果也不错。<br><img src="http://onep1caa3.bkt.clouddn.com/markpad.png" alt=""></p>
+<h2 id="更换主题-amp-个性化"><a href="#更换主题-amp-个性化" class="headerlink" title="更换主题&amp;个性化"></a>更换主题&amp;个性化</h2><p>  hexo提供了很方便的更换主题的方式，<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">选择你喜欢的主题</a>，打开存储你的网页的文件夹，然后使用命令提示行键入  </p>
+<p>  <code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code>  </p>
+<p>  这样就可以把“next”主题的文件拷贝到hexo/themes文件夹了。<br>  接着在hexo文件夹的_config.ylm文件夹中找到主题设置，<br> <code>theme：landscape</code><br>  landscape是默认的主题，这里我们把默认的主题改为<br>  <code>theme：next</code><br>  接着执行    </p>
+<pre><code>hexo clean  
+hexo deploy  
+</code></pre><p>  就可以看到新主题的效果了，主题的设置在 D:\hexo\themes\next_config.yml中。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="韩宏斌" />
+          <p class="site-author-name" itemprop="name">韩宏斌</p>
+           
+              <p class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
             </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
     
-</footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
+  </div>
 
-                    <!-- Import File -->
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/js.min.js"></script>
-<script src="/js/nprogress.js"></script>
+  
 
 <script type="text/javascript">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '#29d'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#29d',
-        'border-left-color': '#29d'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
@@ -1028,134 +2148,101 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-    <!-- Busuanzi -->
-    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
 
 
 
 
 
 
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-<!-- Swiftye -->
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-<!-- Local Search-->
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-    <script>
-    var searchFunc = function(path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: 'xml',
-            success: function( xmlResponse ) {
-                // get the contents from search data
-                var datas = $( 'entry', xmlResponse ).map(function() {
-                    return {
-                        title: $( 'title', this ).text(),
-                        content: $('content',this).text(),
-                        url: $( 'url' , this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function() {
-                    var str='<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = '';
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function(data) {
-                        var isMatch = true;
-                        var content_index = [];
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
-                        var data_url = data.url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if(data_title !== '' && data_content !== '') {
-                            keywords.forEach(function(keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if( index_title < 0 && index_content < 0 ) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
-                            var content = data.content.trim().replace(/<[^>]+>/g, '');
-                            if (first_occur >= 0) {
-                                // cut out characters
-                                var start = first_occur - 6;
-                                var end = first_occur + 6;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 10;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function(keyword) {
-                                    var regS = new RegExp(keyword, 'gi');
-                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
-                                })
-                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
-                            }
-                        }
-                    });
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    }
-</script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-    <script>
-        var inputArea = document.querySelector('#search');
-        var getSearchFile = function() {
-            var path = 'search.xml';
-            searchFunc(path, 'search', 'local-search-result');
-        }
-
-        if(inputArea) {
-            inputArea.onfocus = function() {
-                getSearchFile();
-            }
-        }
-    </script>
+  
 
 
-<!-- Window Load-->
-<script>
-    $(window).load(function() {
-        // Post_Toc parent position fixed
-        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
-    });
-</script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-<!-- MathJax Load-->
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-                </main>
-            </div>
-        </body>
-    
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
