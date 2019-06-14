@@ -1,20 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -30,48 +35,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,37 +43,43 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
 
 
 
-<meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Han's blog">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="Han's blog">
-<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Han's blog">
-<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
 
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -122,18 +91,38 @@
 </script>
 
 
+  
 
+
+
+
+  <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Han's blog">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Han's blog">
+<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://yoursite.com/page/4/"/>
 
 
 
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title> Han's blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
+  <title>Han's blog</title>
   
 
 
@@ -147,7 +136,34 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -155,29 +171,31 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Han's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">welcome!nice to meet U!</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -185,35 +203,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Startseite
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archiv
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -221,12 +307,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -239,17 +336,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.24dom.dom/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.24dom.dom/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -258,13 +361,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/24/2017.05.24dom.dom/" itemprop="url">
-                  绑定dom的几种方法&事件代理
-                </a>
+                
+                <a href="/2017/05/24/2017.05.24dom.dom/" class="post-title-link" itemprop="url">绑定dom的几种方法&事件代理</a>
               
             
           </h1>
@@ -272,25 +371,31 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T21:59:30+08:00">
-                2017-05-24
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 21:59:30" itemprop="dateCreated datePublished" datetime="2017-05-24T21:59:30+08:00">2017-05-24</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -298,14 +403,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -314,6 +415,7 @@
           
 
           
+            
             
           
 
@@ -330,7 +432,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -339,59 +443,40 @@
       
         
           
-            <p>网页中经常需要处理各种事件,通常的做法是绑定listener对事件进行监听,当事件发生后进行一些特定处理。以下是几种绑定DOM的方法：</p>
-<h3 id="1-写在标签页里面（即内嵌式）"><a href="#1-写在标签页里面（即内嵌式）" class="headerlink" title="1.写在标签页里面（即内嵌式）"></a>1.写在标签页里面（即内嵌式）</h3><pre><code>&lt;button onclick=&quot;alert(&apos;Hello&apos;)&quot;&gt;Say hello&lt;/button&gt;
-</code></pre><p>上面这行代码,将按钮点击后的弹窗操作在标签声明的时候就绑定了。  </p>
-<p>优点：简单易懂；<br>缺点：把HTML与JavaScript糅合，每次想要改变方法，都需要编辑HTML。另外这种方法可扩展性差.如果这个方法需要被附加在多个元素上,重复的代码会让页面膨胀,并且维护困难。  </p>
-<h3 id="2-用JavaScript设置元素对应的onXXX事件属性-（即属性式）"><a href="#2-用JavaScript设置元素对应的onXXX事件属性-（即属性式）" class="headerlink" title="2.用JavaScript设置元素对应的onXXX事件属性 （即属性式）"></a>2.用JavaScript设置元素对应的onXXX事件属性 （即属性式）</h3><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-window.onload = function () {
-// Event binding using onXXX property from JavaScript
-var helloBtn = document.getElementById(&quot;helloBtn&quot;);
-helloBtn.onclick = function (event) {
-alert(&quot;Hello Button&quot;);
-}
-}
-&lt;/script&gt;
-
-&lt;/head&gt;
-&lt;body&gt;
-&lt;button id=&quot;helloBtn&quot;&gt;Say hello&lt;/button&gt;
-&lt;/body&gt;
-&lt;/html&gt;  
-</code></pre><p>优点：可以做到页面呈现与功能的分离；<br>缺点：只能绑定一个方法到同一事件类型上，第二个方法如果赋给相同的事件类型，则只会覆盖前者。 </p>
-<h3 id="3-使用addEventLisntener（方法式）"><a href="#3-使用addEventLisntener（方法式）" class="headerlink" title="3.使用addEventLisntener（方法式）"></a>3.使用addEventLisntener（方法式）</h3><p>绑定方法是addEventListener，该方法接受3个参数分别为：type(事件类型)，listener(事件监听方法)，useCapture(指定该方法是捕获式还是冒泡式)。例如：  </p>
-<pre><code>&lt;button id=&quot;btn_w3c&quot;&gt;W3C Advanced Event Bind&lt;/button&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-function func4w3c() {
-alert(&quot;call function bind with addEventListener&quot;);
-}
-var btn = document.getElementById(&quot;btn_w3c&quot;);
-btn.addEventListener(&quot;click&quot;, func4w3c, false);
-&lt;/script&gt;    
-</code></pre><p>优点：可以绑定多个方法到同一事件类型上；<br>缺点：而用addEventListener绑定的匿名方法， 因为在外部已经失去了对匿名方法的引用，也就不能传递给removeEventListener，所以就无法用任何的方式来取消绑定，只能通过刷新页面来重置所有的内容。  </p>
-<h3 id="4-使用jQuery的方法进行事件处理器绑定"><a href="#4-使用jQuery的方法进行事件处理器绑定" class="headerlink" title="4.使用jQuery的方法进行事件处理器绑定"></a>4.使用jQuery的方法进行事件处理器绑定</h3><p>使用on（）来绑定<br>优点：可以动态添加到页面的DOM元素，用.on()方法绑定的事件不需要关心注册该事件的元素何时被添加进来，也不需要重复绑定；<br>缺点：jQuery本身的局限性。  </p>
-<h2 id="事件委托的原理"><a href="#事件委托的原理" class="headerlink" title="事件委托的原理"></a>事件委托的原理</h2><p>简单地说就是利用冒泡法，只指定一个事件处理程序，就可以管理某一类型的所有事件。或者说事件从最深的节点开始，然后逐步向上传播事件。  </p>
-<p>优点：如果要用事件委托，就会将所有的操作放到js程序里面，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能。而且新添加的元素也会有之前的事件。</p>
-
+            <p>
+              网页中经常需要处理各种事件,通常的做法是绑定listener对事件进行监听,当事件发生后进行一些特定处理。以下是几种绑定DOM的方法：
+1.写在标签页里面（即内嵌式）&lt;button onclick=&quot;alert(&apos;Hello&apos;)&quot;&gt;Say hello&lt;/button&gt;
+上面这行代码,将按钮点击后的弹窗操作在标签声明的时候就绑定了。  
+优点：简单易懂；缺点：把HTML与JavaScript糅合，每次想要改变方法，都需要编辑HTML。另外这种方法可扩展性差.如果这个方法需要被附加在多个元素上,重复的代码会让页面膨胀,并且维护困难。 
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/05/24/2017.05.24dom.dom/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -405,6 +490,10 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -417,17 +506,23 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.2huayu/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.2huayu/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -436,13 +531,9 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/24/2017.05.2huayu/" itemprop="url">
-                  如何解决跨域问题
-                </a>
+                
+                <a href="/2017/05/24/2017.05.2huayu/" class="post-title-link" itemprop="url">如何解决跨域问题</a>
               
             
           </h1>
@@ -450,25 +541,31 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T18:44:14+08:00">
-                2017-05-24
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 18:44:14" itemprop="dateCreated datePublished" datetime="2017-05-24T18:44:14+08:00">2017-05-24</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -476,14 +573,10 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -492,6 +585,7 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
           
 
           
+            
             
           
 
@@ -508,7 +602,9 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -517,208 +613,40 @@ btn.addEventListener(&quot;click&quot;, func4w3c, false);
       
         
           
-            <h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。   </p>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>所谓同源是指，域名，协议，端口均相同。例如：<br><a href="http://www.123.com/index.html" target="_blank" rel="external">http://www.123.com/index.html</a> 调用 <a href="http://www.123.com/server.PHP" target="_blank" rel="external">http://www.123.com/server.PHP</a> （<strong>非跨域</strong>）</p>
-<p><a href="http://www.123.com/index.html" target="_blank" rel="external">http://www.123.com/index.html</a> 调用 <a href="http://www.456.com/server.php" target="_blank" rel="external">http://www.456.com/server.php</a> （<strong>主域名不同:123/456，跨域</strong>）</p>
-<p><a href="http://abc.123.com/index.html" target="_blank" rel="external">http://abc.123.com/index.html</a> 调用 <a href="http://def.123.com/server.php" target="_blank" rel="external">http://def.123.com/server.php</a> （<strong>子域名不同:abc/def，跨域</strong>）</p>
-<p><a href="http://www.123.com:8080/index.html" target="_blank" rel="external">http://www.123.com:8080/index.html</a> 调用 <a href="http://www.123.com:8081/server.php" target="_blank" rel="external">http://www.123.com:8081/server.php</a> （<strong>端口不同:8080/8081，跨域</strong>）</p>
-<p><a href="http://www.123.com/index.html" target="_blank" rel="external">http://www.123.com/index.html</a> 调用 <a href="https://www.123.com/server.php" target="_blank" rel="external">https://www.123.com/server.php</a> （<strong>协议不同:http/https，跨域</strong>）</p>
-<p><strong>localhost和127.0.0.1虽然都指向本机，但也属于跨域。</strong><br>用一张表可以更明显地表示：<br><img src="http://onep1caa3.bkt.clouddn.com/2017.05.24.png" alt=""><br>需要特别注意的是：</p>
-<ul>
-<li>如果是协议和端口造成的跨域问题“前台”是无能为力的；</li>
-<li>在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。（“URL的首部”指window.location.protocol +window.location.host，也可以理解为“Domains, protocols and ports must match”）  </li>
-</ul>
-<h2 id="前端如何解决跨域问题"><a href="#前端如何解决跨域问题" class="headerlink" title="前端如何解决跨域问题"></a>前端如何解决跨域问题</h2><h3 id="1-document-domain-iframe-只有在主域相同的时候才能使用该方法"><a href="#1-document-domain-iframe-只有在主域相同的时候才能使用该方法" class="headerlink" title="1.document.domain + iframe      (只有在主域相同的时候才能使用该方法)"></a>1.document.domain + iframe      (只有在主域相同的时候才能使用该方法)</h3><h4 id="（1）在www-a-com-a-html中："><a href="#（1）在www-a-com-a-html中：" class="headerlink" title="（1）在www.a.com/a.html中："></a>（1）在www.a.com/a.html中：</h4><pre><code>document.domain = &apos;a.com&apos;;
-var ifr = document.createElement(&apos;iframe&apos;);
-ifr.src = &apos;http://www.script.a.com/b.html&apos;;
-ifr.display = none;
-document.body.appendChild(ifr);
-ifr.onload = function(){
-var doc = ifr.contentDocument || ifr.contentWindow.document;
-//在这里操作doc，也就是b.html
-ifr.onload = null;
-};  
-</code></pre><h4 id="（2）在www-script-a-com-b-html中："><a href="#（2）在www-script-a-com-b-html中：" class="headerlink" title="（2）在www.script.a.com/b.html中："></a>（2）在www.script.a.com/b.html中：</h4><pre><code>document.domain = &apos;a.com&apos;;  
-</code></pre><h3 id="2-动态创建script"><a href="#2-动态创建script" class="headerlink" title="2.动态创建script"></a>2.动态创建script</h3><pre><code>function loadScript(url, func) {
-  var head = document.head || document.getElementByTagName(&apos;head&apos;)[0];
-  var script = document.createElement(&apos;script&apos;);
-  script.src = url;
-
-  script.onload = script.onreadystatechange = function(){
-if(!this.readyState || this.readyState==&apos;loaded&apos; || this.readyState==&apos;complete&apos;){
-  func();
-  script.onload = script.onreadystatechange = null;
-}
-  };
-
-  head.insertBefore(script, 0);
-}
-window.baidu = {
-  sug: function(data){
-console.log(data);
-  }
-}
-loadScript(&apos;http://suggestion.baidu.com/su?wd=w&apos;,function(){console.log(&apos;loaded&apos;)});
-//我们请求的内容在哪里？
-//我们可以在chorme调试面板的source中看到script引入的内容  
-</code></pre><h3 id="3-location-hash-iframe"><a href="#3-location-hash-iframe" class="headerlink" title="3. location.hash + iframe"></a>3. location.hash + iframe</h3><p>原理是利用location.hash来进行传值。</p>
-<p>假设域名a.com下的文件cs1.html要和cnblogs.com域名下的cs2.html传递信息。  </p>
-<p>1) cs1.html首先创建自动创建一个隐藏的iframe，iframe的src指向cnblogs.com域名下的cs2.html页面  </p>
-<p>2) cs2.html响应请求后再将通过修改cs1.html的hash值来传递数据  </p>
-<p>3) 同时在cs1.html上加一个定时器，隔一段时间来判断location.hash的值有没有变化，一旦有变化则获取获取hash值  </p>
-<p>注：由于两个页面不在同一个域下IE、Chrome不允许修改parent.location.hash的值，所以要借助于a.com域名下的一个代理iframe  </p>
-<p>  先是a.com下的文件cs1.html文件：  </p>
-<pre><code>function startRequest(){
-var ifr = document.createElement(&apos;iframe&apos;);
-ifr.style.display = &apos;none&apos;;
-ifr.src = &apos;http://www.cnblogs.com/lab/cscript/cs2.html#paramdo&apos;;
-document.body.appendChild(ifr);
-}
-
-function checkHash() {
-try {
-var data = location.hash ? location.hash.substring(1) : &apos;&apos;;
-if (console.log) {
-console.log(&apos;Now the data is &apos;+data);
-}
-} catch(e) {};
-}
-setInterval(checkHash, 2000);  
-</code></pre><p>另一个域名下的 cs2.html：  </p>
-<pre><code>//模拟一个简单的参数处理操作
-switch(location.hash){
-case &apos;#paramdo&apos;:
-callBack();
-break;
-case &apos;#paramset&apos;:
-//do something……
-break;
-}
-
-function callBack(){
-try {
-parent.location.hash = &apos;somedata&apos;;
-} catch (e) {
-// ie、chrome的安全机制无法修改parent.location.hash，
-// 所以要利用一个中间的cnblogs域下的代理iframe
-var ifrproxy = document.createElement(&apos;iframe&apos;);
-ifrproxy.style.display = &apos;none&apos;;
-ifrproxy.src = &apos;http://a.com/test/cscript/cs3.html#somedata&apos;;// 注意该文件在&quot;a.com&quot;域下
-document.body.appendChild(ifrproxy);
-}
-}  
-</code></pre><p>a.com下的域名cs3.html：  </p>
-<pre><code>//因为parent.parent和自身属于同一个域，所以可以改变其location.hash的值
-parent.parent.location.hash = self.location.hash.substring(1);  
-</code></pre><h3 id="4-window-name-iframe"><a href="#4-window-name-iframe" class="headerlink" title="4.window.name + iframe"></a>4.window.name + iframe</h3><p>window.name 的美妙之处：name 值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。需要以下步骤：</p>
-<ul>
-<li>1）创建a.com/cs1.html</li>
-<li>2）创建a.com/proxy.html，并加入如下代码   </li>
-</ul>
-<blockquote>
-<pre><code>  &lt;script&gt;
-  function proxy(url, func){
-var isFirst = true,
-ifr = document.createElement(&apos;iframe&apos;),
-loadFunc = function(){
-  if(isFirst){
-ifr.contentWindow.location = &apos;http://a.com/cs1.html&apos;;
-isFirst = false;
-  }else{
-func(ifr.contentWindow.name);
-ifr.contentWindow.close();
-document.body.removeChild(ifr);
-ifr.src = &apos;&apos;;
-ifr = null;
-  }
-};
-
-ifr.src = url;
-ifr.style.display = &apos;none&apos;;
-if(ifr.attachEvent) ifr.attachEvent(&apos;onload&apos;, loadFunc);
-else ifr.onload = loadFunc;
-
-document.body.appendChild(iframe);
-  }
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;script&gt;
-proxy(&apos;http://www.baidu.com/&apos;, function(data){
-  console.log(data);
-});
-  &lt;/script&gt;
-&lt;/body&gt;    
-</code></pre></blockquote>
-<ul>
-<li>3）在b.com/cs1.html中包含:</li>
-</ul>
-<blockquote>
-<pre><code>&lt;script&gt;
-window.name = &apos;要传送的内容&apos;;
-&lt;/script&gt; 
-</code></pre></blockquote>
-<h3 id="5-postMessage（HTML5中的XMLHttpRequest-Level-2中的API）"><a href="#5-postMessage（HTML5中的XMLHttpRequest-Level-2中的API）" class="headerlink" title="5.postMessage（HTML5中的XMLHttpRequest Level 2中的API）"></a>5.postMessage（HTML5中的XMLHttpRequest Level 2中的API）</h3><p>1) a.com/index.html中的代码：  </p>
-<pre><code>&lt;iframe id=&quot;ifr&quot; src=&quot;b.com/index.html&quot;&gt;&lt;/iframe&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-window.onload = function() {
-var ifr = document.getElementById(&apos;ifr&apos;);
-var targetOrigin = &apos;http://b.com&apos;;  // 若写成&apos;http://b.com/c/proxy.html&apos;效果一样
-// 若写成&apos;http://c.com&apos;就不会执行postMessage了
-ifr.contentWindow.postMessage(&apos;I was there!&apos;, targetOrigin);
-};
-&lt;/script&gt;  
-</code></pre><p>2)b.com/index.html中的代码：  </p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-window.addEventListener(&apos;message&apos;, function(event){
-// 通过origin属性判断消息来源地址
-if (event.origin == &apos;http://a.com&apos;) {
-alert(event.data);// 弹出&quot;I was there!&quot;
-alert(event.source);  // 对a.com、index.html中window对象的引用
-  // 但由于同源策略，这里event.source不可以访问window对象
-}
-}, false);
-&lt;/script&gt;  
-</code></pre><h3 id="6-JSONP"><a href="#6-JSONP" class="headerlink" title="6.JSONP"></a>6.JSONP</h3><p>JSONP包含两部分：回调函数和数据。</p>
-<p>回调函数是当响应到来时要放在当前页面被调用的函数。</p>
-<p>数据就是传入回调函数中的json数据，也就是回调函数的参数了。 </p>
-<pre><code>function handleResponse(response){
-console.log(&apos;The responsed data is: &apos;+response.data);
-}
-var script = document.createElement(&apos;script&apos;);
-script.src = &apos;http://www.baidu.com/json/?callback=handleResponse&apos;;
-document.body.insertBefore(script, document.body.firstChild);
-/*handleResonse({&quot;data&quot;: &quot;zhe&quot;})*/
-//原理如下：
-//当我们通过script标签请求时
-//后台就会根据相应的参数(json,handleResponse)
-//来生成相应的json数据(handleResponse({&quot;data&quot;: &quot;zhe&quot;}))
-//最后这个返回的json数据(代码)就会被放在当前js文件中被执行
-//至此跨域通信完成  
-</code></pre><h3 id="7-web-sockets"><a href="#7-web-sockets" class="headerlink" title="7.web sockets"></a>7.web sockets</h3><p>web sockets是一种浏览器的API，它的目标是在一个单独的持久连接上提供全双工、双向通信。(同源策略对web sockets不适用)</p>
-<p>web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web sockt协议。<br>只有在支持web socket协议的服务器上才能正常工作。   </p>
-<pre><code>var socket = new WebSockt(&apos;ws://www.baidu.com&apos;);//http-&gt;ws; https-&gt;wss
-socket.send(&apos;hello WebSockt&apos;);
-socket.onmessage = function(event){
-var data = event.data;
-}
-</code></pre>
+            <p>
+              什么是跨域跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。   
+同源策略所谓同源是指，域名，协议，端口均相同。例如：http://www.123.com/index.html 调用 http://www.123.com/server.PHP （非跨域）
+http://www.123.com/index.html 调用 http://www.456.com/server.php （主域名不同:123/456，跨域）
+http://abc.123.com/index.html 调用 http://def.123.com/ser
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/05/24/2017.05.2huayu/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -732,6 +660,10 @@ var data = event.data;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -744,17 +676,23 @@ var data = event.data;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.24speedup/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/2017.05.24speedup/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -763,13 +701,9 @@ var data = event.data;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/24/2017.05.24speedup/" itemprop="url">
-                  加快网站访问速度的方法
-                </a>
+                
+                <a href="/2017/05/24/2017.05.24speedup/" class="post-title-link" itemprop="url">加快网站访问速度的方法</a>
               
             
           </h1>
@@ -777,25 +711,31 @@ var data = event.data;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T11:30:44+08:00">
-                2017-05-24
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 11:30:44" itemprop="dateCreated datePublished" datetime="2017-05-24T11:30:44+08:00">2017-05-24</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -803,14 +743,10 @@ var data = event.data;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -819,6 +755,7 @@ var data = event.data;
           
 
           
+            
             
           
 
@@ -835,7 +772,9 @@ var data = event.data;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -844,59 +783,43 @@ var data = event.data;
       
         
           
-            <p>通过以下的方法，可以提高网站的访问速度，减少页面的加载时间。</p>
-<hr>
-<h2 id="1-减少HTTP请求数量"><a href="#1-减少HTTP请求数量" class="headerlink" title="1.减少HTTP请求数量"></a>1.减少HTTP请求数量</h2><p>80%的用户响应时间被花费在前端，而这其中的绝大多数时间是用于下载页面中的图片、样式表、脚本以及Flash这些组件。减少这些组件的数量就可以减少展示页面所需的请求数，而这是提高网页响应速度的关键。 </p>
-<ul>
-<li>合并文件，通过把所有脚本置于一个脚本文件里或者把所有样式表放于一个样式表文件中，从而减少Http请求的数量。</li>
-<li>CSS Sprites是减少图片请求的首选方案。把所有的背景图片合并到一张图中，使用CSS的<code>background-image</code> 和<code>background-position</code> 属性去控制展现恰当的图片区域。</li>
-<li>Image maps把多张图片组合成为一张图片。图片的总大小是不变的，但减少Http请求数会提高页面的响应速度。Image maps只能用于图片在网页中相邻的情况，比如导航条。制定image maps中的图片坐标是个很麻烦的过程，而且容易出错。同时给导航使用image maps也并不易读，所以并不推荐使用。</li>
-<li>内联图片使用data: URL scheme 把图片数据嵌入页面，但这会增加Html文档的大小。把内联图片合并到你被缓存的的样式表中是一个能既减少HTTP请求数又不会增加页面大小的方法。 </li>
-</ul>
-<p>减少页面的Http请求数量是第一步，而且对于提高用户初次访问体验是最重要的一步。  </p>
-<h2 id="2-使用内容分布式网络（CDN）"><a href="#2-使用内容分布式网络（CDN）" class="headerlink" title="2.使用内容分布式网络（CDN）"></a>2.使用内容分布式网络（CDN）</h2><p>用户80-90%的访问时间被花费在下载页面中的图片、样式表、脚本、Flash这些组件上。这是网站展示的黄金法则。那么与其重新设计网站的结构，不如先实现这些静态组件的分布。这不仅仅可以大幅减少响应时间，而且由于内容分布式网络（content delivery networks）的存在，这将是个很简单的工作。内容分布式网络（CDN）是一系列分布在不同地域的服务器的集合，能够更有效的给用户发送信息。它会根据一种衡量网域距离的方法，选取为某个用户发送数据的服务器。比如，到达用户最少跳或者最快相应速度的服务器会被选中。 </p>
-<h2 id="3-给头部添加一个失效期或者Cache-Control"><a href="#3-给头部添加一个失效期或者Cache-Control" class="headerlink" title="3.给头部添加一个失效期或者Cache-Control"></a>3.给头部添加一个失效期或者Cache-Control</h2><ul>
-<li>对于静态组件：把头部的缓存期设为某个遥远的未来，使其能够“永不过期”；</li>
-<li>对于动态组件：使用适当的Cache-Control头部帮助浏览器执行特定的请求。 </li>
-</ul>
-<p>网页设计越来越丰富，页面里包含了越来越多的脚本、样式表、图片和Flash。页面的初次访问者也许会发送多个HTTP请求，但通过给头部添加失效期，你可以使那些组件被缓存。这会避免下次浏览页面时的不必要的HTTP请求。给图片文件的头部设置失效时间更为常用，但包括脚本文件、样式表和Flash之类的所有组件的头部都应该被设置失效时间。浏览器（还有代理服务器）使用缓存以减少HTTP请求的数量和大小，提高网页的加载速度。服务器在HTTP相应中通过头部中的过期时间告知客户端一个组件可以被缓存多久。</p>
-<h2 id="4-Gzip压缩组件"><a href="#4-Gzip压缩组件" class="headerlink" title="4.Gzip压缩组件"></a>4.Gzip压缩组件</h2><p>使用gzip压缩通常会减少70%的HTTP响应大小。当前浏览器中大约90%的Internet通讯传输声明支持gzip。</p>
-<h2 id="5-把样式表放在前面"><a href="#5-把样式表放在前面" class="headerlink" title="5.把样式表放在前面"></a>5.把样式表放在前面</h2><p>把样式表放在文档的最后，会导致包括IE在内的大部分浏览器不进行逐步呈现。浏览器为了避免当样式改变时重绘元素而中止呈现。用户会十分无聊的看到一个空白的页面。</p>
-<h2 id="6-把脚本放在最后"><a href="#6-把脚本放在最后" class="headerlink" title="6.把脚本放在最后"></a>6.把脚本放在最后</h2><p>脚本可能会堵塞并发的下载。HTTP/1.1规范建议浏览器在每个域名下只进行两个并发下载。如果你把图片放在多个域名下，可以实现多于两个的并发下载。当脚本被下载时，即使使用不同的域名。浏览器也不会进行任何其它的下载。有些情况下把脚本放到底部并不太容易。比如，脚本使用document.write 来添加部分页面中的内容，就不能放到页面中更后面的位置。还可能有作用域的问题。很多情况下，还有一些变通的方法。<br>通常的建议是使用延迟脚本。DEFER属性表明脚本不包括document.write，而且提示浏览器继续展现。不幸的是，Firefox不支持DEFER属性。IE中，脚本可以被延迟，但并不如你期望的那么久。如果一个脚本可以被延迟，那么它也可以被放在页面的底部。这会让你的页面加载的更快。</p>
-<h2 id="7-不使用CSS表达式"><a href="#7-不使用CSS表达式" class="headerlink" title="7.不使用CSS表达式"></a>7.不使用CSS表达式</h2><p>使用一次性的表达式是减少CSS表达式的执行次数的一个方法，当表达式第一次执行时，CSS表达式会被一个确定的值代替。如果在页面生命周期中，样式属性必须动态的设定，使用事件处理替代CSS表达式是一个可选的方法。如果必须使用CSS表达式，要记得它们会执行上千次并影响页面的性能。</p>
-<h2 id="8-使用外部的JavaScript和CSS"><a href="#8-使用外部的JavaScript和CSS" class="headerlink" title="8.使用外部的JavaScript和CSS"></a>8.使用外部的JavaScript和CSS</h2><p>在实际应用中使用外部的文件往往产生更快的页面，因为浏览器会缓存JavaScript和CSS文件。而内联在页面里的JavaScript和CSS会在每次请求页面时下载。这会减少所需的HTTP请求数，但增大HTML文档的体积。而另一方面，如果放在外部文件里的JavaScript和CSS被浏览器缓存，则既不用增加HTTP请求的数量，HTML文档的体积也会减少。</p>
-<h2 id="9-减少DNS查询"><a href="#9-减少DNS查询" class="headerlink" title="9.减少DNS查询"></a>9.减少DNS查询</h2><p>当客户端的DNS缓存被清空（包括浏览器和操作系统的缓存），DNS查询的数量等同于网页中单独的域名的数量。包括页面中的链接，图片，脚本文件，样式表，Flash对象等。减少不同域名的数量则会减少DNS查询的数量。减少不同域名的数量可能减少页面并行的下载数量。减少DNS查询缩短了响应时间，但减少了并行下载数也许会增加响应时间。将组件分布在两到四个域名之间能很好的折中减少DNS查询提高的速度和维持较高水平的并行下载的效果。</p>
-<h2 id="10-缩小JavaScript和CSS"><a href="#10-缩小JavaScript和CSS" class="headerlink" title="10.缩小JavaScript和CSS"></a>10.缩小JavaScript和CSS</h2><p>缩小是指从代码中删除不必要的字母，减少文件体积从而提高加载速度。缩减代码时需要移除所有的注释，以及不需要的空白（空格，新行和tab）。这样处理JavaScript之后，会由于下载文件的体积被减少而提高响应的性能。不仅仅要压缩外部的脚本和样式表，内敛的<br>&lt; script&gt;和&lt; style&gt;部分也可以而且应当被压缩。</p>
-<h2 id="11-避免重定向"><a href="#11-避免重定向" class="headerlink" title="11.避免重定向"></a>11.避免重定向</h2><p>重定向降低了用户体验。在用户和HTML文档之间插入的重定向延误了页面的呈现和组件下载，因为它们都不可能在获得HTML文档之前开始。</p>
-<h2 id="12-移除重复的脚本"><a href="#12-移除重复的脚本" class="headerlink" title="12.移除重复的脚本"></a>12.移除重复的脚本</h2><p>当脚本被重复包含时，由于增加了不必要的HTTP请求和JavaScript的执行，影响了性能。</p>
-<h2 id="13-设定ETags"><a href="#13-设定ETags" class="headerlink" title="13.设定ETags"></a>13.设定ETags</h2><p>实体标签（ETags）是服务器和浏览器用于确定浏览器中缓存的组件和服务器中的是否对应的一种机制。</p>
-<h2 id="14-让Ajax可以缓存"><a href="#14-让Ajax可以缓存" class="headerlink" title="14.让Ajax可以缓存"></a>14.让Ajax可以缓存</h2><p>Ajax的好处之一是它能给用户提供瞬间的响应，因为它从服务端异步请求数据。但Ajax不能保证用户在等候那些异步的JavaScript和XML响应返回时什么都不做。在应用程序中，用户是否继续等待取决于Ajax怎样应用。为了提高性能，优化Ajax响应很重要。提高Ajax性能最重要的方式是使响应缓存。</p>
-<h2 id="15-更早地刷新缓冲区"><a href="#15-更早地刷新缓冲区" class="headerlink" title="15.更早地刷新缓冲区"></a>15.更早地刷新缓冲区</h2><p>当用户请求一个页面，服务端会花费200至500毫秒的时间组合HTML页面。在这期间，浏览器会静静等待数据到来。PHP中有flush（）函数，它允许你向浏览器发送部分就绪的HTML响应，这样浏览器可以在服务器处理余下的HTML页面时去获取组件。这样的好处主要在忙碌的后台和轻松的前台间可以看到。</p>
-<h2 id="16-在Ajax请求中使用GET方法"><a href="#16-在Ajax请求中使用GET方法" class="headerlink" title="16.在Ajax请求中使用GET方法"></a>16.在Ajax请求中使用GET方法</h2><p>POST方法在浏览器中分两步执行：先发送头部，然后发送数据。所以最好使用只发送一个TCP包（除非你有很多的cookie）的GET方法。IE中URL的最大长度是2000，所以如果你发送超过2000的数据就不能使用GET方法。</p>
-<h2 id="17-后加载组件"><a href="#17-后加载组件" class="headerlink" title="17.后加载组件"></a>17.后加载组件</h2><p> 有执行拖放、下拉和动画的JavaScript代码和菜单，它们可以稍后加载，因为用户在初始呈现之后才会在页面上拖动元素。其他的可以被后加载的地方包括隐藏的内容（当用户做某项操作才会展现的内容）和被折叠的图片。</p>
-<h2 id="18-利用浏览器的空闲时间来加载之后需要的组件"><a href="#18-利用浏览器的空闲时间来加载之后需要的组件" class="headerlink" title="18.利用浏览器的空闲时间来加载之后需要的组件"></a>18.利用浏览器的空闲时间来加载之后需要的组件</h2><p>利用浏览器的空闲时间来加载之后需要的组件（比如图片，样式表和脚本），当用户浏览下一个页面的时候，大部分组件都已经在缓存里了而页面会加载的更快。</p>
-<h2 id="19-减少DOM-元素数量"><a href="#19-减少DOM-元素数量" class="headerlink" title="19.减少DOM 元素数量"></a>19.减少DOM 元素数量</h2><p>复杂的页面意味着更多的字节需要被下载而且也意味着在JavaScript中遍历DOM更慢。比如你在页面中添加一个事件，让它在500或者5000个DOM元素中循环，它们的效率是不同的。</p>
-<h2 id="20-减少cookie的大小"><a href="#20-减少cookie的大小" class="headerlink" title="20.减少cookie的大小"></a>20.减少cookie的大小</h2><p>尽量减少cookie的体积对减少用户获得响应的时间十分重要。</p>
-<h2 id="21-减少dom的读取"><a href="#21-减少dom的读取" class="headerlink" title="21.减少dom的读取"></a>21.减少dom的读取</h2><p>利用Javascript读取DOM元素很慢，所以为了获得响应更快的页面，应该减少dom的读取，同时避免利用JavaScript定位布局。</p>
-<h2 id="22-不要再HTML中缩放图片"><a href="#22-不要再HTML中缩放图片" class="headerlink" title="22.不要再HTML中缩放图片"></a>22.不要再HTML中缩放图片</h2><p>不要使用大小超过需要的图片，即使你能够在HTML中设置它的属性。</p>
-<h2 id="23-使用小的可缓存的favion-ico"><a href="#23-使用小的可缓存的favion-ico" class="headerlink" title="23.使用小的可缓存的favion.ico"></a>23.使用小的可缓存的favion.ico</h2><p>favicon.icon是放在服务器根目录的一个图片，而且由于它是在同一服务器下的，Cookie也会随着每次请求一并发送。这张图片同样干扰下载队列，比如在IE中，当你在onload事件中请求额外的组件时，favicon会在这些额外组件之前下载。所以为了减少favicon.ico的不利影响，应当使用小图片，小于1k最好，并设置你认为合适的过期时间。</p>
+            <p>
+              通过以下的方法，可以提高网站的访问速度，减少页面的加载时间。
 
+1.减少HTTP请求数量80%的用户响应时间被花费在前端，而这其中的绝大多数时间是用于下载页面中的图片、样式表、脚本以及Flash这些组件。减少这些组件的数量就可以减少展示页面所需的请求数，而这是提高网页响应速度的关键。 
+
+合并文件，通过把所有脚本置于一个脚本文件里或者把所有样式表放于一个样式表文件中，从而减少Http请求的数量。
+CSS Sprites是减少图片请求的首选方案。把所有的背景图片合并到一张图中，使用CSS的background-image 和background-position 属性去控制展现恰当的图片区域。
+
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/05/24/2017.05.24speedup/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -910,6 +833,10 @@ var data = event.data;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -922,17 +849,23 @@ var data = event.data;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/23/2017.05.23/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/23/2017.05.23/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -941,13 +874,9 @@ var data = event.data;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/23/2017.05.23/" itemprop="url">
-                  从输入url到页面加载完成中发生的事情
-                </a>
+                
+                <a href="/2017/05/23/2017.05.23/" class="post-title-link" itemprop="url">从输入url到页面加载完成中发生的事情</a>
               
             
           </h1>
@@ -955,25 +884,31 @@ var data = event.data;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T23:16:46+08:00">
-                2017-05-23
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-05-23 23:16:46" itemprop="dateCreated datePublished" datetime="2017-05-23T23:16:46+08:00">2017-05-23</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -981,14 +916,10 @@ var data = event.data;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -997,6 +928,7 @@ var data = event.data;
           
 
           
+            
             
           
 
@@ -1013,7 +945,9 @@ var data = event.data;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1022,49 +956,41 @@ var data = event.data;
       
         
           
-            <h2 id="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？"><a href="#一个页面从输入URL到页面加载显示完成，这个过程都发生什么？" class="headerlink" title="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？"></a>一个页面从输入URL到页面加载显示完成，这个过程都发生什么？</h2><h3 id="1-url分割"><a href="#1-url分割" class="headerlink" title="1.url分割"></a>1.url分割</h3><p>输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；  </p>
-<h3 id="2-域名解析"><a href="#2-域名解析" class="headerlink" title="2.域名解析"></a>2.域名解析</h3><p>判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：  </p>
-<ul>
-<li>（1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应的ip地址，（这里的缓存查看顺序为从浏览器缓存开始，到系统缓存，再到路由器缓存）有的话直接返回，没有dns缓存的话进行下一步；  </li>
-<li>（2）本地dns服务器向全球13个根域名服务器中的一台发送dns查询请求，根服务器会返回顶级域名服务器的ip（如果有的话）给本地dns服务器；</li>
-<li>（3）本地dns服务器得到顶级域名服务器的IP地址之后， 向顶级域名服务器发送dns查询请求，顶级域名服务器会返回域名所对应的权威dns服务器的ip地址（如果有的话）给本地dns服务器；</li>
-<li>（4）本地dns服务器根据得到的权威dns域名服务器的ip向此权威dns域名服务器发起dns查询请求，权威dns服务器会返回查找的域名的ip地址给本地dns服务器（如果有的话）。<br>当然这些都是建立在本地dns没有根dns服务器，顶级dns服务器以及权威dns服务器的dns缓存的情况下的，如果有上述的缓存，可能会跳过一些步骤。<h3 id="3-确定端口"><a href="#3-确定端口" class="headerlink" title="3.确定端口"></a>3.确定端口</h3>如果输入的url没有著名端口的话，浏览器发送http请求是会使用默认端口，如http连接的默认端口是80。如果url中定义了端口，就会按照定义的端口进行连接；  <h3 id="4-浏览器向服务器发送一个HTTP请求"><a href="#4-浏览器向服务器发送一个HTTP请求" class="headerlink" title="4.浏览器向服务器发送一个HTTP请求"></a>4.浏览器向服务器发送一个HTTP请求</h3><h4 id="（1）在发送http缓存之前，首先客户端要与服务器建立TCP连接（三次握手）"><a href="#（1）在发送http缓存之前，首先客户端要与服务器建立TCP连接（三次握手）" class="headerlink" title="（1）在发送http缓存之前，首先客户端要与服务器建立TCP连接（三次握手）:"></a>（1）在发送http缓存之前，首先客户端要与服务器建立TCP连接（三次握手）:</h4></li>
-<li>SYN_SEND 客户端发送一个带SYN标志的TCP报文到服务器。这是三次握手过程中的报文1； </li>
-<li>SYN_RECV 服务器端回应客户端，这是三次握手中的第2个报文，这个报文同时带ACK标志(表示服务器准备好了数据通信)和SYN标志。因为它表示对刚才客户端SYN报文的回应；同时又标志SYN给客户端，询问客户端是否准备好数据通讯；内核在收到最后一个ACK后，accept会返回；</li>
-<li>ESTABLISH 客户端必须再次回应服务器端一个ACK报文（表示客户端也准备好了数据通信），这是报文段3；<br>这时就成功建立了TCP连接.  <h4 id="（2）客户端向服务器发送命令请求"><a href="#（2）客户端向服务器发送命令请求" class="headerlink" title="（2）客户端向服务器发送命令请求"></a>（2）客户端向服务器发送命令请求</h4>一旦建立了TCP连接，Web浏览器就会向Web服务器发送请求命令。例如：GET/sample/hello.jsp HTTP/1.1。<h4 id="（3）浏览器发送请求头信息"><a href="#（3）浏览器发送请求头信息" class="headerlink" title="（3）浏览器发送请求头信息"></a>（3）浏览器发送请求头信息</h4>浏览器发送其请求命令之后，还要以头信息的形式向Web服务器发送一些别的信息，之后浏览器发送了一空白行来通知服务器，它已经结束了该头信息的发送。<h4 id="（4）服务器响应"><a href="#（4）服务器响应" class="headerlink" title="（4）服务器响应"></a>（4）服务器响应</h4>客户机向服务器发出请求后，服务器会客户机回送应答， HTTP/1.1 200 OK ，应答的第一部分是协议的版本号和应答状态码。  <h4 id="（5）服务器应对应答头信息"><a href="#（5）服务器应对应答头信息" class="headerlink" title="（5）服务器应对应答头信息"></a>（5）服务器应对应答头信息</h4>正如客户端会随同请求发送关于自身的信息一样，服务器也会随同应答向用户发送关于它自己的数据及被请求的文档。<h4 id="（6）服务器向浏览器发送数据"><a href="#（6）服务器向浏览器发送数据" class="headerlink" title="（6）服务器向浏览器发送数据"></a>（6）服务器向浏览器发送数据</h4>Web服务器向浏览器发送头信息后，它会发送一个空白行来表示头信息的发送到此为结束，接着，它就以Content-Type应答头信息所描述的格式发送用户所请求的实际数据。<h4 id="（7）关闭TCP链接"><a href="#（7）关闭TCP链接" class="headerlink" title="（7）关闭TCP链接"></a>（7）关闭TCP链接</h4>一般来说，服务器向客户端发送数据之后会关闭tcp连接，如果过浏览器发送的头信息中加入了<code>Connection:keep-alive</code>之后，就会一直保持连接的打开状态。<h3 id="5-浏览器根据得到的数据，开始进行网页的加载，解析，渲染过程"><a href="#5-浏览器根据得到的数据，开始进行网页的加载，解析，渲染过程" class="headerlink" title="5.浏览器根据得到的数据，开始进行网页的加载，解析，渲染过程"></a>5.浏览器根据得到的数据，开始进行网页的加载，解析，渲染过程</h3></li>
-</ul>
-<h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><p>加载是指获取HTML/SVG/XHTML，CSS和JavaScript的过程。加载过程中遇到外部css文件，浏览器另外发出一个请求，来获取css文件。遇到图片资源，浏览器也会另外发出一个请求，来获取图片资源。这是异步请求，并不会影响html文档进行加载，但是当文档加载过程中遇到js文件，html文档会挂起渲染（加载解析渲染同步）的线程，不仅要等待文档中js文件加载完毕，还要等待解析执行完毕，才可以恢复html文档的渲染线程。虽然css文件的加载不影响js文件的加载，但是却影响js文件的执行，即使js文件内只有一行代码，也会造成阻塞。</p>
-<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><ul>
-<li>解析HTML/SVG/XHTML来产生一个DOM tree，dom tree是由dom元素及属性节点组成，树的根是document对象；</li>
-<li>解析CSS来生成CSS rule tree，包含css规则，该规则包含选择器和声明对象；</li>
-<li>解析JavaScript脚本，通过DOM API 和 CSSOM API 来操作DOM tree 和 CSS rule tree。</li>
-</ul>
-<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h4><p>即为构建渲染树的过程，是原来DOM树的可视化表示，构建这棵树是为了以正确的顺序绘制文档内容。</p>
-<h5 id="渲染顺序"><a href="#渲染顺序" class="headerlink" title="渲染顺序"></a>渲染顺序</h5><ul>
-<li>1.渲染的顺序也是从上到下；</li>
-<li>2.在渲染到页面的某一部分时，其上面的所有部分都已经下载完成；</li>
-<li>3.如果遇到语义解释性的标签嵌入文件（JS脚本，CSS样式），会进行加载和解析，解析过程中，停止页面所有往下元素的加载；</li>
-<li>4.样式表在加载完成后，将和以前加载的所有样式表一起进行解析，解析完成后，将对此前所有元素（含以前已经渲染的）重新进行渲染；</li>
-<li>5.JS、CSS中如有重定义，后定义函数将覆盖前定义函数。</li>
-</ul>
-<h5 id="JavaScript的加载"><a href="#JavaScript的加载" class="headerlink" title="JavaScript的加载"></a>JavaScript的加载</h5><p>JavaScript加载后马上执行，而且执行时会阻塞页面后续的内容（包括页面的渲染、其它资源的下载）。于是，如果有多个js文件被引入，那么对于浏览器来说，这些js文件被被串行地载入，并依次执行。因为javascript可能会来操作HTML文档的DOM树，所以，浏览器一般都不会像并行下载css文件并行下载js文件。因此JavaScript无法操作此JavaScript之后的dom元素。</p>
+            <p>
+              一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；  
+2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：  
 
+（1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应的ip地址，（这里的缓存查看顺序为从浏览器缓存开始，到系统缓存，再到路由器缓存）有的话直接返回，没有dns缓存的话进行下一步；  
+（2）本地dns服务器向全球13个根域名服务器中的一台发送dns查询
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/05/23/2017.05.23/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1078,6 +1004,10 @@ var data = event.data;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1090,17 +1020,23 @@ var data = event.data;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/2017.04.25.vueresource/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/2017.04.25.vueresource/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1109,13 +1045,9 @@ var data = event.data;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/25/2017.04.25.vueresource/" itemprop="url">
-                  Vue.js——vue-resource
-                </a>
+                
+                <a href="/2017/04/25/2017.04.25.vueresource/" class="post-title-link" itemprop="url">Vue.js——vue-resource</a>
               
             
           </h1>
@@ -1123,25 +1055,31 @@ var data = event.data;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T20:48:44+08:00">
-                2017-04-25
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-25 20:48:44" itemprop="dateCreated datePublished" datetime="2017-04-25T20:48:44+08:00">2017-04-25</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1149,14 +1087,10 @@ var data = event.data;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -1165,6 +1099,7 @@ var data = event.data;
           
 
           
+            
             
           
 
@@ -1181,7 +1116,9 @@ var data = event.data;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1190,207 +1127,38 @@ var data = event.data;
       
         
           
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>vue-resource是Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。也就是说，$.ajax能做的事情，vue-resource插件一样也能做到，而且vue-resource的API更为简洁。另外，vue-resource还提供了非常有用的inteceptor功能，使用inteceptor可以在请求前和请求后附加一些行为，比如使用inteceptor在ajax请求时显示loading界面。  </p>
-<h1 id="vue-resource特点"><a href="#vue-resource特点" class="headerlink" title="vue-resource特点"></a>vue-resource特点</h1><h2 id="体积小"><a href="#体积小" class="headerlink" title="体积小"></a>体积小</h2><p>vue-resource非常小巧，在压缩以后只有大约12KB，服务端启用gzip压缩后只有4.5KB大小，这远比jQuery的体积要小得多。</p>
-<h2 id="支持主流浏览器"><a href="#支持主流浏览器" class="headerlink" title="支持主流浏览器"></a>支持主流浏览器</h2><p>和Vue.js一样，vue-resource除了不支持IE 9以下的浏览器，其他主流的浏览器都支持。</p>
-<h2 id="支持Promise-API-和-URL-Templates"><a href="#支持Promise-API-和-URL-Templates" class="headerlink" title="支持Promise API 和 URL Templates"></a>支持Promise API 和 URL Templates</h2><p>Promise是ES6的特性，Promise的中文含义为“先知”，Promise对象用于异步计算。<br>URI Templates表示URI模板，有些类似于ASP.NET MVC的路由模板。</p>
-<h2 id="支持拦截器"><a href="#支持拦截器" class="headerlink" title="支持拦截器"></a>支持拦截器</h2><p>拦截器是全局的，拦截器可以在请求发送前和发送请求后做一些处理。<br>拦截器在一些场景下会非常有用，比如请求发送前在headers中设置access_token，或者在请求失败时，提供共通的处理方式。</p>
-<h1 id="vue-resource-使用"><a href="#vue-resource-使用" class="headerlink" title="vue-resource 使用"></a>vue-resource 使用</h1><h2 id="引入vue-resource"><a href="#引入vue-resource" class="headerlink" title="引入vue-resource"></a>引入vue-resource</h2><pre><code>&lt;script src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;js/vue-resource.js&quot;&gt;&lt;/script&gt;  
-</code></pre><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>引入vue-resource后，可以基于全局的Vue对象使用http，也可以基于某个Vue实例使用http。  </p>
-<pre><code>// 基于全局Vue对象使用http
-Vue.http.get(&apos;/someUrl&apos;, [options]).then(successCallback, errorCallback);
-Vue.http.post(&apos;/someUrl&apos;, [body], [options]).then(successCallback, errorCallback);
-
-// 在一个Vue实例内使用$http
-this.$http.get(&apos;/someUrl&apos;, [options]).then(successCallback, errorCallback);
-this.$http.post(&apos;/someUrl&apos;, [body], [options]).then(successCallback, errorCallback);  
-</code></pre><p>在发送请求后，使用then方法来处理响应结果，then方法有两个参数，第一个参数是响应成功时的回调函数，第二个参数是响应失败时的回调函数。</p>
-<p>then方法的回调函数也有两种写法，第一种是传统的函数写法，第二种是更为简洁的ES 6的Lambda写法：<br>    // 传统写法<br>    this.$http.get(‘/someUrl’, [options]).then(function(response){<br>    // 响应成功回调<br>    }, function(response){<br>    // 响应错误回调<br>    });</p>
-<pre><code>// Lambda写法
-this.$http.get(&apos;/someUrl&apos;, [options]).then((response) =&gt; {
-// 响应成功回调
-}, (response) =&gt; {
-// 响应错误回调
-});
-</code></pre><h2 id="支持的HTTP方法"><a href="#支持的HTTP方法" class="headerlink" title="支持的HTTP方法"></a>支持的HTTP方法</h2><p>vue-resource的请求API是按照REST风格设计的，它提供了7种请求API：   </p>
-<ul>
-<li>get(url, [options])</li>
-<li>head(url, [options])</li>
-<li>delete(url, [options])</li>
-<li>jsonp(url, [options])</li>
-<li>post(url, [body], [options])</li>
-<li>put(url, [body], [options])</li>
-<li>patch(url, [body], [options])  </li>
-</ul>
-<p>除了jsonp以外，另外6种的API名称是标准的HTTP方法。当服务端使用REST API时，客户端的编码风格和服务端的编码风格近乎一致，这可以减少前端和后端开发人员的沟通成本。  </p>
-<h2 id="options-对象"><a href="#options-对象" class="headerlink" title="options 对象"></a>options 对象</h2><p>response对象包含以下属性：<br><img src="http://onep1caa3.bkt.clouddn.com/04.25.1.png" alt="">  </p>
-<h1 id="CURD-示例"><a href="#CURD-示例" class="headerlink" title="CURD 示例"></a>CURD 示例</h1><h2 id="get-请求"><a href="#get-请求" class="headerlink" title="get 请求"></a>get 请求</h2><pre><code>var demo = new Vue({
-el: &apos;#app&apos;,
-data: {
-gridColumns: [&apos;customerId&apos;, &apos;companyName&apos;, &apos;contactName&apos;, &apos;phone&apos;],
-gridData: [],
-apiUrl: &apos;http://211.149.193.19:8080/api/customers&apos;
-},
-ready: function() {
-this.getCustomers()
-},
-methods: {
-getCustomers: function() {
-this.$http.get(this.apiUrl)
-.then((response) =&gt; {
-this.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
-}
-}
-})  
-</code></pre><p>这段程序的then方法只提供了successCallback，而省略了errorCallback。<br>catch方法用于捕捉程序的异常，catch方法和errorCallback是不同的，errorCallback只在响应失败时调用，而catch则是在整个请求到响应过程中，只要程序出错了就会被调用。</p>
-<p>在then方法的回调函数内，你也可以直接使用this，this仍然是指向Vue实例的： </p>
-<pre><code>getCustomers: function() {
-this.$http.get(this.apiUrl)
-.then((response) =&gt; {
-this.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
-}  
-</code></pre><h2 id="JSONP-请求"><a href="#JSONP-请求" class="headerlink" title="JSONP 请求"></a>JSONP 请求</h2><pre><code>getCustomers: function() {
-this.$http.jsonp(this.apiUrl).then(function(response){
-this.$set(&apos;gridData&apos;, response.data)
-})
-}  
-</code></pre><h2 id="POST-请求"><a href="#POST-请求" class="headerlink" title="POST 请求"></a>POST 请求</h2><pre><code>var demo = new Vue({
-el: &apos;#app&apos;,
-data: {
-show: false,
-gridColumns: [{
-name: &apos;customerId&apos;,
-isKey: true
-}, {
-name: &apos;companyName&apos;
-}, {
-name: &apos;contactName&apos;
-}, {
-name: &apos;phone&apos;
-}],
-gridData: [],
-apiUrl: &apos;http://211.149.193.19:8080/api/customers&apos;,
-item: {}
-},
-ready: function() {
-this.getCustomers()
-},
-methods: {
-closeDialog: function() {
-this.show = false
-},
-getCustomers: function() {
-var vm = this
-vm.$http.get(vm.apiUrl)
-.then((response) =&gt; {
-vm.$set(&apos;gridData&apos;, response.data)
-})
-},
-createCustomer: function() {
-var vm = this
-vm.$http.post(vm.apiUrl, vm.item)
-.then((response) =&gt; {
-vm.$set(&apos;item&apos;, {})
-vm.getCustomers()
-})
-this.show = false
-}
-}
-})  
-</code></pre><h2 id="PUT-请求"><a href="#PUT-请求" class="headerlink" title="PUT 请求"></a>PUT 请求</h2><pre><code>updateCustomer: function() {
-var vm = this
-vm.$http.put(this.apiUrl + &apos;/&apos; + vm.item.customerId, vm.item)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre><h2 id="DELETE-请求"><a href="#DELETE-请求" class="headerlink" title="DELETE 请求"></a>DELETE 请求</h2><pre><code>deleteCustomer: function(customer){
-var vm = this
-vm.$http.delete(this.apiUrl + &apos;/&apos; + customer.customerId)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre><h1 id="使用resource-请求"><a href="#使用resource-请求" class="headerlink" title="使用resource 请求"></a>使用resource 请求</h1><p>vue-resource提供了另外一种方式访问HTTP——resource服务，resource服务包含以下几种默认的action：  </p>
-<pre><code>get: {method: &apos;GET&apos;},
-save: {method: &apos;POST&apos;},
-query: {method: &apos;GET&apos;},
-update: {method: &apos;PUT&apos;},
-remove: {method: &apos;DELETE&apos;},
-delete: {method: &apos;DELETE&apos;}  
-</code></pre><p>resource对象也有两种访问方式：  </p>
-<ul>
-<li>全局访问：Vue.resource</li>
-<li>实例访问：this.$resource  </li>
-</ul>
-<h2 id="GET-请求"><a href="#GET-请求" class="headerlink" title="GET 请求"></a>GET 请求</h2><pre><code>getCustomers: function() {
-
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.get()
-.then((response) =&gt; {
-vm.$set(&apos;gridData&apos;, response.data)
-})
-.catch(function(response) {
-console.log(response)
-})
-}  
-</code></pre><h2 id="POST-请求-1"><a href="#POST-请求-1" class="headerlink" title="POST 请求"></a>POST 请求</h2><pre><code>createCustomer: function() {
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.save(vm.apiUrl, vm.item)
-.then((response) =&gt; {
-vm.$set(&apos;item&apos;, {})
-vm.getCustomers()
-})
-this.show = false
-}  
-</code></pre><h2 id="PUT-请求-1"><a href="#PUT-请求-1" class="headerlink" title="PUT 请求"></a>PUT 请求</h2><pre><code>updateCustomer: function() {
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.update({ id: vm.item.customerId}, vm.item)
-.then((response) =&gt; {
-vm.getCustomers()
-})
-} 
-</code></pre><h2 id="DELETE-请求-1"><a href="#DELETE-请求-1" class="headerlink" title="DELETE 请求"></a>DELETE 请求</h2><pre><code>deleteCustomer: function(customer){
-var resource = this.$resource(this.apiUrl)
-vm = this
-
-resource.remove({ id: customer.customerId})
-.then((response) =&gt; {
-vm.getCustomers()
-})
-}  
-</code></pre>
+            <p>
+              概述vue-resource是Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。也就是说，$.ajax能做的事情，vue-resource插件一样也能做到，而且vue-resource的API更为简洁。另外，vue-resource还提供了非常有用的inteceptor功能，使用inteceptor可以在请求前和请求后附加一些行为，比如使用inteceptor在ajax请求时显示loading界面。  
+vue-resource特点体积小vue-resource非常小巧，在压缩以后只有大约12KB，服务端启用gzip压缩后只有4.5KB大小，这远比j
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/25/2017.04.25.vueresource/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1404,6 +1172,10 @@ vm.getCustomers()
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1416,17 +1188,23 @@ vm.getCustomers()
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/2017.04.24.html&xml&xhtml/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/2017.04.24.html&xml&xhtml/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1435,13 +1213,9 @@ vm.getCustomers()
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/24/2017.04.24.html&xml&xhtml/" itemprop="url">
-                  HTML,XML和XHTML
-                </a>
+                
+                <a href="/2017/04/24/2017.04.24.html&xml&xhtml/" class="post-title-link" itemprop="url">HTML,XML和XHTML</a>
               
             
           </h1>
@@ -1449,25 +1223,31 @@ vm.getCustomers()
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T21:20:40+08:00">
-                2017-04-24
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-24 21:20:40" itemprop="dateCreated datePublished" datetime="2017-04-24T21:20:40+08:00">2017-04-24</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1475,14 +1255,10 @@ vm.getCustomers()
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -1491,6 +1267,7 @@ vm.getCustomers()
           
 
           
+            
             
           
 
@@ -1507,7 +1284,9 @@ vm.getCustomers()
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1516,171 +1295,43 @@ vm.getCustomers()
       
         
           
-            <h1 id="XHTML"><a href="#XHTML" class="headerlink" title="XHTML"></a>XHTML</h1><h2 id="XHTML是什么"><a href="#XHTML是什么" class="headerlink" title="XHTML是什么"></a>XHTML是什么</h2><ul>
-<li>XHTML 指可扩展超文本标签语言（EXtensible HyperText Markup Language）。</li>
-<li>XHTML 的目标是取代 HTML。</li>
-<li>XHTML 与 HTML 4.01 几乎是相同的。</li>
-<li>XHTML 是更严格更纯净的 HTML 版本。</li>
-<li>XHTML 是作为一种 XML 应用被重新定义的 HTML。</li>
-<li>XHTML 是一个 W3C 标准。  <h2 id="为什么使用XHTML"><a href="#为什么使用XHTML" class="headerlink" title="为什么使用XHTML"></a>为什么使用XHTML</h2>简单地说，XHTML是HTML与XML的结合物。HTML用来显示数据，而XML用来描述数据。XHTML可以被所有的支持XML的设备读取，同时在其余的浏览器升级至支持 XML 之前，XHTML 使我们有能力编写出拥有良好结构的文档，这些文档可以很好地工作于所有的浏览器，并且可以向后兼容。<h2 id="XHTML语法"><a href="#XHTML语法" class="headerlink" title="XHTML语法"></a>XHTML语法</h2></li>
-<li>XHTML 元素必须被正确地嵌套。</li>
-<li>XHTML 元素必须被关闭。</li>
-<li>标签名必须用小写字母。</li>
-<li>XHTML 文档必须拥有根元素。</li>
-<li>属性名称必须小写。</li>
-<li>属性值必须加引号。</li>
-<li>属性不能简写。  </li>
-</ul>
-<p>下面是一个HTML的简写属性列表，以及在XHTML中的改写<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.1.png" alt=""></p>
-<ul>
-<li><p>用 Id 属性代替 name 属性。  </p>
-</li>
-<li><p>XHTML DTD 定义了强制使用的 HTML 元素。  </p>
-</li>
-</ul>
-<h2 id="XHTML-DTD"><a href="#XHTML-DTD" class="headerlink" title="XHTML DTD"></a>XHTML DTD</h2><p>XHTML定义了三种文件类型声明：   </p>
-<ul>
-<li>STRICT（严格类型）</li>
-<li>TRANSITIONAL（过渡类型）</li>
-<li>FRAMESET（框架类型）  </li>
-</ul>
-<h3 id="XHTML-1-0-Strict"><a href="#XHTML-1-0-Strict" class="headerlink" title="XHTML 1.0 Strict"></a>XHTML 1.0 Strict</h3><pre><code>&lt;!DOCTYPE html
-PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; 
-&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;  
-</code></pre><p>在此情况下使用：需要干净的标记，避免表现上的混乱。  </p>
-<h3 id="XHTML-1-0-Transitional"><a href="#XHTML-1-0-Transitional" class="headerlink" title="XHTML 1.0 Transitional"></a>XHTML 1.0 Transitional</h3><pre><code>&lt;!DOCTYPE html
-PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
-&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
-</code></pre><p>在此情况下使用：当需要利用 HTML 在表现上的特性时，并且当需要为那些不支持层叠样式表的浏览器编写 XHTML 时。  </p>
-<h3 id="XHTML-1-0-Frameset"><a href="#XHTML-1-0-Frameset" class="headerlink" title="XHTML 1.0 Frameset"></a>XHTML 1.0 Frameset</h3><pre><code>&lt;!DOCTYPE html
-PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
-&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;  
-</code></pre><h2 id="如何升级到XHTML"><a href="#如何升级到XHTML" class="headerlink" title="如何升级到XHTML"></a>如何升级到XHTML</h2><ul>
-<li>添加文件类型声明</li>
-<li>小写的标签和属性名</li>
-<li>给所有属性加上引号</li>
-<li>空标签：<code>&lt;hr&gt;,&lt;br&gt;,&lt;img&gt;</code>中需要加上/</li>
-<li>验证站点</li>
-</ul>
-<h2 id="XHTML模块"><a href="#XHTML模块" class="headerlink" title="XHTML模块"></a>XHTML模块</h2><h3 id="XHTML模块化的原因"><a href="#XHTML模块化的原因" class="headerlink" title="XHTML模块化的原因"></a>XHTML模块化的原因</h3><p>通过将 XHTML 分为若干模块，W3C 已经创造出数套小巧且定义良好的 XHTML 元素，这些元素既可被独立应用于简易设备，又可以与其他 XML 标准并入大型且更复杂的应用程序。<br>通过使用模块化的 XHTML，产品和软件设计者可以： </p>
-<ul>
-<li>选择被某种设备所支持的元素。</li>
-<li>在不打破 XHTML 标准的情况下，使用 XML 对 XHTML 进行扩展。</li>
-<li>针对小型设备，对 XHTML 进行简化。</li>
-<li>通过添加新的 XML 功能（比如 MathML, SVG, 语音和多媒体），针对复杂的应用对 XHTML 进行扩展。</li>
-<li>定义 XHTML 框架，比如 XHTML BASIC （针对移动设备的 XHTML 子集）。  </li>
-</ul>
-<h3 id="XHTML模块-1"><a href="#XHTML模块-1" class="headerlink" title="XHTML模块"></a>XHTML模块</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.2.png" alt=""></p>
-<h2 id="XHTML-标准属性"><a href="#XHTML-标准属性" class="headerlink" title="XHTML 标准属性"></a>XHTML 标准属性</h2><h3 id="核心属性-Core-Attributes"><a href="#核心属性-Core-Attributes" class="headerlink" title="核心属性 (Core Attributes)"></a>核心属性 (Core Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.3.png" alt="">  </p>
-<h3 id="语言属性-Language-Attributes"><a href="#语言属性-Language-Attributes" class="headerlink" title="语言属性 (Language Attributes)"></a>语言属性 (Language Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.4.png" alt=""> </p>
-<h3 id="键盘属性-Keyboard-Attributes"><a href="#键盘属性-Keyboard-Attributes" class="headerlink" title="键盘属性 (Keyboard Attributes)"></a>键盘属性 (Keyboard Attributes)</h3><p><img src="http://onep1caa3.bkt.clouddn.com/04.24.5.png" alt="">  </p>
-<h2 id="XHTML-事件属性"><a href="#XHTML-事件属性" class="headerlink" title="XHTML 事件属性"></a>XHTML 事件属性</h2><p>HTML 4.0 的新特性之一是使 HTML 事件触发浏览器中的行为，比方说当用户点击一个 HTML 元素时启动一段 JavaScript 。以下就是可被插入 HTML 标签以定义事件行为的一系列属性。</p>
-<h3 id="窗口事件-Window-Events"><a href="#窗口事件-Window-Events" class="headerlink" title="窗口事件 (Window Events)"></a>窗口事件 (Window Events)</h3><p>仅对body和frameset元素有效<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.6.png" alt=""></p>
-<h3 id="表单元素事件-Form-Element-Events"><a href="#表单元素事件-Form-Element-Events" class="headerlink" title="表单元素事件 (Form Element Events)"></a>表单元素事件 (Form Element Events)</h3><p>仅对表单元素中有效。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.7.png" alt=""></p>
-<h3 id="键盘事件-Keyboard-Events"><a href="#键盘事件-Keyboard-Events" class="headerlink" title="键盘事件 (Keyboard Events)"></a>键盘事件 (Keyboard Events)</h3><p>在下列元素中无效：base, bdo, br, frame, frameset, head, html, iframe, meta, param, script, style, 以及 title 元素。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.8.png" alt=""></p>
-<h3 id="鼠标事件-Mouse-Events"><a href="#鼠标事件-Mouse-Events" class="headerlink" title="鼠标事件 (Mouse Events)"></a>鼠标事件 (Mouse Events)</h3><p>在下列元素中无效：base, bdo, br, frame, frameset, head, html, iframe, meta, param, script, style, title 元素。<br><img src="http://onep1caa3.bkt.clouddn.com/04.24.9.png" alt="">  </p>
-<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>XML被设计用来传输和存储数据。</p>
-<h2 id="什么是-XML"><a href="#什么是-XML" class="headerlink" title="什么是 XML"></a>什么是 XML</h2><ul>
-<li>XML 指可扩展标记语言（EXtensible Markup Language）；</li>
-<li>XML 是一种标记语言，很类似 HTML；</li>
-<li>XML 的设计宗旨是传输数据，而非显示数据；</li>
-<li>XML 标签没有被预定义。您需要自行定义标签；</li>
-<li>XML 被设计为具有自我描述性；</li>
-<li>XML 是 W3C 的推荐标准。  </li>
-</ul>
-<h3 id="XML与HTML-的主要差别"><a href="#XML与HTML-的主要差别" class="headerlink" title="XML与HTML 的主要差别"></a>XML与HTML 的主要差别</h3><ul>
-<li>XML 不是 HTML 的替代；<br>XML 和 HTML 为不同的目的而设计；</li>
-<li>XML 被设计为传输和存储数据，其焦点是数据的内容；</li>
-<li>HTML 被设计用来显示数据，其焦点是数据的外观；</li>
-<li>HTML 旨在显示信息，而 XML 旨在传输信息。  </li>
-</ul>
-<h3 id="XML没有任何行为"><a href="#XML没有任何行为" class="headerlink" title="XML没有任何行为"></a>XML没有任何行为</h3><p>XML仅仅是纯文本，有能力处理文本的软件都可以处理XML，通过XML你可以发明自己的标签，同时，XML是对HTML的一种补充，所以并不会代替HTML，XML是独立于软件和硬件的信息传输工具。</p>
-<h2 id="XML的用途"><a href="#XML的用途" class="headerlink" title="XML的用途"></a>XML的用途</h2><p>XML常用于web开发的许多方面，比如简化数据的存储和共享，XML可以把数据从HTML分离。</p>
-<h2 id="XML-树结构"><a href="#XML-树结构" class="headerlink" title="XML 树结构"></a>XML 树结构</h2><p>XML文档形成了一种树结构，它从根部开始，然后扩展到枝叶。</p>
-<h3 id="一个XML文档实例"><a href="#一个XML文档实例" class="headerlink" title="一个XML文档实例"></a>一个XML文档实例</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
-&lt;note&gt;
-&lt;to&gt;George&lt;/to&gt;
-&lt;from&gt;John&lt;/from&gt;
-&lt;heading&gt;Reminder&lt;/heading&gt;
-&lt;body&gt;Don&apos;t forget the meeting!&lt;/body&gt;
-&lt;/note&gt;  
-</code></pre><ul>
-<li>第一行是 XML 声明。它定义 XML 的版本 (1.0) 和所使用的编码 (ISO-8859-1 = Latin-1/西欧字符集)；</li>
-<li>下一行描述文档的根元素（像在说：“本文档是一个便签”）；</li>
-<li>接下来 4 行描述根的 4 个子元素（to, from, heading 以及 body）；</li>
-<li>最后一行定义根元素的结尾。</li>
-</ul>
-<p>树结构：<br><img src="http://www.w3school.com.cn/i/ct_nodetree1.gif" alt="">    </p>
-<pre><code>&lt;bookstore&gt;
-&lt;book category=&quot;COOKING&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt; 
-  &lt;author&gt;Giada De Laurentiis&lt;/author&gt; 
-  &lt;year&gt;2005&lt;/year&gt; 
-  &lt;price&gt;30.00&lt;/price&gt; 
-&lt;/book&gt;
-&lt;book category=&quot;CHILDREN&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt; 
-  &lt;author&gt;J K. Rowling&lt;/author&gt; 
-  &lt;year&gt;2005&lt;/year&gt; 
-  &lt;price&gt;29.99&lt;/price&gt; 
-&lt;/book&gt;
-&lt;book category=&quot;WEB&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt; 
-  &lt;author&gt;Erik T. Ray&lt;/author&gt; 
-  &lt;year&gt;2003&lt;/year&gt; 
-  &lt;price&gt;39.95&lt;/price&gt; 
-&lt;/book&gt;
-&lt;/bookstore&gt;  
-</code></pre><h2 id="XML-语法"><a href="#XML-语法" class="headerlink" title="XML 语法"></a>XML 语法</h2><ul>
-<li>所有XML 元素都必须有关闭标签</li>
-<li>XML 对大小写敏感</li>
-<li>XML 必须正确嵌套</li>
-<li>XML 必须有根元素 </li>
-<li>XML 的属性必须加引号 </li>
-<li>实体引用  </li>
-<li>XML 中的注释<code>&lt;!-- This is a comment --&gt;</code> </li>
-<li>在XML中，空格会被保留  </li>
-<li>XML 中以LF存储换行  </li>
-</ul>
-<h2 id="XML元素"><a href="#XML元素" class="headerlink" title="XML元素"></a>XML元素</h2><h3 id="XML元素是什么"><a href="#XML元素是什么" class="headerlink" title="XML元素是什么"></a>XML元素是什么</h3><p>XML 元素指的是从（且包括）开始标签直到（且包括）结束标签的部分。元素可包含其他元素、文本或者两者的混合物。元素也可以拥有属性。</p>
-<h3 id="XML-命名规则"><a href="#XML-命名规则" class="headerlink" title="XML 命名规则"></a>XML 命名规则</h3><ul>
-<li>名称可以含字母、数字以及其他的字符</li>
-<li>名称不能以数字或者标点符号开始</li>
-<li>名称不能以字符 “xml”（或者 XML、Xml）开始</li>
-<li>名称不能包含空格</li>
-</ul>
-<h3 id="最佳命名习惯"><a href="#最佳命名习惯" class="headerlink" title="最佳命名习惯"></a>最佳命名习惯</h3><p>使名称具有描述性。使用下划线的名称也很不错。<br>名称应当比较简短，比如：<book_title>，而不是：<the_title_of_the_book>。<br>避免 “-“ 字符。如果您按照这样的方式进行命名：”first-name”，一些软件会认为你需要提取第一个单词。<br>避免 “.” 字符。如果您按照这样的方式进行命名：”first.name”，一些软件会认为 “name” 是对象 “first” 的属性。<br>避免 “:” 字符。冒号会被转换为命名空间来使用（稍后介绍）。<br>XML 文档经常有一个对应的数据库，其中的字段会对应 XML 文档中的元素。有一个实用的经验，即使用数据库的名称规则来命名 XML 文档中的元素。<br>非英语的字母比如 éòá 也是合法的 XML 元素名，不过需要留意当软件开发商不支持这些字符时可能出现的问题。  </the_title_of_the_book></book_title></p>
-<h3 id="XML-是可扩展的"><a href="#XML-是可扩展的" class="headerlink" title="XML 是可扩展的"></a>XML 是可扩展的</h3><p>XML 的优势之一，就是可以经常在不中断应用程序的情况下进行扩展。 </p>
-<h2 id="XML属性"><a href="#XML属性" class="headerlink" title="XML属性"></a>XML属性</h2><h3 id="XML属性-1"><a href="#XML属性-1" class="headerlink" title="XML属性"></a>XML属性</h3><p>属性通常提供不属于数据组成部分的信息。<br><code>&lt;file type=&quot;gif&quot;&gt;computer.gif&lt;/file&gt;</code><br>对于上面这个例子，文件类型与数据无关，但是对需要处理这个元素的软件来说却很重要。  </p>
-<h3 id="XML-属性必须加引号"><a href="#XML-属性必须加引号" class="headerlink" title="XML 属性必须加引号"></a>XML 属性必须加引号</h3><p>属性值必须被引号包围，不过单引号和双引号均可使用。</p>
-<h3 id="XML-元素-vs-属性"><a href="#XML-元素-vs-属性" class="headerlink" title="XML 元素 vs. 属性"></a>XML 元素 vs. 属性</h3><p> 元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。  </p>
-<h2 id="XML-查看"><a href="#XML-查看" class="headerlink" title="XML 查看"></a>XML 查看</h2><p>XML 文档不会携带有关如何显示数据的信息。<br>由于 XML 标签由 XML 文档的作者“发明”，浏览器无法确定像 <table> 这样一个标签究竟描述一个 HTML 表格还是一个餐桌。<br>在没有任何有关如何显示数据的信息的情况下，大多数的浏览器都会仅仅把 XML 文档显示为源代码。  </table></p>
-<h2 id="XML-JavaScript"><a href="#XML-JavaScript" class="headerlink" title="XML JavaScript"></a>XML JavaScript</h2><h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>XMLHttpRequest 对象用于在后台与服务器交换数据。</p>
-<h4 id="什么是-XMLHttpRequest-对象？"><a href="#什么是-XMLHttpRequest-对象？" class="headerlink" title="什么是 XMLHttpRequest 对象？"></a>什么是 XMLHttpRequest 对象？</h4><p>XMLHttpRequest 对象用于在后台与服务器交换数据。<br>XMLHttpRequest 对象是开发者的梦想，因为可以： </p>
-<ul>
-<li>在不重新加载页面的情况下更新网页</li>
-<li>在页面已加载后从服务器请求数据</li>
-<li>在页面已加载后从服务器接收数据</li>
-<li>在后台向服务器发送数据  </li>
-</ul>
-<h4 id="创建XMLHttpRequest-对象"><a href="#创建XMLHttpRequest-对象" class="headerlink" title="创建XMLHttpRequest 对象"></a>创建XMLHttpRequest 对象</h4><p>创建 XMLHttpRequest 对象的语法：<code>xmlhttp=new XMLHttpRequest();</code>  </p>
-
+            <p>
+              XHTMLXHTML是什么
+XHTML 指可扩展超文本标签语言（EXtensible HyperText Markup Language）。
+XHTML 的目标是取代 HTML。
+XHTML 与 HTML 4.01 几乎是相同的。
+XHTML 是更严格更纯净的 HTML 版本。
+XHTML 是作为一种 XML 应用被重新定义的 HTML。
+XHTML 是一个 W3C 标准。  为什么使用XHTML简单地说，XHTML是HTML与XML的结合物。HTML用来显示数据，而XML用来描述数据。XHTML可以被所有的支持XML的设备读取，同时在其余的浏览器升级至支持 XML 之前，XHTML 使我们有
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/24/2017.04.24.html&xml&xhtml/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1694,6 +1345,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1706,17 +1361,23 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/2017.04.23vue.js/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/2017.04.23vue.js/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1725,13 +1386,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/23/2017.04.23vue.js/" itemprop="url">
-                  Vue.js--基于$.ajax实现数据的跨域增删查改
-                </a>
+                
+                <a href="/2017/04/23/2017.04.23vue.js/" class="post-title-link" itemprop="url">Vue.js--基于$.ajax实现数据的跨域增删查改</a>
               
             
           </h1>
@@ -1739,25 +1396,31 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-23T15:59:06+08:00">
-                2017-04-23
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-23 15:59:06" itemprop="dateCreated datePublished" datetime="2017-04-23T15:59:06+08:00">2017-04-23</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1765,14 +1428,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -1781,6 +1440,7 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
           
 
           
+            
             
           
 
@@ -1797,7 +1457,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1806,28 +1468,39 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       
         
           
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们知道在实例中有90%的数据都是来自服务端的，前端和服务端之间的数据交互一般是通过ajax请求来完成的。jQuery提供了较丰富的ajax方法，它不仅支持基于XMLHttpRequest的ajax请求，也能处理跨域的JSONP请求。同时，vue.js和jQuery是可以混合使用的。 </p>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="同源策略和跨域概念"><a href="#同源策略和跨域概念" class="headerlink" title="同源策略和跨域概念"></a>同源策略和跨域概念</h3><p>如果两个页面拥有相同的协议（protocol），端口（port）和主机（host），那么这两个页面就属于同一个源（orgin），可以简单地理解为同一站点下的资源相互访问都是同源的，跨站点的资源访问都是跨域的。</p>
-<h3 id="跨域资源共享"><a href="#跨域资源共享" class="headerlink" title="跨域资源共享"></a>跨域资源共享</h3><p>跨域资源共享（CORS）是一份浏览器技术的规范，提供了Web服务器从不同网域传来沙盒脚本的方法，以避开浏览器的同源策略，是JSONP模式的现代版。与JSONP不同，CORS除了支持GET方法以外，还支持其他HTTP方法。用CORS可以让网页设计师用一般的XMLHTTPRequest，这种方式的错误处理比JSONP要来的好。另一方面，JSONP可以在不支持CORS的老旧浏览器上运作，现代的浏览器都支持CORS。</p>
-<h3 id="JSONP概念"><a href="#JSONP概念" class="headerlink" title="JSONP概念"></a>JSONP概念</h3><p>由于同源策略，一般来说不允许JavaScript跨域访问其他服务器的页面对象，但是HTML的<code>&lt;script&gt;</code>元素是一个例外。利用 <code>&lt;script&gt;</code> 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。</p>
-<h3 id="REST-Web-Services简介"><a href="#REST-Web-Services简介" class="headerlink" title="REST Web Services简介"></a>REST Web Services简介</h3><p>HTTP协议是Web的标准之一，HTTP协议包含一些标准的操作方法，例如：GET, POST, PUT, Delete等，用这些方法能够实现对Web资源的CURD操作，下表列出了这些方法的操作定义。</p>
-
+            <p>
+              概述我们知道在实例中有90%的数据都是来自服务端的，前端和服务端之间的数据交互一般是通过ajax请求来完成的。jQuery提供了较丰富的ajax方法，它不仅支持基于XMLHttpRequest的ajax请求，也能处理跨域的JSONP请求。同时，vue.js和jQuery是可以混合使用的。 
+基础概念同源策略和跨域概念如果两个页面拥有相同的协议（protocol），端口（port）和主机（host），那么这两个页面就属于同一个源（orgin），可以简单地理解为同一站点下的资源相互访问都是同源的，跨站点的资源访问都是跨域的。
+跨域资源共享跨域资源共享（CORS）是一份浏览器技术的规范，提供了Web
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/23/2017.04.23vue.js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1841,6 +1514,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1853,17 +1530,23 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/2017.04.21.git/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/2017.04.21.git/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1872,13 +1555,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/22/2017.04.21.git/" itemprop="url">
-                  git的介绍和使用
-                </a>
+                
+                <a href="/2017/04/22/2017.04.21.git/" class="post-title-link" itemprop="url">git的介绍和使用</a>
               
             
           </h1>
@@ -1886,25 +1565,31 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-22T14:30:56+08:00">
-                2017-04-22
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-22 14:30:56" itemprop="dateCreated datePublished" datetime="2017-04-22T14:30:56+08:00">2017-04-22</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1912,14 +1597,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -1928,6 +1609,7 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
           
 
           
+            
             
           
 
@@ -1944,7 +1626,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1953,65 +1637,38 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       
         
           
-            <h2 id="git的介绍"><a href="#git的介绍" class="headerlink" title="git的介绍"></a>git的介绍</h2><p>git是世界上最先进的分布式版本控制系统，可以实现协作编辑，记录文件改动等功能，由linus公司于2005年开发，接着git迅速成为最流行的分布式版本控制系统，在2008年GitHub上线，git为GitHub提供免费git存储，无数开源项目开始迁移至GitHub，包括jQuery，php，ruby等。git属于分布式版本控制系统，它没有所谓的中央服务器，每个人的电脑都有完整的版本库。这样不会因为中央服务器宕机导致网络瘫痪。</p>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p> 版本库又名仓库，英文名repository，可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。<br>创建一个版本库十分简单，首先选择一个合适的位置，windows下最好选择英文目录，接着打开指定git bash，cd到指定目录，我的是<code>D:\gitrepository</code>，接着通过<code>git init</code>命令把这个目录变成git可以管理的仓库。系统会告诉你这是一个空的仓库，同时目录里面多了一个.git目录，这个目录是用来跟踪管理版本的，没事不要去修改，同时这个目录默认是隐藏的。<br><img src="http://onep1caa3.bkt.clouddn.com/04.21.1.png" alt="">  </p>
-<h2 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h2><p>所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。</p>
-<p>不幸的是，Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的。因为文本是有编码的，比如中文有常用的GBK编码，日文有Shift_JIS编码，如果没有历史遗留问题，强烈建议使用标准的UTF-8编码，所有语言使用同一种编码，既没有冲突，又被所有平台所支持。<br>同时强烈建议Windows平台用户不要使用自带的记事本编辑任何文本文件，这样经常会引起各种报错。推荐一个文本编辑工具叫做nodepad++，功能强大且免费，同时需要把默认编码设置为UTF-8 without BOM。<br>接下来我们添加文件的功能。<br>首先我们在gitrepository文件夹下新建一个名为readme.txt的文件，内容如下：  </p>
-<blockquote>
-<p>Git is a version control system.<br>Git is free software.</p>
-</blockquote>
-<p>接着执行<code>git add readme.txt</code>命令，执行之后没没有任何反应，说明命令执行成功！<br>接下来，用命令git commit 告诉git，把文件提交到仓库。<code>git commit -m&quot;wrote a readme file&quot;</code>,这样文件就成功提交了。-m之后是本次提交的声明，可以输入任何内容，这样可以从历史纪录中方便地找到改动的记录。另外，commit一次性地可以提交很多文件。  </p>
-<p><img src="http://onep1caa3.bkt.clouddn.com/04.21.2.png" alt="">  </p>
-<h2 id="时光穿梭机"><a href="#时光穿梭机" class="headerlink" title="时光穿梭机"></a>时光穿梭机</h2><p>我们继续修改readme.txt中的内容，修改为  </p>
-<blockquote>
-<p>Git is a distributed version control system.<br>Git is free software.  </p>
-</blockquote>
-<p>然后运行<code>git status</code>，查看结果：<br><img src="http://onep1caa3.bkt.clouddn.com/04.22.1.png" alt=""><br>这个命令告诉我们，readme.txt已经被修改了，但是还没有准备提交的修改。<br>通过<code>git diff</code>命令可以查看具体的修改内容：<br><img src="http://onep1caa3.bkt.clouddn.com/04.22.2.png" alt=""><br>接着就是<code>git add</code> 和<code>git commit -m</code>命令来提交提交以后的文件了。  </p>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>现在我们有两个版本的readme.txt了，使用<code>git log</code>命令可以查看历史纪录：  </p>
-<p><img src="http://onep1caa3.bkt.clouddn.com/04.22.3.png" alt=""><br>使用可视化git工具，可以看到git会把版本变化记录串成一条时间线。接着我们要使用“时光穿梭机”功能，head表示当前版本，也就是最新的版本，上一个版本就是head^，或者head~1，以此类推。<br>我们使用<code>git reset -- hard HEAD^</code>来回退到上一个版本。<br><img src="http://onep1caa3.bkt.clouddn.com/04.22.4.png" alt=""><br>这时第二个版本已经不存在了，可以通过前面的commit id来查找，接着执行g<code>it reset --hrad commit id</code>命令来恢复，前提是你没有关闭命令窗口。关闭之后也有办法，执行<code>git reflog</code>用来记录你的每一次命令，就可以找到每次的commit id：<br><img src="http://onep1caa3.bkt.clouddn.com/04.22.5.png" alt="">  </p>
-<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><h4 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h4><p>指在电脑上可以看到的目录。 </p>
-<h4 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a>版本库</h4><p>工作区中隐藏的.git目录，称为git的版本库。版本库中包含一个叫stage（或者index）的暂存区，还有git为我们创建的一第个分支master，以及指向master的一个名为head的指针。<br>把文件向git版本库中添加时，是分两步执行的：<br>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
-<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。  </p>
-<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>git管理的是修改，而不是文件。需要注意的是，每次修改之后，如果不add到暂存区，是不会加入到commit中的。 </p>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>使用<code>git checkout --readme.txt</code>命令可以撤销修改。这里有两种情况：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
-<p>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。<br>git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令。<br><img src="https://marklodato.github.io/visual-git-guide/basic-usage.svg" alt="">    </p>
-<ul>
-<li>git add files 把当前文件放入暂存区域。</li>
-<li>git commit 给暂存区域生成快照并提交。</li>
-<li>git reset – files 用来撤销最后一次git add files，你也可以用git reset 撤销所有暂存区域文件。</li>
-<li>git checkout – files 把文件从暂存区域复制到工作目录，用来丢弃本地修改。   </li>
-</ul>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>命令<code>git rm</code>可以用于删除一个文件，如果这个文件已经提交到版本库，那么你永远不会担心会误删，可以进行一键还原操作。执行git status命令可以告诉你那个文件被删除了。执行<code>git rm</code>之后，再执行<code>git commit</code>就可以从版本库中删除该文件了。  </p>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>对于github这种远程仓库，本地的git仓库与GitHub之间的传输是通过ssh加密的，所以需要添加ssh key，然后绑定在自己的github仓库上。<br>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。<br>首先，登陆github，创建新仓库，填入名称gitrepository，替他保持默认设置。<br>接着执行<code>git remote add origin git@github.com:hhb1994/gitrepository</code>命令来关联，远程仓库的名字就是origin，下一步就是推送内容：<code>git push -u origin master</code><br> <img src="http://onep1caa3.bkt.clouddn.com/04.22.6.png" alt=""><br>把本地库的内容推送到远程，使用<code>git push</code>命令，实际上是把master分支推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。<br>推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：<br><img src="http://onep1caa3.bkt.clouddn.com/04.22.7.png" alt=""><br>从现在开始，只要本地做了提交，就可以通过命令git push origin master把本地的master分支的最新内容推送到github！</p>
-<h2 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h2><p>使用命令git clone来克隆一个本地库：  </p>
-<pre><code>git clone git@github.com:hhb1994/hhb1994.github.io.git  
-</code></pre><p><img src="http://onep1caa3.bkt.clouddn.com/04.22.8.png" alt="">  </p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。其他版本控制系统如SVN等都有分支管理，但是用过之后你会发现，这些版本控制系统创建和切换分支比蜗牛还慢，简直让人无法忍受，结果分支功能成了摆设，大家都不去用。但Git的分支是与众不同的，无论创建、切换和删除分支，Git在1秒钟之内就能完成！无论你的版本库是1个文件还是1万个文件。  </p>
-<h3 id="创建与管理分支"><a href="#创建与管理分支" class="headerlink" title="创建与管理分支"></a>创建与管理分支</h3><p>Git鼓励大量使用分支：</p>
-<p>查看分支：git branch</p>
-<p>创建分支：git branch <name></name></p>
-<p>切换分支：git checkout <name></name></p>
-<p>创建+切换分支：git checkout -b <name></name></p>
-<p>合并某分支到当前分支：git merge <name></name></p>
-<p>删除分支：git branch -d <name></name></p>
-
+            <p>
+              git的介绍git是世界上最先进的分布式版本控制系统，可以实现协作编辑，记录文件改动等功能，由linus公司于2005年开发，接着git迅速成为最流行的分布式版本控制系统，在2008年GitHub上线，git为GitHub提供免费git存储，无数开源项目开始迁移至GitHub，包括jQuery，php，ruby等。git属于分布式版本控制系统，它没有所谓的中央服务器，每个人的电脑都有完整的版本库。这样不会因为中央服务器宕机导致网络瘫痪。
+创建版本库 版本库又名仓库，英文名repository，可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/22/2017.04.21.git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2025,6 +1682,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2037,17 +1698,23 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/2017.04.18radio&dropdownlist/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/2017.04.18radio&dropdownlist/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -2056,13 +1723,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/21/2017.04.18radio&dropdownlist/" itemprop="url">
-                  jQuery获取单选框的值
-                </a>
+                
+                <a href="/2017/04/21/2017.04.18radio&dropdownlist/" class="post-title-link" itemprop="url">jQuery获取单选框的值</a>
               
             
           </h1>
@@ -2070,25 +1733,31 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T20:43:04+08:00">
-                2017-04-21
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-21 20:43:04" itemprop="dateCreated datePublished" datetime="2017-04-21T20:43:04+08:00">2017-04-21</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -2096,14 +1765,10 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识/" itemprop="url" rel="index">
-                    <span itemprop="name">知识</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -2112,6 +1777,7 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
           
 
           
+            
             
           
 
@@ -2128,7 +1794,9 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2137,52 +1805,47 @@ PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
       
         
           
-            <p>使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  </p>
-<h3 id="Radio"><a href="#Radio" class="headerlink" title="Radio"></a>Radio</h3><p><img src="http://onep1caa3.bkt.clouddn.com/20170418205910.png" alt="">  </p>
-<ul>
-<li><p>1.获取选中值，有三种方法  </p>
-<blockquote>
-<pre><code>$(&apos;input:radio:checked&apos;).val()；
+            <p>
+              使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  
+Radio  
+
+1.获取选中值，有三种方法  
+
+$(&apos;input:radio:checked&apos;).val()；
 $(&quot;input[type=&apos;radio&apos;]:checked&quot;).val();
 $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();  
-</code></pre></blockquote>
-</li>
-<li><p>2.设置第一个Radio为选中值<br><code>$(&#39;input:radio:first&#39;).attr(&#39;checked&#39;, &#39;checked&#39;);</code>或者<code>$(&#39;input:radio:first&#39;).attr(&#39;checked&#39;, &#39;true&#39;);</code></p>
-</li>
-</ul>
-<ul>
-<li>3.设置最后一个Radio为选中值<br><code>$(&#39;input:radio:last&#39;).attr(&#39;checked&#39;, &#39;checked&#39;);</code>或者<code>$(&#39;input:radio:last&#39;).attr(&#39;checked&#39;, &#39;true&#39;);</code></li>
-<li>4.根据索引值设置任意一个radio为选中值<br><code>$(&#39;input:radio&#39;).eq(索引值).attr(&#39;checked&#39;, &#39;true&#39;);索引值=0,1,2....</code>或者<code>$(&#39;input:radio&#39;).slice(1,2).attr(&#39;checked&#39;, &#39;true&#39;);</code></li>
-<li>5.根据Value值设置Radio为选中值<br><code>$(&quot;input:radio[value=http://www.2cto.com/kf/201110/&#39;rd2&#39;]&quot;).attr(&#39;checked&#39;,&#39;true&#39;);</code>或者<code>$(&quot;input[value=http://www.2cto.com/kf/201110/&#39;rd2&#39;]&quot;).attr(&#39;checked&#39;,&#39;true&#39;);</code></li>
-<li>6.删除Value值为rd2的Radio<br>$<code>(&quot;input:radio[value=http://www.2cto.com/kf/201110/&#39;rd2&#39;]&quot;).remove();</code></li>
-<li>7.删除第几个Radio<br> $(“input:radio”).eq(索引值).remove();索引值=0,1,2….</li>
-<li><p>8.遍历Radio<br>  $(‘input:radio’).each(function(index,domEle){});  </p>
-<h3 id="DropDownList"><a href="#DropDownList" class="headerlink" title="DropDownList"></a>DropDownList</h3><p><img src="http://onep1caa3.bkt.clouddn.com/20170418205921.png" alt="">   </p>
-</li>
-<li><p>1.获取选中项<br>获取选中项的Value值<br><code>$(&#39;select#sel option:selected&#39;).val();</code>或者<code>$(&#39;select#sel&#39;).find(&#39;option:selected&#39;).val();</code><br>获取选中项的Text值<br><code>$(&#39;select#seloption:selected&#39;).text();</code>或者<code>$(&#39;select#sel&#39;).find(&#39;option:selected&#39;).text();</code></p>
-</li>
-<li>2.获取当前选中项的索引值<br>  $(‘select#sel’).get(0).selectedIndex;</li>
-<li>3.获取当前option的最大索引值<br>  $(‘select#sel option:last’).attr(“index”)</li>
-<li>4.获取DropdownList的长度<br><code>$(&#39;select#sel&#39;)[0].options.length;</code>或者<code>$(&#39;select#sel&#39;).get(0).options.length;</code></li>
-<li>5.设置第一个option为选中值<br><code>$(&#39;select#sel option:first&#39;).attr(&#39;selected&#39;,&#39;true&#39;)</code>或者<code>$(&#39;select#sel&#39;)[0].selectedIndex = 0;</code></li>
-</ul>
 
+
+2.设置第一个Radio为选中值$(&#39;input:radio:first&#39;).attr(&#39;checked&#39;, &#39;ch
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/21/2017.04.18radio&dropdownlist/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2196,6 +1859,10 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2208,17 +1875,23 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/2017.04.09vue+bootstrap/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/2017.04.09vue+bootstrap/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -2227,13 +1900,9 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/04/09/2017.04.09vue+bootstrap/" itemprop="url">
-                  vue+bootstray_demo
-                </a>
+                
+                <a href="/2017/04/09/2017.04.09vue+bootstrap/" class="post-title-link" itemprop="url">vue+bootstray_demo</a>
               
             
           </h1>
@@ -2241,25 +1910,31 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T20:52:26+08:00">
-                2017-04-09
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2017-04-09 20:52:26" itemprop="dateCreated datePublished" datetime="2017-04-09T20:52:26+08:00">2017-04-09</time>
             
 
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -2267,14 +1942,10 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -2283,6 +1954,7 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
           
 
           
+            
             
           
 
@@ -2299,7 +1971,9 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2308,129 +1982,43 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
       
         
           
-            <p>大体掌握了vue的简单基本指令之后，我尝试着做了一个简单的使用vue+bootstrap的demo。效果图如下：<br><img src="http://onep1caa3.bkt.clouddn.com/04092.png" alt=""><br>可以实现信息的添加和删除功能。<br>直接上代码（注意使用的vue版本是1.0.25）：  </p>
-<pre><code>&lt;!DOCTYPE html&gt;
+            <p>
+              大体掌握了vue的简单基本指令之后，我尝试着做了一个简单的使用vue+bootstrap的demo。效果图如下：可以实现信息的添加和删除功能。直接上代码（注意使用的vue版本是1.0.25）：  
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;title&gt;demo1&lt;/title&gt;
-&lt;link href=&quot;http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id=&quot;app&quot; style=&quot;width:50%;margin:40px auto auto;background-color:#ffffff&quot;&gt;
-&lt;h1&gt;create/delete&lt;/h1&gt;
-
-&lt;fieldset&gt;
-&lt;legendcreate new people&lt;/legend&gt;
-
-&lt;div class=&quot;form-group&quot;&gt;
-&lt;label&gt;Name:&lt;/label&gt;
-&lt;input class=&quot;form-control&quot; type=&quot;text&quot; v-model=&quot;newperson.name&quot;/&gt;
-&lt;/div&gt;
-&lt;br/&gt;
-&lt;div class=&quot;form-group&quot;&gt;
-&lt;label&gt;Age:&lt;/label&gt;
-&lt;input class=&quot;form-control&quot; type=&quot;text&quot; v-model=&quot;newperson.age&quot;/&gt;
-&lt;/div&gt;
-&lt;br/&gt;
-&lt;div class=&quot;form-group&quot;&gt;
-&lt;label&gt;Sex:&lt;/label&gt;
-&lt;select class=&quot;form-control&quot; v-model=&quot;newperson.sex&quot;&gt;
-&lt;option value=&quot;male&quot;&gt;male&lt;/option&gt;
-&lt;option value=&quot;female&quot;&gt;female&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-   &lt;div class=&quot;form-group&quot;
-   &lt;label&gt;&lt;/label&gt;
-   &lt;button class=&quot;btn btn-info&quot; @click=&quot;createperson&quot;&gt;Create&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;table class=&quot;table table-striped table-bordered&quot; &gt;
-&lt;thead&gt;
-&lt;tr&gt;
-   &lt;th :class=&quot;&apos;text-center&apos;&quot;&gt;Name&lt;/th&gt;
-&lt;th :class=&quot;&apos;text-center&apos;&quot;&gt;Age&lt;/th&gt;
-&lt;th  :class=&quot;&apos;text-center&apos;&quot;&gt;Sex&lt;/th&gt;
-&lt;th :class=&quot;&apos;text-center&apos;&quot;&gt;Delete&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr v-for=&quot;person in people&quot;&gt;
-&lt;td&gt;{{person.name}}&lt;/td&gt;
-&lt;td&gt;{{person.age}}&lt;/td&gt;
-&lt;td&gt;{{person.sex}}&lt;/td&gt;
-&lt;td :class=&quot;&apos;text-center&apos;&quot;&gt;&lt;button class=&quot;btn btn-danger&quot;  @click=&quot;deleteperson($index)&quot; &gt;delete&lt;/button&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;/div&gt;
-
-&lt;/body&gt;
-&lt;script src=&quot;http://cdn.bootcss.com/vue/1.0.25-csp/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-var vm=new Vue
-({
-el:&apos;#app&apos;,
-data:{
-newperson: {
-name: &apos;&apos;,
-age: 0,
-sex: &apos;Male&apos;
-},
-people: [{
-name: &apos;Jack&apos;,
-age: 30,
-sex: &apos;Male&apos;
-}, {
-name: &apos;Bill&apos;,
-age: 26,
-sex: &apos;Male&apos;
-}, {
-name: &apos;Tracy&apos;,
-age: 22,
-sex: &apos;Female&apos;
-}, {
-name: &apos;Chris&apos;,
-age: 36,
-sex: &apos;Male&apos;
-}]
-
-
-},
-methods:{
-createperson: function(){
-this.people.push(this.newperson);
-          // 添加完newPerson对象后，重置newPerson对象
-this.newperson = {name:&apos;&apos;,age: 0,sex:&apos;male&apos;}
-},
-deleteperson: function(index){
-// 删一个数组元素
-this.people.splice(index,1);
-}
-}
-})
-&lt;/script&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;link href=&quot;http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css&quot
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/09/2017.04.09vue+bootstrap/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2444,6 +2032,10 @@ this.people.splice(index,1);
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2452,15 +2044,12 @@ this.people.splice(index,1);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2482,67 +2071,213 @@ this.people.splice(index,1);
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="韩宏斌" />
-          <p class="site-author-name" itemprop="name">韩宏斌</p>
-           
-              <p class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</p>
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">Artikel</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">Kategorien</span>
-              
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">44</span>
-                <span class="site-state-item-name">Tags</span>
-              
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -2550,6 +2285,7 @@ this.people.splice(index,1);
 
     </div>
   </aside>
+  
 
 
         
@@ -2558,30 +2294,33 @@ this.people.splice(index,1);
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2594,11 +2333,16 @@ this.people.splice(index,1);
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2612,80 +2356,15 @@ this.people.splice(index,1);
 
 
 
-  
 
 
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -2696,7 +2375,81 @@ this.people.splice(index,1);
 
 
 
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

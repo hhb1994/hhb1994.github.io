@@ -1,20 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -30,48 +35,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,37 +43,43 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
 
 
 
-<meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Han's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Han's blog">
-<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Han's blog">
-<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
 
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -122,18 +91,38 @@
 </script>
 
 
+  
 
+
+
+
+  <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Han's blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Han's blog">
+<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://yoursite.com/"/>
 
 
 
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title> Han's blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
+  <title>Han's blog</title>
   
 
 
@@ -147,7 +136,34 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -155,29 +171,31 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Han's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">welcome!nice to meet U!</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -185,35 +203,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Startseite
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archiv
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -221,12 +307,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -239,17 +336,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/2019.06.13.nginx/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/2019.06.13.nginx/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -258,13 +361,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/13/2019.06.13.nginx/" itemprop="url">
-                  初识 nginx
-                </a>
+                
+                <a href="/2019/06/13/2019.06.13.nginx/" class="post-title-link" itemprop="url">初识 nginx</a>
               
             
           </h1>
@@ -272,25 +371,47 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-13T14:49:36+08:00">
-                2019-06-13
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-13 14:49:36" itemprop="dateCreated datePublished" datetime="2019-06-13T14:49:36+08:00">2019-06-13</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-14 10:02:23" itemprop="dateModified" datetime="2019-06-14T10:02:23+08:00">2019-06-14</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -298,14 +419,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -314,6 +431,7 @@
           
 
           
+            
             
           
 
@@ -330,7 +448,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -339,137 +459,41 @@
       
         
           
-            <h1 id="什么是-NGINX"><a href="#什么是-NGINX" class="headerlink" title="什么是 NGINX"></a>什么是 NGINX</h1><blockquote>
-<p>Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。</p>
-</blockquote>
-<p>Nginx 有一个主线程（ master process）和几个工作线程（worker process）。主线程的目的是加载和验证配置文件、维护工作线程。</p>
-<p>工作线程处理实际的请求，Nginx 采用基于事件的模型和依赖操作系统的机制在工作线程之间高效地分发请求。工作线程的数量可配置，也可自动调整为服务器CPU的数量。</p>
-<p>Nginx 及其模块的工作方式由配置文件确定。 默认情况下，配置文件名为 nginx.conf，放在 /usr/local/nginx/conf 、/etc/nginx 或者 /usr/local/etc/nginx 文件夹中。</p>
-<h2 id="nginx-的基本命令"><a href="#nginx-的基本命令" class="headerlink" title="nginx 的基本命令"></a>nginx 的基本命令</h2><pre><code>nginx -s &lt;signal&gt;
-</code></pre><p>其中-s意思是向主进程发送信号，signal可以为以下四个中的一个:</p>
-<ul>
-<li>stop — 快速关闭</li>
-<li>quit — 优雅关闭</li>
-<li>reload — 重新加载配置文件</li>
-<li>reopen — 重新打开日志文件</li>
-</ul>
-<p>当运行nginx -s quit时，Nginx 会等待工作进程处理完成当前请求，然后将其关闭。当你修改配置文件后，并不会立即生效，而是等待重启或者收到nginx -s reload信号。</p>
-<p>当 Nginx 收到 nginx -s reload 信号后，首先检查配置文件的语法。语法正确后，主线程会开启新的工作线程并向旧的工作线程发送关闭信号，如果语法不正确，则主线程回滚变化并继续使用旧的配置。当工作进程收到主进程的关闭信号后，会在处理完当前请求之后退出。</p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Nginx 配置的核心是定义要处理的 URL 以及如何响应这些 URL 请求，即定义一系列的虚拟服务器（Virtual Servers）控制对来自特定域名或者 IP 的请求的处理。</p>
-<p>每一个虚拟服务器定义一系列的 location 控制处理特定的 URI 集合。每一个location定义了对映射到自己的请求的处理场景，可以返回一个文件或者代理此请求。</p>
-<p>Nginx 由不同的模块组成，这些模块由配置文件中指定的指令控制。 指令分为简单指令和块指令。</p>
-<p>一个简单指令包含指令名称和指令参数，以空格分隔，以分号（;）结尾。 块指令与简单指令类似，但是由大括号（{和}）包围。 如果块指令大括号中包含其他指令，则称该指令为上下文（如： events, http, server 和 location）。</p>
-<p>配置文件中的放在上下文之外的指令默认放在主配置文件中（类似继承主配置文件）。 events 和 http 放置在主配置文件中，server 放置在http块指令中，location放置在server块指令中。</p>
-<p>配置文件的注释以 # 开始。</p>
-<p>例如: </p>
-<pre><code>events {
-    worker_connections  1024;
-}
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-    sendfile        on;
-    keepalive_timeout  65;
-    server {
-        listen       80;
-        server_name  localhost;
-        location ~ .*\.(flv|mp3|mp4|ts)$ {
-            add_header Content-Disposition &quot;attachment; filename=$request_filename&quot;;
-            root /replay/;
-            }
-        location / {
-            root   web/html/live;
-            index  index.html;
-            }
-        location /wap {
-            alias   /web/wap;
-            index  index.html;
-        }    
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
-    }
-</code></pre><h2 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h2><p>Web 服务器一个重要的功能是服务静态文件（图像或静态HTML页面）。例如，Nginx 可以很方便的让服务器从/data/www 获取 html 文件，从/data/images获取图片来返回给客户端，这只需要在http块指令中的server块指令中设置两个location块指令。</p>
-<p>首先，创建 /data/www 目录，并放入 index.html，创建 /data/images 目录并在其中放置一些图片。</p>
-<p>接下来，打开配置文件。 创建一个 server 块：</p>
-<pre><code>http {
-server {
-}
-</code></pre><p>}</p>
-<p>上面的 location 块指定 / 前缀与请求中的 URI 对比。对于匹配的请求，URI 将被添加到 root 指令中指定的路径，即 /data/www，以此形成本地文件系统的路径，如访问<a href="http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。" target="_blank" rel="external">http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。</a> 如果 URI 匹配多个 location 块，Nginx 采用最长前缀匹配原则（类似计算机网络里面的IP匹配）， 上面的 location 块前缀长度为 1，因此只有当所有其他 location 块匹配时，才使用该块。<br>接下来，添加第二个位置块：</p>
-<pre><code>location /images/ {
-    root /data;
-}
-</code></pre><p>它将匹配以/images/（/ 也匹配这样的请求，但具有较短的前缀）开始的请求。</p>
-<p>server 块的最终配置如下：</p>
-<pre><code>server {
-    location / {
-        root /data/www;
-    }
+            <p>
+              什么是 NGINX
+Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。
 
-    location /images/ {
-        root /data;
-    }
-}
-</code></pre><p>到目前为止，这已经是一个可以正常运行的服务器，它监听端口80，并且可以在本地计算机上访问 <a href="http://localhost/。" target="_blank" rel="external">http://localhost/。</a> 对于 /images/ 开头的请求，服务器将从 /data/images 目录发送文件。 如，对于 <a href="http://localhost/images/example.png" target="_blank" rel="external">http://localhost/images/example.png</a> 请求，nginx 将响应 /data/images/example.png文件。 如果不存在，nginx 将返回404。URI 不以 /images/ 开头的请求将映射到 /data/www 目录。 例如，对于 <a href="http://localhost/some/example.html" target="_blank" rel="external">http://localhost/some/example.html</a> 请求，nginx 将响应 /data/www/some/example.html 文件。</p>
-<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>Nginx 的一个常见应用是将其设置为代理服务器（Proxy Server），即接受客户端的请求并将其转发给代理服务器，再接受代理服务器发来的响应，将它们发送到客户端。</p>
-<p>比如我们可以用一个 Nginx 实例实现对图片文件的请求使用本地文件系统，而其他请求转发到代理服务器。</p>
-<p>首先，向 Nginx 的配置文件中添加一个 server 块来定义代理服务器：</p>
-<pre><code>server {
-    listen 8080;
-    root /data/up1;
-
-    location / {
-    }
-}
-</code></pre><p>此服务器侦听端口8080，并将所有请求映射到本地文件系统上的 /data/up1 目录。 创建此目录并将 index.html 放入其中。 注意，root 指令放在 server 上下文中，这样 当 location 块中不含 root 指令时将使用所属 server 的 root 指令。</p>
-<p>接下来，使用上一节中的服务器配置，并将其修改为代理服务器配置。 在第一个位置块中，加上proxy_pass指令：</p>
-<pre><code>server {
-    location / {
-        # proxy_pass指令的参数为：协议+主机名+端口号
-        proxy_pass http://localhost:8080;
-    }
-
-    location /images/ {
-        root /data;
-    }
-}
-</code></pre><p>修改第二个 匹配 /images/ 前缀的 location 块，使其与请求图像文件的扩展名相匹配：</p>
-<pre><code>location ~ \.(gif|jpg|png)$ {
-    root /data/images;
-}
-</code></pre><p>该参数是一个正则表达式，匹配以.gif，.jpg或.png结尾的所有URI。 正则表达式应该以 ~ 开头。 相应的请求将映射到 /data/images 目录。</p>
-<p>当 Nginx 选择一个 location 块来处理请求时，它首先检查指定 location 块的前缀，记住具有最长前缀的 location 块，然后检查正则表达式。 如果与正则表达式匹配， Nginx 选择此 location 块，否则，选择先前记住的 location 块。</p>
-<p>代理服务器的最终配置如下：</p>
-<pre><code>server {
-    location / {
-        proxy_pass http://localhost:8080/;
-    }
-
-    location ~ \.(gif|jpg|png)$ {
-        root /data/images;
-    }
-}
-</code></pre><p>此服务器将过滤以.gif，.jpg或.png结尾的请求，并将它们映射到 /data/images 目录（通过向 root 指令的参数添加请求的URI），并将所有其他请求发送给上面配置的代理服务器。</p>
-<p>这样，图片和其他请求就可以使用不同的服务器来处理。</p>
-
+Nginx 有一个主线程（ master process）和几个工作线程（worker process）。主线程的目的是加载和验证配置文件、维护工作线程。
+工作线程处理实际的请求，Nginx 采用基于事件的模型和依赖操作系统的机制在工作线程之间高效地分发请求。工作线程的数量可配置，
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/13/2019.06.13.nginx/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -483,6 +507,10 @@ server {
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -495,17 +523,23 @@ server {
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/2019.06.04.Algorithm/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/2019.06.04.Algorithm/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -514,13 +548,9 @@ server {
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/04/2019.06.04.Algorithm/" itemprop="url">
-                  算法的时间复杂度/空间复杂度
-                </a>
+                
+                <a href="/2019/06/04/2019.06.04.Algorithm/" class="post-title-link" itemprop="url">算法的时间复杂度/空间复杂度</a>
               
             
           </h1>
@@ -528,25 +558,35 @@ server {
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-04T10:58:56+08:00">
-                2019-06-04
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-04 10:58:56 / 修改时间：14:15:26" itemprop="dateCreated datePublished" datetime="2019-06-04T10:58:56+08:00">2019-06-04</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -554,14 +594,10 @@ server {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -570,6 +606,7 @@ server {
           
 
           
+            
             
           
 
@@ -586,7 +623,9 @@ server {
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -595,47 +634,49 @@ server {
       
         
           
-            <h1 id="算法的复杂度"><a href="#算法的复杂度" class="headerlink" title="算法的复杂度"></a>算法的复杂度</h1><p>算法（Algorithm）是指用来操作数据、解决程序问题的一组方法.对于同一个问题,使用不同的算法,也许最终得到的结果是一样的,但在过程中消耗的资源和时间却会有很大的区别.<br>可以从两个维度考量算法的复杂度:</p>
-<ul>
-<li>1.时间维度 ==&gt; 时间复杂度T()</li>
-<li>2.空间维度 ==&gt; 空间复杂度S()<br>通常情况下,时间复杂度和空间复杂度不可兼得.<h1 id="算法的时间复杂度"><a href="#算法的时间复杂度" class="headerlink" title="算法的时间复杂度"></a>算法的时间复杂度</h1>常见的算法时间复杂度</li>
-<li>常数阶O(1)</li>
-<li>对数阶O(logN)</li>
-<li>线性阶O(n)</li>
-<li>线性对数阶O(nlogN)</li>
-<li>平方阶O(n²)</li>
-<li>立方阶O(n³)</li>
-<li>K次方阶O(n^k)</li>
-<li>指数阶(2^n)<h2 id="常数阶"><a href="#常数阶" class="headerlink" title="常数阶"></a>常数阶</h2><blockquote>
-<p>只要没有循环等复杂结构,不管代码有多少行,代码的时间复杂度都是 O(1)</p>
-</blockquote>
-</li>
-</ul>
-<p>例如:</p>
-<pre><code>let i=0;
-++i;
-</code></pre><h2 id="对数阶"><a href="#对数阶" class="headerlink" title="对数阶"></a>对数阶</h2><pre><code>int i = 1;
-while(i&lt;n)
-{
-    i = i * 2;
-}
-</code></pre>
+            <p>
+              算法的复杂度算法（Algorithm）是指用来操作数据、解决程序问题的一组方法.对于同一个问题,使用不同的算法,也许最终得到的结果是一样的,但在过程中消耗的资源和时间却会有很大的区别.可以从两个维度考量算法的复杂度:
+
+1.时间维度 ==&gt; 时间复杂度T()
+2.空间维度 ==&gt; 空间复杂度S()通常情况下,时间复杂度和空间复杂度不可兼得.算法的时间复杂度常见的算法时间复杂度
+常数阶O(1)
+对数阶O(logN)
+线性阶O(n)
+线性对数阶O(nlogN)
+平方阶O(n²)
+立方阶O(n³)
+K次方阶O(n^k)
+指数阶(2^n)常数阶
+只要没有循环等复杂结构,不管代码有多少行,代
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/04/2019.06.04.Algorithm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -649,6 +690,10 @@ while(i&lt;n)
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -661,17 +706,23 @@ while(i&lt;n)
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/2019.05.29.ycy/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/2019.05.29.ycy/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -680,13 +731,9 @@ while(i&lt;n)
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/29/2019.05.29.ycy/" itemprop="url">
-                  程序员鼓励师
-                </a>
+                
+                <a href="/2019/05/29/2019.05.29.ycy/" class="post-title-link" itemprop="url">程序员鼓励师</a>
               
             
           </h1>
@@ -694,25 +741,35 @@ while(i&lt;n)
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-29T13:33:51+08:00">
-                2019-05-29
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 13:33:51 / 修改时间：13:43:23" itemprop="dateCreated datePublished" datetime="2019-05-29T13:33:51+08:00">2019-05-29</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -720,14 +777,10 @@ while(i&lt;n)
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -736,6 +789,7 @@ while(i&lt;n)
           
 
           
+            
             
           
 
@@ -752,7 +806,9 @@ while(i&lt;n)
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -761,25 +817,39 @@ while(i&lt;n)
       
         
           
-            <p>在 vscode 插件库中搜索”超越鼓励师”,并安装<br><img src="https://i.loli.net/2019/05/29/5cee1b8311b3652124.png" alt="WX20190529-134038@2x"></p>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p><img src="https://i.loli.net/2019/05/29/5cee1ba433e2d68631.png" alt="WX20190529-134003@2x"><br><img src="https://i.loli.net/2019/05/29/5cee1bf0a218376862.png" alt="WX20190529-134247@2x"></p>
+            <p>
+              在 vscode 插件库中搜索”超越鼓励师”,并安装
+设置
 
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/29/2019.05.29.ycy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -793,6 +863,10 @@ while(i&lt;n)
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -805,17 +879,23 @@ while(i&lt;n)
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/2019.05.29.vscodesync/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/2019.05.29.vscodesync/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -824,13 +904,9 @@ while(i&lt;n)
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/29/2019.05.29.vscodesync/" itemprop="url">
-                  在不同电脑上同步 vscode 的插件/设置
-                </a>
+                
+                <a href="/2019/05/29/2019.05.29.vscodesync/" class="post-title-link" itemprop="url">在不同电脑上同步 vscode 的插件/设置</a>
               
             
           </h1>
@@ -838,25 +914,35 @@ while(i&lt;n)
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-29T12:53:42+08:00">
-                2019-05-29
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 12:53:42 / 修改时间：13:31:55" itemprop="dateCreated datePublished" datetime="2019-05-29T12:53:42+08:00">2019-05-29</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -864,14 +950,10 @@ while(i&lt;n)
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -880,6 +962,7 @@ while(i&lt;n)
           
 
           
+            
             
           
 
@@ -896,7 +979,9 @@ while(i&lt;n)
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -905,38 +990,47 @@ while(i&lt;n)
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，我们在使用vscode Coding 时也一定会装很多插件。这篇文章提供了可以一键同步 vscode 设置/插件的方法.</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
-<li>setting sync 插件</li>
-<li>github 账户<h1 id="开始"><a href="#开始" class="headerlink" title="开始!"></a>开始!</h1><h2 id="步骤-1-gt-安装-setting-sync插件"><a href="#步骤-1-gt-安装-setting-sync插件" class="headerlink" title="步骤 1==&gt; 安装 setting sync插件"></a>步骤 1==&gt; 安装 <code>setting sync</code>插件</h2></li>
-</ul>
-</blockquote>
-<p>setting sync 快捷键:</p>
-<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>上传： Shift + Alt + U (Sync: Update / Upload Settings)</p>
-<p>下载： Shift + Alt + D (Sync: Download Settings)</p>
-<h3 id="mac"><a href="#mac" class="headerlink" title="mac"></a>mac</h3><p>上传： Shift + option + U (Sync: Update / Upload Settings)</p>
-<p>下载： Shift + option + D (Sync: Download Settings)<br><img src="https://i.loli.net/2019/05/29/5cee186a5788631404.png" alt="WX20190529-132756@2x"></p>
-<h2 id="步骤-2-gt-生成-github-token"><a href="#步骤-2-gt-生成-github-token" class="headerlink" title="步骤 2 ==&gt; 生成 github token"></a>步骤 2 ==&gt; 生成 github token</h2><p><img src="https://i.loli.net/2019/05/29/5cee177815c7d59714.png" alt="WX20190529-132351@2x"></p>
-<h2 id="步骤-3-gt-获取-gist-ID"><a href="#步骤-3-gt-获取-gist-ID" class="headerlink" title="步骤 3 ==&gt; 获取 gist ID"></a>步骤 3 ==&gt; 获取 gist ID</h2><p>在 vscode 中键入 <code>Shift + option + U</code>,并输入之前生成的 token,会生成一个gist id.<br>在设置中搜索 <code>sync</code>获取 gist ID.<br><img src="https://i.loli.net/2019/05/29/5cee18086757c68071.png" alt="WX20190529-132609@2x"></p>
-<h2 id="步骤-4-gt-在另一台电脑上完成同步"><a href="#步骤-4-gt-在另一台电脑上完成同步" class="headerlink" title="步骤 4 ==&gt; 在另一台电脑上完成同步"></a>步骤 4 ==&gt; 在另一台电脑上完成同步</h2><p>在新的电脑上安装 <code>setting sync</code>,键入<code>shift+ option+ U</code>,输入 gist ID,等待完成同步!</p>
+            <p>
+              前言
+Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，我们在使用vscode Coding 时也一定会装很多插件。这篇文章提供了可以一键同步 vscode 设置/插件的方法.
+准备工作
+setting sync 插件
+github 账户开始!步骤 1==&gt; 安装 setting sync插件
 
+
+setting sync 快捷键:
+windows上传： Shift + Alt + U (Sync: Update / Upload Settings)
+下载： Shift + Alt + D (Sync: Download Settings)
+
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/29/2019.05.29.vscodesync/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -950,6 +1044,10 @@ while(i&lt;n)
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -962,17 +1060,23 @@ while(i&lt;n)
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/2019.05.28.asf/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/2019.05.28.asf/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -981,13 +1085,9 @@ while(i&lt;n)
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/28/2019.05.28.asf/" itemprop="url">
-                  ASF的使用
-                </a>
+                
+                <a href="/2019/05/28/2019.05.28.asf/" class="post-title-link" itemprop="url">ASF的使用</a>
               
             
           </h1>
@@ -995,25 +1095,35 @@ while(i&lt;n)
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-28T15:01:54+08:00">
-                2019-05-28
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 15:01:54 / 修改时间：15:46:11" itemprop="dateCreated datePublished" datetime="2019-05-28T15:01:54+08:00">2019-05-28</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1021,14 +1131,10 @@ while(i&lt;n)
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1037,6 +1143,7 @@ while(i&lt;n)
           
 
           
+            
             
           
 
@@ -1053,7 +1160,9 @@ while(i&lt;n)
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1062,80 +1171,39 @@ while(i&lt;n)
       
         
           
-            <p>#在 mac 上使用 asf<br><strong>关于 ASF (ArchiSteamFarm)：</strong></p>
-<blockquote>
-<p>ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不僅如此，該軟件還能在服務器和其他非桌面電腦上運行，並擁有完整支持 Mono 的特性，這能讓其在 Windows、Linux 以及 OS X 等任何支持 Mono 的操作系統上運行。ASF 存在的基礎要歸功於 SteamKit2。</p>
-</blockquote>
-<p>[注] ArchiSteamFarm V3.0 以后的版本已经将 Mono 换成了 .Net Core。<br>简单来说 ASF 就是一个假的 Steam 客户端，它通过“假装玩游戏”，让 Steam 以为你真的在玩某款游戏，从而获得 Steam 集换式卡牌。</p>
-<h2 id="ASF-的安装与使用"><a href="#ASF-的安装与使用" class="headerlink" title="ASF 的安装与使用"></a>ASF 的安装与使用</h2><h3 id="mac-使用-asf"><a href="#mac-使用-asf" class="headerlink" title="mac 使用 asf"></a>mac 使用 asf</h3><ul>
-<li>到<a href="https://github.com/JustArchiNET/ArchiSteamFarm/releases" target="_blank" rel="external">这里</a>下载 mac 客户端(mac 上需要安装 openssl,最好在 mac 上安装 xcode)</li>
-</ul>
-<ul>
-<li><p>cd 到解压目录,然后赋予管理员权限:</p>
-<pre><code>chmod +x ./ArchiSteamFarm
-</code></pre></li>
-<li><p>运行<code>./ArchiSteamFarm</code>或者直接双击<code>ArchiSteamFarm</code></p>
-</li>
-</ul>
-<h2 id="ASF-的配置"><a href="#ASF-的配置" class="headerlink" title="ASF 的配置"></a>ASF 的配置</h2><p> 在 config 文件夹下添加 ASF.json/bot.json<br>ASF.json 文件是全局的配置文件,比较重要的参数如下:</p>
-<ul>
-<li><p>“Blacklist”：不挂卡的游戏 (这里排除了所以带 VAC 的游戏)</p>
-</li>
-<li><p>“SteamOwnerID”：ASF 所有者的 SteamID；ASF 所有者可以使用全局指令 (例如：!exit、!restart、!update 等 )<br>例如:</p>
-<pre><code>{
-    &quot;SteamOwnerID&quot;: 76561198167718521
-}
-</code></pre></li>
-</ul>
-<p>bot.json 是单个 bot 的配置文件,可以添加多个不同名字的 bot 配置文件,<br>配置文件的参数如下:</p>
-<pre><code>{
-&quot;Enabled&quot;: true,
-&quot;FarmOffline&quot;: true,
-&quot;SteamLogin&quot;: &quot;steam 账户名&quot;,
-&quot;SteamPassword&quot;: &quot;steam 登录密码&quot;
-}
-</code></pre><h2 id="ASF-的部分命令"><a href="#ASF-的部分命令" class="headerlink" title="ASF 的部分命令"></a>ASF 的部分命令</h2><p>输入<code>c</code>来进入命令模式,需要注意的是,每次输入命令前,都需要输入 <code>c</code></p>
-<h3 id="play"><a href="#play" class="headerlink" title="play"></a>play</h3><p>使指定的bot玩指定的游戏（即指定游戏挂卡）玩的游戏必须已经在库中！<br>steam限制最多同时玩32个游戏,切换到手动挂卡模式——使指定机器人运行给定的 AppIDs，并且可选自定义 GameName 为游戏名称。 使用 resume 以返回自动挂卡模式。</p>
-<pre><code>play &lt;AppIDs,GameName&gt;
-或
-play &lt;Bots&gt; &lt;AppIDs,GameName&gt;
-</code></pre><p>如：play asf 570<br>意思是所有bot玩游戏dota2(570应该是dota2的appid)</p>
-<blockquote>
-<p>asf是指代所有bot，也可写作ASF，你可以把它替换为特定bot的机器人名称(第二步中设置)<br>appid可以用英文名在steamdb搜索，或根据steam商店链接来获取（末尾的数字）</p>
-</blockquote>
-<h3 id="pause"><a href="#pause" class="headerlink" title="pause"></a>pause</h3><p>暂停自动挂卡，用resume命令可恢复挂卡<br>永久暂停指定机器人的自动挂卡模块。 ASF 在本次会话中将不会再尝试对此帐户进行挂卡，除非您手动 resume 或者重启 ASF。</p>
-<pre><code>pause 
-或
-pause &lt;Bots&gt;
-</code></pre><h3 id="resume"><a href="#resume" class="headerlink" title="resume"></a>resume</h3><p>恢复自动挂卡模式</p>
-<pre><code>resume
-或
-resume &lt;Bots&gt;
-</code></pre><h3 id="addlicense"><a href="#addlicense" class="headerlink" title="addlicense"></a>addlicense</h3><p>添加免费游戏或限时免费游戏<br>为指定机器人激活给定的 AppIDs（Steam 网络）或 SubIDs（Steam 商店），仅免费游戏有效。<br>格式如下:</p>
-<pre><code>addlicense &lt;GameIDs&gt;
-</code></pre><p>如 addlince me 570<br>意思是：名称为me的bot 添加 appid为570的免费游戏</p>
-<h3 id="redeem"><a href="#redeem" class="headerlink" title="redeem"></a>redeem</h3><p>激活steamkey来添加游戏</p>
-<pre><code>redeem &lt;Keys&gt;
-或
-redeem &lt;Bots&gt; &lt;Keys&gt;
-</code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1，如果只有一个bot，以上命令均可以不指定bot<br>2，IPC GUI右上角的齿轮可以修改界面语言<br>3，如果以后不用asf，关闭asf即可,<br>4，ASF不依赖steam客户端，在没有安装steam的电脑上依旧能运行</p>
+            <p>
+              #在 mac 上使用 asf关于 ASF (ArchiSteamFarm)：
 
+ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不僅如此，該軟件還能在服務器和其他非桌面電腦上運行，並擁有完整支持 Mono 的特性，這能讓其在 Windows、Linux 以及 OS X 等任何支持 Mono 的操作系統上運行。ASF 存在的基礎要
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/28/2019.05.28.asf/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1149,6 +1217,10 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1161,17 +1233,23 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/2019.05.25.colorfulMacTerminal/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/2019.05.25.colorfulMacTerminal/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1180,13 +1258,9 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/25/2019.05.25.colorfulMacTerminal/" itemprop="url">
-                  玩转彩色 mac terminal
-                </a>
+                
+                <a href="/2019/05/25/2019.05.25.colorfulMacTerminal/" class="post-title-link" itemprop="url">玩转彩色 mac terminal</a>
               
             
           </h1>
@@ -1194,25 +1268,47 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-25T16:36:01+08:00">
-                2019-05-25
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-25 16:36:01" itemprop="dateCreated datePublished" datetime="2019-05-25T16:36:01+08:00">2019-05-25</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-28 15:05:38" itemprop="dateModified" datetime="2019-05-28T15:05:38+08:00">2019-05-28</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1220,14 +1316,10 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1236,6 +1328,7 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
           
 
           
+            
             
           
 
@@ -1252,7 +1345,9 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1261,98 +1356,49 @@ redeem &lt;Bots&gt; &lt;Keys&gt;
       
         
           
-            <h1 id="mac-彩色控制台"><a href="#mac-彩色控制台" class="headerlink" title="mac 彩色控制台"></a>mac 彩色控制台</h1><p>mac 的彩色控制台基于两个方面实现:</p>
-<ul>
-<li>字符</li>
-<li>渐变<h2 id="字符-gt-FIGlet"><a href="#字符-gt-FIGlet" class="headerlink" title="字符 == &gt; FIGlet"></a>字符 == &gt; FIGlet</h2><blockquote>
-<p>FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种</p>
-</blockquote>
-</li>
-</ul>
-<p>效果:</p>
-<pre><code>_____          _      _    _ _             _ 
+            <p>
+              mac 彩色控制台mac 的彩色控制台基于两个方面实现:
+
+字符
+渐变字符 == &gt; FIGlet
+FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种
+
+
+
+效果:
+_____          _      _    _ _             _ 
 / ____|        | |    | |  | | |           | |
 | |     ___   __| | ___| |__| | |_ _ __ ___ | |
-| |    / _ \ / _` |/ _ \  __  | __| &apos;_ ` _ \| |
-| |___| (_) | (_| |  __/ |  | | |_| | | | | | |
-\_____\___/ \__,_|\___|_|  |_|\__|_| |_| |_|_|
-</code></pre><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install -g figlet-cli
-</code></pre><h3 id="使用文档参数"><a href="#使用文档参数" class="headerlink" title="使用文档参数"></a>使用文档参数</h3><ul>
-<li>font<blockquote>
-<p>字符类型,默认为 stardand</p>
-</blockquote>
-</li>
-<li><p>horizontalLayout</p>
-<blockquote>
-<p>水平布局 默认值： default</p>
-</blockquote>
-</li>
-<li><p>verticalLayout</p>
-<blockquote>
-<p>垂直布局 默认值： default</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="控制台使用"><a href="#控制台使用" class="headerlink" title="控制台使用"></a>控制台使用</h3><ul>
-<li><p>基本命令</p>
-<pre><code>-l, --list           List all the available fonts
--f, --font           A string value that indicates the FIGlet font to use
---horizontal-layout  A string value that indicates the horizontal layout to use
---vertical-layout    A string value that indicates the vertical layout to use
-</code></pre></li>
-<li><p>简单执行</p>
-<pre><code>figlet &quot;TREASURE&quot;
-</code></pre></li>
-</ul>
-<p>效果:</p>
-<pre><code>_____ ____  _____    _    ____  _   _ ____  _____
-|_   _|  _ \| ____|  / \  / ___|| | | |  _ \| ____|
-| | | |_) |  _|   / _ \ \___ \| | | | |_) |  _|
-| | |  _ &lt;| |___ / ___ \ ___) | |_| |  _ &lt;| |___
-|_| |_| \_\_____/_/   \_\____/ \___/|_| \_\_____|
-</code></pre><ul>
-<li><p>使用字体</p>
-<pre><code>figlet -f &quot;Def Leppard&quot;  &quot;codehtml&quot; 
-</code></pre></li>
-</ul>
-<pre><code>                    ;
-            :      ED.
-        .,    t#,     E#Wi                 ,;
-    ,Wt   ;##W.    E###G.             f#i .    .                                           i
-    i#D.  :#L:WE    E#fD#W;          .E#t  Di   Dt    GEEEEEEEL        ..       :          LE
-    f#f   .KG  ,#D   E#t t##L        i#W,   E#i  E#i   ,;;L#K;;.       ,W,     .Et         L#E
-.D#i    EE    ;#f  E#t  .E#K,     L#D.    E#t  E#t      t#E         t##,    ,W#t        G#W.
-:KW,    f#.     t#i E#t    j##f  :K#Wfff;  E#t  E#t      t#E        L###,   j###t       D#K.
-t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#t      E#K.
-;#G     ;#L   LW.  E#t   t##L    .E#L     E#j..K#j...   t#E     ;WW; ##,:K#i E#t    .E#E.
-    :KE.    t#f f#:   E#t .D#W;       f#E:   E#t  E#t      t#E    j#E.  ##f#W,  E#t   .K#E
-    .DW:    f#D#;    E#tiW#G.         ,WW;  E#t  E#t      t#E  .D#L    ###K:   E#t  .K#D
-    L#,    G#t     E#K##i            .D#; f#t  f#t      t#E :K#t     ##D.    E#t .W#G
-        jt     t      E##D.               tt  ii   ii       fE ...      #G      .. :W##########Wt
-                    E#t                                    :          j          :,,,,,,,,,,,,,.
-                    L:
-</code></pre><h2 id="渐变色-gt-lolcat"><a href="#渐变色-gt-lolcat" class="headerlink" title="渐变色 == &gt; lolcat"></a>渐变色 == &gt; lolcat</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><pre><code>get isntall lolcat
-</code></pre><p><img src="https://i.loli.net/2019/05/25/5ce901cc5be9434532.png" alt="WX20190525-165006@2x"></p>
-<h2 id="figlet-与-lolcat-结合"><a href="#figlet-与-lolcat-结合" class="headerlink" title="figlet 与 lolcat 结合"></a>figlet 与 lolcat 结合</h2><pre><code>figlet &quot;MOTHER FUCKER&quot; | lolcat
-</code></pre><p><img src="https://i.loli.net/2019/05/25/5ce90354de96043522.png" alt="WX20190525-165641@2x"></p>
-<h2 id="测试不同的-figlet-字体"><a href="#测试不同的-figlet-字体" class="headerlink" title="测试不同的 figlet 字体"></a>测试不同的 figlet 字体</h2><p>可以访问<a href="http://patorjk.com/software/taag/#p=display&amp;h=1&amp;v=1&amp;f=Alpha&amp;t=codehtml" target="_blank" rel="external">这个网站</a></p>
-
+| |    / _ \ / _` |/ _ \  __  | __| &apos;
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/25/2019.05.25.colorfulMacTerminal/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1366,6 +1412,10 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1378,17 +1428,23 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/2019.05.24.sort/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/2019.05.24.sort/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1397,13 +1453,9 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/24/2019.05.24.sort/" itemprop="url">
-                  JavaScript 中的 sort()
-                </a>
+                
+                <a href="/2019/05/24/2019.05.24.sort/" class="post-title-link" itemprop="url">JavaScript 中的 sort()</a>
               
             
           </h1>
@@ -1411,25 +1463,47 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-24T22:49:38+08:00">
-                2019-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-24 22:49:38" itemprop="dateCreated datePublished" datetime="2019-05-24T22:49:38+08:00">2019-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-25 00:17:15" itemprop="dateModified" datetime="2019-05-25T00:17:15+08:00">2019-05-25</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1437,14 +1511,10 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1453,6 +1523,7 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
           
 
           
+            
             
           
 
@@ -1469,7 +1540,9 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1478,106 +1551,46 @@ t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#
       
         
           
-            <h1 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h1><blockquote>
-<p>sort() 方法用原地算法对数组的元素进行排序，并返回数组。排序算法现在是稳定的。默认排序顺序是根据字符串 Unicode 码点。</p>
-</blockquote>
-<p>样例:</p>
-<pre><code>var months = [&apos;March&apos;, &apos;Jan&apos;, &apos;Feb&apos;, &apos;Dec&apos;];
+            <p>
+              sort()
+sort() 方法用原地算法对数组的元素进行排序，并返回数组。排序算法现在是稳定的。默认排序顺序是根据字符串 Unicode 码点。
+
+样例:
+var months = [&apos;March&apos;, &apos;Jan&apos;, &apos;Feb&apos;, &apos;Dec&apos;];
 months.sort();
 console.log(months);
 // expected output: Array [&quot;Dec&quot;, &quot;Feb&quot;, &quot;Jan&quot;, &quot;March&quot;]
 
-var array1 = [1, 30, 4, 21, 100000];
-array1.sort();
-console.log(array1);
-// expected output: Array [1, 100000, 21, 30, 4]
-</code></pre><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code>arr.sort([compareFunction])
-</code></pre><hr>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h4 id="compareFunction-firstEl-secondEl-可选"><a href="#compareFunction-firstEl-secondEl-可选" class="headerlink" title="compareFunction(firstEl,secondEl) (可选)"></a>compareFunction(firstEl,secondEl) (可选)</h4><h5 id="fisrtEl"><a href="#fisrtEl" class="headerlink" title="fisrtEl"></a>fisrtEl</h5><p>第一个要比较的元素</p>
-<h5 id="secondEl"><a href="#secondEl" class="headerlink" title="secondEl"></a>secondEl</h5><p>第二个要比较的元素</p>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>返回排序以后的算法,由于采用原地算法,不进行复制.</p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>如果没有指明 compareFunction ，那么元素会按照转换为的字符串的诸个字符的 Unicode 位点进行排序。例如 “Banana” 会被排列到 “cherry” 之前。当数字按由小到大排序时，9 出现在 80 之前，但因为（没有指明 compareFunction），比较的数字会先被转换为字符串，所以在 Unicode 顺序上 “80” 要比 “9” 要靠前。</p>
-<p>如果指明了 compareFunction ，那么数组会按照调用该函数的返回值排序。即 a 和 b 是两个将要被比较的元素：</p>
-<ul>
-<li>如果 compareFunction(a, b) 小于 0 ，那么 a 会被排列到 b 之前；</li>
-<li>如果 compareFunction(a, b) 等于 0 ， a 和 b 的相对位置不变。备注： ECMAScript 标准并不保证这一行为，而且也不是所有浏览器都会遵守（例如 Mozilla 在 2003 年之前的版本）；</li>
-<li>如果 compareFunction(a, b) 大于 0 ， b 会被排列到 a 之前。</li>
-<li><p>compareFunction(a, b) 必须总是对相同的输入返回相同的比较结果，否则排序的结果将是不确定的。</p>
-<pre><code>function compare(a, b) {
-if (a &lt; b ) {           // 按某种排序标准进行比较, a 小于 b
-    return -1;
-}
-if (a &gt; b ) {
-    return 1;
-}
-// a must be equal to b
-return 0;
-}
-</code></pre></li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>###sort()方法可以使用函数表达式方便地表示</p>
-<pre><code>var numbers = [4, 2, 5, 1, 3];
-numbers.sort((a, b) =&gt; a - b);
-console.log(numbers);
-
-// [1, 2, 3, 4, 5]
-</code></pre><p>###对象可以按照属性排序</p>
-<pre><code>var items = [
-{ name: &apos;Edward&apos;, value: 21 },
-{ name: &apos;Sharpe&apos;, value: 37 },
-{ name: &apos;And&apos;, value: 45 },
-{ name: &apos;The&apos;, value: -12 },
-{ name: &apos;Magnetic&apos; },
-{ name: &apos;Zeros&apos;, value: 37 }
-];
-
-// sort by value
-items.sort(function (a, b) {
-return (a.value - b.value)
-});
-
-// sort by name
-items.sort(function(a, b) {
-var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-if (nameA &lt; nameB) {
-    return -1;
-}
-if (nameA &gt; nameB) {
-    return 1;
-}
-
-
-// names must be equal
-
-return 0;
-});
-</code></pre><p>###按照指定的顺序排序</p>
-<pre><code>sortList:[&quot;事业编制&quot;,&quot;企业编制&quot;,&quot;二批企聘&quot;];
-list:[{type:&quot;企业编制&quot;,number:12344}
-,{type:&quot;二批企聘&quot;,number:52344},
-{type:&quot;事业编制&quot;,number:8567244}]
-list.sort((a,b)=&gt;{
-    return sortList.indexOf(a.type)-sortList.indexOf(b.type)
-})
-// [{type:&quot;事业编制&quot;,number:8567244},{type:&quot;企业编制&quot;,number:12344},{type:&quot;二批企聘&quot;,number:52344}]
-</code></pre>
+va
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/24/2019.05.24.sort/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1591,6 +1604,10 @@ list.sort((a,b)=&gt;{
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1603,17 +1620,23 @@ list.sort((a,b)=&gt;{
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/2019.05.14.cn2/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/2019.05.14.cn2/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1622,13 +1645,9 @@ list.sort((a,b)=&gt;{
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/14/2019.05.14.cn2/" itemprop="url">
-                  关于电信的 CN2
-                </a>
+                
+                <a href="/2019/05/14/2019.05.14.cn2/" class="post-title-link" itemprop="url">关于电信的 CN2</a>
               
             
           </h1>
@@ -1636,25 +1655,47 @@ list.sort((a,b)=&gt;{
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T17:37:46+08:00">
-                2019-05-14
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-14 17:37:46" itemprop="dateCreated datePublished" datetime="2019-05-14T17:37:46+08:00">2019-05-14</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-15 09:39:53" itemprop="dateModified" datetime="2019-05-15T09:39:53+08:00">2019-05-15</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1662,14 +1703,10 @@ list.sort((a,b)=&gt;{
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1678,6 +1715,7 @@ list.sort((a,b)=&gt;{
           
 
           
+            
             
           
 
@@ -1694,7 +1732,9 @@ list.sort((a,b)=&gt;{
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1703,35 +1743,39 @@ list.sort((a,b)=&gt;{
       
         
           
-            <h1 id="什么是电信-CN2-网络"><a href="#什么是电信-CN2-网络" class="headerlink" title="什么是电信 CN2 网络"></a>什么是电信 CN2 网络</h1><p>CN2全称为中国电信下一代承载网，英文Chinatelecom Next Carrier Network，缩写为CNCN，进一步缩写为CN2。</p>
-<h1 id="CN2-线路的优势在哪里"><a href="#CN2-线路的优势在哪里" class="headerlink" title="CN2 线路的优势在哪里"></a>CN2 线路的优势在哪里</h1><p>CN2作为“精品网络项目”被提出来，其技术构造是远远领先于电信原有网络的，极为先进的QOS保证网络的畅通性，具体可参考资料。当然除了先进的技术，其昂贵的价格和对大量网络资源的独占性也是重要的原因，资料。普通家庭宽带用户用不上CN2线路，哪怕加几倍的钱也不一定能用上，而接入CN2线路机房的VPS，价格卖得比其他线路的高很多。用户少，服务器少，分配的独享资源多，这样就能保证绝大多数情况下CN2线路的流畅性。</p>
-<p>如果想要寻找接入CN2线路的国外VPS提供商，建议使用“Next Carrier Network” 或者CN2这个关键词搜索即可。</p>
-<h1 id="三种承载网络的对比"><a href="#三种承载网络的对比" class="headerlink" title="三种承载网络的对比"></a>三种承载网络的对比</h1><p>提到CN2，我们还不得不提到老一代的163骨干网，而CN2本身又分为两种类型，所以，我们在这里把这三者逐一对比一下：</p>
-<ul>
-<li>普通163: 就是电信用户最经常遇到的电信线路，等级最低，省级/出国/国际骨干节点都以202.97开头，全程没有59.43开头的CN2节点。在出国线路上表现为拥堵，丢包率高。</li>
-<li>CN2 GT: CN2里属于Global Transit的产品(又名GIS-Global Internet Service)，在CN2里等级低，省级/出国节点为202.97开头，国际骨干节点有2～4个59.43开头的CN2节点。在出国线路上拥堵程度一般，相对于163骨干网的稍强，相比CN2 GIA，性价比也较高。</li>
-<li>CN2 GIA: CN2里属于Global Internet Access的产品，等级最高，省级/出国/国际骨干节点都以59.43开头，全程没有202.97开头的节点。在出国线路上表现最好，很少拥堵，理论上速度最快最稳定，当然，价格也相对CN2 GT偏高。<h1 id="如何判断线路类型"><a href="#如何判断线路类型" class="headerlink" title="如何判断线路类型"></a>如何判断线路类型</h1>通常情况下，我们使用mtr或者traceroute，通过跟踪网络包的路由节点，来判断具体的网络承载类型，下面，我们来举几个栗子：</li>
-<li>整个路由节点信息中，全程没有59.43开头的CN2节点，并且一些省级或者出口的节点是以202.97开头的，因此我们可以判断承载网络就是163普通线路。</li>
-<li>在路由节点中，出现了59.43开头的节点，在一些出口节点上，仍然通过了202.97开头的节点，可以判断为CN2 GT线路。</li>
-<li>路由的跳数相对较少，并且经过了59.43..开头的节点，而并没有经过202.97开头的节点，此承载网络类型为CN2 GIA线路。<h1 id="CN2-VPS-是否一定比普通-163-承载网络的-VPS-更快呢"><a href="#CN2-VPS-是否一定比普通-163-承载网络的-VPS-更快呢" class="headerlink" title="CN2 VPS 是否一定比普通 163 承载网络的 VPS 更快呢?"></a>CN2 VPS 是否一定比普通 163 承载网络的 VPS 更快呢?</h1>CN2决定了网络质量会优于普通163承载网络，但也不一定，除了承载网络之外，机房的地理位置也很重要。<h1 id="单向-CN2-与双向-CN2"><a href="#单向-CN2-与双向-CN2" class="headerlink" title="单向 CN2 与双向 CN2"></a>单向 CN2 与双向 CN2</h1>CN2除了线路分为两种类型，购买时，还得注意CN2是双向还是单向。所为双向，顾名思义，去程的路由节点和回程的路由节点，都使用了CN2的承载网络。而单向CN2，一般都是去程CN2，回程普通电信线路，在速度上，会略逊于双向CN2。</li>
-</ul>
+            <p>
+              什么是电信 CN2 网络CN2全称为中国电信下一代承载网，英文Chinatelecom Next Carrier Network，缩写为CNCN，进一步缩写为CN2。
+CN2 线路的优势在哪里CN2作为“精品网络项目”被提出来，其技术构造是远远领先于电信原有网络的，极为先进的QOS保证网络的畅通性，具体可参考资料。当然除了先进的技术，其昂贵的价格和对大量网络资源的独占性也是重要的原因，资料。普通家庭宽带用户用不上CN2线路，哪怕加几倍的钱也不一定能用上，而接入CN2线路机房的VPS，价格卖得比其他线路的高很多。用户少，服务器少，分配的独享资源多，这样就能保证绝大多数情况下CN2线路的流畅性。
 
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/14/2019.05.14.cn2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1745,6 +1789,10 @@ list.sort((a,b)=&gt;{
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1757,17 +1805,23 @@ list.sort((a,b)=&gt;{
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/2019.05.13.encrypt/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/2019.05.13.encrypt/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1776,13 +1830,9 @@ list.sort((a,b)=&gt;{
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/05/13/2019.05.13.encrypt/" itemprop="url">
-                  BASE64 加密
-                </a>
+                
+                <a href="/2019/05/13/2019.05.13.encrypt/" class="post-title-link" itemprop="url">BASE64 加密</a>
               
             
           </h1>
@@ -1790,25 +1840,35 @@ list.sort((a,b)=&gt;{
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T11:11:46+08:00">
-                2019-05-13
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-13 11:11:46 / 修改时间：14:48:23" itemprop="dateCreated datePublished" datetime="2019-05-13T11:11:46+08:00">2019-05-13</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1816,14 +1876,10 @@ list.sort((a,b)=&gt;{
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1832,6 +1888,7 @@ list.sort((a,b)=&gt;{
           
 
           
+            
             
           
 
@@ -1848,7 +1905,9 @@ list.sort((a,b)=&gt;{
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1857,38 +1916,44 @@ list.sort((a,b)=&gt;{
       
         
           
-            <h1 id="BASE64加密算法"><a href="#BASE64加密算法" class="headerlink" title="BASE64加密算法"></a>BASE64加密算法</h1><blockquote>
-<p>所谓Base64，就是说选出64个字符—-小写字母a-z、大写字母A-Z、数字0-9、符号”+”、”/“（再加上作为垫字的”=”，实际上是65个字符）—-作为一个基本字符集。然后，其他所有符号都转换成这个字符集中的字符。</p>
-</blockquote>
-<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ul>
-<li>第一步，将每三个字节作为一组，一共是24个二进制位。</li>
-<li>第二步，将这24个二进制位分为四组，每个组有6个二进制位。</li>
-<li>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节。</li>
-<li>第四步，根据下表，得到扩展后的每个字节的对应符号，这就是Base64的编码值。<br><img src="https://i.loli.net/2019/05/13/5cd9127ce8b0686436.png" alt="WX20190513-144448@2x"><br><img src="https://i.loli.net/2019/05/13/5cd912bbd6a0785141.png" alt="img2"><h3 id="字节数不足-3"><a href="#字节数不足-3" class="headerlink" title="字节数不足 3"></a>字节数不足 3</h3><h4 id="字节数为-2"><a href="#字节数为-2" class="headerlink" title="字节数为 2"></a>字节数为 2</h4>将这二个字节的一共16个二进制位，按照上面的规则，转成三组，最后一组除了前面加两个0以外，后面也要加两个0。这样得到一个三位的Base64编码，再在末尾补上一个”=”号。</li>
-</ul>
-<p>比如，”Ma”这个字符串是两个字节，可以转化成三组00010011、00010110、00010000以后，对应Base64值分别为T、W、E，再补上一个”=”号，因此”Ma”的Base64编码就是TWE=。</p>
-<h4 id="字节数为-1"><a href="#字节数为-1" class="headerlink" title="字节数为 1"></a>字节数为 1</h4><p>一个字节的情况：将这一个字节的8个二进制位，按照上面的规则转成二组，最后一组除了前面加二个0以外，后面再加4个0。这样得到一个二位的Base64编码，再在末尾补上两个”=”号。</p>
-<p>比如，”M”这个字母是一个字节，可以转化为二组00010011、00010000，对应的Base64值分别为T、Q，再补上二个”=”号，因此”M”的Base64编码就是TQ==。</p>
-<h3 id="汉字如何转化为-base64-编码"><a href="#汉字如何转化为-base64-编码" class="headerlink" title="汉字如何转化为 base64 编码"></a>汉字如何转化为 base64 编码</h3><p>汉字本身可以有多种编码，比如gb2312、utf-8、gbk等等，每一种编码的Base64对应值都不一样。下面的例子以utf-8为例。</p>
-<p>首先，”严”的utf-8编码为E4B8A5，写成二进制就是三字节的”11100100 10111000 10100101”。将这个24位的二进制字符串，按照第3节中的规则，转换成四组一共32位的二进制值”00111001 00001011 00100010 00100101”，相应的十进制数为57、11、34、37，它们对应的Base64值就为5、L、i、l。</p>
-<p>所以，汉字”严”（utf-8编码）的Base64值就是5Lil。</p>
+            <p>
+              BASE64加密算法
+所谓Base64，就是说选出64个字符—-小写字母a-z、大写字母A-Z、数字0-9、符号”+”、”/“（再加上作为垫字的”=”，实际上是65个字符）—-作为一个基本字符集。然后，其他所有符号都转换成这个字符集中的字符。
 
+具体步骤
+第一步，将每三个字节作为一组，一共是24个二进制位。
+第二步，将这24个二进制位分为四组，每个组有6个二进制位。
+第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节。
+第四步，根据下表，得到扩展后的每个字节的对应符号，这就是Base64的编码值。字节数不足 3字节数为 2将这二个字节的一共16个二进制位，按照上面的规则，转成三组，
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/13/2019.05.13.encrypt/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1902,6 +1967,10 @@ list.sort((a,b)=&gt;{
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1914,17 +1983,23 @@ list.sort((a,b)=&gt;{
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/2019.02.01.NAS/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/2019.02.01.NAS/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩宏斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Han's blog">
+      <meta itemprop="name" content="Han's blog"/>
     </span>
 
     
@@ -1933,13 +2008,9 @@ list.sort((a,b)=&gt;{
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/02/01/2019.02.01.NAS/" itemprop="url">
-                  群辉怎么玩儿(TO BE CONTINUED)
-                </a>
+                
+                <a href="/2019/02/01/2019.02.01.NAS/" class="post-title-link" itemprop="url">群辉怎么玩儿(TO BE CONTINUED)</a>
               
             
           </h1>
@@ -1947,25 +2018,35 @@ list.sort((a,b)=&gt;{
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-01T15:48:35+08:00">
-                2019-02-01
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-01 15:48:35 / 修改时间：17:23:28" itemprop="dateCreated datePublished" datetime="2019-02-01T15:48:35+08:00">2019-02-01</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1973,14 +2054,10 @@ list.sort((a,b)=&gt;{
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -1989,6 +2066,7 @@ list.sort((a,b)=&gt;{
           
 
           
+            
             
           
 
@@ -2005,7 +2083,9 @@ list.sort((a,b)=&gt;{
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2014,50 +2094,41 @@ list.sort((a,b)=&gt;{
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着国内各大网盘日渐式微,把数据保存在网盘似乎不是一个很好的办法,数据的安全和隐私都是值得我们关注的问题.这时候 NAS 就是一个很好的选择了.</p>
-<blockquote>
-<p>NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
-</blockquote>
-<p>换言之,针对个人的 NAS 可以理解为剥离了除存储以外所有功能的PC.</p>
-<h1 id="个人-NAS-的选择"><a href="#个人-NAS-的选择" class="headerlink" title="个人 NAS 的选择"></a>个人 NAS 的选择</h1><p>搭建(购买)个人NAS需要满足以下需求:</p>
-<ul>
-<li>稳定: 保证7*24 工作,以及数据安全;</li>
-<li>节能: 功率低,动辄几百瓦功耗放在家里肯定是不合适的;</li>
-<li>静音: 这个就不用说了吧;</li>
-<li>性价比: 按需购买.</li>
-</ul>
-<h2 id="可选的方案"><a href="#可选的方案" class="headerlink" title="可选的方案"></a>可选的方案</h2><h3 id="群辉"><a href="#群辉" class="headerlink" title="群辉"></a>群辉</h3><blockquote>
-<p>群晖科技股份有限公司（品牌名称：Synology，简称群晖或群晖科技）为台湾一家网络附加储存（NAS）服务商，总部位于台北市。截至2017年，群晖以Synology品牌行销全球，在中小企业及家用NAS市场占有率居世界首位。</p>
-</blockquote>
-<p>在 NAS 发展的这几年间,头部效应渐渐形成.群辉可以说是 NAS 界的 APPLE, 一家独大.凭借其出色的软件服务受到广大 NAS 玩家的青睐.</p>
-<h3 id="威联通-铁威马等"><a href="#威联通-铁威马等" class="headerlink" title="威联通/铁威马等"></a>威联通/铁威马等</h3><p>其他 NAS 提供商可以说是一个能打的也没有,无法提供像群辉一样的优质服务.除了价格方面没有任何优势.</p>
-<h3 id="自己搭建-NAS"><a href="#自己搭建-NAS" class="headerlink" title="自己搭建 NAS"></a>自己搭建 NAS</h3><p>自己购买硬件搭建,稳定性无法得到保障,即使刷黑群晖也无法使用群晖提供的DDNS等服务.</p>
-<h2 id="我选择的方案"><a href="#我选择的方案" class="headerlink" title="我选择的方案"></a>我选择的方案</h2><p>综合自己的需求和价格,我选择了群辉的两盘位机器DS218+,搭配两块4T的硬盘.<br><img src="https://i.loli.net/2019/02/01/5c54076f75b9e.jpeg" alt="DS219+"></p>
-<h2 id="群晖的一些功能"><a href="#群晖的一些功能" class="headerlink" title="群晖的一些功能"></a>群晖的一些功能</h2><h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p>最简单的用法,你可以把群晖当做自己的个人云盘,用作文件备份.<br><img src="https://i.loli.net/2019/02/01/5c540c9780da0.png" alt="WX20190201-170812@2x"></p>
-<h3 id="相册-moments"><a href="#相册-moments" class="headerlink" title="相册(moments)"></a>相册(moments)</h3><p>群晖的相册,可以提供像 icloud相册类似的体验.时间轴,智能识别等功能一应俱全.<br><img src="https://i.loli.net/2019/02/01/5c540d4a71bd4.png" alt="WX20190201-171122@2x"></p>
-<h3 id="video-station"><a href="#video-station" class="headerlink" title="video station"></a>video station</h3><p>这个功能必须强吹一波,当你把视频文件存入时,群晖会自动识别并匹配封面图和介绍等.<br><img src="https://i.loli.net/2019/02/01/5c540de167341.png" alt="WX20190201-171349@2x"></p>
-<h3 id="权限配置"><a href="#权限配置" class="headerlink" title="权限配置"></a>权限配置</h3><p>群晖提供了完整的用户权限,群组权限功能.你可以添加用户并赋予指定的文件/文件夹的读写权限.<br><img src="https://i.loli.net/2019/02/01/5c540e87f19eb.png" alt="WX20190201-171640@2x"></p>
-<h3 id="远程下载-download-station"><a href="#远程下载-download-station" class="headerlink" title="远程下载(download station)"></a>远程下载(download station)</h3><p>群晖类似迅雷的远程下载功能.<br><img src="https://i.loli.net/2019/02/01/5c540ee74d856.png" alt="WX20190201-171816@2x"></p>
-<h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><p>群晖支持 docker,这个锦上添花的功能 又给群晖添加了无数的玩法.举几个例子:</p>
-<h4 id="人人美剧"><a href="#人人美剧" class="headerlink" title="人人美剧"></a>人人美剧</h4><p>下载 docker 中的人人美剧,亲测可以满网速,批量下载美剧.<br><img src="https://i.loli.net/2019/02/01/5c540f80a6dfc.png" alt="WX20190201-172049@2x"></p>
-<h4 id="迅雷-docker-版"><a href="#迅雷-docker-版" class="headerlink" title="迅雷 docker 版"></a>迅雷 docker 版</h4><p>搭配迅雷远程下载可以提供类似 downlaod station的功能,但是由于迅雷的限速政策,体验并不是很好.<br><img src="https://i.loli.net/2019/02/01/5c541009e39a7.png" alt="WX20190201-172306@2x"></p>
+            <p>
+              前言随着国内各大网盘日渐式微,把数据保存在网盘似乎不是一个很好的办法,数据的安全和隐私都是值得我们关注的问题.这时候 NAS 就是一个很好的选择了.
 
+NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。
+
+换言之,针对个人的 NAS 可以理解为剥离了除
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/02/01/2019.02.01.NAS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
+    
+
+    
       
-    </div>
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2071,6 +2142,10 @@ list.sort((a,b)=&gt;{
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2079,15 +2154,12 @@ list.sort((a,b)=&gt;{
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2109,67 +2181,213 @@ list.sort((a,b)=&gt;{
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="韩宏斌" />
-          <p class="site-author-name" itemprop="name">韩宏斌</p>
-           
-              <p class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</p>
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">Artikel</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">Kategorien</span>
-              
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">44</span>
-                <span class="site-state-item-name">Tags</span>
-              
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -2177,6 +2395,7 @@ list.sort((a,b)=&gt;{
 
     </div>
   </aside>
+  
 
 
         
@@ -2185,30 +2404,33 @@ list.sort((a,b)=&gt;{
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2221,11 +2443,16 @@ list.sort((a,b)=&gt;{
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2239,80 +2466,15 @@ list.sort((a,b)=&gt;{
 
 
 
-  
 
 
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -2323,7 +2485,81 @@ list.sort((a,b)=&gt;{
 
 
 
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
