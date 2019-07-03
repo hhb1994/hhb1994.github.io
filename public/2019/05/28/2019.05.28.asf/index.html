@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="#在 mac 上使用 asf关于 ASF (ArchiSteamFarm)：
+
+ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASF的使用">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/2019.05.28.asf/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="#在 mac 上使用 asf关于 ASF (ArchiSteamFarm)：
+
+ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不">
+<meta property="og:updated_time" content="2019-05-28T07:46:11.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASF的使用">
+<meta name="twitter:description" content="#在 mac 上使用 asf关于 ASF (ArchiSteamFarm)：
+
+ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/2019.05.28.asf/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ASF的使用 | Han's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/2019.05.28.asf/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ASF的使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 15:01:54 / 修改时间：15:46:11" itemprop="dateCreated datePublished" datetime="2019-05-28T15:01:54+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#在 mac 上使用 asf<br><strong>关于 ASF (ArchiSteamFarm)：</strong></p>
+<blockquote>
+<p>ASF 是由 C# 編寫，能同時掛載多個 Steam 賬號的掛卡工具。其不像 Idle Master 那樣：同一時間只能為一個賬號掛卡，需要後台運行 Steam 客戶端，需啟動額外進程模擬『正在遊戲』狀態。ASF 不需要後台運行任何Steam 客戶端，不需要啟動額外進程，而且能為不限數目的 Steam 賬號同時掛卡。不僅如此，該軟件還能在服務器和其他非桌面電腦上運行，並擁有完整支持 Mono 的特性，這能讓其在 Windows、Linux 以及 OS X 等任何支持 Mono 的操作系統上運行。ASF 存在的基礎要歸功於 SteamKit2。</p>
+</blockquote>
+<p>[注] ArchiSteamFarm V3.0 以后的版本已经将 Mono 换成了 .Net Core。<br>简单来说 ASF 就是一个假的 Steam 客户端，它通过“假装玩游戏”，让 Steam 以为你真的在玩某款游戏，从而获得 Steam 集换式卡牌。</p>
+<h2 id="ASF-的安装与使用"><a href="#ASF-的安装与使用" class="headerlink" title="ASF 的安装与使用"></a>ASF 的安装与使用</h2><h3 id="mac-使用-asf"><a href="#mac-使用-asf" class="headerlink" title="mac 使用 asf"></a>mac 使用 asf</h3><ul>
+<li>到<a href="https://github.com/JustArchiNET/ArchiSteamFarm/releases" target="_blank" rel="external">这里</a>下载 mac 客户端(mac 上需要安装 openssl,最好在 mac 上安装 xcode)</li>
+</ul>
+<ul>
+<li><p>cd 到解压目录,然后赋予管理员权限:</p>
+<pre><code>chmod +x ./ArchiSteamFarm
+</code></pre></li>
+<li><p>运行<code>./ArchiSteamFarm</code>或者直接双击<code>ArchiSteamFarm</code></p>
+</li>
+</ul>
+<h2 id="ASF-的配置"><a href="#ASF-的配置" class="headerlink" title="ASF 的配置"></a>ASF 的配置</h2><p> 在 config 文件夹下添加 ASF.json/bot.json<br>ASF.json 文件是全局的配置文件,比较重要的参数如下:</p>
+<ul>
+<li><p>“Blacklist”：不挂卡的游戏 (这里排除了所以带 VAC 的游戏)</p>
+</li>
+<li><p>“SteamOwnerID”：ASF 所有者的 SteamID；ASF 所有者可以使用全局指令 (例如：!exit、!restart、!update 等 )<br>例如:</p>
+<pre><code>{
+    &quot;SteamOwnerID&quot;: 76561198167718521
+}
+</code></pre></li>
+</ul>
+<p>bot.json 是单个 bot 的配置文件,可以添加多个不同名字的 bot 配置文件,<br>配置文件的参数如下:</p>
+<pre><code>{
+&quot;Enabled&quot;: true,
+&quot;FarmOffline&quot;: true,
+&quot;SteamLogin&quot;: &quot;steam 账户名&quot;,
+&quot;SteamPassword&quot;: &quot;steam 登录密码&quot;
+}
+</code></pre><h2 id="ASF-的部分命令"><a href="#ASF-的部分命令" class="headerlink" title="ASF 的部分命令"></a>ASF 的部分命令</h2><p>输入<code>c</code>来进入命令模式,需要注意的是,每次输入命令前,都需要输入 <code>c</code></p>
+<h3 id="play"><a href="#play" class="headerlink" title="play"></a>play</h3><p>使指定的bot玩指定的游戏（即指定游戏挂卡）玩的游戏必须已经在库中！<br>steam限制最多同时玩32个游戏,切换到手动挂卡模式——使指定机器人运行给定的 AppIDs，并且可选自定义 GameName 为游戏名称。 使用 resume 以返回自动挂卡模式。</p>
+<pre><code>play &lt;AppIDs,GameName&gt;
+或
+play &lt;Bots&gt; &lt;AppIDs,GameName&gt;
+</code></pre><p>如：play asf 570<br>意思是所有bot玩游戏dota2(570应该是dota2的appid)</p>
+<blockquote>
+<p>asf是指代所有bot，也可写作ASF，你可以把它替换为特定bot的机器人名称(第二步中设置)<br>appid可以用英文名在steamdb搜索，或根据steam商店链接来获取（末尾的数字）</p>
+</blockquote>
+<h3 id="pause"><a href="#pause" class="headerlink" title="pause"></a>pause</h3><p>暂停自动挂卡，用resume命令可恢复挂卡<br>永久暂停指定机器人的自动挂卡模块。 ASF 在本次会话中将不会再尝试对此帐户进行挂卡，除非您手动 resume 或者重启 ASF。</p>
+<pre><code>pause 
+或
+pause &lt;Bots&gt;
+</code></pre><h3 id="resume"><a href="#resume" class="headerlink" title="resume"></a>resume</h3><p>恢复自动挂卡模式</p>
+<pre><code>resume
+或
+resume &lt;Bots&gt;
+</code></pre><h3 id="addlicense"><a href="#addlicense" class="headerlink" title="addlicense"></a>addlicense</h3><p>添加免费游戏或限时免费游戏<br>为指定机器人激活给定的 AppIDs（Steam 网络）或 SubIDs（Steam 商店），仅免费游戏有效。<br>格式如下:</p>
+<pre><code>addlicense &lt;GameIDs&gt;
+</code></pre><p>如 addlince me 570<br>意思是：名称为me的bot 添加 appid为570的免费游戏</p>
+<h3 id="redeem"><a href="#redeem" class="headerlink" title="redeem"></a>redeem</h3><p>激活steamkey来添加游戏</p>
+<pre><code>redeem &lt;Keys&gt;
+或
+redeem &lt;Bots&gt; &lt;Keys&gt;
+</code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1，如果只有一个bot，以上命令均可以不指定bot<br>2，IPC GUI右上角的齿轮可以修改界面语言<br>3，如果以后不用asf，关闭asf即可,<br>4，ASF不依赖steam客户端，在没有安装steam的电脑上依旧能运行</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/steam/" rel="tag"># steam</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/2019.05.25.colorfulMacTerminal/" rel="next" title="玩转彩色 mac terminal">
+                <i class="fa fa-chevron-left"></i> 玩转彩色 mac terminal
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/29/2019.05.29.vscodesync/" rel="prev" title="在不同电脑上同步 vscode 的插件/设置">
+                在不同电脑上同步 vscode 的插件/设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ASF-的安装与使用"><span class="nav-number">1.</span> <span class="nav-text">ASF 的安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-使用-asf"><span class="nav-number">1.1.</span> <span class="nav-text">mac 使用 asf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASF-的配置"><span class="nav-number">2.</span> <span class="nav-text">ASF 的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASF-的部分命令"><span class="nav-number">3.</span> <span class="nav-text">ASF 的部分命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#play"><span class="nav-number">3.1.</span> <span class="nav-text">play</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pause"><span class="nav-number">3.2.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resume"><span class="nav-number">3.3.</span> <span class="nav-text">resume</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addlicense"><span class="nav-number">3.4.</span> <span class="nav-text">addlicense</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redeem"><span class="nav-number">3.5.</span> <span class="nav-text">redeem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">3.6.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

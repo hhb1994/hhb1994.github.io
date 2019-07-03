@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="mac 彩色控制台mac 的彩色控制台基于两个方面实现:
+
+字符
+渐变字符 == &amp;gt; FIGlet
+FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种
+
+
+
+效果:
+_____          _      _    _ _             _ 
+/ ____|        | |    | |  | | |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转彩色 mac terminal">
+<meta property="og:url" content="http://yoursite.com/2019/05/25/2019.05.25.colorfulMacTerminal/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="mac 彩色控制台mac 的彩色控制台基于两个方面实现:
+
+字符
+渐变字符 == &amp;gt; FIGlet
+FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种
+
+
+
+效果:
+_____          _      _    _ _             _ 
+/ ____|        | |    | |  | | |">
+<meta property="og:image" content="https://i.loli.net/2019/05/25/5ce901cc5be9434532.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/25/5ce90354de96043522.png">
+<meta property="og:updated_time" content="2019-05-28T07:05:38.899Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩转彩色 mac terminal">
+<meta name="twitter:description" content="mac 彩色控制台mac 的彩色控制台基于两个方面实现:
+
+字符
+渐变字符 == &amp;gt; FIGlet
+FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种
+
+
+
+效果:
+_____          _      _    _ _             _ 
+/ ____|        | |    | |  | | |">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/25/5ce901cc5be9434532.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/25/2019.05.25.colorfulMacTerminal/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>玩转彩色 mac terminal | Han's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/2019.05.25.colorfulMacTerminal/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">玩转彩色 mac terminal
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-25 16:36:01" itemprop="dateCreated datePublished" datetime="2019-05-25T16:36:01+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-28 15:05:38" itemprop="dateModified" datetime="2019-05-28T15:05:38+08:00">2019-05-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="mac-彩色控制台"><a href="#mac-彩色控制台" class="headerlink" title="mac 彩色控制台"></a>mac 彩色控制台</h1><p>mac 的彩色控制台基于两个方面实现:</p>
+<ul>
+<li>字符</li>
+<li>渐变<h2 id="字符-gt-FIGlet"><a href="#字符-gt-FIGlet" class="headerlink" title="字符 == &gt; FIGlet"></a>字符 == &gt; FIGlet</h2><blockquote>
+<p>FIGlet」是基于ASCII字符组成的字符画，可以根据不同的字符类型来生成不一样的效果, 目前应该支持314种</p>
+</blockquote>
+</li>
+</ul>
+<p>效果:</p>
+<pre><code>_____          _      _    _ _             _ 
+/ ____|        | |    | |  | | |           | |
+| |     ___   __| | ___| |__| | |_ _ __ ___ | |
+| |    / _ \ / _` |/ _ \  __  | __| &apos;_ ` _ \| |
+| |___| (_) | (_| |  __/ |  | | |_| | | | | | |
+\_____\___/ \__,_|\___|_|  |_|\__|_| |_| |_|_|
+</code></pre><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install -g figlet-cli
+</code></pre><h3 id="使用文档参数"><a href="#使用文档参数" class="headerlink" title="使用文档参数"></a>使用文档参数</h3><ul>
+<li>font<blockquote>
+<p>字符类型,默认为 stardand</p>
+</blockquote>
+</li>
+<li><p>horizontalLayout</p>
+<blockquote>
+<p>水平布局 默认值： default</p>
+</blockquote>
+</li>
+<li><p>verticalLayout</p>
+<blockquote>
+<p>垂直布局 默认值： default</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="控制台使用"><a href="#控制台使用" class="headerlink" title="控制台使用"></a>控制台使用</h3><ul>
+<li><p>基本命令</p>
+<pre><code>-l, --list           List all the available fonts
+-f, --font           A string value that indicates the FIGlet font to use
+--horizontal-layout  A string value that indicates the horizontal layout to use
+--vertical-layout    A string value that indicates the vertical layout to use
+</code></pre></li>
+<li><p>简单执行</p>
+<pre><code>figlet &quot;TREASURE&quot;
+</code></pre></li>
+</ul>
+<p>效果:</p>
+<pre><code>_____ ____  _____    _    ____  _   _ ____  _____
+|_   _|  _ \| ____|  / \  / ___|| | | |  _ \| ____|
+| | | |_) |  _|   / _ \ \___ \| | | | |_) |  _|
+| | |  _ &lt;| |___ / ___ \ ___) | |_| |  _ &lt;| |___
+|_| |_| \_\_____/_/   \_\____/ \___/|_| \_\_____|
+</code></pre><ul>
+<li><p>使用字体</p>
+<pre><code>figlet -f &quot;Def Leppard&quot;  &quot;codehtml&quot; 
+</code></pre></li>
+</ul>
+<pre><code>                    ;
+            :      ED.
+        .,    t#,     E#Wi                 ,;
+    ,Wt   ;##W.    E###G.             f#i .    .                                           i
+    i#D.  :#L:WE    E#fD#W;          .E#t  Di   Dt    GEEEEEEEL        ..       :          LE
+    f#f   .KG  ,#D   E#t t##L        i#W,   E#i  E#i   ,;;L#K;;.       ,W,     .Et         L#E
+.D#i    EE    ;#f  E#t  .E#K,     L#D.    E#t  E#t      t#E         t##,    ,W#t        G#W.
+:KW,    f#.     t#i E#t    j##f  :K#Wfff;  E#t  E#t      t#E        L###,   j###t       D#K.
+t#f     :#G     GK  E#t    :E#K: i##WLLLLt E########f.   t#E      .E#j##,  G#fE#t      E#K.
+;#G     ;#L   LW.  E#t   t##L    .E#L     E#j..K#j...   t#E     ;WW; ##,:K#i E#t    .E#E.
+    :KE.    t#f f#:   E#t .D#W;       f#E:   E#t  E#t      t#E    j#E.  ##f#W,  E#t   .K#E
+    .DW:    f#D#;    E#tiW#G.         ,WW;  E#t  E#t      t#E  .D#L    ###K:   E#t  .K#D
+    L#,    G#t     E#K##i            .D#; f#t  f#t      t#E :K#t     ##D.    E#t .W#G
+        jt     t      E##D.               tt  ii   ii       fE ...      #G      .. :W##########Wt
+                    E#t                                    :          j          :,,,,,,,,,,,,,.
+                    L:
+</code></pre><h2 id="渐变色-gt-lolcat"><a href="#渐变色-gt-lolcat" class="headerlink" title="渐变色 == &gt; lolcat"></a>渐变色 == &gt; lolcat</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><pre><code>get isntall lolcat
+</code></pre><p><img src="https://i.loli.net/2019/05/25/5ce901cc5be9434532.png" alt="WX20190525-165006@2x"></p>
+<h2 id="figlet-与-lolcat-结合"><a href="#figlet-与-lolcat-结合" class="headerlink" title="figlet 与 lolcat 结合"></a>figlet 与 lolcat 结合</h2><pre><code>figlet &quot;MOTHER FUCKER&quot; | lolcat
+</code></pre><p><img src="https://i.loli.net/2019/05/25/5ce90354de96043522.png" alt="WX20190525-165641@2x"></p>
+<h2 id="测试不同的-figlet-字体"><a href="#测试不同的-figlet-字体" class="headerlink" title="测试不同的 figlet 字体"></a>测试不同的 figlet 字体</h2><p>可以访问<a href="http://patorjk.com/software/taag/#p=display&amp;h=1&amp;v=1&amp;f=Alpha&amp;t=codehtml" target="_blank" rel="external">这个网站</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/mac/" rel="tag"># mac</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/2019.05.24.sort/" rel="next" title="JavaScript 中的 sort()">
+                <i class="fa fa-chevron-left"></i> JavaScript 中的 sort()
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/28/2019.05.28.asf/" rel="prev" title="ASF的使用">
+                ASF的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mac-彩色控制台"><span class="nav-number">1.</span> <span class="nav-text">mac 彩色控制台</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符-gt-FIGlet"><span class="nav-number">1.1.</span> <span class="nav-text">字符 == > FIGlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用文档参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用文档参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台使用"><span class="nav-number">1.1.3.</span> <span class="nav-text">控制台使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变色-gt-lolcat"><span class="nav-number">1.2.</span> <span class="nav-text">渐变色 == > lolcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figlet-与-lolcat-结合"><span class="nav-number">1.3.</span> <span class="nav-text">figlet 与 lolcat 结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试不同的-figlet-字体"><span class="nav-number">1.4.</span> <span class="nav-text">测试不同的 figlet 字体</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
