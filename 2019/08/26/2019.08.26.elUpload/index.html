@@ -96,15 +96,37 @@
 
 
 
-  <meta name="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Han's blog">
-<meta property="og:url" content="http://hhb1994.github.to/archives/2019/07/index.html">
+  <meta name="description" content="获取要上传的文件使用el-upload的beforeUpload方法
+
+beforeUpload:上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
+
+&amp;lt;el-upload
+        ref=&amp;quot;upload&amp;quot;
+        :action=&amp;quot;postIP&amp;quot;
+        :li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="el-upload 上传前计算文件的 MD5">
+<meta property="og:url" content="http://hhb1994.github.to/2019/08/26/2019.08.26.elUpload/index.html">
 <meta property="og:site_name" content="Han's blog">
-<meta property="og:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta property="og:description" content="获取要上传的文件使用el-upload的beforeUpload方法
+
+beforeUpload:上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
+
+&amp;lt;el-upload
+        ref=&amp;quot;upload&amp;quot;
+        :action=&amp;quot;postIP&amp;quot;
+        :li">
+<meta property="og:updated_time" content="2019-08-26T08:31:46.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Han's blog">
-<meta name="twitter:description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。">
+<meta name="twitter:title" content="el-upload 上传前计算文件的 MD5">
+<meta name="twitter:description" content="获取要上传的文件使用el-upload的beforeUpload方法
+
+beforeUpload:上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
+
+&amp;lt;el-upload
+        ref=&amp;quot;upload&amp;quot;
+        :action=&amp;quot;postIP&amp;quot;
+        :li">
 
 
 
@@ -112,7 +134,7 @@
 
   
   
-  <link rel="canonical" href="http://hhb1994.github.to/archives/2019/07/"/>
+  <link rel="canonical" href="http://hhb1994.github.to/2019/08/26/2019.08.26.elUpload/"/>
 
 
 
@@ -122,7 +144,7 @@
   };
 </script>
 
-  <title>归档 | Han's blog</title>
+  <title>el-upload 上传前计算文件的 MD5 | Han's blog</title>
   
 
 
@@ -170,7 +192,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,7 +302,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -322,179 +344,329 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2019/08/26/2019.08.26.elUpload/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">el-upload 上传前计算文件的 MD5
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-26 16:11:25 / 修改时间：16:31:46" itemprop="dateCreated datePublished" datetime="2019-08-26T16:11:25+08:00">2019-08-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        不错! 目前共计 55 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/15/2019.07.15.async.Javascript/" itemprop="url">
+          
             
-              <span itemprop="name">JavaScript异步编程</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-15T14:15:40+08:00"
-              content="2019-07-15">
-          07-15
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/03/2019.07.03.mac.chmod/" itemprop="url">
-            
-              <span itemprop="name">使用 chmod 修改 mac 文件权限</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-03T10:02:26+08:00"
-              content="2019-07-03">
-          07-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/01/2019.07.01.linux-screen/" itemprop="url">
-            
-              <span itemprop="name">linux 主机部署 ArchiSteamFarm</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-01T15:22:30+08:00"
-              content="2019-07-01">
-          07-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
+        <h2 id="获取要上传的文件"><a href="#获取要上传的文件" class="headerlink" title="获取要上传的文件"></a>获取要上传的文件</h2><p>使用<code>el-upload</code>的<code>beforeUpload</code>方法</p>
+<blockquote>
+<p><code>beforeUpload</code>:上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。</p>
+</blockquote>
+<pre><code>&lt;el-upload
+        ref=&quot;upload&quot;
+        :action=&quot;postIP&quot;
+        :limit=&quot;1&quot;
+        :onError=&quot;uploadError&quot;
+        :onSuccess=&quot;uploadSuccess&quot;
+        :beforeUpload=&quot;beforeUpload&quot;
+    &gt;
+&lt;el-button slot=&quot;trigger&quot; size=&quot;small&quot; type=&quot;primary&quot;&gt;选取人员信息 EXCEL 文件上传&lt;/el-button&gt;
+&lt;/el-upload&gt;
+</code></pre><p>获取文件</p>
+<pre><code>beforeUpload(file) {
+    return utils.calcMd5(file).then(res =&gt; {
+        return Promise.resolve();
+        } else {
+        return Promise.reject();
+        }
+    });
+</code></pre><p>获取到文件以后调用计算 md5 的函数,计算成功返回<code>Promise.resolve()</code>,文件进行上传,否则返回<code>Promise.reject()</code>,文件不上传.<br>计算文件的 md5 值是一个比较耗时的操作,为了保证计算完文件的 md5 值以后再上传文件,<code>calcMd5()</code>中也使用了 <code>promise</code>.</p>
+<h2 id="计算文件的-md5-值"><a href="#计算文件的-md5-值" class="headerlink" title="计算文件的 md5 值"></a>计算文件的 md5 值</h2><h3 id="文件分割"><a href="#文件分割" class="headerlink" title="文件分割"></a>文件分割</h3><p>考虑到上传的文件可能很大,所以将文件分割.</p>
+<pre><code>//分割文件同时考虑到浏览器的兼容性
+var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+//每份文件 2MB
+chunkSize = 2097152,
+chunks = Math.ceil(file.size / chunkSize),
+currentChunk = 0
+</code></pre><h3 id="调用-sparkMd5"><a href="#调用-sparkMd5" class="headerlink" title="调用 sparkMd5"></a>调用 sparkMd5</h3><pre><code>spark = new SparkMD5.ArrayBuffer(),
+fileReader = new FileReader();
+fileReader.onload = function(e) {
+// console.log(&quot;read chunk nr&quot;, currentChunk + 1, &quot;of&quot;, chunks);
+spark.append(e.target.result); // Append array buffer
+currentChunk++;
 
+if (currentChunk &lt; chunks) {
+    loadNext();
+} else {
+    // console.log(&quot;finished loading&quot;);
+    // console.info(&quot;computed hash&quot;, spark.end()); // Compute hash
+}
+};
+fileReader.onerror = function() {
+console.log(&quot;oops, something went wrong.&quot;);
+};
+function loadNext() {
+var start = currentChunk * chunkSize,
+    end = start + chunkSize &gt;= file.size ? file.size : start + chunkSize;
+
+fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+}
+loadNext();
+</code></pre><h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code>    calcMd5(file) {
+    return new Promise((resolve, reject) =&gt; {
+    var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+        chunkSize = 2097152, // Read in chunks of 2MB
+        chunks = Math.ceil(file.size / chunkSize),
+        currentChunk = 0,
+        spark = new SparkMD5.ArrayBuffer(),
+        fileReader = new FileReader();
+    fileReader.onload = function(e) {
+        // console.log(&quot;read chunk nr&quot;, currentChunk + 1, &quot;of&quot;, chunks);
+        spark.append(e.target.result); // Append array buffer
+        currentChunk++;
+
+        if (currentChunk &lt; chunks) {
+        loadNext();
+        } else {
+        // console.log(&quot;finished loading&quot;);
+        // console.info(&quot;computed hash&quot;, spark.end()); // Compute hash
+        resolve([true, spark.end()]);
+        }
+    };
+    fileReader.onerror = function() {
+        reject(&quot;oops, something went wrong.&quot;);
+    };
+    function loadNext() {
+        var start = currentChunk * chunkSize,
+        end = start + chunkSize &gt;= file.size ? file.size : start + chunkSize;
+
+        fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+    }
+    loadNext();
+    });
+}
+
+ beforeUpload(file) {
+  return utils.calcMd5(file).then(res =&gt; {
+    if (res[0]) {
+      console.log(res[1]) //计算完的 md5 值
+
+
+      return Promise.resolve();
+    } else {
+      return Promise.reject();
+    }
+  });
+</code></pre>
+      
     </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/element/" rel="tag"># element</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/14/2019.08.14.npx/" rel="next" title="简单了解npx">
+                <i class="fa fa-chevron-left"></i> 简单了解npx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -514,8 +686,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -728,6 +909,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取要上传的文件"><span class="nav-number">1.</span> <span class="nav-text">获取要上传的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算文件的-md5-值"><span class="nav-number">2.</span> <span class="nav-text">计算文件的 md5 值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件分割"><span class="nav-number">2.1.</span> <span class="nav-text">文件分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用-sparkMd5"><span class="nav-number">2.2.</span> <span class="nav-text">调用 sparkMd5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码"><span class="nav-number">2.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -863,6 +1061,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -878,6 +1080,8 @@
 
   
 
+
+  
 
 
   
