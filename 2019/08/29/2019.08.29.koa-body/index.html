@@ -108,7 +108,7 @@ Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致�
 koa-bodykoa本身不能解析 post 的 b">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/XrnDoiH1356K2MW.png">
-<meta property="og:updated_time" content="2019-08-29T03:30:56.081Z">
+<meta property="og:updated_time" content="2019-08-30T03:27:56.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 koa-body 接受 post 请求以及文件">
 <meta name="twitter:description" content="koa
@@ -397,12 +397,24 @@ koa-bodykoa本身不能解析 post 的 b">
                 
               
 
-              <time title="创建时间：2019-08-29 11:15:33 / 修改时间：11:30:56" itemprop="dateCreated datePublished" datetime="2019-08-29T11:15:33+08:00">2019-08-29</time>
+              <time title="创建时间：2019-08-29 11:15:33" itemprop="dateCreated datePublished" datetime="2019-08-29T11:15:33+08:00">2019-08-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-30 11:27:56" itemprop="dateModified" datetime="2019-08-30T11:27:56+08:00">2019-08-30</time>
               
             
           </span>
@@ -466,42 +478,10 @@ koa-bodykoa本身不能解析 post 的 b">
 <li>application/vnd.api+json</li>
 <li>application/csp-report</li>
 </ul>
-<h2 id="使用-搭配-koa-router"><a href="#使用-搭配-koa-router" class="headerlink" title="使用(搭配 koa-router)"></a>使用(搭配 koa-router)</h2><pre><code>const Koa = require(&apos;koa&apos;);
-const app = new Koa();
-const router = require(&apos;koa-router&apos;)();
-const koaBody = require(&apos;koa-body&apos;);
-
-router.post(&apos;/users&apos;, koaBody(),
-(ctx) =&gt; {
-    console.log(ctx.request.body);
-    // =&gt; POST body
-    ctx.body = JSON.stringify(ctx.request.body);
-}
-);
-
-app.use(router.routes());
-
-app.listen(3000);
-console.log(&apos;curl -i http://localhost:3000/users -d &quot;name=test&quot;&apos;);
-</code></pre><h2 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h2><p><img src="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png" alt="WX20190829-112657@2x"><br>formidable 的相关配置参数<br><img src="https://i.loli.net/2019/08/29/XrnDoiH1356K2MW.png" alt="屏幕快照 2019-08-29 上午11.28.05"></p>
-<h2 id="获取上传信息"><a href="#获取上传信息" class="headerlink" title="获取上传信息"></a>获取上传信息</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>使用<code>ctx.request.files</code>来获取文件.因为默认开启多个文件上传，因此 ctx.request.files 是一个对象.</p>
-<pre><code>async uploadVideo(ctx) {
-    const file = ctx.request.files.file;
-    const reader = fs.createReadStream(file.path);
-    const ext = file.name.split(&quot;.&quot;).pop();
-    const dir = path.join(__dirname, `../upload/${utils.getDirName()}`);
-    utils.checkDirExist(dir);
-    let fileName = `${utils.getDirName()}_${~~(Math.random() * 10000)}.${ext}`;
-    const fileLocation = `${dir}/${fileName}`;
-    const upStream = fs.createWriteStream(fileLocation);
-    reader.pipe(upStream);
-    utils.transferFile(fileLocation, `/yunjia/${fileName}`);
-    ctx.body = {
-    code: 200,
-    url: `http://10.20.21.24:8080/${fileName}`
-    };
-}
-</code></pre><h3 id="获取-body-的值"><a href="#获取-body-的值" class="headerlink" title="获取 body 的值"></a>获取 body 的值</h3><p>使用<code>ctx.request.body</code>来获取.</p>
+<h2 id="使用-搭配-koa-router"><a href="#使用-搭配-koa-router" class="headerlink" title="使用(搭配 koa-router)"></a>使用(搭配 koa-router)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</div><div class="line"><span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</div><div class="line"></div><div class="line">router.post(<span class="string">'/users'</span>, koaBody(),</div><div class="line">(ctx) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(ctx.request.body);</div><div class="line">    <span class="comment">// =&gt; POST body</span></div><div class="line">    ctx.body = <span class="built_in">JSON</span>.stringify(ctx.request.body);</div><div class="line">&#125;</div><div class="line">);</div><div class="line"></div><div class="line">app.use(router.routes());</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'curl -i http://localhost:3000/users -d "name=test"'</span>);</div></pre></td></tr></table></figure>
+<h2 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h2><p><img src="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png" alt="WX20190829-112657@2x"><br>formidable 的相关配置参数<br><img src="https://i.loli.net/2019/08/29/XrnDoiH1356K2MW.png" alt="屏幕快照 2019-08-29 上午11.28.05"></p>
+<h2 id="获取上传信息"><a href="#获取上传信息" class="headerlink" title="获取上传信息"></a>获取上传信息</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>使用<code>ctx.request.files</code>来获取文件.因为默认开启多个文件上传，因此 ctx.request.files 是一个对象.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">async</span> uploadVideo(ctx) &#123;</div><div class="line">    <span class="keyword">const</span> file = ctx.request.files.file;</div><div class="line">    <span class="keyword">const</span> reader = fs.createReadStream(file.path);</div><div class="line">    <span class="keyword">const</span> ext = file.name.split(<span class="string">"."</span>).pop();</div><div class="line">    <span class="keyword">const</span> dir = path.join(__dirname, <span class="string">`../upload/<span class="subst">$&#123;utils.getDirName()&#125;</span>`</span>);</div><div class="line">    utils.checkDirExist(dir);</div><div class="line">    <span class="keyword">let</span> fileName = <span class="string">`<span class="subst">$&#123;utils.getDirName()&#125;</span>_<span class="subst">$&#123;~~(<span class="built_in">Math</span>.random() * <span class="number">10000</span>)&#125;</span>.<span class="subst">$&#123;ext&#125;</span>`</span>;</div><div class="line">    <span class="keyword">const</span> fileLocation = <span class="string">`<span class="subst">$&#123;dir&#125;</span>/<span class="subst">$&#123;fileName&#125;</span>`</span>;</div><div class="line">    <span class="keyword">const</span> upStream = fs.createWriteStream(fileLocation);</div><div class="line">    reader.pipe(upStream);</div><div class="line">    utils.transferFile(fileLocation, <span class="string">`/yunjia/<span class="subst">$&#123;fileName&#125;</span>`</span>);</div><div class="line">    ctx.body = &#123;</div><div class="line">    <span class="attr">code</span>: <span class="number">200</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">`http://10.20.21.24:8080/<span class="subst">$&#123;fileName&#125;</span>`</span></div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="获取-body-的值"><a href="#获取-body-的值" class="headerlink" title="获取 body 的值"></a>获取 body 的值</h3><p>使用<code>ctx.request.body</code>来获取.</p>
 
       
     </div>
@@ -656,7 +636,7 @@ console.log(&apos;curl -i http://localhost:3000/users -d &quot;name=test&quot;&a
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -798,11 +778,7 @@ console.log(&apos;curl -i http://localhost:3000/users -d &quot;name=test&quot;&a
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
