@@ -11,10 +11,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html class="theme-next gemini" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -79,7 +77,7 @@
     fastclick: false,
     lazyload: false,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,10 +112,13 @@ h123.cf
 <meta property="og:image" content="https://i.loli.net/2019/08/29/UZSDdyliFK1rWNE.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/hiyZA5JQla2gXRp.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/tiTd6OBMewvhkYG.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/29/2JFtUB7Mpsik5Qx.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/6xqiT4mD3QeXMyo.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/Ff3JYhOtXpcq6zy.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/v8eBjA6YCmZu4Sa.png">
-<meta property="og:updated_time" content="2019-08-29T13:15:55.278Z">
+<meta property="og:image" content="https://i.loli.net/2019/08/29/MyAqPC8IhgbQXB5.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/29/pUGRMmNizAc7Jrh.png">
+<meta property="og:updated_time" content="2019-08-29T14:01:36.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给 hexo博客添加免费域名">
 <meta name="twitter:description" content="使用hexo+github pages搭建完博客后，接下来当然是要进行域名绑定.毕竟用user_name.github.io太长,不方便记.在这里我们申请了freenom 的免费域名.
@@ -408,7 +409,7 @@ h123.cf
                 
               
 
-              <time title="创建时间：2019-08-29 20:10:47 / 修改时间：21:15:55" itemprop="dateCreated datePublished" datetime="2019-08-29T20:10:47+08:00">2019-08-29</time>
+              <time title="创建时间：2019-08-29 20:10:47 / 修改时间：22:01:36" itemprop="dateCreated datePublished" datetime="2019-08-29T20:10:47+08:00">2019-08-29</time>
             
 
             
@@ -474,6 +475,7 @@ h123.cf
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>登录<a href="https://my.freenom.com/clientarea.php?action=domains" target="_blank" rel="external">freenom</a>,选择自己刚才注册的域名的<code>manage Domain</code><br><img src="https://i.loli.net/2019/08/29/UZSDdyliFK1rWNE.png" alt="屏幕快照 2019-08-29 下午8.52.01"></p>
 <p><img src="https://i.loli.net/2019/08/29/hiyZA5JQla2gXRp.png" alt="WX20190829-205607@2x"></p>
 <p>添加 CNAME记录.<br><img src="https://i.loli.net/2019/08/29/tiTd6OBMewvhkYG.png" alt="WX20190829-205716@2x"><br>然后保存,过 0-72 小时以后就可以访问了.</p>
+<h2 id="给解析后的域名添加-🔐-https"><a href="#给解析后的域名添加-🔐-https" class="headerlink" title="给解析后的域名添加 🔐(https)"></a>给解析后的域名添加 🔐(https)</h2><p>现在 github 支持直接给博客添加 https<br><img src="https://i.loli.net/2019/08/29/2JFtUB7Mpsik5Qx.png" alt="屏幕快照 2019-08-29 下午9.50.42"></p>
 <h2 id="使用-DNSPod-添加域名解析"><a href="#使用-DNSPod-添加域名解析" class="headerlink" title="使用 DNSPod 添加域名解析"></a>使用 DNSPod 添加域名解析</h2><p>使用国内的 DNSPod进行域名解析可以提高解析的速度.</p>
 <h3 id="DNSPod中的操作"><a href="#DNSPod中的操作" class="headerlink" title="DNSPod中的操作"></a>DNSPod中的操作</h3><ul>
 <li>注册 DNSPod 账户,接着添加之前申请的域名.</li>
@@ -483,6 +485,8 @@ h123.cf
 <pre><code>f1g1ns1.dnspod.net
 f1g1ns2.dnspod.net
 </code></pre><p>等待0-72 小时生效.</p>
+<h2 id="附-关于记录类型-记录值"><a href="#附-关于记录类型-记录值" class="headerlink" title="附:关于记录类型/记录值"></a>附:关于记录类型/记录值</h2><h3 id="记录类型"><a href="#记录类型" class="headerlink" title="记录类型"></a>记录类型</h3><p><img src="https://i.loli.net/2019/08/29/MyAqPC8IhgbQXB5.png" alt="屏幕快照 2019-08-29 下午9.57.25"></p>
+<h3 id="记录值"><a href="#记录值" class="headerlink" title="记录值"></a>记录值</h3><p><img src="https://i.loli.net/2019/08/29/pUGRMmNizAc7Jrh.png" alt="屏幕快照 2019-08-29 下午9.58.30"></p>
 
       
     </div>
@@ -841,7 +845,7 @@ f1g1ns2.dnspod.net
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-项目中文件中添加-CNAME-文件"><span class="nav-number">1.</span> <span class="nav-text">hexo 项目中文件中添加 CNAME 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析"><span class="nav-number">2.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-DNSPod-添加域名解析"><span class="nav-number">3.</span> <span class="nav-text">使用 DNSPod 添加域名解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNSPod中的操作"><span class="nav-number">3.1.</span> <span class="nav-text">DNSPod中的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#freenom-的操作"><span class="nav-number">3.2.</span> <span class="nav-text">freenom 的操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-项目中文件中添加-CNAME-文件"><span class="nav-number">1.</span> <span class="nav-text">hexo 项目中文件中添加 CNAME 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析"><span class="nav-number">2.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给解析后的域名添加-🔐-https"><span class="nav-number">3.</span> <span class="nav-text">给解析后的域名添加 🔐(https)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-DNSPod-添加域名解析"><span class="nav-number">4.</span> <span class="nav-text">使用 DNSPod 添加域名解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNSPod中的操作"><span class="nav-number">4.1.</span> <span class="nav-text">DNSPod中的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#freenom-的操作"><span class="nav-number">4.2.</span> <span class="nav-text">freenom 的操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附-关于记录类型-记录值"><span class="nav-number">5.</span> <span class="nav-text">附:关于记录类型/记录值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录类型"><span class="nav-number">5.1.</span> <span class="nav-text">记录类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记录值"><span class="nav-number">5.2.</span> <span class="nav-text">记录值</span></a></li></ol></li></ol></div>
             
 
           </div>
