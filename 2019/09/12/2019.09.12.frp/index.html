@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言之前懒着折腾直接买了白群辉,发现群辉的 quickConnect实在是不给力.群辉放在单位, 在家里电视上串流看电影的需求都满足不了,1M 的小水管也只能看看文档了.然后去看了花生壳和花生棒,发现更是个天坑.免费版一个月 1g 流量+1M 带宽,付费版不限流量但是带宽比 qc 宽不了多少,可以说是性价比极低.(见下图)今天同时安利了 frp,试了下发现配置简单 ,同时内网穿透的效果也比较好,播">
+<meta property="og:type" content="article">
+<meta property="og:title" content="群辉 NAS 使用 frp 实现内网穿透">
+<meta property="og:url" content="http://hhb1994.github.to/2019/09/12/2019.09.12.frp/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="前言之前懒着折腾直接买了白群辉,发现群辉的 quickConnect实在是不给力.群辉放在单位, 在家里电视上串流看电影的需求都满足不了,1M 的小水管也只能看看文档了.然后去看了花生壳和花生棒,发现更是个天坑.免费版一个月 1g 流量+1M 带宽,付费版不限流量但是带宽比 qc 宽不了多少,可以说是性价比极低.(见下图)今天同时安利了 frp,试了下发现配置简单 ,同时内网穿透的效果也比较好,播">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/B4ZQTRLl7oDACJd.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/usQ4WgUnldPrZb7.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/7TO6KShUNwc92tR.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/icpGZvtXQwoLux5.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/uZvh4w2nE1lbCOD.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/12/2VqfkA6cWSZGnTi.png">
+<meta property="og:updated_time" content="2019-09-12T08:59:29.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="群辉 NAS 使用 frp 实现内网穿透">
+<meta name="twitter:description" content="前言之前懒着折腾直接买了白群辉,发现群辉的 quickConnect实在是不给力.群辉放在单位, 在家里电视上串流看电影的需求都满足不了,1M 的小水管也只能看看文档了.然后去看了花生壳和花生棒,发现更是个天坑.免费版一个月 1g 流量+1M 带宽,付费版不限流量但是带宽比 qc 宽不了多少,可以说是性价比极低.(见下图)今天同时安利了 frp,试了下发现配置简单 ,同时内网穿透的效果也比较好,播">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/12/B4ZQTRLl7oDACJd.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2019/09/12/2019.09.12.frp/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>群辉 NAS 使用 frp 实现内网穿透 | Han's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2019/09/12/2019.09.12.frp/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">群辉 NAS 使用 frp 实现内网穿透
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-12 15:44:41 / 修改时间：16:59:29" itemprop="dateCreated datePublished" datetime="2019-09-12T15:44:41+08:00">2019-09-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前懒着折腾直接买了白群辉,发现群辉的 quickConnect实在是不给力.群辉放在单位, 在家里电视上串流看电影的需求都满足不了,1M 的小水管也只能看看文档了.<br>然后去看了花生壳和花生棒,发现更是个天坑.免费版一个月 1g 流量+1M 带宽,付费版不限流量但是带宽比 qc 宽不了多少,可以说是性价比极低.(见下图)<img src="https://i.loli.net/2019/09/12/B4ZQTRLl7oDACJd.png" alt="WX20190912-155910@2x"><br>今天同时安利了 frp,试了下发现配置简单 ,同时内网穿透的效果也比较好,播放视频的速度也很满意,于是写下这边技术总结.</p>
+<h1 id="关于-frp"><a href="#关于-frp" class="headerlink" title="关于 frp"></a>关于 frp</h1><blockquote>
+<p><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="external">frp</a>是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/12/usQ4WgUnldPrZb7.png" alt="architecture"><br>简单来说,frp 借助有公网 ip 的 vps 实现了内网穿透的功能.</p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>有公网 ip 的 vps,最好是国内的主机.</li>
+<li>域名,并且做了域名解析.</li>
+<li>ssh 客户端.</li>
+<li>群辉 DS218+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在这里要说一句,客户端与服务端的软件版本必须保证相同,否则会报错.</p>
+<h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><h4 id="1-登录服务器-下载服务器对应的软件版本"><a href="#1-登录服务器-下载服务器对应的软件版本" class="headerlink" title="1.登录服务器,下载服务器对应的软件版本."></a>1.登录服务器,下载服务器对应的软件版本.</h4><pre><code>[root@instance-ssr ~]# uname -a
+Linux instance-ssr 5.1.15-1.el7.elrepo.x86_64 #1 SMP Tue Jun 25 10:52:45 EDT 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+我的主机是 centos7,所以下载了 amd64 版本.
+</code></pre><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><pre><code>tar -zxvf frp_0.29.0_linux_amd64.tar.gz
+</code></pre><h4 id="删除不必要的客户端文件"><a href="#删除不必要的客户端文件" class="headerlink" title="删除不必要的客户端文件"></a>删除不必要的客户端文件</h4><pre><code>//frpc 是客户端(client)文件,frps 为服务端(frps)文件.
+
+cd frp_0.12.0_linux_amd64
+
+rm -f frpc frpc_full.ini frpc.ini
+</code></pre><h4 id="编辑配置文件-frpc-ini"><a href="#编辑配置文件-frpc-ini" class="headerlink" title="编辑配置文件 frpc.ini"></a>编辑配置文件 <code>frpc.ini</code></h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// common 为必填项</div><div class="line">[common]</div><div class="line">// Frp 服务端口（可自定义）</div><div class="line">bind_port = 7000</div><div class="line">//http 访问端口（可自定义）</div><div class="line">vhost_http_port = 8080</div><div class="line">//dashboard 界面端口</div><div class="line">dashboard_port = 7500</div><div class="line">// 登录 dashboard 用户名</div><div class="line">dashboard_user = 用户名</div><div class="line">// 登录 dashboard 密码</div><div class="line">dashboard_pwd = 密码</div><div class="line">// 最大连接池数量</div><div class="line">max_pool_count = 5</div><div class="line">// 超时验证时间</div><div class="line">authentication_timeout = 900</div><div class="line">// 自定义二级域名</div><div class="line">subdomain_host = </div><div class="line"></div><div class="line">[ssh]</div><div class="line">//ssh 访问端口</div><div class="line">listen_port = 6000</div><div class="line">//  用户身份认证</div><div class="line">auth_token = 和客服端 token 对应</div></pre></td></tr></table></figure>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>保存上面的文件,接着:</p>
+<pre><code>./frps -c ./frps.ini
+</code></pre><p>来运行服务端程序.</p>
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>这里的客户端主要是指群辉.</p>
+<h4 id="ssh-登录群晖"><a href="#ssh-登录群晖" class="headerlink" title="ssh 登录群晖"></a>ssh 登录群晖</h4><p>群辉必须开启 ssh<br><img src="https://i.loli.net/2019/09/12/7TO6KShUNwc92tR.png" alt="WX20190912-163142@2x"></p>
+<pre><code>ssh admin@local_nas_ip
+</code></pre><h4 id="群晖下载-frp-客户端"><a href="#群晖下载-frp-客户端" class="headerlink" title="群晖下载 frp 客户端"></a>群晖下载 frp 客户端</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo -i // 切换 root 用户</div><div class="line">wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz </div><div class="line">tar -zxvf  frp_0.29.0_linux_amd64.tar.gz</div><div class="line"><span class="built_in">cd</span> frp_0.12.0_linux_amd64</div><div class="line">rm <span class="_">-f</span> frps frps_full.ini frps.ini</div></pre></td></tr></table></figure>
+<h4 id="编辑-frpc-ini"><a href="#编辑-frpc-ini" class="headerlink" title="编辑 frpc.ini"></a>编辑 frpc.ini</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">[common]</div><div class="line"></div><div class="line">// 服务器端公网ip</div><div class="line">server_addr = ip</div><div class="line"></div><div class="line">//frp 服务端口，和服务器端 bind_port 一致</div><div class="line">server_port = 7000</div><div class="line"></div><div class="line">// 和前面服务器端 [ssh] auth_token 一致</div><div class="line">auth_token = 和服务器端对应</div><div class="line"></div><div class="line">// 连接池数量</div><div class="line">pool_count = 1</div><div class="line"></div><div class="line"></div><div class="line">[ssh]</div><div class="line"></div><div class="line">// type 服务类型（tcp、http、https、udp）</div><div class="line">type = tcp</div><div class="line"></div><div class="line">// NAS 本地局域网内网 ip</div><div class="line">local_ip = NAS 局域网ip</div><div class="line"></div><div class="line">//  NAS 开启 ssh 服务端口号，默认 22</div><div class="line">local_port = 22</div><div class="line"></div><div class="line">// 服务器端 ssh 端口，和服务器端 [ssh] listen_port 配置一致</div><div class="line">remote_port = 6000</div><div class="line"></div><div class="line"></div><div class="line">//配置访问 nas 的主要方式(通过网页)</div><div class="line">[nas]</div><div class="line"></div><div class="line">// 服务类型为 http</div><div class="line">type = http</div><div class="line"></div><div class="line">// NAS 默认端口 5000</div><div class="line">local_port = 5000</div><div class="line"></div><div class="line">//域名(我这里申请了一个免费域名,然后在 dnspod与我 vps 的公网 ip 绑定,细节可以参考我之前写的[这篇文章](https://h123.cf/2019/08/29/2019.08.29.cname/#more))</div><div class="line"></div><div class="line">custom_domains = hhbnas.cf</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">// NAS web Station 服务，没用可以不用设置</div><div class="line">[web]</div><div class="line">type = http</div><div class="line">local_port = 80</div><div class="line">subdomain = web</div></pre></td></tr></table></figure>
+<h4 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h4><p>与服务端类似,保存上面编辑的文件,接着:</p>
+<pre><code>./ frpc -c ./frpc.ini
+</code></pre><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>// user是你登录 nas 的用户名.
+ssh -p 6000 user@你的公网 ip
+</code></pre><p>配置成功以后就可以使用 ssh 链接了.</p>
+<p>网页登录:</p>
+<p><img src="https://i.loli.net/2019/09/12/icpGZvtXQwoLux5.png" alt="WX20190912-164543@2x"></p>
+<h1 id="two-more-things"><a href="#two-more-things" class="headerlink" title="two more things"></a>two more things</h1><h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><p>现在客户端和服务端的程序都在运行了,但是我们断开链接以后服务就会中断,因此我们需要把服务转为后台运行.</p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>nohup ./frps -c ./frps.ini &amp;</p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>nohup ./frpc -c ./frpc.ini &amp;</p>
+<p>同时我们可以使用群辉的定时任务功能,让frp 在群辉重启以后自启动,方法如下:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//新建脚本</div><div class="line">vi /usr/syno/etc.defaults/rc.sysv/frp.sh</div><div class="line"></div><div class="line">// 编辑脚本</div><div class="line"><span class="comment">#/bin/bash</span></div><div class="line"><span class="built_in">cd</span> /root/frp_0.29.0_linux_amd64</div><div class="line">nohup ./frpc -c ./frpc.ini &amp;</div><div class="line"></div><div class="line">// 设置文件权限</div><div class="line">chmod +x frp.sh</div></pre></td></tr></table></figure></p>
+<p>群辉中新建计划任务.<br>控制面板&gt;任务计划&gt;触发的任务&gt;用户定义的脚本</p>
+<p><img src="https://i.loli.net/2019/09/12/uZvh4w2nE1lbCOD.png" alt="WX20190912-165240@2x"></p>
+<p><img src="https://i.loli.net/2019/09/12/2VqfkA6cWSZGnTi.png" alt="WX20190912-165429@2x"></p>
+<h2 id="隐藏-8080-端口"><a href="#隐藏-8080-端口" class="headerlink" title="隐藏 8080 端口"></a>隐藏 8080 端口</h2><p>在服务器的 nginx 配置文件(/ect/nginx/nginx.conf)中修改:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">   server &#123;</div><div class="line">       listen       80;</div><div class="line">       server_name  localhost;</div><div class="line">server_name_in_redirect off;</div><div class="line">proxy_set_header Host $host:$server_port;</div><div class="line">       proxy_set_header X-Real-IP $remote_addr;</div><div class="line">       proxy_set_header REMOTE-HOST $remote_addr;</div><div class="line">       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">location / &#123;</div><div class="line">    proxy_pass http://127.0.0.1:8080/;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>映射 80 到 8080 .</p>
+<p>done.</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/nas/" rel="tag"># nas</a>
+          
+            <a href="/tags/frp/" rel="tag"># frp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/05/2019.09.05.ipv6/" rel="next" title="熟悉ipv6">
+                <i class="fa fa-chevron-left"></i> 熟悉ipv6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于-frp"><span class="nav-number">2.</span> <span class="nav-text">关于 frp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">3.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">3.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">3.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端配置"><span class="nav-number">3.2.1.</span> <span class="nav-text">服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-登录服务器-下载服务器对应的软件版本"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">1.登录服务器,下载服务器对应的软件版本.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压文件"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">解压文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除不必要的客户端文件"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">删除不必要的客户端文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑配置文件-frpc-ini"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">编辑配置文件 frpc.ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端配置"><span class="nav-number">3.2.2.</span> <span class="nav-text">客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh-登录群晖"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">ssh 登录群晖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群晖下载-frp-客户端"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">群晖下载 frp 客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑-frpc-ini"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">编辑 frpc.ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行-1"><span class="nav-number">3.2.2.4.</span> <span class="nav-text">运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#two-more-things"><span class="nav-number">4.</span> <span class="nav-text">two more things</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#后台运行"><span class="nav-number">4.1.</span> <span class="nav-text">后台运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端"><span class="nav-number">4.1.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">4.1.2.</span> <span class="nav-text">客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏-8080-端口"><span class="nav-number">4.2.</span> <span class="nav-text">隐藏 8080 端口</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
