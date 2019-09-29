@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="使用 koa 的 mysql 模块可以方便地连接 mysql 并进行 crud 操作.
+
+npm 安装 mysql 模块npm i mysql -S
+使用-S 来把包信息写到 package.json 中.
+使用123456789101112const mysql = require(&quot;mysql&quot;);const config = &amp;#123;  host: &quot;mysql ip&quot;,  user:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa连接 mysql 进行 crud">
+<meta property="og:url" content="http://hhb1994.github.to/2019/09/29/2019.09.29.koaMysql1/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="使用 koa 的 mysql 模块可以方便地连接 mysql 并进行 crud 操作.
+
+npm 安装 mysql 模块npm i mysql -S
+使用-S 来把包信息写到 package.json 中.
+使用123456789101112const mysql = require(&quot;mysql&quot;);const config = &amp;#123;  host: &quot;mysql ip&quot;,  user:">
+<meta property="og:updated_time" content="2019-09-29T09:30:12.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="koa连接 mysql 进行 crud">
+<meta name="twitter:description" content="使用 koa 的 mysql 模块可以方便地连接 mysql 并进行 crud 操作.
+
+npm 安装 mysql 模块npm i mysql -S
+使用-S 来把包信息写到 package.json 中.
+使用123456789101112const mysql = require(&quot;mysql&quot;);const config = &amp;#123;  host: &quot;mysql ip&quot;,  user:">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2019/09/29/2019.09.29.koaMysql1/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>koa连接 mysql 进行 crud | Han's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2019/09/29/2019.09.29.koaMysql1/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">koa连接 mysql 进行 crud
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-29 17:14:44 / 修改时间：17:30:12" itemprop="dateCreated datePublished" datetime="2019-09-29T17:14:44+08:00">2019-09-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>使用 koa 的 mysql 模块可以方便地连接 mysql 并进行 crud 操作.</p>
+</blockquote>
+<h2 id="npm-安装-mysql-模块"><a href="#npm-安装-mysql-模块" class="headerlink" title="npm 安装 mysql 模块"></a>npm 安装 mysql 模块</h2><pre><code>npm i mysql -S
+</code></pre><p>使用-S 来把包信息写到 package.json 中.</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">"mysql"</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> config = &#123;</div><div class="line">  <span class="attr">host</span>: <span class="string">"mysql ip"</span>,</div><div class="line">  <span class="attr">user</span>: <span class="string">"root"</span>,</div><div class="line">  <span class="attr">password</span>: <span class="string">"123456"</span>,</div><div class="line">  <span class="attr">database</span>: <span class="string">"mysql database"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//使用 config 创建连接池</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> pool = mysql.createPool(config.config);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用 promise封装查询函数</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> query = <span class="function">(<span class="params">sql, values</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    pool.getConnection(<span class="function">(<span class="params">err, connection</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123;</div><div class="line">        reject(err);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        connection.query(sql, values, (err, rows) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span> (err) &#123;</div><div class="line">            reject(&#123; <span class="attr">err</span>: err &#125;);</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            resolve(rows);</div><div class="line">          &#125;</div><div class="line">          connection.release();</div><div class="line">        &#125;);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//使用</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> queryByLoginName(ctx.request.body.loginName);</div><div class="line"><span class="keyword">if</span> (result.length == <span class="number">0</span>) &#123;</div><div class="line">  util.response(ctx, <span class="number">1000</span>, <span class="string">"账户不存在"</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">queryByLoginName: <span class="keyword">async</span> name =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> sql = <span class="string">`SELECT * FROM user WHERE login_name = "<span class="subst">$&#123;name&#125;</span>"`</span>;</div><div class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> query(sql);</div><div class="line">    <span class="keyword">return</span> data;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<h2 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h2><h3 id="封装查询结果"><a href="#封装查询结果" class="headerlink" title="封装查询结果"></a>封装查询结果</h3><p>定义 <code>const [err,data]</code>来 分别接收 <code>promise.reject()</code>的 <code>err</code>和 <code>project.resolve()</code>的<code>data</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">awaitWrap: <span class="function"><span class="params">promise</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> promise.then(<span class="function"><span class="params">data</span> =&gt;</span> [<span class="literal">null</span>, data]).catch(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>]);</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  check: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> [err, data] = <span class="keyword">await</span> awaitWrap(token.verifyJwt(ctx));</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="keyword">return</span> &#123; <span class="attr">status</span>: <span class="literal">false</span>, <span class="attr">data</span>: err.message &#125;;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="js-生成-sql-语句"><a href="#js-生成-sql-语句" class="headerlink" title="js 生成 sql 语句"></a>js 生成 sql 语句</h3><p>自己一点一点拼接 sql 语句很麻烦,这里我用了<a href="https://github.com/wangweianger/mysqls/blob/6a1e7590a5c45f5d5600a6964a1bc474fc2972f3/docs/curd/update.md" target="_blank" rel="external">https://github.com/wangweianger/mysqls/blob/6a1e7590a5c45f5d5600a6964a1bc474fc2972f3/docs/curd/update.md</a>,来自动生成 sql 语句.</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>npm install mysqls --save
+</code></pre><h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>详细的使用方法可以看下这个轮子的作者写的<a href="https://wangweianger.gitbooks.io/node-transform-mysql/content/docs/curd/update.html" target="_blank" rel="external">文档</a>,十分详细.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> genSql = <span class="built_in">require</span>(<span class="string">"node-transform-mysql"</span>);</div><div class="line">updateUser: <span class="keyword">async</span> (ctx, jwt) =&gt; &#123;</div><div class="line">  <span class="keyword">let</span> userId = ctx.request.body.id;</div><div class="line">  <span class="keyword">let</span> sqlQuery = &#123;&#125;;</div><div class="line">  <span class="keyword">if</span> (ctx.request.body.status) &#123;</div><div class="line">    sqlQuery.status = ctx.request.body.status;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (ctx.request.body.nickName) &#123;</div><div class="line">    sqlQuery.nick_name = ctx.request.body.nickName;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (ctx.request.body.adminType) &#123;</div><div class="line">    sqlQuery.admin_type = ctx.request.body.adminType;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">let</span> sql = genSql</div><div class="line">    .table(<span class="string">"user"</span>)</div><div class="line">    .data(sqlQuery)</div><div class="line">    .where(&#123; <span class="attr">id</span>: userId &#125;)</div><div class="line">    .update();</div><div class="line"></div><div class="line">  <span class="keyword">const</span> [err, data] = <span class="keyword">await</span> util.awaitWrap(query(sql));</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">return</span> &#123; <span class="attr">data</span>: err.err.code, <span class="attr">status</span>: <span class="literal">false</span> &#125;;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> &#123; <span class="attr">data</span>: data.message, <span class="attr">status</span>: <span class="literal">true</span> &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/koa/" rel="tag"># koa</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/12/2019.09.12.frp/" rel="next" title="群辉 NAS 使用 frp 实现内网穿透">
+                <i class="fa fa-chevron-left"></i> 群辉 NAS 使用 frp 实现内网穿透
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-安装-mysql-模块"><span class="nav-number">1.</span> <span class="nav-text">npm 安装 mysql 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extra"><span class="nav-number">3.</span> <span class="nav-text">extra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装查询结果"><span class="nav-number">3.1.</span> <span class="nav-text">封装查询结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js-生成-sql-语句"><span class="nav-number">3.2.</span> <span class="nav-text">js 生成 sql 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
