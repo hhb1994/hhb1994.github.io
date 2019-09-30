@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="当前 session 认证存在的问题当前 session 认证的流程为:
+1、用户向服务器发送用户名和密码
+2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等
+3、服务器向用户返回一个 session_id，写入用户的 Cookie
+4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器
+5、服务器收到 session_i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs 实现 jwt 鉴权">
+<meta property="og:url" content="http://hhb1994.github.to/2019/09/30/2019.09.30.jwtVerify/index.html">
+<meta property="og:site_name" content="Han's blog">
+<meta property="og:description" content="当前 session 认证存在的问题当前 session 认证的流程为:
+1、用户向服务器发送用户名和密码
+2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等
+3、服务器向用户返回一个 session_id，写入用户的 Cookie
+4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器
+5、服务器收到 session_i">
+<meta property="og:updated_time" content="2019-09-30T02:36:43.878Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs 实现 jwt 鉴权">
+<meta name="twitter:description" content="当前 session 认证存在的问题当前 session 认证的流程为:
+1、用户向服务器发送用户名和密码
+2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等
+3、服务器向用户返回一个 session_id，写入用户的 Cookie
+4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器
+5、服务器收到 session_i">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2019/09/30/2019.09.30.jwtVerify/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nodejs 实现 jwt 鉴权 | Han's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">welcome!nice to meet U!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2019/09/30/2019.09.30.jwtVerify/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodejs 实现 jwt 鉴权
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-30 09:52:28 / 修改时间：10:36:43" itemprop="dateCreated datePublished" datetime="2019-09-30T09:52:28+08:00">2019-09-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="当前-session-认证存在的问题"><a href="#当前-session-认证存在的问题" class="headerlink" title="当前 session 认证存在的问题"></a>当前 session 认证存在的问题</h1><p>当前 session 认证的流程为:</p>
+<p>1、用户向服务器发送用户名和密码</p>
+<p>2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等</p>
+<p>3、服务器向用户返回一个 session_id，写入用户的 Cookie</p>
+<p>4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器</p>
+<p>5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份</p>
+<p>如果服务器做了集群,就要求 session 共享,这样提高了开发的难度,所有的 session 都要放在持久层供服务器存取,一旦持久层出现问题,服务也就挂掉了.所以有人提出了一种叫 jwt(JSON Web Token) 的技术.这种技术提出将所有的信息传给前端,后端只负责解析.</p>
+<h1 id="jwt-的原理"><a href="#jwt-的原理" class="headerlink" title="jwt 的原理"></a>jwt 的原理</h1><p>服务器认证以后,就会传给前端一个 json 对象,这个 json 对象是经过加密的,服务器只靠这个 json 来鉴别用户.从而服务器不会再保存任何数据,实现后端无状态,方便扩展.</p>
+<h1 id="jwt-的使用"><a href="#jwt-的使用" class="headerlink" title="jwt 的使用"></a>jwt 的使用</h1><p>实际的 jwt 如下:</p>
+<pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbk5hbWUiOiJoaGIwNTQiLCJzeXN0ZW1JZCI6IjEiLCJzdGF0dXMiOjEsImFkbWluVHlwZSI6NCwic2lnblRpbWUiOiIxNTY5NzQ1NjAyIiwiaWF0IjoxNTY5NzQ1NjAyLCJleHAiOjE1Njk3NTI4MDJ9.929QHnye3W3XuJVpY9GFrcTTTFxMBfEOBFCwL7HqxE0
+</code></pre><p>jwt 由 <code>.</code>分成三个部分.分别是 header,payload 和 Signature.<br>header 和 payload 都使用 base64 编码,所以可以简单地解析出其中的内容.</p>
+<h2 id="header"><a href="#header" class="headerlink" title="header"></a>header</h2><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+</code></pre><p>使用 base64 解码的结果:</p>
+<pre><code>{&quot;alg&quot;:&quot;HS256&quot;,&quot;typ&quot;:&quot;JWT&quot;}
+</code></pre><p>上面代码中，alg 属性表示签名的算法（algorithm），默认是 HMAC SHA256（写成 HS256）；typ 属性表示这个令牌（token）的类型（type），JWT 令牌统一写为 JWT。</p>
+<p>最后，将上面的 JSON 对象使用 Base64URL 算法（详见后文）转成字符串。</p>
+<h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><pre><code>eyJsb2dpbk5hbWUiOiJoaGIwNTQiLCJzeXN0ZW1JZCI6IjEiLCJzdGF0dXMiOjEsImFkbWluVHlwZSI6NCwic2lnblRpbWUiOiIxNTY5NzQ1NjAyIiwiaWF0IjoxNTY5NzQ1NjAyLCJleHAiOjE1Njk3NTI4MDJ9
+</code></pre><p>使用 base64 解码的结果:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">"loginName"</span>:<span class="string">"hhb054"</span>,<span class="string">"systemId"</span>:<span class="string">"1"</span>,<span class="string">"status"</span>:<span class="number">1</span>,<span class="string">"adminType"</span>:<span class="number">4</span>,<span class="string">"signTime"</span>:<span class="string">"1569745602"</span>,<span class="string">"iat"</span>:<span class="number">1569745602</span>,<span class="string">"exp"</span>:<span class="number">1569752802</span>&#125;</div></pre></td></tr></table></figure>
+<p>注意，JWT 默认是不加密的，任何人都可以读到，所以不要把秘密信息放在这个部分。</p>
+<p>这个 JSON 对象也要使用 Base64URL 算法转成字符串.</p>
+<h2 id="Signature"><a href="#Signature" class="headerlink" title="Signature"></a>Signature</h2><p>Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名。</p>
+<pre><code>HMACSHA256(
+base64UrlEncode(header) + &quot;.&quot; +
+base64UrlEncode(payload),
+secret)
+</code></pre><p>算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（.）分隔，就可以返回给用户。</p>
+<h2 id="base64-url"><a href="#base64-url" class="headerlink" title="base64 url"></a>base64 url</h2><p>前面提到，Header 和 Payload 串型化的算法是 Base64URL。这个算法跟 Base64 算法基本类似，但有一些小的不同。</p>
+<p>JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com/?token=xxx）。Base64 有三个字符+、/和=，在 URL 里面有特殊含义，所以要被替换掉：=被省略、+替换成-，/替换成_ 。这就是 Base64URL 算法。</p>
+<h2 id="jwt-的特点"><a href="#jwt-的特点" class="headerlink" title="jwt 的特点"></a>jwt 的特点</h2><p>(1）JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</p>
+<p>（2）JWT 不加密的情况下，不能将秘密数据写入 JWT。</p>
+<p>（3）JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</p>
+<p>（4）JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。</p>
+<p>（5）JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</p>
+<p>（6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</p>
+<h1 id="在-node-项目中实现-jwt"><a href="#在-node-项目中实现-jwt" class="headerlink" title="在 node 项目中实现 jwt"></a>在 node 项目中实现 jwt</h1><p>安装 jsonwebtoken</p>
+<pre><code>npm i jsonwebtoken -S
+</code></pre><p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">"jsonwebtoken"</span>);</div><div class="line"><span class="comment">//签发 token</span></div><div class="line"><span class="comment">//在验证了用户名密码正确之后，调用 jsonwebtoken 的 sign() 方法来生成token，</span></div><div class="line"><span class="comment">//接收三个参数，</span></div><div class="line"><span class="comment">//第一个是载荷，用于编码后存储在 token 中的数据，也是验证 token 后可以拿到的数据；</span></div><div class="line"><span class="comment">//第二个是密钥，自己定义的，验证的时候也是要相同的密钥才能解码；</span></div><div class="line"><span class="comment">//第三个是options，可以设置 token 的过期时间。</span></div><div class="line"><span class="keyword">const</span> token = jwt.sign(</div><div class="line">  &#123;</div><div class="line">    <span class="attr">name</span>: result.name,</div><div class="line">    <span class="attr">_id</span>: result._id</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"my_token"</span>,</div><div class="line">  &#123; <span class="attr">expiresIn</span>: <span class="string">"2h"</span> &#125;</div><div class="line">);</div><div class="line"><span class="comment">//验证 token</span></div><div class="line"><span class="comment">//token 放在请求头中的authorization里面</span></div><div class="line">verifyJwt: <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">      jwt.verify(ctx.request.header.authorization, key.privKey, (err, decode) =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">          reject(err);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          resolve(decode);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h1 id="解决-token-过期时间问题"><a href="#解决-token-过期时间问题" class="headerlink" title="解决 token 过期时间问题"></a>解决 token 过期时间问题</h1><p>前面签署 token 的时候,设置了 expireIn 过期时间,但是后端无法让 jwt 提前过期,也无法解决多个 token 同时操作的问题,这里我采用了一种折中的方式,在mysql 数据库中添加了一个 refresh_time 参数,每次登陆以后,保证 refresh_time 与最新的 token 中的自定的 signTime保持一致.<br>这样,在前端调用接口是,先解析 token,再根据解析出来的 payload 来判断是不是最新的 token,从而做到同时只有一个 token 有效的功能.<br>代码如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">check: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> [err, data] = <span class="keyword">await</span> util.awaitWrap(token.verifyJwt(ctx));</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="keyword">return</span> &#123; <span class="attr">status</span>: <span class="literal">false</span>, <span class="attr">data</span>: err.message &#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> queryResult = <span class="keyword">await</span> sql.queryByLoginName(data.loginName);</div><div class="line">    <span class="keyword">if</span> (queryResult.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> &#123; <span class="attr">status</span>: <span class="literal">false</span>, <span class="attr">data</span>: <span class="string">"token 校验出错"</span> &#125;;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (queryResult[<span class="number">0</span>].refresh_time == data.signTime) &#123;</div><div class="line">      <span class="keyword">return</span> &#123; <span class="attr">status</span>: <span class="literal">true</span>, <span class="attr">data</span>: queryResult, <span class="attr">jwt</span>: data &#125;;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> &#123; <span class="attr">status</span>: <span class="literal">false</span>, <span class="attr">data</span>: <span class="string">"token 过期"</span> &#125;;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/jwt/" rel="tag"># jwt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/29/2019.09.29.koaMysql1/" rel="next" title="koa连接 mysql 进行 crud">
+                <i class="fa fa-chevron-left"></i> koa连接 mysql 进行 crud
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">韩宏斌的个人博客，会更新一些自己的前端学习心得，体会，推荐好用的软件。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#当前-session-认证存在的问题"><span class="nav-number">1.</span> <span class="nav-text">当前 session 认证存在的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jwt-的原理"><span class="nav-number">2.</span> <span class="nav-text">jwt 的原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jwt-的使用"><span class="nav-number">3.</span> <span class="nav-text">jwt 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#header"><span class="nav-number">3.1.</span> <span class="nav-text">header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#payload"><span class="nav-number">3.2.</span> <span class="nav-text">payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signature"><span class="nav-number">3.3.</span> <span class="nav-text">Signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64-url"><span class="nav-number">3.4.</span> <span class="nav-text">base64 url</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jwt-的特点"><span class="nav-number">3.5.</span> <span class="nav-text">jwt 的特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-node-项目中实现-jwt"><span class="nav-number">4.</span> <span class="nav-text">在 node 项目中实现 jwt</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决-token-过期时间问题"><span class="nav-number">5.</span> <span class="nav-text">解决 token 过期时间问题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
