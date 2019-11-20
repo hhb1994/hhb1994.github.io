@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="The ArrayBuffer is a data type that is used to represent a generic, fixed-length binary data buffer. You can’t directly manipulate the contents of an ArrayBuffer; instead, you create an ArrayBufferVi">
 <meta property="og:image" content="https://i.loli.net/2019/11/20/7Gc9KfQYHJyWLMv.png">
-<meta property="og:updated_time" content="2019-11-20T02:37:35.433Z">
+<meta property="og:updated_time" content="2019-11-20T03:12:21.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arraybuffer">
 <meta name="twitter:description" content="The ArrayBuffer is a data type that is used to represent a generic, fixed-length binary data buffer. You can’t directly manipulate the contents of an ArrayBuffer; instead, you create an ArrayBufferVi">
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2019-11-20 10:24:29 / 修改时间：10:37:35" itemprop="dateCreated datePublished" datetime="2019-11-20T10:24:29+08:00">2019-11-20</time>
+              <time title="创建时间：2019-11-20 10:24:29 / 修改时间：11:12:21" itemprop="dateCreated datePublished" datetime="2019-11-20T10:24:29+08:00">2019-11-20</time>
             
 
             
@@ -468,6 +468,7 @@ unsigned long end Optional
 <p>我们把一个数组的值直接赋给了 x 这个 Float32Array 对象，那么在储存之前会将它转换成一个 32位浮点数。</p>
 <p>由于该类数组的每个元素都是同一类型，所以在堆栈模型中，他们全部会被压入到栈之中，因此数据化数组都是值类型，他并不是引用类型！这个要引起注意，从下面的例子中也可以反映出来：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">17</span>, <span class="number">-45.3</span>]);</div><div class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> <span class="built_in">Float32Array</span>(x);</div><div class="line"><span class="built_in">console</span>.log(x[<span class="number">0</span>]); <span class="comment">// 17</span></div><div class="line"><span class="built_in">console</span>.log(x[<span class="number">1</span>]); <span class="comment">//-45.29999923706055</span></div><div class="line"><span class="built_in">console</span>.log(x.length); <span class="comment">// 2</span></div><div class="line">x[<span class="number">0</span>] = <span class="number">-2</span>;</div><div class="line"><span class="built_in">console</span>.log(y[<span class="number">0</span>]); <span class="comment">// 17, y的值没变</span></div></pre></td></tr></table></figure></p>
 <p>将 x 的值复制给 y，修改 x[0], y[0] 并没有变化。</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>直接从ArrayBuffer执行操作<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dataAsInt16Array = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(data.buffer);</div><div class="line"><span class="keyword">var</span> f32 = <span class="keyword">new</span> <span class="built_in">Float32Array</span>(<span class="number">4</span>);</div><div class="line">f32[<span class="number">0</span>] = <span class="number">0.1</span>, f32[<span class="number">1</span>] = <span class="number">0.2</span>, f32[<span class="number">2</span>] = <span class="number">0.3</span>, f32[<span class="number">3</span>] = <span class="number">0.4</span>;</div><div class="line"><span class="comment">// [0.10000000149011612, 0.20000000298023224, 0.30000001192092896, 0.4000000059604645]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> i16 = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(f32.buffer);</div><div class="line"><span class="comment">// [-13107, 15820, -13107, 15948, -26214, 16025, -13107, 16076]</span></div><div class="line"></div><div class="line"><span class="comment">// and back again</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Float32Array</span>(i16.buffer);</div><div class="line"><span class="comment">// [0.10000000149011612, 0.20000000298023224, 0.30000001192092896, 0.4000000059604645]</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -834,7 +835,7 @@ unsigned long end Optional
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会用到-arrayBuffer"><span class="nav-number">1.</span> <span class="nav-text">为什么会用到 arrayBuffer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arraybuffer"><span class="nav-number"></span> <span class="nav-text">arraybuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始缓冲区的创建"><span class="nav-number">1.</span> <span class="nav-text">原始缓冲区的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据化数组"><span class="nav-number">2.</span> <span class="nav-text">数据化数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会用到-arrayBuffer"><span class="nav-number">1.</span> <span class="nav-text">为什么会用到 arrayBuffer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arraybuffer"><span class="nav-number"></span> <span class="nav-text">arraybuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始缓冲区的创建"><span class="nav-number">1.</span> <span class="nav-text">原始缓冲区的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据化数组"><span class="nav-number">2.</span> <span class="nav-text">数据化数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">类型转换</span></a></li></ol></li></ol></div>
             
 
           </div>
