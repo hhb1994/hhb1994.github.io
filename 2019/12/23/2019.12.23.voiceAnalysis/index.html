@@ -102,10 +102,12 @@
 <meta property="og:url" content="http://hhb1994.github.to/2019/12/23/2019.12.23.voiceAnalysis/index.html">
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="浏览器录音的实时识别123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778let constraints = &amp;#123;  audio: true,  vid">
-<meta property="og:updated_time" content="2019-12-23T07:38:08.983Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/23/piSNYJ7nvXBmoZc.png">
+<meta property="og:updated_time" content="2019-12-23T07:46:05.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="音频可视化">
 <meta name="twitter:description" content="浏览器录音的实时识别123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778let constraints = &amp;#123;  audio: true,  vid">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/23/piSNYJ7nvXBmoZc.png">
 
 
 
@@ -388,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2019-12-23 15:19:10 / 修改时间：15:38:08" itemprop="dateCreated datePublished" datetime="2019-12-23T15:19:10+08:00">2019-12-23</time>
+              <time title="创建时间：2019-12-23 15:19:10 / 修改时间：15:46:05" itemprop="dateCreated datePublished" datetime="2019-12-23T15:19:10+08:00">2019-12-23</time>
             
 
             
@@ -448,6 +450,7 @@
         <h1 id="浏览器录音的实时识别"><a href="#浏览器录音的实时识别" class="headerlink" title="浏览器录音的实时识别"></a>浏览器录音的实时识别</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> constraints = &#123;</div><div class="line">  <span class="attr">audio</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">video</span>: <span class="literal">false</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">let</span> getMedia = navigator.mediaDevices || navigator.webkitGetUserMedia;</div><div class="line"><span class="keyword">if</span> (getMedia) &#123;</div><div class="line">  getMedia.getUserMedia(constraints).then(<span class="function"><span class="params">mediaStream</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">//音频可视化与实时语音识别</span></div><div class="line">    <span class="comment">//使用 audioContext 来分析音频流</span></div><div class="line">    <span class="keyword">this</span>.audioContext = <span class="keyword">new</span> (<span class="built_in">window</span>.AudioContext ||</div><div class="line">      <span class="built_in">window</span>.webkitAudioContext)();</div><div class="line">    <span class="comment">//初始化分析器</span></div><div class="line">    <span class="keyword">this</span>.initAnalyser();</div><div class="line">    <span class="comment">//获取输入的音频流</span></div><div class="line">    <span class="keyword">let</span> audioInput = <span class="keyword">this</span>.audioContext.createMediaStreamSource(mediaStream);</div><div class="line">    <span class="keyword">let</span> compressScript = <span class="keyword">this</span>.audioContext.createScriptProcessor();</div><div class="line">    <span class="comment">//缓冲区满的时候触发compressProgress方法,执行绘图和其他操作</span></div><div class="line">    compressScript.onaudioprocess = <span class="keyword">this</span>.compressProgress;</div><div class="line">    <span class="comment">//这里要把各个模块连接起来</span></div><div class="line">    <span class="comment">//音频输入连接分析器</span></div><div class="line">    audioInput.connect(<span class="keyword">this</span>.analyser);</div><div class="line">    <span class="comment">//分析器连接处理脚本</span></div><div class="line">    <span class="keyword">this</span>.analyser.connect(compressScript);</div><div class="line">    <span class="comment">//脚本连接输出</span></div><div class="line">    compressScript.connect(<span class="keyword">this</span>.audioContext.destination);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//初始化分析器</span></div><div class="line"></div><div class="line">initAnalyser() &#123;</div><div class="line">      <span class="keyword">this</span>.analyser = <span class="keyword">this</span>.audioContext.createAnalyser();</div><div class="line">      <span class="keyword">this</span>.analyser.fftSize = <span class="number">128</span>;</div><div class="line">      <span class="keyword">this</span>.bufferLength = <span class="keyword">this</span>.analyser.frequencyBinCount;</div><div class="line">      <span class="keyword">this</span>.dataArray = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(<span class="keyword">this</span>.bufferLength);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line"><span class="comment">//处理音频片段</span></div><div class="line">compressProgress(e) &#123;</div><div class="line">    <span class="comment">//绘图</span></div><div class="line">      <span class="keyword">this</span>.draw();</div><div class="line">      <span class="comment">//获取音频 buffer</span></div><div class="line">      <span class="keyword">const</span> buffer = e.inputBuffer.getChannelData(<span class="number">0</span>);</div><div class="line">      <span class="comment">//音频 buffer 的处理脚本,这里用到了科大讯飞的实时语音识别 ws 接口</span></div><div class="line">      <span class="keyword">const</span> audioCompiler = <span class="keyword">new</span> AudioCompiler();</div><div class="line">      <span class="keyword">const</span> compressedBuffer = audioCompiler.convertBuffer(buffer);</div><div class="line">      <span class="keyword">const</span> int8Array = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(compressedBuffer.buffer);</div><div class="line">      <span class="keyword">this</span>.webSocket.send(int8Array);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> draw() &#123;</div><div class="line">     <span class="comment">//使用 canvas 绘图</span></div><div class="line">      <span class="keyword">const</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">      <span class="keyword">this</span>.canvasCtx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">      <span class="keyword">let</span> cWidth = <span class="keyword">this</span>.canvas.width,</div><div class="line">        cHeight = <span class="keyword">this</span>.canvas.height,</div><div class="line">        barWidth = <span class="built_in">parseInt</span>((<span class="number">1.8</span> * cWidth) / <span class="keyword">this</span>.bufferLength),</div><div class="line">        barHeight,</div><div class="line">        x = <span class="number">0</span>;</div><div class="line">      <span class="keyword">this</span>.canvasCtx.clearRect(<span class="number">0</span>, <span class="number">0</span>, cWidth, cHeight);</div><div class="line">      <span class="comment">//分析器获取音频数据“切片”</span></div><div class="line">      <span class="keyword">this</span>.analyser.getByteFrequencyData(<span class="keyword">this</span>.dataArray);</div><div class="line"></div><div class="line">      <span class="comment">//把每个音频“切片”画在画布上</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.bufferLength; i++) &#123;</div><div class="line">        barHeight = <span class="built_in">parseInt</span>(<span class="number">1.4</span> * <span class="keyword">this</span>.dataArray[i]);</div><div class="line">        <span class="comment">// this.canvasCtx.fillStyle = "rgb(27, 49, 114)";</span></div><div class="line">        <span class="keyword">let</span> color = <span class="string">`rgb(<span class="subst">$&#123;i + <span class="number">87</span>&#125;</span>, <span class="subst">$&#123;<span class="number">6</span> * i + <span class="number">174</span>&#125;</span>,<span class="subst">$&#123;<span class="number">6</span> * i + <span class="number">248</span>&#125;</span>)`</span>;</div><div class="line">        <span class="comment">// console.log(color);</span></div><div class="line">        <span class="keyword">this</span>.canvasCtx.fillStyle = color;</div><div class="line">        <span class="keyword">this</span>.canvasCtx.fillRect(x, cHeight - barHeight, barWidth, barHeight);</div><div class="line">        x += barWidth + <span class="number">5</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
 <h2 id="video-audio-标签识别-包括文件以及直播流识别"><a href="#video-audio-标签识别-包括文件以及直播流识别" class="headerlink" title="video/audio 标签识别(包括文件以及直播流识别)"></a>video/audio 标签识别(包括文件以及直播流识别)</h2><p>与上面唯一的区别是获取输入源的方式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用createMediaElementSource获取 video/audio 标签的音源analysis</span></div><div class="line"></div><div class="line"><span class="keyword">this</span>.audioInput = <span class="keyword">this</span>.audioContext.createMediaElementSource(</div><div class="line">  <span class="keyword">this</span>.$refs.videoPlayer</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>样例:<br><img src="https://i.loli.net/2019/12/23/piSNYJ7nvXBmoZc.png" alt="WX20191223-154447@2x"></p>
 
       
     </div>
@@ -515,6 +518,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/03/2020.01.03.lcdFont/" rel="prev" title="前端页面嵌入 lcd 字体">
+                前端页面嵌入 lcd 字体 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -587,7 +594,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -745,7 +752,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -830,7 +839,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前端嵌入 lcd 数字字体前端如何嵌入字体
+这篇文章主要讨论的是如何嵌入数字 lcd 字体.
+
+为了超越“Web 安全字体”的局限，在网页上使用一些用户电脑上不太可能会安装的字体，微软曾率先提出了@font-face 规则。这个规则后来进入 W3C 的 CSS Fonts Module Level 3 模块，于是就有了前端常用的 Web 自定义字体技术：
+123456789@font-face &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端页面嵌入 lcd 字体">
+<meta property="og:url" content="http://hhb1994.github.to/2020/01/03/2020.01.03.lcdFont/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="前端嵌入 lcd 数字字体前端如何嵌入字体
+这篇文章主要讨论的是如何嵌入数字 lcd 字体.
+
+为了超越“Web 安全字体”的局限，在网页上使用一些用户电脑上不太可能会安装的字体，微软曾率先提出了@font-face 规则。这个规则后来进入 W3C 的 CSS Fonts Module Level 3 模块，于是就有了前端常用的 Web 自定义字体技术：
+123456789@font-face &amp;">
+<meta property="og:updated_time" content="2020-01-03T05:00:32.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端页面嵌入 lcd 字体">
+<meta name="twitter:description" content="前端嵌入 lcd 数字字体前端如何嵌入字体
+这篇文章主要讨论的是如何嵌入数字 lcd 字体.
+
+为了超越“Web 安全字体”的局限，在网页上使用一些用户电脑上不太可能会安装的字体，微软曾率先提出了@font-face 规则。这个规则后来进入 W3C 的 CSS Fonts Module Level 3 模块，于是就有了前端常用的 Web 自定义字体技术：
+123456789@font-face &amp;">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2020/01/03/2020.01.03.lcdFont/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端页面嵌入 lcd 字体 | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2020/01/03/2020.01.03.lcdFont/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端页面嵌入 lcd 字体
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-03 11:42:59 / 修改时间：13:00:32" itemprop="dateCreated datePublished" datetime="2020-01-03T11:42:59+08:00">2020-01-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前端嵌入-lcd-数字字体"><a href="#前端嵌入-lcd-数字字体" class="headerlink" title="前端嵌入 lcd 数字字体"></a>前端嵌入 lcd 数字字体</h1><h2 id="前端如何嵌入字体"><a href="#前端如何嵌入字体" class="headerlink" title="前端如何嵌入字体"></a>前端如何嵌入字体</h2><blockquote>
+<p>这篇文章主要讨论的是如何嵌入数字 lcd 字体.</p>
+</blockquote>
+<p>为了超越“Web 安全字体”的局限，在网页上使用一些用户电脑上不太可能会安装的字体，微软曾率先提出了@font-face 规则。这个规则后来进入 W3C 的 CSS Fonts Module Level 3 模块，于是就有了前端常用的 Web 自定义字体技术：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"MyWebFont"</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"webfont.eot"</span>); <span class="comment">/* 兼容IE9 */</span></div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"webfont.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></div><div class="line">      <span class="built_in">url</span>(<span class="string">"webfont.woff2"</span>) <span class="built_in">format</span>(<span class="string">"woff2"</span>),</div><div class="line">    <span class="comment">/* 最新浏览器 */</span> <span class="built_in">url</span>(<span class="string">"webfont.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), <span class="comment">/* 较新浏览器 */</span></div><div class="line">      <span class="built_in">url</span>(<span class="string">"webfont.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>),</div><div class="line">    <span class="comment">/* Safari、Android、iOS */</span> <span class="built_in">url</span>(<span class="string">"webfont.svg#svgFontName"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* 早期iOS */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，上面的代码是几乎可以兼容所有浏览器的方案。大约在两年前，也就是 2016 年，由于浏览器版本的快速更迭，写成下面这样已经是比较现实的了：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"MyWebFont"</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"myfont.woff2"</span>) <span class="built_in">format</span>(<span class="string">"woff2"</span>), <span class="built_in">url</span>(<span class="string">"myfont.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终目标 只使用自带压缩格式的 woff2:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"MyWebFont"</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"myfont.woff2"</span>) <span class="built_in">format</span>(<span class="string">"woff2"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取-lcd-字体"><a href="#获取-lcd-字体" class="headerlink" title="获取 lcd 字体"></a>获取 lcd 字体</h2><p>到 <a href="https://www.dafont.com/theme.php?cat=302#null" target="_blank" rel="external">dafont</a>下载 ttf 格式字体.</p>
+<p>筛选条件中选择 lcd,Preview 填入数字 (0123456789),接着下载需要的字体即可.</p>
+<h2 id="格式化字体"><a href="#格式化字体" class="headerlink" title="格式化字体"></a>格式化字体</h2><p>下载的 ttf 字体需要格式化为 woff/woff2 等字体.<br>到<a href="https://www.fontsquirrel.com/tools/webfont-generator" target="_blank" rel="external">fontsquirrel.com</a>可以格式化字体.<br>同时这个网站也可以截取需要的字符来生成字体,例如我下载的 lcd 字体中包含了 数字 0-9 和字母 a-z,但是我只需要 0-9,就可以进行筛选,接着生成自己需要的字体,只包含 0-9 的 lcd 字体的 woff2 文件大概只有 2kb 大小,机会可以忽略了.</p>
+<h2 id="css-文件中引入字体文件"><a href="#css-文件中引入字体文件" class="headerlink" title="css 文件中引入字体文件:"></a>css 文件中引入字体文件:</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"ds-digitalbold"</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"./../font//ds-digib-webfont.woff2"</span>) <span class="built_in">format</span>(<span class="string">"woff2"</span>), <span class="built_in">url</span>(<span class="string">"./../font/ds-digib-webfont.ttf"</span>)</div><div class="line">      <span class="built_in">format</span>(<span class="string">"truetype"</span>);</div><div class="line">  <span class="attribute">font-weight</span>: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="样式用使用"><a href="#样式用使用" class="headerlink" title="样式用使用"></a>样式用使用</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&amp; <span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"ds-digitalbold"</span>;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#ffde00</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>众所周知，相对于英文字体，中文字体天生是“庞然大物”。英文字体两三百KB已经很大了，而中文字体几MB十几MB都算小的。一方面，中文字体包含的字形数量极多，动辄数以千计甚至万计，而英文字体则只需包含几十个基本字符和符号，哪怕支持多种语言及字符变体，容量达到三千多个字形已经算非常庞大的了。另一方面，中文字形的曲折变化复杂度高，在基于轮廓的矢量字体设计中，用于控制中文字形曲线的控制点普遍比英文更多，因而需要的数据量更大，也会导致字体文件膨胀。<br>前端开发实践中，为了实现一些特殊视觉效果，经常需要使用某些特殊字体，而用户电脑上几乎不太可能安装这些字体，这时候通常需要使用Web字体技术，让浏览器动态下载我们的自定义字体。可是中文字体非常庞大，很多时候“全量”加载某个字体文件是不现实的。特别是对于一些动态页面且每个页面只有少量字符用到该字体的情况下。当然，也不是每个页面都会用到一个字体文件中的所有字符，全量加载本身也极其浪费。</p>
+<hr>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/font/" rel="tag"># font</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/23/2019.12.23.voiceAnalysis/" rel="next" title="音频可视化">
+                <i class="fa fa-chevron-left"></i> 音频可视化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端嵌入-lcd-数字字体"><span class="nav-number">1.</span> <span class="nav-text">前端嵌入 lcd 数字字体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端如何嵌入字体"><span class="nav-number">1.1.</span> <span class="nav-text">前端如何嵌入字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取-lcd-字体"><span class="nav-number">1.2.</span> <span class="nav-text">获取 lcd 字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化字体"><span class="nav-number">1.3.</span> <span class="nav-text">格式化字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css-文件中引入字体文件"><span class="nav-number">1.4.</span> <span class="nav-text">css 文件中引入字体文件:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式用使用"><span class="nav-number">1.5.</span> <span class="nav-text">样式用使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">1.6.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
