@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1最近做 H5 有一个需求,要在网页链接分享到微信好友的显示描述和自定义缩略图,并在分享到朋友圈的时候显示缩略图.开始我觉得这是一个很简单的需求,应该在网页上配置一下就好了,后来才发现自己的真的是 too young,我花了一天半的时间来处理这个问题,最终得到了完美的解决,这里我记录下自己的踩坑经历,以便日后查阅.
+2微信官方是这么说的:
+
+为规范自定义分享链接功能在网页上的使用，自 2017 年">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信 jssdk 踩坑实录(nodejs实现后台)">
+<meta property="og:url" content="http://hhb1994.github.to/2020/01/21/2020.01.21.wxjssdk/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="1最近做 H5 有一个需求,要在网页链接分享到微信好友的显示描述和自定义缩略图,并在分享到朋友圈的时候显示缩略图.开始我觉得这是一个很简单的需求,应该在网页上配置一下就好了,后来才发现自己的真的是 too young,我花了一天半的时间来处理这个问题,最终得到了完美的解决,这里我记录下自己的踩坑经历,以便日后查阅.
+2微信官方是这么说的:
+
+为规范自定义分享链接功能在网页上的使用，自 2017 年">
+<meta property="og:image" content="https://i.loli.net/2020/01/21/9Il3jxBwF5edG6r.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/21/dvEwPeDUXmhLNf9.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/21/9YUG2OxMAKPz81w.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/21/7QCLpaMv5HBNszO.png">
+<meta property="og:updated_time" content="2020-01-21T04:18:54.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信 jssdk 踩坑实录(nodejs实现后台)">
+<meta name="twitter:description" content="1最近做 H5 有一个需求,要在网页链接分享到微信好友的显示描述和自定义缩略图,并在分享到朋友圈的时候显示缩略图.开始我觉得这是一个很简单的需求,应该在网页上配置一下就好了,后来才发现自己的真的是 too young,我花了一天半的时间来处理这个问题,最终得到了完美的解决,这里我记录下自己的踩坑经历,以便日后查阅.
+2微信官方是这么说的:
+
+为规范自定义分享链接功能在网页上的使用，自 2017 年">
+<meta name="twitter:image" content="https://i.loli.net/2020/01/21/9Il3jxBwF5edG6r.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2020/01/21/2020.01.21.wxjssdk/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>微信 jssdk 踩坑实录(nodejs实现后台) | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2020/01/21/2020.01.21.wxjssdk/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩宏斌"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信 jssdk 踩坑实录(nodejs实现后台)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-21 09:09:49 / 修改时间：12:18:54" itemprop="dateCreated datePublished" datetime="2020-01-21T09:09:49+08:00">2020-01-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>最近做 H5 有一个需求,要在网页链接分享到微信好友的显示描述和自定义缩略图,并在分享到朋友圈的时候显示缩略图.开始我觉得这是一个很简单的需求,应该在网页上配置一下就好了,后来才发现自己的真的是 too young,我花了一天半的时间来处理这个问题,最终得到了完美的解决,这里我记录下自己的踩坑经历,以便日后查阅.</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>微信官方是这么说的:</p>
+<blockquote>
+<p>为规范自定义分享链接功能在网页上的使用，自 2017 年 4 月 25 日起，JSSDK“分享到朋友圈”及“发送给朋友”接口，自定义的分享链接，其域名或路径必须与当前页面对应的公众号 JS 安全域名一致，否则将调用失败。例如，当前页面是 <a href="http://www.abc.com/123，其公众号对应的JS安全域名为" target="_blank" rel="external">http://www.abc.com/123，其公众号对应的JS安全域名为</a> www.abc.com 以及 www.xyz.com，则分享自定义链接 <a href="http://www.abc.com/456" target="_blank" rel="external">http://www.abc.com/456</a> 可以成功，分享 <a href="http://www.xyz.com/123" target="_blank" rel="external">http://www.xyz.com/123</a> 或 <a href="http://www.def.com/123" target="_blank" rel="external">http://www.def.com/123</a> 均将失败。对于未接入微信 JSSDK 或已接入但 JSSDK 调用失败的网页，被用户分享时，分享卡片将统一使用默认缩略图和标题简介，不允许自定义。</p>
+</blockquote>
+<p>意思是如果要自定义缩略图和简介,我们就需要接入微信的 <a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#2" target="_blank" rel="external">jssdk</a>.好,那我们现在就开始接入辣鸡微信的 jssdk.</p>
+<p>微信文档地址:<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#2" target="_blank" rel="external">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#2</a></p>
+<h1 id="3-准备工作"><a href="#3-准备工作" class="headerlink" title="3.准备工作"></a>3.准备工作</h1><p>如果要接入微信的 jssdk,必要条件如下,如果缺少其中任意一个,就不用继续看下去了,因为不能接入 jssdk:</p>
+<ul>
+<li>一个认证了的微信公众号(需要公众号的 appid 和 screct)</li>
+<li>一个已经备案的域名</li>
+</ul>
+<p>可选的配置:</p>
+<ul>
+<li>后台开发语言(这里我选用了 nodejs).</li>
+<li>js 安全域名(要求 80/443 端口),这个后面还会提到.</li>
+<li>ssl 证书(用于添加 https,这里推荐用 https,防劫持这样的有点就不说了,还有一个很重要的原因就是:如果不是 https 的话,使用微信浏览页面会有一个 confirm 安全的页面,确认以后虽然可以进入 h5,但是在 ios 下底部会有一个难看的导航栏,十分影响体验)</li>
+</ul>
+<h1 id="4-微信公众号配置"><a href="#4-微信公众号配置" class="headerlink" title="4.微信公众号配置"></a>4.微信公众号配置</h1><h2 id="1-ip-白名单配置"><a href="#1-ip-白名单配置" class="headerlink" title="(1)ip 白名单配置"></a>(1)ip 白名单配置</h2><p>ip 白名单主要是用于后端根据 appid 和 screct 获取 access_token,只有在白名单中的 ip 才可以访问微信的官方接口.<br><img src="https://i.loli.net/2020/01/21/9Il3jxBwF5edG6r.png" alt="WX20200121-093121@2x.png"></p>
+<h2 id="2-添加-js-安全域名"><a href="#2-添加-js-安全域名" class="headerlink" title="(2)添加 js 安全域名"></a>(2)添加 js 安全域名</h2><p><img src="https://i.loli.net/2020/01/21/dvEwPeDUXmhLNf9.png" alt=""><br>需要注意的是:</p>
+<ul>
+<li>安全域名最多只能填写三个,而且一个月内最多可以修改并保存三次.</li>
+<li>和上面提到的一样,这个域名必须是备案过的;</li>
+<li>需要下载微信提供的 txt 验证文件上传到 web 服务器网页的路径下,例如:我使用 vue(webpack)打包的文件在 <a href="https://example.com/nh" target="_blank" rel="external">https://example.com/nh</a> 下,那么这个文件也存放在这个路径下,确保微信可以虎获取到这个文件就可以,因为如果获取不到是无法添加域名的.(这一步其实是为了限制一个认证公众号可以绑定的域名数量)</li>
+</ul>
+<h1 id="5-后端服务开发-使用-nodejs"><a href="#5-后端服务开发-使用-nodejs" class="headerlink" title="5 后端服务开发(使用 nodejs)"></a>5 后端服务开发(使用 nodejs)</h1><p>使用 koa 框架:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> https = <span class="built_in">require</span>(<span class="string">"https"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">"koa"</span>);</div><div class="line"></div><div class="line"><span class="comment">//使用 axios 向微信服务器发起请求</span></div><div class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">"axios"</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">"koa-cors"</span>);</div><div class="line"><span class="keyword">const</span> utils = <span class="built_in">require</span>(<span class="string">"./utils/utils"</span>);</div><div class="line"></div><div class="line"><span class="comment">//config 中包含微信公众号的 appid 和 screct</span></div><div class="line"><span class="comment">//这两条数据很重要,不能泄露</span></div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">"./config/config"</span>);</div><div class="line"></div><div class="line"><span class="comment">//引入微信 jssdk校验代码</span></div><div class="line"><span class="comment">//微信开发者文档中中包含了python/java/php/nodejs 的代码</span></div><div class="line"><span class="comment">//这里我选择了 nodejs 的生成签名的包</span></div><div class="line"><span class="keyword">var</span> sign = <span class="built_in">require</span>(<span class="string">"./sign.js"</span>);</div><div class="line"></div><div class="line"><span class="comment">//这里是从阿里云申请的免费 ssl 证书,方便为接口添加 https</span></div><div class="line"><span class="keyword">var</span> options = &#123;</div><div class="line">  <span class="attr">key</span>: fs.readFileSync(<span class="string">"./https/3400951_wxshare.cf.key"</span>), <span class="comment">//ssl文件路径</span></div><div class="line">  cert: fs.readFileSync(<span class="string">"./https/3400951_wxshare.cf.pem"</span>) <span class="comment">//ssl文件路径</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">//添加跨域相关信息</span></div><div class="line">app.use(</div><div class="line">  cors(&#123;</div><div class="line">    <span class="attr">origin</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"*"</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">exposeHeaders</span>: [<span class="string">"WWW-Authenticate"</span>, <span class="string">"Server-Authorization"</span>],</div><div class="line">    <span class="attr">maxAge</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">credentials</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">allowMethods</span>: [<span class="string">"GET"</span>, <span class="string">"POST"</span>],</div><div class="line">    <span class="attr">allowHeaders</span>: [<span class="string">"Content-Type"</span>, <span class="string">"Authorization"</span>, <span class="string">"Accept"</span>]</div><div class="line">  &#125;)</div><div class="line">);</div><div class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (ctx.request.query.url2) &#123;</div><div class="line">    <span class="comment">//根据公众号的 appid和 screct 获取 access_token</span></div><div class="line">    <span class="keyword">let</span> [err, data] = <span class="keyword">await</span> utils.awaitWrap(</div><div class="line">      axios.get(</div><div class="line">        <span class="string">`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=<span class="subst">$&#123;config.config.appId&#125;</span>&amp;secret=<span class="subst">$&#123;config.config.secret&#125;</span>`</span></div><div class="line">      )</div><div class="line">    );</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="keyword">return</span> utils.res(ctx, <span class="number">1001</span>, <span class="string">"查询 access-token 失败"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">if</span> (data.data.access_token) &#123;</div><div class="line">        <span class="comment">//根据 access_token 换取 ticket</span></div><div class="line">        <span class="keyword">let</span> [err2, data2] = <span class="keyword">await</span> utils.awaitWrap(</div><div class="line">          axios.get(</div><div class="line">            <span class="string">`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=<span class="subst">$&#123;data.data.access_token&#125;</span>&amp;type=jsapi`</span></div><div class="line">          )</div><div class="line">        );</div><div class="line">        <span class="keyword">if</span> (err2) &#123;</div><div class="line">          <span class="keyword">return</span> utils.res(ctx, <span class="number">1002</span>, <span class="string">"查询 ticket 失败"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="comment">//根据 ticket 以及前端传过来的 url,生成signature等若干信息返回给前端进行 jssdk 验证.</span></div><div class="line">          <span class="keyword">let</span> signature = sign(</div><div class="line">            data2.data.ticket,</div><div class="line">            <span class="built_in">decodeURIComponent</span>(ctx.request.query.url2)</div><div class="line">          );</div><div class="line">          signature.appId = config.config.appId;</div><div class="line">          <span class="built_in">console</span>.log(signature);</div><div class="line">          <span class="comment">//返回给前端</span></div><div class="line">          <span class="keyword">return</span> utils.res(ctx, <span class="number">200</span>, <span class="string">"success"</span>, signature);</div><div class="line">        &#125;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> utils.res(ctx, <span class="number">1001</span>, data.data.errmsg);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> utils.res(ctx, <span class="number">1003</span>, <span class="string">"没有参数"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//创建http服务并监听 80 端口</span></div><div class="line"><span class="comment">//创建 https 服务并监听 443 端口</span></div><div class="line">http.createServer(app.callback()).listen(<span class="number">3000</span>);</div><div class="line">https.createServer(options, app.callback()).listen(<span class="number">3001</span>);</div></pre></td></tr></table></figure>
+<p>需要注意的事项:</p>
+<ul>
+<li>1.微信获取 access_token 和 ticket 的接口是有访问频率限制的,据称是每天 2000 次.</li>
+</ul>
+<blockquote>
+<p>生成签名之前必须先了解一下 jsapi_ticket，jsapi_ticket 是公众号用于调用微信 JS 接口的临时票据。正常情况下，jsapi_ticket 的有效期为 7200 秒，通过 access_token 来获取。由于获取 jsapi_ticket 的 api 调用次数非常有限，频繁刷新 jsapi_ticket 会导致 api 调用受限，影响自身业务，开发者必须在自己的服务全局缓存 jsapi_ticket 。参考以下文档获取 access_token（有效期 7200 秒，开发者必须在自己的服务全局缓存 access_token）：<a href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html用第一步拿到的access_token" target="_blank" rel="external">https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html用第一步拿到的access_token</a> 采用 http GET 方式请求获得 jsapi_ticket（有效期 7200 秒，开发者必须在自己的服务全局缓存 jsapi_ticket）：<a href="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi" target="_blank" rel="external">https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi</a></p>
+</blockquote>
+<ul>
+<li>2.签名算法<blockquote>
+<p>签名生成规则如下：参与签名的字段包括 noncestr（随机字符串）, 有效的 jsapi_ticket, timestamp（时间戳）, url（当前网页的 URL，不包含#及其后面部分） 。对所有待签名参数按照字段名的 ASCII 码从小到大排序（字典序）后，使用 URL 键值对的格式（即 key1=value1&amp;key2=value2…）拼接成字符串 string1。这里需要注意的是所有参数名均为小写字符。对 string1 作 sha1 加密，字段名和字段值都采用原始值，不进行 URL 转义。即 signature=sha1(string1)。</p>
+</blockquote>
+</li>
+</ul>
+<p>这里我直接用了微信给的 example 中的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//sign.js</span></div><div class="line"><span class="keyword">var</span> createNonceStr = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.random()</div><div class="line">    .toString(<span class="number">36</span>)</div><div class="line">    .substr(<span class="number">2</span>, <span class="number">15</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createTimestamp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() / <span class="number">1000</span>) + <span class="string">""</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> raw = <span class="function"><span class="keyword">function</span>(<span class="params">args</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(args);</div><div class="line">  keys = keys.sort();</div><div class="line">  <span class="keyword">var</span> newArgs = &#123;&#125;;</div><div class="line">  keys.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">    newArgs[key.toLowerCase()] = args[key];</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="keyword">var</span> string = <span class="string">""</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> newArgs) &#123;</div><div class="line">    string += <span class="string">"&amp;"</span> + k + <span class="string">"="</span> + newArgs[k];</div><div class="line">  &#125;</div><div class="line">  string = string.substr(<span class="number">1</span>);</div><div class="line">  <span class="keyword">return</span> string;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @synopsis 签名算法</div><div class="line"> *</div><div class="line"> * @param jsapi_ticket 用于签名的 jsapi_ticket</div><div class="line"> * @param url 用于签名的 url ，注意必须动态获取，不能 hardcode</div><div class="line"> *</div><div class="line"> * @returns</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> sign = <span class="function"><span class="keyword">function</span>(<span class="params">jsapi_ticket, url</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> ret = &#123;</div><div class="line">    <span class="attr">jsapi_ticket</span>: jsapi_ticket,</div><div class="line">    <span class="attr">nonceStr</span>: createNonceStr(),</div><div class="line">    <span class="attr">timestamp</span>: createTimestamp(),</div><div class="line">    <span class="attr">url</span>: url</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">var</span> string = raw(ret);</div><div class="line">  jsSHA = <span class="built_in">require</span>(<span class="string">"jssha"</span>);</div><div class="line">  shaObj = <span class="keyword">new</span> jsSHA(string, <span class="string">"TEXT"</span>);</div><div class="line">  ret.signature = shaObj.getHash(<span class="string">"SHA-1"</span>, <span class="string">"HEX"</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> ret;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = sign;</div></pre></td></tr></table></figure>
+<p>可以在这里验证生成微信签名的正确性:<a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign" target="_blank" rel="external">http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign</a></p>
+<h1 id="6-前端开发"><a href="#6-前端开发" class="headerlink" title="6.前端开发"></a>6.前端开发</h1><h2 id="1-引入-JS-文件"><a href="#1-引入-JS-文件" class="headerlink" title="(1) 引入 JS 文件"></a>(1) 引入 JS 文件</h2><p>在需要调用 JS 接口的页面引入如下 JS 文件，（支持 https）：<a href="http://res.wx.qq.com/open/js/jweixin-1.6.0.js" target="_blank" rel="external">http://res.wx.qq.com/open/js/jweixin-1.6.0.js</a></p>
+<p>如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：<a href="http://res2.wx.qq.com/open/js/jweixin-1.6.0.js" target="_blank" rel="external">http://res2.wx.qq.com/open/js/jweixin-1.6.0.js</a> （支持 https）。</p>
+<h2 id="2-通过-config-接口注入权限验证配置"><a href="#2-通过-config-接口注入权限验证配置" class="headerlink" title="(2)通过 config 接口注入权限验证配置"></a>(2)通过 config 接口注入权限验证配置</h2><p>所有需要使用 JS-SDK 的页面必须先注入配置信息，否则将无法调用（同一个 url 仅需调用一次，对于变化 url 的 SPA 的 web app 可在每次 url 变化时进行调用,目前 Android 微信客户端不支持 pushState 的 H5 新特性，所以使用 pushState 来实现 web app 的页面会导致签名失败，此问题会在 Android6.2 中修复）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wx.config(&#123;</div><div class="line">  <span class="attr">debug</span>: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></div><div class="line">  appId: <span class="string">''</span>, <span class="comment">// 必填，公众号的唯一标识</span></div><div class="line">  timestamp: , <span class="comment">// 必填，生成签名的时间戳</span></div><div class="line">  nonceStr: <span class="string">''</span>, <span class="comment">// 必填，生成签名的随机串</span></div><div class="line">  signature: <span class="string">''</span>,<span class="comment">// 必填，签名</span></div><div class="line">  jsApiList: [] <span class="comment">// 必填，需要使用的JS接口列表</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="3-通过-ready-接口处理成功验证"><a href="#3-通过-ready-接口处理成功验证" class="headerlink" title="(3)通过 ready 接口处理成功验证"></a>(3)通过 ready 接口处理成功验证</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="4-通过-error-接口处理失败验证"><a href="#4-通过-error-接口处理失败验证" class="headerlink" title="(4)通过 error 接口处理失败验证"></a>(4)通过 error 接口处理失败验证</h2><p>wx.error(function(res){<br>// config 信息验证失败会执行 error 函数，如签名过期导致验证失败，具体错误信息可以打开 config 的 debug 模式查看，也可以在返回的 res 参数中查看，对于 SPA 可以在这里更新签名。<br>});</p>
+<p>样例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//index.html</span></div><div class="line"><span class="comment">//使用 fetch 获取接口数据</span></div><div class="line"><span class="comment">//同时注意 webpack 没有编译 index.html,所以 es6 语法并不支持</span></div><div class="line">&lt;script src=https:<span class="comment">//res2.wx.qq.com/open/js/jweixin-1.6.0.js&gt;&lt;/script&gt;</span></div><div class="line">    &lt;script&gt;</div><div class="line">    <span class="comment">//这里请求之前写好的后端接口,发送当前页面的 url</span></div><div class="line">    <span class="comment">//url 必须使用window.location.href.split("#")[0] 获取</span></div><div class="line">    <span class="keyword">var</span> wxshareAuthAddress = <span class="string">"https://example.com:3001?url2="</span> + <span class="built_in">encodeURIComponent</span>(<span class="built_in">window</span>.location.href.split(<span class="string">"#"</span>)[<span class="number">0</span>]);</div><div class="line">    fetch(wxshareAuthAddress)</div><div class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">        res.json().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">//根据获取到的结果验证权限</span></div><div class="line">          wx.config(&#123;</div><div class="line">            <span class="attr">debug</span>: <span class="literal">false</span>,</div><div class="line">            <span class="attr">appId</span>: res.data.appId,</div><div class="line">            <span class="attr">timestamp</span>: res.data.timestamp,</div><div class="line">            <span class="attr">nonceStr</span>: res.data.nonceStr,</div><div class="line">            <span class="attr">signature</span>: res.data.signature,</div><div class="line">            <span class="attr">jsApiList</span>: [<span class="string">"updateTimelineShareData"</span>, <span class="string">"updateAppMessageShareData"</span>] <span class="comment">// 必填，需要使用的JS接口列表</span></div><div class="line">          &#125;);</div><div class="line">    <span class="comment">//验证成功以后出发的方法</span></div><div class="line">          wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"ready"</span>);</div><div class="line">    <span class="comment">//updateAppMessageShareData是分享到微信消息的api</span></div><div class="line">            wx.updateAppMessageShareData(&#123;</div><div class="line">              <span class="attr">title</span>: <span class="string">""</span>, <span class="comment">// 分享标题</span></div><div class="line">              desc: <span class="string">""</span>, <span class="comment">// 分享描述</span></div><div class="line">              link: <span class="string">"/"</span>, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></div><div class="line">              imgUrl: <span class="string">""</span>, <span class="comment">// 分享图标</span></div><div class="line">              success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="comment">// 设置成功</span></div><div class="line">                <span class="built_in">console</span>.log(<span class="string">"设置发送给微信好友消息成功"</span>);</div><div class="line">              &#125;</div><div class="line">            &#125;);</div><div class="line">            <span class="comment">// console.log(res);</span></div><div class="line">            <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></div><div class="line"></div><div class="line">            <span class="comment">//分享到朋友圈设置的 api</span></div><div class="line">            wx.updateTimelineShareData(&#123;</div><div class="line">              <span class="attr">title</span>: <span class="string">""</span>, <span class="comment">// 分享标题</span></div><div class="line">              link: <span class="string">""</span>, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></div><div class="line">              imgUrl: <span class="string">""</span>, <span class="comment">// 分享图标</span></div><div class="line">              success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">                <span class="comment">// 设置成功</span></div><div class="line">                <span class="built_in">console</span>.log(<span class="string">"设置朋友圈分享成功"</span>);</div><div class="line">              &#125;</div><div class="line">            &#125;);</div><div class="line">            <span class="comment">// wx.showMenuItems(&#123;</span></div><div class="line">            <span class="comment">//   menuList: ["menuItem:readMode", "menuItem:share:facebook"] // 要显示的菜单项，所有menu项见附录3</span></div><div class="line">            <span class="comment">// &#125;);</span></div><div class="line">          &#125;);</div><div class="line">          wx.error(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"error"</span> + res);</div><div class="line">            <span class="comment">// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</span></div><div class="line">          &#125;);</div><div class="line">        &#125;);</div><div class="line">      &#125;)</div><div class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">      &#125;);&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h1 id="7-问题汇总"><a href="#7-问题汇总" class="headerlink" title="7 问题汇总"></a>7 问题汇总</h1><h2 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h2><h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>注意接口一定要添加 https,而且绑定域名.<br>如果不绑定域名,使用 <a href="https://ip这样的形式,使用微信开发者工具调试时接口不会报错,但是在手机端会拦截请求" target="_blank" rel="external">https://ip这样的形式,使用微信开发者工具调试时接口不会报错,但是在手机端会拦截请求</a>.<br>证书可以到阿里云上申请,域名可以到 freedom 申请免费域名,然后在 dnspod 添加域名解析以及证书与域名的绑定关系;</p>
+<p><img src="https://i.loli.net/2020/01/21/9YUG2OxMAKPz81w.png" alt="WX20200121-120951@2x.png"></p>
+<h3 id="部署服务"><a href="#部署服务" class="headerlink" title="部署服务"></a>部署服务</h3><p>我使用了 docker 部署了服务,这样可以免去配置环境等问题.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Dockerfile</span></div><div class="line">FROM node</div><div class="line">RUN mkdir -p /home/Service</div><div class="line">WORKDIR /home/Service</div><div class="line">COPY . /home/Service</div><div class="line">RUN npm install</div><div class="line">EXPOSE 3000</div><div class="line">EXPOSE 3001</div><div class="line">CMD node ./serve.js</div><div class="line"> <span class="comment">## 如果想运行多条指令可以这样：</span></div><div class="line"><span class="comment">## CMD git pull &amp;&amp; npm install &amp;&amp; npm start</span></div></pre></td></tr></table></figure>
+<h3 id="暴露端口"><a href="#暴露端口" class="headerlink" title="暴露端口"></a>暴露端口</h3><p>部署在阿里云上的主机记得开放端口方便外部访问:<br><img src="https://i.loli.net/2020/01/21/7QCLpaMv5HBNszO.png" alt="WX20200121-120715@2x.png"></p>
+<h2 id="前端开发"><a href="#前端开发" class="headerlink" title="前端开发"></a>前端开发</h2><h3 id="invalid-signature"><a href="#invalid-signature" class="headerlink" title="invalid signature"></a>invalid signature</h3><h4 id="1-url"><a href="#1-url" class="headerlink" title="1.url"></a>1.url</h4><p>绝大多数<code>invalid signature</code>问题的原因都是 url 的问题,<br>url 必须与之前填入的 js 安全域名相同.</p>
+<p>确保 url 是动态生成的,同时一定要使用 <code>encodeUrlComponent</code>编码!!!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">encodeURIComponent</span>(<span class="built_in">window</span>.location.href.split(<span class="string">"#"</span>)[<span class="number">0</span>]);</div></pre></td></tr></table></figure>
+<h4 id="2-确保签名算法无误"><a href="#2-确保签名算法无误" class="headerlink" title="2.确保签名算法无误"></a>2.确保签名算法无误</h4><p>签名生成规则如下：</p>
+<p>参与签名的字段包括有效的 jsapi_ticket（获取方式详见微信 JSSDK 文档）， noncestr （随机字符串，由开发者随机生成），timestamp （由开发者生成的当前时间戳）， url（当前网页的URL，不包含#及其后面部分。注意：对于没有只有域名没有 path 的 URL ，浏览器会自动加上 / 作为 path，如打开 <a href="http://qq.com" target="_blank" rel="external">http://qq.com</a> 则获取到的 URL 为 <a href="http://qq.com/）。" target="_blank" rel="external">http://qq.com/）。</a><br>对所有待签名参数按照字段名的 ASCII 码从小到大排序（字典序）后，使用 URL 键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串 string1。这里需要注意的是所有参数名均为小写字符。<br>接下来对 string1 作 sha1 加密，字段名和字段值都采用原始值，不进行 URL 转义。即 signature=sha1(string1)。</p>
+<h2 id="后端开发"><a href="#后端开发" class="headerlink" title="后端开发"></a>后端开发</h2><h3 id="api-调用限制"><a href="#api-调用限制" class="headerlink" title="api 调用限制"></a>api 调用限制</h3><p>微信对 access_token 以及 ticket 的获取有每日调用次数的限制,对于稍大的项目就需要考虑缓存 ticket(ticket 的有效期是 7200s),这一点微信文档中有详细的说明.</p>
+<h3 id="安全相关"><a href="#安全相关" class="headerlink" title="安全相关"></a>安全相关</h3><p>appid 和 screct 不能轻易泄露,返回给前端的数据中需要传 appid.</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="韩宏斌 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/wechat/" rel="tag"># wechat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/13/2020.01.13.reactAntd/" rel="next" title="react 项目中按需加载 antd">
+                <i class="fa fa-chevron-left"></i> react 项目中按需加载 antd
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="韩宏斌"/>
+            
+              <p class="site-author-name" itemprop="name">韩宏斌</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-准备工作"><span class="nav-number">3.</span> <span class="nav-text">3.准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-微信公众号配置"><span class="nav-number">4.</span> <span class="nav-text">4.微信公众号配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ip-白名单配置"><span class="nav-number">4.1.</span> <span class="nav-text">(1)ip 白名单配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-添加-js-安全域名"><span class="nav-number">4.2.</span> <span class="nav-text">(2)添加 js 安全域名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-后端服务开发-使用-nodejs"><span class="nav-number">5.</span> <span class="nav-text">5 后端服务开发(使用 nodejs)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-前端开发"><span class="nav-number">6.</span> <span class="nav-text">6.前端开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引入-JS-文件"><span class="nav-number">6.1.</span> <span class="nav-text">(1) 引入 JS 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过-config-接口注入权限验证配置"><span class="nav-number">6.2.</span> <span class="nav-text">(2)通过 config 接口注入权限验证配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过-ready-接口处理成功验证"><span class="nav-number">6.3.</span> <span class="nav-text">(3)通过 ready 接口处理成功验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过-error-接口处理失败验证"><span class="nav-number">6.4.</span> <span class="nav-text">(4)通过 error 接口处理失败验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-问题汇总"><span class="nav-number">7.</span> <span class="nav-text">7 问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运维"><span class="nav-number">7.1.</span> <span class="nav-text">运维</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#https"><span class="nav-number">7.1.1.</span> <span class="nav-text">https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署服务"><span class="nav-number">7.1.2.</span> <span class="nav-text">部署服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暴露端口"><span class="nav-number">7.1.3.</span> <span class="nav-text">暴露端口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端开发"><span class="nav-number">7.2.</span> <span class="nav-text">前端开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#invalid-signature"><span class="nav-number">7.2.1.</span> <span class="nav-text">invalid signature</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-url"><span class="nav-number">7.2.1.1.</span> <span class="nav-text">1.url</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-确保签名算法无误"><span class="nav-number">7.2.1.2.</span> <span class="nav-text">2.确保签名算法无误</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端开发"><span class="nav-number">7.3.</span> <span class="nav-text">后端开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#api-调用限制"><span class="nav-number">7.3.1.</span> <span class="nav-text">api 调用限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全相关"><span class="nav-number">7.3.2.</span> <span class="nav-text">安全相关</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩宏斌</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
