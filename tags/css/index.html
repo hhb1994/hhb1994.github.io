@@ -99,7 +99,7 @@
   <meta name="description" content="a blog to improve myself🚀">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ARTORIAS">
-<meta property="og:url" content="http://hhb1994.github.to/tags/CSS/index.html">
+<meta property="og:url" content="http://hhb1994.github.to/tags/css/index.html">
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="a blog to improve myself🚀">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://hhb1994.github.to/tags/CSS/"/>
+  <link rel="canonical" href="http://hhb1994.github.to/tags/css/"/>
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>标签: CSS | ARTORIAS</title>
+  <title>标签: css | ARTORIAS</title>
   
 
 
@@ -386,7 +386,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>CSS<small>标签</small>
+        <h1>css<small>标签</small>
         </h1>
       </div>
 
@@ -398,9 +398,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2018/12/07/2018.12.07.pseudo/" itemprop="url">
+          <a class="post-title-link" href="/2020/03/10/2020.03.10.useSassInWeApp/" itemprop="url">
             
-              <span itemprop="name">CSS 伪类与 CSS 元素</span>
+              <span itemprop="name">使用 vscode 插件实现在小程序中使用 less/sass/scss</span>
             
           </a>
         
@@ -408,9 +408,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-07T14:19:41+08:00"
-              content="2018-12-07">
-          12-07
+              datetime="2020-03-10T14:58:21+08:00"
+              content="2020-03-10">
+          03-10
         </time>
       </div>
 
@@ -426,9 +426,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2018/11/19/2018.11.19CSS-selector/" itemprop="url">
+          <a class="post-title-link" href="/2020/01/03/2020.01.03.lcdFont/" itemprop="url">
             
-              <span itemprop="name">CSS 选择器/动画</span>
+              <span itemprop="name">前端页面嵌入 lcd 字体</span>
             
           </a>
         
@@ -436,9 +436,65 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T16:49:25+08:00"
-              content="2018-11-19">
-          11-19
+              datetime="2020-01-03T11:42:59+08:00"
+              content="2020-01-03">
+          01-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2018/12/09/2018.12.09.vertical/" itemprop="url">
+            
+              <span itemprop="name">实现文字与图片并排显示</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-12-09T17:54:07+08:00"
+              content="2018-12-09">
+          12-09
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2017/05/25/2017.05.25.box/" itemprop="url">
+            
+              <span itemprop="name">两种盒子模型</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-05-25T12:38:58+08:00"
+              content="2017-05-25">
+          05-25
         </time>
       </div>
 
@@ -906,7 +962,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "search.json";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
@@ -1174,88 +1230,6 @@
                 searchResultList += result.item;
               })
               searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
-ul>";
               resultContent.innerHTML = searchResultList;
             }
           }
