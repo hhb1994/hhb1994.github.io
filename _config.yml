@@ -68,10 +68,21 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo:
+  -
+    type: git
     github: git@github.com:hhb1994/hhb1994.github.io.git,master
+  -
+    type: leancloud_counter_security_sync
+
 search:
-        path: search.xml
-        field: post
-        
+  path: search.json
+  field: post
+  format: html
+  limit: 10000
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va
+  app_key: XJjT2wuj1dJqoc46ioVTSKch
+  username: admin
+  password:
