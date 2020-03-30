@@ -68,9 +68,9 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  -
-    type: git
-    github: git@github.com:hhb1994/hhb1994.github.io.git,master
+  # -
+  type: git
+  github: git@github.com:hhb1994/hhb1994.github.io.git,master
   # -
   #   type: leancloud_counter_security_sync
 
