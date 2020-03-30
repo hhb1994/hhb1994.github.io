@@ -71,8 +71,8 @@ deploy:
   -
     type: git
     github: git@github.com:hhb1994/hhb1994.github.io.git,master
-  -
-    type: leancloud_counter_security_sync
+  # -
+  #   type: leancloud_counter_security_sync
 
 search:
   path: search.json
