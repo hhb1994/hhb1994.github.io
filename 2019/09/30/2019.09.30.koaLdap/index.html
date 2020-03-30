@@ -96,26 +96,20 @@
 
 
 
-  <meta name="description" content="ldap 简单介绍ldap 是一种树形数据库,一般用于存储公司员工相关信息.
-使用 ldap 模块查询用到 ldap 模块,使用 npm 安装:npm i ldapjs -S
-使用:
-1234567891011121314151617181920212223242526272829303132333435const ldap = require(&quot;ldapjs&quot;);const ldapConfig">
+  <meta name="description" content="ldap 简单介绍ldap 是一种树形数据库,一般用于存储公司员工相关信息. 使用 ldap 模块查询用到 ldap 模块,使用 npm 安装:npm i ldapjs -S 使用: 1234567891011121314151617181920212223242526272829303132333435const ldap &#x3D; require(&quot;ldapjs&quot;);const ldapConfig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node 项目连接 ldap">
 <meta property="og:url" content="http://hhb1994.github.to/2019/09/30/2019.09.30.koaLdap/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="ldap 简单介绍ldap 是一种树形数据库,一般用于存储公司员工相关信息.
-使用 ldap 模块查询用到 ldap 模块,使用 npm 安装:npm i ldapjs -S
-使用:
-1234567891011121314151617181920212223242526272829303132333435const ldap = require(&quot;ldapjs&quot;);const ldapConfig">
+<meta property="og:description" content="ldap 简单介绍ldap 是一种树形数据库,一般用于存储公司员工相关信息. 使用 ldap 模块查询用到 ldap 模块,使用 npm 安装:npm i ldapjs -S 使用: 1234567891011121314151617181920212223242526272829303132333435const ldap &#x3D; require(&quot;ldapjs&quot;);const ldapConfig">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2019/09/30/oQhLr5OmesYBdtq.png">
-<meta property="og:updated_time" content="2019-09-30T03:28:56.721Z">
+<meta property="article:published_time" content="2019-09-30T03:19:53.704Z">
+<meta property="article:modified_time" content="2019-09-30T03:28:56.721Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="ldap">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node 项目连接 ldap">
-<meta name="twitter:description" content="ldap 简单介绍ldap 是一种树形数据库,一般用于存储公司员工相关信息.
-使用 ldap 模块查询用到 ldap 模块,使用 npm 安装:npm i ldapjs -S
-使用:
-1234567891011121314151617181920212223242526272829303132333435const ldap = require(&quot;ldapjs&quot;);const ldapConfig">
 <meta name="twitter:image" content="https://i.loli.net/2019/09/30/oQhLr5OmesYBdtq.png">
 
 
@@ -173,7 +167,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -452,7 +446,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -514,7 +508,7 @@
         <h2 id="ldap-简单介绍"><a href="#ldap-简单介绍" class="headerlink" title="ldap 简单介绍"></a>ldap 简单介绍</h2><p>ldap 是一种树形数据库,一般用于存储公司员工相关信息.<br><img src="https://i.loli.net/2019/09/30/oQhLr5OmesYBdtq.png" alt="WX20190930-112724@2x"></p>
 <h2 id="使用-ldap-模块查询"><a href="#使用-ldap-模块查询" class="headerlink" title="使用 ldap 模块查询"></a>使用 ldap 模块查询</h2><p>用到 ldap 模块,使用 npm 安装:<br>npm i ldapjs -S</p>
 <p>使用:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ldap = <span class="built_in">require</span>(<span class="string">"ldapjs"</span>);</div><div class="line"><span class="keyword">const</span> ldapConfig = &#123; <span class="attr">url</span>: <span class="string">"ldap://10.20.21.24"</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> opts = &#123;</div><div class="line">  <span class="comment">//   filter: "", //查询条件过滤器，查找uid=kxh的用户节点</span></div><div class="line">  <span class="comment">//   scope: "", //查询范围</span></div><div class="line">  timeLimit: <span class="number">5</span> <span class="comment">//查询超时</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">ldapAuth</span>: <span class="function"><span class="params">userName</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">const</span> client = ldap.createClient(ldapConfig.config);</div><div class="line">      <span class="comment">//连接 ldap 的账户名&amp;密码</span></div><div class="line">      client.bind(<span class="string">"账户名"</span>, <span class="string">"密码"</span>, (err1, res1) =&gt; &#123;</div><div class="line">        client.search(<span class="string">`cn=<span class="subst">$&#123;userName&#125;</span>,ou=employee,dc=zrtg,dc=com`</span>, opts, (err, res2) =&gt; &#123;</div><div class="line">          res2.on(<span class="string">"searchEntry"</span>, entry =&gt; &#123;</div><div class="line">            user = entry.object;</div><div class="line">            resolve(user);</div><div class="line">          &#125;);</div><div class="line">          res2.on(<span class="string">"searchReference"</span>, referral =&gt; &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"referral: "</span> + referral.uris.join());</div><div class="line">          &#125;);</div><div class="line">          res2.on(<span class="string">"error"</span>, err =&gt; &#123;</div><div class="line">            client.unbind();</div><div class="line">            reject(err);</div><div class="line">          &#125;);</div><div class="line">          res2.on(<span class="string">"end"</span>, result =&gt; &#123;</div><div class="line">            client.unbind();</div><div class="line">          &#125;);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ldap = <span class="built_in">require</span>(<span class="string">"ldapjs"</span>);</span><br><span class="line"><span class="keyword">const</span> ldapConfig = &#123; <span class="attr">url</span>: <span class="string">"ldap://10.20.21.24"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> opts = &#123;</span><br><span class="line">  <span class="comment">//   filter: "", //查询条件过滤器，查找uid=kxh的用户节点</span></span><br><span class="line">  <span class="comment">//   scope: "", //查询范围</span></span><br><span class="line">  timeLimit: <span class="number">5</span> <span class="comment">//查询超时</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ldapAuth: <span class="function"><span class="params">userName</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> client = ldap.createClient(ldapConfig.config);</span><br><span class="line">      <span class="comment">//连接 ldap 的账户名&amp;密码</span></span><br><span class="line">      client.bind(<span class="string">"账户名"</span>, <span class="string">"密码"</span>, (err1, res1) =&gt; &#123;</span><br><span class="line">        client.search(<span class="string">`cn=<span class="subst">$&#123;userName&#125;</span>,ou=employee,dc=zrtg,dc=com`</span>, opts, (err, res2) =&gt; &#123;</span><br><span class="line">          res2.on(<span class="string">"searchEntry"</span>, entry =&gt; &#123;</span><br><span class="line">            user = entry.object;</span><br><span class="line">            resolve(user);</span><br><span class="line">          &#125;);</span><br><span class="line">          res2.on(<span class="string">"searchReference"</span>, referral =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"referral: "</span> + referral.uris.join());</span><br><span class="line">          &#125;);</span><br><span class="line">          res2.on(<span class="string">"error"</span>, err =&gt; &#123;</span><br><span class="line">            client.unbind();</span><br><span class="line">            reject(err);</span><br><span class="line">          &#125;);</span><br><span class="line">          res2.on(<span class="string">"end"</span>, result =&gt; &#123;</span><br><span class="line">            client.unbind();</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -674,7 +668,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -688,7 +682,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -719,7 +713,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1468,9 +1462,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

@@ -96,31 +96,19 @@
 
 
 
-  <meta name="description" content="什么是 debounce
-n. 防反跳按键防反跳（Debounce）为什么要去抖动呢？机械按键在按下时，并非按下就接触的很好，尤其是有簧片的机械开关，会在接触的瞬间反复的开合多次，直到开关状态完全改变。大学时候做过电子实验的都知道,按键的时候需要加上消抖函数.
-
-debounce 的使用场景
-调整页面宽度 ,resize 时,避免频繁渲染导致页面卡顿
-输入框输入搜索🔍条件,为了优化体验,没有设置">
+  <meta name="description" content="什么是 debounce n. 防反跳按键防反跳（Debounce）为什么要去抖动呢？机械按键在按下时，并非按下就接触的很好，尤其是有簧片的机械开关，会在接触的瞬间反复的开合多次，直到开关状态完全改变。大学时候做过电子实验的都知道,按键的时候需要加上消抖函数.  debounce 的使用场景 调整页面宽度 ,resize 时,避免频繁渲染导致页面卡顿 输入框输入搜索🔍条件,为了优化体验,没有设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="debounce在vue 中的使用">
 <meta property="og:url" content="http://hhb1994.github.to/2019/11/06/2019.11.06.debounce/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="什么是 debounce
-n. 防反跳按键防反跳（Debounce）为什么要去抖动呢？机械按键在按下时，并非按下就接触的很好，尤其是有簧片的机械开关，会在接触的瞬间反复的开合多次，直到开关状态完全改变。大学时候做过电子实验的都知道,按键的时候需要加上消抖函数.
-
-debounce 的使用场景
-调整页面宽度 ,resize 时,避免频繁渲染导致页面卡顿
-输入框输入搜索🔍条件,为了优化体验,没有设置">
-<meta property="og:updated_time" content="2019-11-06T06:51:13.403Z">
+<meta property="og:description" content="什么是 debounce n. 防反跳按键防反跳（Debounce）为什么要去抖动呢？机械按键在按下时，并非按下就接触的很好，尤其是有簧片的机械开关，会在接触的瞬间反复的开合多次，直到开关状态完全改变。大学时候做过电子实验的都知道,按键的时候需要加上消抖函数.  debounce 的使用场景 调整页面宽度 ,resize 时,避免频繁渲染导致页面卡顿 输入框输入搜索🔍条件,为了优化体验,没有设置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-06T03:30:24.517Z">
+<meta property="article:modified_time" content="2019-11-06T06:51:13.403Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="debounce在vue 中的使用">
-<meta name="twitter:description" content="什么是 debounce
-n. 防反跳按键防反跳（Debounce）为什么要去抖动呢？机械按键在按下时，并非按下就接触的很好，尤其是有簧片的机械开关，会在接触的瞬间反复的开合多次，直到开关状态完全改变。大学时候做过电子实验的都知道,按键的时候需要加上消抖函数.
-
-debounce 的使用场景
-调整页面宽度 ,resize 时,避免频繁渲染导致页面卡顿
-输入框输入搜索🔍条件,为了优化体验,没有设置">
 
 
 
@@ -177,7 +165,7 @@ debounce 的使用场景
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -456,7 +444,7 @@ debounce 的使用场景
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -523,11 +511,11 @@ debounce 的使用场景
 <li>输入框输入搜索🔍条件,为了优化体验,没有设置搜索按钮,但是尽量减少 api 调用</li>
 <li>…</li>
 </ul>
-<h1 id="JavaScript-实现-debounce"><a href="#JavaScript-实现-debounce" class="headerlink" title="JavaScript 实现 debounce"></a>JavaScript 实现 debounce</h1><p>JavaScript 实现 debounce 利用了<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="external">闭包</a>的概念.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (timeout !== <span class="literal">null</span>) clearTimeout(timeout);</div><div class="line">    timeout = setTimeout(fn, wait);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="JavaScript-实现-debounce"><a href="#JavaScript-实现-debounce" class="headerlink" title="JavaScript 实现 debounce"></a>JavaScript 实现 debounce</h1><p>JavaScript 实现 debounce 利用了<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">闭包</a>的概念.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeout !== <span class="literal">null</span>) clearTimeout(timeout);</span><br><span class="line">    timeout = setTimeout(fn, wait);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的函数接收一个函数和一个延时秒数.<br>其中<code>let timeout = null;</code>只有在第一次调用 debounce 函数时定义.<br>实现如果没有计时器,则新建一个计时器.已经存在计时器的情况下,会销毁当前存在的计时器,并重新创建一个计时器.<br>这样就可以达到消抖的效果.例如,用户在输入框进行输入时,设置了一个 1000ms 的延时函数,那么在用户输入完毕以后才会像后端发起查询请求,可以减少大量的网路请求.</p>
-<h1 id="debounce-在-vue-中的使用"><a href="#debounce-在-vue-中的使用" class="headerlink" title="debounce 在 vue 中的使用"></a>debounce 在 vue 中的使用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//utils.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (timeout !== <span class="literal">null</span>) clearTimeout(timeout);</div><div class="line">    timeout = setTimeout(fn, wait);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;  debounce &#125;;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// app.vue</span></div><div class="line"><span class="keyword">import</span> &#123; debounce &#125; <span class="keyword">from</span> <span class="string">"./../utils/utils"</span>;</div><div class="line"></div><div class="line"><span class="comment">//在 vue 中的 created 声明周期中,添加对数据的监听</span></div><div class="line"><span class="comment">//而不是在 watch 中调用</span></div><div class="line">created() &#123;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.$watch(</div><div class="line">      <span class="string">"filter"</span>,</div><div class="line">      debounce(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">this</span>.getList();</div><div class="line">      &#125;, <span class="number">500</span>)</div><div class="line">    );</div><div class="line">    </div><div class="line"></div><div class="line">  &#125;</div><div class="line">mounted:&#123;</div><div class="line">    getList()&#123;</div><div class="line">        <span class="comment">//your code here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="debounce-在-vue-中的使用"><a href="#debounce-在-vue-中的使用" class="headerlink" title="debounce 在 vue 中的使用"></a>debounce 在 vue 中的使用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//utils.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeout !== <span class="literal">null</span>) clearTimeout(timeout);</span><br><span class="line">    timeout = setTimeout(fn, wait);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;  debounce &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.vue</span></span><br><span class="line"><span class="keyword">import</span> &#123; debounce &#125; <span class="keyword">from</span> <span class="string">"./../utils/utils"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在 vue 中的 created 声明周期中,添加对数据的监听</span></span><br><span class="line"><span class="comment">//而不是在 watch 中调用</span></span><br><span class="line">created() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.$watch(</span><br><span class="line">      <span class="string">"filter"</span>,</span><br><span class="line">      debounce(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.getList();</span><br><span class="line">      &#125;, <span class="number">500</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">mounted:&#123;</span><br><span class="line">    getList()&#123;</span><br><span class="line">        <span class="comment">//your code here</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -687,7 +675,7 @@ debounce 的使用场景
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -701,7 +689,7 @@ debounce 的使用场景
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -732,7 +720,7 @@ debounce 的使用场景
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1481,9 +1469,14 @@ debounce 的使用场景
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

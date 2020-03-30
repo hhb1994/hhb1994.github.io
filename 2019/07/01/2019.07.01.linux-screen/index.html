@@ -96,35 +96,19 @@
 
 
 
-  <meta name="description" content="前言之前在介绍 ArchiSteamFarm(一下简称 asf)时,介绍了它的简单用法,在这篇文章里面我们介绍如何把 asf 部署到远程主机上并自动挂卡.
-需要的东西
-国外 linux 主机一台(centos7)
-ssh 客户端
-asf for linux x64
-
-安装 asf环境配置安装 .NET core 和 screensudo rpm --import https://packages.">
+  <meta name="description" content="前言之前在介绍 ArchiSteamFarm(一下简称 asf)时,介绍了它的简单用法,在这篇文章里面我们介绍如何把 asf 部署到远程主机上并自动挂卡. 需要的东西 国外 linux 主机一台(centos7) ssh 客户端 asf for linux x64  安装 asf环境配置安装 .NET core 和 screensudo rpm --import https:&#x2F;&#x2F;packages.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux 主机部署 ArchiSteamFarm">
 <meta property="og:url" content="http://hhb1994.github.to/2019/07/01/2019.07.01.linux-screen/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="前言之前在介绍 ArchiSteamFarm(一下简称 asf)时,介绍了它的简单用法,在这篇文章里面我们介绍如何把 asf 部署到远程主机上并自动挂卡.
-需要的东西
-国外 linux 主机一台(centos7)
-ssh 客户端
-asf for linux x64
-
-安装 asf环境配置安装 .NET core 和 screensudo rpm --import https://packages.">
+<meta property="og:description" content="前言之前在介绍 ArchiSteamFarm(一下简称 asf)时,介绍了它的简单用法,在这篇文章里面我们介绍如何把 asf 部署到远程主机上并自动挂卡. 需要的东西 国外 linux 主机一台(centos7) ssh 客户端 asf for linux x64  安装 asf环境配置安装 .NET core 和 screensudo rpm --import https:&#x2F;&#x2F;packages.">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2019/07/01/5d19b93d6b97a71693.png">
-<meta property="og:updated_time" content="2019-07-01T07:57:49.149Z">
+<meta property="article:published_time" content="2019-07-01T07:22:30.514Z">
+<meta property="article:modified_time" content="2019-07-01T07:57:49.149Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux 主机部署 ArchiSteamFarm">
-<meta name="twitter:description" content="前言之前在介绍 ArchiSteamFarm(一下简称 asf)时,介绍了它的简单用法,在这篇文章里面我们介绍如何把 asf 部署到远程主机上并自动挂卡.
-需要的东西
-国外 linux 主机一台(centos7)
-ssh 客户端
-asf for linux x64
-
-安装 asf环境配置安装 .NET core 和 screensudo rpm --import https://packages.">
 <meta name="twitter:image" content="https://i.loli.net/2019/07/01/5d19b93d6b97a71693.png">
 
 
@@ -182,7 +166,7 @@ asf for linux x64
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -461,7 +445,7 @@ asf for linux x64
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -532,7 +516,7 @@ sudo yum update
 sudo yum install libunwind libicu
 sudo yum install dotnet-sdk-2.0.0
 sudo yum -y install screen
-</code></pre><h3 id="配置-asf"><a href="#配置-asf" class="headerlink" title="配置 asf"></a>配置 asf</h3><p>到<a href="https://github.com/JustArchiNET/ArchiSteamFarm/releases" target="_blank" rel="external">https://github.com/JustArchiNET/ArchiSteamFarm/releases</a>下载 asf for linux x64 ,接着配置 <code>/config/bot.json</code> ,例如</p>
+</code></pre><h3 id="配置-asf"><a href="#配置-asf" class="headerlink" title="配置 asf"></a>配置 asf</h3><p>到<a href="https://github.com/JustArchiNET/ArchiSteamFarm/releases" target="_blank" rel="noopener">https://github.com/JustArchiNET/ArchiSteamFarm/releases</a>下载 asf for linux x64 ,接着配置 <code>/config/bot.json</code> ,例如</p>
 <pre><code>{
 &quot;Enabled&quot;: true,
 &quot;FarmOffline&quot;: true,
@@ -760,7 +744,7 @@ No Sockets found in /var/run/screen/S-root.
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -774,7 +758,7 @@ No Sockets found in /var/run/screen/S-root.
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -805,7 +789,7 @@ No Sockets found in /var/run/screen/S-root.
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1554,9 +1538,14 @@ No Sockets found in /var/run/screen/S-root.
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

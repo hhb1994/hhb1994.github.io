@@ -96,40 +96,20 @@
 
 
 
-  <meta name="description" content="这里我们通过申请 let’t encrypt 的证书并自动更新,实现使用 https 来通过外网访问群辉 nas.
-
-1 准备工具
-有固定 ip 的云主机(我选的是阿里云的 ecs)
-备案的域名(我选择的是万网上购买的域名,经过实名登记和备案两个步骤)
-ssh 工具
-群辉(ds218+)
-
-2 域名注册/备案这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购">
+  <meta name="description" content="这里我们通过申请 let’t encrypt 的证书并自动更新,实现使用 https 来通过外网访问群辉 nas.  1 准备工具 有固定 ip 的云主机(我选的是阿里云的 ecs) 备案的域名(我选择的是万网上购买的域名,经过实名登记和备案两个步骤) ssh 工具 群辉(ds218+)  2 域名注册&#x2F;备案这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为 frp 提供 https 支持">
 <meta property="og:url" content="http://hhb1994.github.to/2020/03/20/2020.03.20.addHttpsOnDs/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="这里我们通过申请 let’t encrypt 的证书并自动更新,实现使用 https 来通过外网访问群辉 nas.
-
-1 准备工具
-有固定 ip 的云主机(我选的是阿里云的 ecs)
-备案的域名(我选择的是万网上购买的域名,经过实名登记和备案两个步骤)
-ssh 工具
-群辉(ds218+)
-
-2 域名注册/备案这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购">
-<meta property="og:updated_time" content="2020-03-20T02:44:04.793Z">
+<meta property="og:description" content="这里我们通过申请 let’t encrypt 的证书并自动更新,实现使用 https 来通过外网访问群辉 nas.  1 准备工具 有固定 ip 的云主机(我选的是阿里云的 ecs) 备案的域名(我选择的是万网上购买的域名,经过实名登记和备案两个步骤) ssh 工具 群辉(ds218+)  2 域名注册&#x2F;备案这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-20T01:57:11.986Z">
+<meta property="article:modified_time" content="2020-03-20T02:44:04.793Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="frp">
+<meta property="article:tag" content="https">
+<meta property="article:tag" content="群辉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为 frp 提供 https 支持">
-<meta name="twitter:description" content="这里我们通过申请 let’t encrypt 的证书并自动更新,实现使用 https 来通过外网访问群辉 nas.
-
-1 准备工具
-有固定 ip 的云主机(我选的是阿里云的 ecs)
-备案的域名(我选择的是万网上购买的域名,经过实名登记和备案两个步骤)
-ssh 工具
-群辉(ds218+)
-
-2 域名注册/备案这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购">
 
 
 
@@ -186,7 +166,7 @@ ssh 工具
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -465,7 +445,7 @@ ssh 工具
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -534,19 +514,18 @@ ssh 工具
 <li>群辉(ds218+)</li>
 </ul>
 <h1 id="2-域名注册-备案"><a href="#2-域名注册-备案" class="headerlink" title="2 域名注册/备案"></a>2 域名注册/备案</h1><p>这一步网上有很多教程,我这里就不详细说了,但是如果你是从阿里云或者其他国内大型云服务商购买的域名的话,通过他们来提交备案信息可以加快备案的流程以及成功率,我从发起备案到备案完成一共也就花了不到一天时间.</p>
-<h1 id="3-ssl-证书申请-自动续期"><a href="#3-ssl-证书申请-自动续期" class="headerlink" title="3.ssl 证书申请/自动续期"></a>3.ssl 证书申请/自动续期</h1><p>用到的工具在这里<a href="https://github.com/andyzhshg/syno-acme" target="_blank" rel="external">https://github.com/andyzhshg/syno-acme</a>,大佬的文档也写的很清楚<a href="http://www.up4dev.com/2018/05/29/synology-ssl-wildcard-cert-update/" target="_blank" rel="external">http://www.up4dev.com/2018/05/29/synology-ssl-wildcard-cert-update/</a><br>原理就是获取免费证书,然后自动续期,在这个过程中需要验证域名有效性,所以需要为你提供 dns 解析服务的服务商提供的 api key 和 screct 用来修改 dns 解析记录来实现证书验证,需要填写的 ttl 根据自己服务商提供的 ttl 填写即可.自动续期则使用的群辉的定时任务功能,每个月执行一次证书的续期工作.</p>
-<h1 id="4-配置"><a href="#4-配置" class="headerlink" title="4.配置"></a>4.配置</h1><p>关于 frp 的简单配置可以看<a href="https://h123.cf/2019/09/12/2019.09.12.frp/#more" target="_blank" rel="external">https://h123.cf/2019/09/12/2019.09.12.frp/#more</a><br>这里我们主要介绍下 frp 上 https 的配置</p>
-<p>官方文档:<br><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="external">https://github.com/fatedier/frp/blob/master/README_zh.md</a></p>
-<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h3 id="配置-frpc-ini"><a href="#配置-frpc-ini" class="headerlink" title="配置 frpc.ini"></a>配置 frpc.ini</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">; frpc.ini</span></div><div class="line"><span class="section">[common]</span></div><div class="line"><span class="comment">; 你的frps 的 ip</span></div><div class="line"><span class="attr">server_addr</span> = xxxx</div><div class="line"><span class="comment">; frps 服务端口</span></div><div class="line"><span class="attr">server_port</span> = <span class="number">7000</span></div><div class="line"></div><div class="line"><span class="comment">#[http_ip]</span></div><div class="line"><span class="comment">#type = http</span></div><div class="line"><span class="comment">#local_port = 5000</span></div><div class="line"><span class="comment">#custom_domains = 你的域名</span></div><div class="line"><span class="section"></span></div><div class="line">[https_ip]</div><div class="line"><span class="attr">type</span> = https</div><div class="line"><span class="attr">custom_domains</span> = 你的域名</div><div class="line"><span class="attr">plugin</span> = https2http</div><div class="line"><span class="attr">plugin_local_addr</span> = <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">5000</span></div><div class="line"></div><div class="line"><span class="comment"># HTTPS 证书相关的配置</span></div><div class="line"><span class="attr">plugin_crt_path</span> =  crt 文件位置</div><div class="line"><span class="attr">plugin_key_path</span> = key 文件位置</div><div class="line"><span class="attr">plugin_host_header_rewrite</span> = <span class="number">127.0</span>.<span class="number">0.1</span></div><div class="line"><span class="attr">plugin_header_X-From-Where</span> = frp</div></pre></td></tr></table></figure>
+<h1 id="3-ssl-证书申请-自动续期"><a href="#3-ssl-证书申请-自动续期" class="headerlink" title="3.ssl 证书申请/自动续期"></a>3.ssl 证书申请/自动续期</h1><p>用到的工具在这里<a href="https://github.com/andyzhshg/syno-acme" target="_blank" rel="noopener">https://github.com/andyzhshg/syno-acme</a>,大佬的文档也写的很清楚<a href="http://www.up4dev.com/2018/05/29/synology-ssl-wildcard-cert-update/" target="_blank" rel="noopener">http://www.up4dev.com/2018/05/29/synology-ssl-wildcard-cert-update/</a><br>原理就是获取免费证书,然后自动续期,在这个过程中需要验证域名有效性,所以需要为你提供 dns 解析服务的服务商提供的 api key 和 screct 用来修改 dns 解析记录来实现证书验证,需要填写的 ttl 根据自己服务商提供的 ttl 填写即可.自动续期则使用的群辉的定时任务功能,每个月执行一次证书的续期工作.</p>
+<h1 id="4-配置"><a href="#4-配置" class="headerlink" title="4.配置"></a>4.配置</h1><p>关于 frp 的简单配置可以看<a href="https://h123.cf/2019/09/12/2019.09.12.frp/#more" target="_blank" rel="noopener">https://h123.cf/2019/09/12/2019.09.12.frp/#more</a><br>这里我们主要介绍下 frp 上 https 的配置</p>
+<p>官方文档:<br><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">https://github.com/fatedier/frp/blob/master/README_zh.md</a></p>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h3 id="配置-frpc-ini"><a href="#配置-frpc-ini" class="headerlink" title="配置 frpc.ini"></a>配置 frpc.ini</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; frpc.ini</span></span><br><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="comment">; 你的frps 的 ip</span></span><br><span class="line"><span class="attr">server_addr</span> = xxxx</span><br><span class="line"><span class="comment">; frps 服务端口</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#[http_ip]</span></span><br><span class="line"><span class="comment">#type = http</span></span><br><span class="line"><span class="comment">#local_port = 5000</span></span><br><span class="line"><span class="comment">#custom_domains = 你的域名</span></span><br><span class="line"></span><br><span class="line"><span class="section">[https_ip]</span></span><br><span class="line"><span class="attr">type</span> = https</span><br><span class="line"><span class="attr">custom_domains</span> = 你的域名</span><br><span class="line"><span class="attr">plugin</span> = https2http</span><br><span class="line"><span class="attr">plugin_local_addr</span> = <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTPS 证书相关的配置</span></span><br><span class="line"><span class="attr">plugin_crt_path</span> =  crt 文件位置</span><br><span class="line"><span class="attr">plugin_key_path</span> = key 文件位置</span><br><span class="line"><span class="attr">plugin_host_header_rewrite</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">plugin_header_X-From-Where</span> = frp</span><br></pre></td></tr></table></figure>
 <h3 id="证书文件格式转换"><a href="#证书文件格式转换" class="headerlink" title="证书文件格式转换"></a>证书文件格式转换</h3><p>这里需要注意的是使用上面的方法申请的证书文件为 cer 格式,需要我们手动转变为 crt 格式:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl x509 -inform PEM -in certificate.cer -out certificate.crt</div></pre></td></tr></table></figure>
-<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="配置-frps-ini"><a href="#配置-frps-ini" class="headerlink" title="配置 frps.ini"></a>配置 frps.ini</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">; frps.ini</div><div class="line"> [common]</div><div class="line">    bind_port = 7000</div><div class="line">    ; vhost_https_port为 https 端口</div><div class="line">    vhost_https_port = 443</div><div class="line">    dashboard_port = 7500</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -inform PEM -<span class="keyword">in</span> certificate.cer -out certificate.crt</span><br></pre></td></tr></table></figure>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="配置-frps-ini"><a href="#配置-frps-ini" class="headerlink" title="配置 frps.ini"></a>配置 frps.ini</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; frps.ini</span></span><br><span class="line"> <span class="section">[common]</span></span><br><span class="line">    bind_port = 7000</span><br><span class="line">    <span class="comment">; vhost_https_port为 https 端口</span></span><br><span class="line">    vhost_https_port = 443</span><br><span class="line">    dashboard_port = 7500</span><br></pre></td></tr></table></figure>
 <h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>配置 nginx 转发 80 端口到 443 端口,实现全站 https</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">; nginx.conf</div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name www.test.com;</div><div class="line">    rewrite ^(.*)$ https://$&#123;server_name&#125;$1 permanent; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>使frpc/frps 在后台运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nohup ./frps -c ./frps.ini &amp;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">nohup ./frpc -c ./frpc.ini &amp;</div></pre></td></tr></table></figure></p>
-<p>这样日志文件都会保存在同目录下的 <code>nohup.out</code> 文件中,可以在日志文件中查看服务的状态.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; nginx.conf</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.test.com;</span><br><span class="line">    rewrite ^(.*)$ https://$&#123;server_name&#125;$1 permanent; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>使frpc/frps 在后台运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nohup ./frps -c ./frps.ini &amp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nohup ./frpc -c ./frpc.ini &amp;</span><br></pre></td></tr></table></figure><br>这样日志文件都会保存在同目录下的 <code>nohup.out</code> 文件中,可以在日志文件中查看服务的状态.</p>
 <p>同时在修改了配置文件以后,需要把已经运行的进程 kill 掉,再执行上面的命令.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ps -ef | grep frpc | grep -v grep | cut -c 9-15 | xargs <span class="built_in">kill</span> <span class="_">-s</span> 9</div><div class="line"></div><div class="line"><span class="comment"># 查找所有 frpc 进程并终止...</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ps -ef | grep frpc | grep -v grep | cut -c 9-15 | xargs <span class="built_in">kill</span> -s 9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找所有 frpc 进程并终止...</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -605,7 +584,7 @@ ssh 工具
           
             <a href="/tags/https/" rel="tag"># https</a>
           
-            <a href="/tags/群辉/" rel="tag"># 群辉</a>
+            <a href="/tags/%E7%BE%A4%E8%BE%89/" rel="tag"># 群辉</a>
           
         </div>
       
@@ -704,7 +683,7 @@ ssh 工具
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -718,7 +697,7 @@ ssh 工具
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -749,7 +728,7 @@ ssh 工具
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -950,7 +929,7 @@ ssh 工具
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-准备工具"><span class="nav-number">1.</span> <span class="nav-text">1 准备工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-域名注册-备案"><span class="nav-number">2.</span> <span class="nav-text">2 域名注册/备案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ssl-证书申请-自动续期"><span class="nav-number">3.</span> <span class="nav-text">3.ssl 证书申请/自动续期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置"><span class="nav-number">4.</span> <span class="nav-text">4.配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端配置"><span class="nav-number">4.1.</span> <span class="nav-text">客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-frpc-ini"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置 frpc.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书文件格式转换"><span class="nav-number">4.1.2.</span> <span class="nav-text">证书文件格式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端配置"><span class="nav-number">4.2.</span> <span class="nav-text">服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-frps-ini"><span class="nav-number">4.2.1.</span> <span class="nav-text">配置 frps.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-nginx"><span class="nav-number">4.2.2.</span> <span class="nav-text">配置 nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">4.3.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-准备工具"><span class="nav-number">1.</span> <span class="nav-text">1 准备工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-域名注册-备案"><span class="nav-number">2.</span> <span class="nav-text">2 域名注册&#x2F;备案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ssl-证书申请-自动续期"><span class="nav-number">3.</span> <span class="nav-text">3.ssl 证书申请&#x2F;自动续期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置"><span class="nav-number">4.</span> <span class="nav-text">4.配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端配置"><span class="nav-number">4.1.</span> <span class="nav-text">客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-frpc-ini"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置 frpc.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书文件格式转换"><span class="nav-number">4.1.2.</span> <span class="nav-text">证书文件格式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端配置"><span class="nav-number">4.2.</span> <span class="nav-text">服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-frps-ini"><span class="nav-number">4.2.1.</span> <span class="nav-text">配置 frps.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-nginx"><span class="nav-number">4.2.2.</span> <span class="nav-text">配置 nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">4.3.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1498,9 +1477,14 @@ ssh 工具
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

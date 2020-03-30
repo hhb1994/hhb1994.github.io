@@ -96,80 +96,19 @@
 
 
 
-  <meta name="description" content="一.基本选择器
-通用元素选择器(*)
-
-通用元素选择器,匹配任何元素;
-
-标签选择器(E)
-
-匹配所有使用 E 标签的元素;
-
-class选择器(.class)
-
-匹配所有class属性中包含此class 的元素;
-
-id选择器(#id)
-
-匹配所有id属性为此id的元素
-实例:
-* { margin:0; padding:0; }
-
-p { font-size:2em; }
-
-.info { b">
+  <meta name="description" content="一.基本选择器 通用元素选择器(*)  通用元素选择器,匹配任何元素;  标签选择器(E)  匹配所有使用 E 标签的元素;  class选择器(.class)  匹配所有class属性中包含此class 的元素;  id选择器(#id)  匹配所有id属性为此id的元素 实例: * { margin:0; padding:0; }  p { font-size:2em; }  .info { b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 选择器/动画">
+<meta property="og:title" content="CSS 选择器&#x2F;动画">
 <meta property="og:url" content="http://hhb1994.github.to/2018/11/19/2018.11.19CSS-selector/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="一.基本选择器
-通用元素选择器(*)
-
-通用元素选择器,匹配任何元素;
-
-标签选择器(E)
-
-匹配所有使用 E 标签的元素;
-
-class选择器(.class)
-
-匹配所有class属性中包含此class 的元素;
-
-id选择器(#id)
-
-匹配所有id属性为此id的元素
-实例:
-* { margin:0; padding:0; }
-
-p { font-size:2em; }
-
-.info { b">
+<meta property="og:description" content="一.基本选择器 通用元素选择器(*)  通用元素选择器,匹配任何元素;  标签选择器(E)  匹配所有使用 E 标签的元素;  class选择器(.class)  匹配所有class属性中包含此class 的元素;  id选择器(#id)  匹配所有id属性为此id的元素 实例: * { margin:0; padding:0; }  p { font-size:2em; }  .info { b">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201402/bg2014021401.png">
-<meta property="og:updated_time" content="2018-11-28T08:44:32.732Z">
+<meta property="article:published_time" content="2018-11-19T08:49:25.499Z">
+<meta property="article:modified_time" content="2018-11-28T08:44:32.732Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS 选择器/动画">
-<meta name="twitter:description" content="一.基本选择器
-通用元素选择器(*)
-
-通用元素选择器,匹配任何元素;
-
-标签选择器(E)
-
-匹配所有使用 E 标签的元素;
-
-class选择器(.class)
-
-匹配所有class属性中包含此class 的元素;
-
-id选择器(#id)
-
-匹配所有id属性为此id的元素
-实例:
-* { margin:0; padding:0; }
-
-p { font-size:2em; }
-
-.info { b">
 <meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/201402/bg2014021401.png">
 
 
@@ -227,7 +166,7 @@ p { font-size:2em; }
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -518,7 +457,7 @@ p { font-size:2em; }
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -923,7 +862,7 @@ div:hover {
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -937,7 +876,7 @@ div:hover {
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -968,7 +907,7 @@ div:hover {
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1717,9 +1656,14 @@ div:hover {
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

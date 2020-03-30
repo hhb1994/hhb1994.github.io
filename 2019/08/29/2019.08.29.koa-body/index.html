@@ -96,24 +96,21 @@
 
 
 
-  <meta name="description" content="koa
-Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。
-koa-bodykoa本身不能解析 post 的 b">
+  <meta name="description" content="koa Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。 koa-bodykoa本身不能解析 post 的 b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 koa-body 接受 post 请求以及文件">
 <meta property="og:url" content="http://hhb1994.github.to/2019/08/29/2019.08.29.koa-body/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="koa
-Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。
-koa-bodykoa本身不能解析 post 的 b">
+<meta property="og:description" content="koa Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。 koa-bodykoa本身不能解析 post 的 b">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/29/XrnDoiH1356K2MW.png">
-<meta property="og:updated_time" content="2019-09-10T05:47:38.521Z">
+<meta property="article:published_time" content="2019-08-29T03:15:33.225Z">
+<meta property="article:modified_time" content="2019-09-10T05:47:38.521Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="koa">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 koa-body 接受 post 请求以及文件">
-<meta name="twitter:description" content="koa
-Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。
-koa-bodykoa本身不能解析 post 的 b">
 <meta name="twitter:image" content="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png">
 
 
@@ -171,7 +168,7 @@ koa-bodykoa本身不能解析 post 的 b">
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -462,7 +459,7 @@ koa-bodykoa本身不能解析 post 的 b">
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -533,11 +530,11 @@ koa-bodykoa本身不能解析 post 的 b">
 <li>application/vnd.api+json</li>
 <li>application/csp-report</li>
 </ul>
-<h2 id="使用-搭配-koa-router"><a href="#使用-搭配-koa-router" class="headerlink" title="使用(搭配 koa-router)"></a>使用(搭配 koa-router)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//处理 post 请求body 中的值</span></div><div class="line">    <span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line">    <span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line">    <span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</div><div class="line">    <span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</div><div class="line">    router.post(<span class="string">'/users'</span>, koaBody(),</div><div class="line">    (ctx) =&gt; &#123;</div><div class="line">        <span class="built_in">console</span>.log(ctx.request.body);</div><div class="line">        <span class="comment">// =&gt; POST body</span></div><div class="line">        ctx.body = <span class="built_in">JSON</span>.stringify(ctx.request.body);</div><div class="line">    &#125;</div><div class="line">    );</div><div class="line">    app.use(router.routes());</div><div class="line">    app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//处理上传的文件</span></div><div class="line"><span class="keyword">const</span> routers = router.post(</div><div class="line">  <span class="string">"/"</span>,</div><div class="line">  koaBody(&#123;</div><div class="line">    <span class="attr">multipart</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">formidable</span>: &#123; <span class="attr">maxFileSize</span>: <span class="number">1024</span>*<span class="number">1000</span>*<span class="number">100000</span> &#125;</div><div class="line">  &#125;),</div><div class="line">  uploadController.uploadVideo</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="使用-搭配-koa-router"><a href="#使用-搭配-koa-router" class="headerlink" title="使用(搭配 koa-router)"></a>使用(搭配 koa-router)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理 post 请求body 中的值</span></span><br><span class="line">    <span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line">    <span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">    <span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</span><br><span class="line">    <span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</span><br><span class="line">    router.post(<span class="string">'/users'</span>, koaBody(),</span><br><span class="line">    (ctx) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(ctx.request.body);</span><br><span class="line">        <span class="comment">// =&gt; POST body</span></span><br><span class="line">        ctx.body = <span class="built_in">JSON</span>.stringify(ctx.request.body);</span><br><span class="line">    &#125;</span><br><span class="line">    );</span><br><span class="line">    app.use(router.routes());</span><br><span class="line">    app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理上传的文件</span></span><br><span class="line"><span class="keyword">const</span> routers = router.post(</span><br><span class="line">  <span class="string">"/"</span>,</span><br><span class="line">  koaBody(&#123;</span><br><span class="line">    multipart: <span class="literal">true</span>,</span><br><span class="line">    formidable: &#123; <span class="attr">maxFileSize</span>: <span class="number">1024</span>*<span class="number">1000</span>*<span class="number">100000</span> &#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  uploadController.uploadVideo</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <h2 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h2><p><img src="https://i.loli.net/2019/08/29/Sukyz1jWfrXvYsh.png" alt="WX20190829-112657@2x"><br>formidable 的相关配置参数<br><img src="https://i.loli.net/2019/08/29/XrnDoiH1356K2MW.png" alt="屏幕快照 2019-08-29 上午11.28.05"></p>
-<h2 id="获取上传信息"><a href="#获取上传信息" class="headerlink" title="获取上传信息"></a>获取上传信息</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>使用<code>ctx.request.files</code>来获取文件.因为默认开启多个文件上传，因此 ctx.request.files 是一个对象.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> uploadVideo(ctx) &#123;</div><div class="line">    <span class="keyword">const</span> file = ctx.request.files.file;</div><div class="line">    <span class="keyword">const</span> reader = fs.createReadStream(file.path);</div><div class="line">    <span class="keyword">const</span> ext = file.name.split(<span class="string">"."</span>).pop();</div><div class="line">    <span class="keyword">const</span> dir = path.join(__dirname, <span class="string">`../upload/<span class="subst">$&#123;utils.getDirName()&#125;</span>`</span>);</div><div class="line">    utils.checkDirExist(dir);</div><div class="line">    <span class="keyword">let</span> fileName = <span class="string">`<span class="subst">$&#123;utils.getDirName()&#125;</span>_<span class="subst">$&#123;~~(<span class="built_in">Math</span>.random() * <span class="number">10000</span>)&#125;</span>.<span class="subst">$&#123;ext&#125;</span>`</span>;</div><div class="line">    <span class="keyword">const</span> fileLocation = <span class="string">`<span class="subst">$&#123;dir&#125;</span>/<span class="subst">$&#123;fileName&#125;</span>`</span>;</div><div class="line">    <span class="keyword">const</span> upStream = fs.createWriteStream(fileLocation);</div><div class="line">    reader.pipe(upStream);</div><div class="line">    <span class="keyword">await</span> utils.transferFile(fileLocation, <span class="string">`/yunjia/<span class="subst">$&#123;fileName&#125;</span>`</span>);</div><div class="line">    ctx.body = &#123;</div><div class="line">    <span class="attr">code</span>: <span class="number">200</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">`http://10.20.21.24:8080/<span class="subst">$&#123;fileName&#125;</span>`</span></div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//utils.js中的 transferFile 函数用来上传文件到指定的 ftp 服务器,</span></div><div class="line"><span class="comment">//同时确保返回前端 url 之前,上传已经完成</span></div><div class="line"><span class="comment">//因此使用了 koa 框架支持的 async 函数, await transferFile()</span></div><div class="line"><span class="comment">//确保文件上传完成以后,返回给前端文件的 url.</span></div><div class="line">transferFile(fileLocation, path) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">let</span> ftpClient = <span class="keyword">new</span> FtpClient();</div><div class="line">      ftpClient.on(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ftpClient.put(fileLocation, path, err =&gt; &#123;</div><div class="line">          <span class="keyword">if</span> (err) &#123;</div><div class="line">            reject(err);</div><div class="line">          &#125;</div><div class="line">          <span class="built_in">console</span>.dir(<span class="string">"成功上传文件到服务器"</span>);</div><div class="line">          resolve();</div><div class="line">          ftpClient.end();</div><div class="line">          fs.unlinkSync(fileLocation);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">      ftpClient.connect(ftpConnectionConfig.ftpConnectionConfig);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="获取上传信息"><a href="#获取上传信息" class="headerlink" title="获取上传信息"></a>获取上传信息</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>使用<code>ctx.request.files</code>来获取文件.因为默认开启多个文件上传，因此 ctx.request.files 是一个对象.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> uploadVideo(ctx) &#123;</span><br><span class="line">    <span class="keyword">const</span> file = ctx.request.files.file;</span><br><span class="line">    <span class="keyword">const</span> reader = fs.createReadStream(file.path);</span><br><span class="line">    <span class="keyword">const</span> ext = file.name.split(<span class="string">"."</span>).pop();</span><br><span class="line">    <span class="keyword">const</span> dir = path.join(__dirname, <span class="string">`../upload/<span class="subst">$&#123;utils.getDirName()&#125;</span>`</span>);</span><br><span class="line">    utils.checkDirExist(dir);</span><br><span class="line">    <span class="keyword">let</span> fileName = <span class="string">`<span class="subst">$&#123;utils.getDirName()&#125;</span>_<span class="subst">$&#123;~~(<span class="built_in">Math</span>.random() * <span class="number">10000</span>)&#125;</span>.<span class="subst">$&#123;ext&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">const</span> fileLocation = <span class="string">`<span class="subst">$&#123;dir&#125;</span>/<span class="subst">$&#123;fileName&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">const</span> upStream = fs.createWriteStream(fileLocation);</span><br><span class="line">    reader.pipe(upStream);</span><br><span class="line">    <span class="keyword">await</span> utils.transferFile(fileLocation, <span class="string">`/yunjia/<span class="subst">$&#123;fileName&#125;</span>`</span>);</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">    code: <span class="number">200</span>,</span><br><span class="line">    url: <span class="string">`http://10.20.21.24:8080/<span class="subst">$&#123;fileName&#125;</span>`</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//utils.js中的 transferFile 函数用来上传文件到指定的 ftp 服务器,</span></span><br><span class="line"><span class="comment">//同时确保返回前端 url 之前,上传已经完成</span></span><br><span class="line"><span class="comment">//因此使用了 koa 框架支持的 async 函数, await transferFile()</span></span><br><span class="line"><span class="comment">//确保文件上传完成以后,返回给前端文件的 url.</span></span><br><span class="line">transferFile(fileLocation, path) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> ftpClient = <span class="keyword">new</span> FtpClient();</span><br><span class="line">      ftpClient.on(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        ftpClient.put(fileLocation, path, err =&gt; &#123;</span><br><span class="line">          <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            reject(err);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">console</span>.dir(<span class="string">"成功上传文件到服务器"</span>);</span><br><span class="line">          resolve();</span><br><span class="line">          ftpClient.end();</span><br><span class="line">          fs.unlinkSync(fileLocation);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">      ftpClient.connect(ftpConnectionConfig.ftpConnectionConfig);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="获取-body-的值"><a href="#获取-body-的值" class="headerlink" title="获取 body 的值"></a>获取 body 的值</h3><p>使用<code>ctx.request.body</code>来获取.</p>
 
       
@@ -698,7 +695,7 @@ koa-bodykoa本身不能解析 post 的 b">
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -712,7 +709,7 @@ koa-bodykoa本身不能解析 post 的 b">
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -743,7 +740,7 @@ koa-bodykoa本身不能解析 post 的 b">
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1492,9 +1489,14 @@ koa-bodykoa本身不能解析 post 的 b">
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

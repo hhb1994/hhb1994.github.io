@@ -96,19 +96,22 @@
 
 
 
-  <meta name="description" content="总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充)
-同时由于微信魔改的 css 文件(.wxss">
+  <meta name="description" content="总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充) 同时由于微信魔改的 css 文件(.wxss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 vscode 插件实现在小程序中使用 less/sass/scss">
+<meta property="og:title" content="使用 vscode 插件实现在小程序中使用 less&#x2F;sass&#x2F;scss">
 <meta property="og:url" content="http://hhb1994.github.to/2020/03/10/2020.03.10.useSassInWeApp/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充)
-同时由于微信魔改的 css 文件(.wxss">
-<meta property="og:updated_time" content="2020-03-10T07:08:20.351Z">
+<meta property="og:description" content="总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充) 同时由于微信魔改的 css 文件(.wxss">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-10T06:58:21.094Z">
+<meta property="article:modified_time" content="2020-03-10T07:08:20.351Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="小程序">
+<meta property="article:tag" content="scss">
+<meta property="article:tag" content="less">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 vscode 插件实现在小程序中使用 less/sass/scss">
-<meta name="twitter:description" content="总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充)
-同时由于微信魔改的 css 文件(.wxss">
 
 
 
@@ -165,7 +168,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -444,7 +447,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -507,8 +510,8 @@
 <p>总所周知,微信小程序的官方开发工具(微信开发者工具极其难用),因此我切换到了宇宙第一编辑器 vscode 进行小程序的开发.使用 vscode 开发可以安装两个扩展插件:minapp(支持微信小程序标签、属性的智能补全，并且提示中包含文档内容)和 wechat-snippet(这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充)</p>
 <p>同时由于微信魔改的 css 文件(.wxss)并不支持 scss/less 等,所以这里我们也通过 vscode 插件来实现用 scss/less 写小程序样式</p>
 </blockquote>
-<h1 id="1-less"><a href="#1-less" class="headerlink" title="1.less"></a>1.less</h1><h2 id="安装-easy-less"><a href="#安装-easy-less" class="headerlink" title="安装 easy-less"></a>安装 easy-less</h2><h2 id="修改-vscode-配置文件"><a href="#修改-vscode-配置文件" class="headerlink" title="修改 vscode 配置文件"></a>修改 vscode 配置文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">// 对EasyLess的配置，此段配置去掉则默认生成一个css文件</div><div class="line">"less.compile": &#123;</div><div class="line">  "compress": false, //是否压缩</div><div class="line">  "sourceMap": false, //是否生成map文件</div><div class="line">  "out": true, // 是否输出文件，false为不输出</div><div class="line">  "outExt": ".wxss", // 输出文件的后缀,小程序可以写'wxss'</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<h2 id="在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件"><a href="#在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件" class="headerlink" title="在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件."></a>在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件.</h2><h1 id="2-sass-scss"><a href="#2-sass-scss" class="headerlink" title="2.sass/scss"></a>2.sass/scss</h1><h2 id="安装-easy-sass"><a href="#安装-easy-sass" class="headerlink" title="安装 easy-sass"></a>安装 easy-sass</h2><h2 id="修改-vscode-配置文件-1"><a href="#修改-vscode-配置文件-1" class="headerlink" title="修改 vscode 配置文件"></a>修改 vscode 配置文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"> // 对EasySass的配置，此段配置去掉则默认生成一个css文件和一个压缩的min.css文件</div><div class="line">"easysass.formats": [</div><div class="line">  &#123;</div><div class="line">    "format": "expanded", //格式，expanded不压缩，compressed压缩</div><div class="line">    "extension": ".wxss" //输出文件的后缀,小程序可以写'wxss'</div><div class="line">  &#125;,</div><div class="line">  // &#123;</div><div class="line">  //   "format": "compressed",</div><div class="line">  //   "extension": ".min.css"</div><div class="line">  // &#125;</div><div class="line">],</div></pre></td></tr></table></figure>
+<h1 id="1-less"><a href="#1-less" class="headerlink" title="1.less"></a>1.less</h1><h2 id="安装-easy-less"><a href="#安装-easy-less" class="headerlink" title="安装 easy-less"></a>安装 easy-less</h2><h2 id="修改-vscode-配置文件"><a href="#修改-vscode-配置文件" class="headerlink" title="修改 vscode 配置文件"></a>修改 vscode 配置文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对EasyLess的配置，此段配置去掉则默认生成一个css文件</span></span><br><span class="line">"less.compile": &#123;</span><br><span class="line">  "compress": false, //是否压缩</span><br><span class="line">  "sourceMap": false, //是否生成map文件</span><br><span class="line">  "out": true, // 是否输出文件，false为不输出</span><br><span class="line">  "outExt": ".wxss", // 输出文件的后缀,小程序可以写'wxss'</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件"><a href="#在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件" class="headerlink" title="在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件."></a>在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件.</h2><h1 id="2-sass-scss"><a href="#2-sass-scss" class="headerlink" title="2.sass/scss"></a>2.sass/scss</h1><h2 id="安装-easy-sass"><a href="#安装-easy-sass" class="headerlink" title="安装 easy-sass"></a>安装 easy-sass</h2><h2 id="修改-vscode-配置文件-1"><a href="#修改-vscode-配置文件-1" class="headerlink" title="修改 vscode 配置文件"></a>修改 vscode 配置文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// 对EasySass的配置，此段配置去掉则默认生成一个css文件和一个压缩的min.css文件</span></span><br><span class="line">"easysass.formats": [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"format"</span>: <span class="string">"expanded"</span>, <span class="comment">//格式，expanded不压缩，compressed压缩</span></span><br><span class="line">    <span class="attr">"extension"</span>: <span class="string">".wxss"</span> <span class="comment">//输出文件的后缀,小程序可以写'wxss'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// &#123;</span></span><br><span class="line">  <span class="comment">//   "format": "compressed",</span></span><br><span class="line">  <span class="comment">//   "extension": ".min.css"</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
 <p>相对于前者，EasySass支持一次多生成几种类型的文件，在配置数组里如上多写几个就行了。</p>
 <h2 id="使用方法同上"><a href="#使用方法同上" class="headerlink" title="使用方法同上"></a>使用方法同上</h2>
       
@@ -568,7 +571,7 @@
           
             <a href="/tags/vscode/" rel="tag"># vscode</a>
           
-            <a href="/tags/小程序/" rel="tag"># 小程序</a>
+            <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
           
             <a href="/tags/scss/" rel="tag"># scss</a>
           
@@ -675,7 +678,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -689,7 +692,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -720,7 +723,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -921,7 +924,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-less"><span class="nav-number">1.</span> <span class="nav-text">1.less</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-easy-less"><span class="nav-number">1.1.</span> <span class="nav-text">安装 easy-less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-vscode-配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">修改 vscode 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件"><span class="nav-number">1.3.</span> <span class="nav-text">在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-sass-scss"><span class="nav-number">2.</span> <span class="nav-text">2.sass/scss</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-easy-sass"><span class="nav-number">2.1.</span> <span class="nav-text">安装 easy-sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-vscode-配置文件-1"><span class="nav-number">2.2.</span> <span class="nav-text">修改 vscode 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法同上"><span class="nav-number">2.3.</span> <span class="nav-text">使用方法同上</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-less"><span class="nav-number">1.</span> <span class="nav-text">1.less</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-easy-less"><span class="nav-number">1.1.</span> <span class="nav-text">安装 easy-less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-vscode-配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">修改 vscode 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在需要-wxss-文件的目录下新建一个-less-文件-保存以后就会在同级目录中生成一个-wxss-文件"><span class="nav-number">1.3.</span> <span class="nav-text">在需要 wxss 文件的目录下新建一个 less 文件,保存以后就会在同级目录中生成一个 wxss 文件.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-sass-scss"><span class="nav-number">2.</span> <span class="nav-text">2.sass&#x2F;scss</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-easy-sass"><span class="nav-number">2.1.</span> <span class="nav-text">安装 easy-sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-vscode-配置文件-1"><span class="nav-number">2.2.</span> <span class="nav-text">修改 vscode 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法同上"><span class="nav-number">2.3.</span> <span class="nav-text">使用方法同上</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1469,9 +1472,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

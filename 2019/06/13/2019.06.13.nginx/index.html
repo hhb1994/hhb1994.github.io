@@ -96,25 +96,18 @@
 
 
 
-  <meta name="description" content="什么是 NGINX
-Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。
-
-Nginx 有一个主线程（ master process）和几个工作线程（work">
+  <meta name="description" content="什么是 NGINX Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP &#x2F; POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。  Nginx 有一个主线程（ master process）和几个工作线程（work">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识 nginx">
 <meta property="og:url" content="http://hhb1994.github.to/2019/06/13/2019.06.13.nginx/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="什么是 NGINX
-Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。
-
-Nginx 有一个主线程（ master process）和几个工作线程（work">
-<meta property="og:updated_time" content="2019-06-14T02:02:23.723Z">
+<meta property="og:description" content="什么是 NGINX Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP &#x2F; POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。  Nginx 有一个主线程（ master process）和几个工作线程（work">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-13T06:49:36.328Z">
+<meta property="article:modified_time" content="2019-06-14T02:02:23.723Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识 nginx">
-<meta name="twitter:description" content="什么是 NGINX
-Nginx 是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及IMAP / POP3代理服务器。 Nginx 以其高性能，稳定性，丰富的功能，简单的配置和低资源消耗而闻名。很多高知名度的网站都使用 Nginx，如：Netflix，GitHub，SoundCloud，MaxCDN 等。
-
-Nginx 有一个主线程（ master process）和几个工作线程（work">
 
 
 
@@ -171,7 +164,7 @@ Nginx 有一个主线程（ master process）和几个工作线程（work">
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -462,7 +455,7 @@ Nginx 有一个主线程（ master process）和几个工作线程（work">
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -579,7 +572,7 @@ http {
 server {
 }
 </code></pre><p>}</p>
-<p>上面的 location 块指定 / 前缀与请求中的 URI 对比。对于匹配的请求，URI 将被添加到 root 指令中指定的路径，即 /data/www，以此形成本地文件系统的路径，如访问<a href="http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。" target="_blank" rel="external">http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。</a> 如果 URI 匹配多个 location 块，Nginx 采用最长前缀匹配原则（类似计算机网络里面的IP匹配）， 上面的 location 块前缀长度为 1，因此只有当所有其他 location 块匹配时，才使用该块。<br>接下来，添加第二个位置块：</p>
+<p>上面的 location 块指定 / 前缀与请求中的 URI 对比。对于匹配的请求，URI 将被添加到 root 指令中指定的路径，即 /data/www，以此形成本地文件系统的路径，如访问<a href="http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。" target="_blank" rel="noopener">http://localhost/bog/welcome.html，对应服务器文件路径为/data/www/bog/welcome.html。</a> 如果 URI 匹配多个 location 块，Nginx 采用最长前缀匹配原则（类似计算机网络里面的IP匹配）， 上面的 location 块前缀长度为 1，因此只有当所有其他 location 块匹配时，才使用该块。<br>接下来，添加第二个位置块：</p>
 <pre><code>location /images/ {
     root /data;
 }
@@ -594,7 +587,7 @@ server {
         root /data;
     }
 }
-</code></pre><p>到目前为止，这已经是一个可以正常运行的服务器，它监听端口80，并且可以在本地计算机上访问 <a href="http://localhost/。" target="_blank" rel="external">http://localhost/。</a> 对于 /images/ 开头的请求，服务器将从 /data/images 目录发送文件。 如，对于 <a href="http://localhost/images/example.png" target="_blank" rel="external">http://localhost/images/example.png</a> 请求，nginx 将响应 /data/images/example.png文件。 如果不存在，nginx 将返回404。URI 不以 /images/ 开头的请求将映射到 /data/www 目录。 例如，对于 <a href="http://localhost/some/example.html" target="_blank" rel="external">http://localhost/some/example.html</a> 请求，nginx 将响应 /data/www/some/example.html 文件。</p>
+</code></pre><p>到目前为止，这已经是一个可以正常运行的服务器，它监听端口80，并且可以在本地计算机上访问 <a href="http://localhost/。" target="_blank" rel="noopener">http://localhost/。</a> 对于 /images/ 开头的请求，服务器将从 /data/images 目录发送文件。 如，对于 <a href="http://localhost/images/example.png" target="_blank" rel="noopener">http://localhost/images/example.png</a> 请求，nginx 将响应 /data/images/example.png文件。 如果不存在，nginx 将返回404。URI 不以 /images/ 开头的请求将映射到 /data/www 目录。 例如，对于 <a href="http://localhost/some/example.html" target="_blank" rel="noopener">http://localhost/some/example.html</a> 请求，nginx 将响应 /data/www/some/example.html 文件。</p>
 <h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>Nginx 的一个常见应用是将其设置为代理服务器（Proxy Server），即接受客户端的请求并将其转发给代理服务器，再接受代理服务器发来的响应，将它们发送到客户端。</p>
 <p>比如我们可以用一个 Nginx 实例实现对图片文件的请求使用本地文件系统，而其他请求转发到代理服务器。</p>
 <p>首先，向 Nginx 的配置文件中添加一个 server 块来定义代理服务器：</p>
@@ -689,7 +682,7 @@ server {
         
         <div class="post-tags">
           
-            <a href="/tags/服务器/" rel="tag"># 服务器</a>
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
           
         </div>
       
@@ -792,7 +785,7 @@ server {
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -806,7 +799,7 @@ server {
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -837,7 +830,7 @@ server {
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1586,9 +1579,14 @@ server {
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

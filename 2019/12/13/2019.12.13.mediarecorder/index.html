@@ -96,28 +96,17 @@
 
 
 
-  <meta name="description" content="MediaRecorder 是 MediaStream Recording API 提供的用来进行媒体轻松录制的接口, 需要通过调用 MediaRecorder() 构造方法进行实例化.
-
-流程
-首先调用浏览器 api 获取录音权限,开始录音,作为录音器的输入源.也可以使用 video 或者 audio 标签中的声源,同时可以配合 videojs 实现直播流的录音和录像功能.
-实例化 Media">
+  <meta name="description" content="MediaRecorder 是 MediaStream Recording API 提供的用来进行媒体轻松录制的接口, 需要通过调用 MediaRecorder() 构造方法进行实例化.  流程 首先调用浏览器 api 获取录音权限,开始录音,作为录音器的输入源.也可以使用 video 或者 audio 标签中的声源,同时可以配合 videojs 实现直播流的录音和录像功能. 实例化 Media">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端页面使用 mediaRecorder 录音">
 <meta property="og:url" content="http://hhb1994.github.to/2019/12/13/2019.12.13.mediarecorder/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="MediaRecorder 是 MediaStream Recording API 提供的用来进行媒体轻松录制的接口, 需要通过调用 MediaRecorder() 构造方法进行实例化.
-
-流程
-首先调用浏览器 api 获取录音权限,开始录音,作为录音器的输入源.也可以使用 video 或者 audio 标签中的声源,同时可以配合 videojs 实现直播流的录音和录像功能.
-实例化 Media">
-<meta property="og:updated_time" content="2019-12-23T07:12:55.215Z">
+<meta property="og:description" content="MediaRecorder 是 MediaStream Recording API 提供的用来进行媒体轻松录制的接口, 需要通过调用 MediaRecorder() 构造方法进行实例化.  流程 首先调用浏览器 api 获取录音权限,开始录音,作为录音器的输入源.也可以使用 video 或者 audio 标签中的声源,同时可以配合 videojs 实现直播流的录音和录像功能. 实例化 Media">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-13T08:45:09.270Z">
+<meta property="article:modified_time" content="2019-12-23T07:12:55.215Z">
+<meta property="article:author" content="韩宏斌">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端页面使用 mediaRecorder 录音">
-<meta name="twitter:description" content="MediaRecorder 是 MediaStream Recording API 提供的用来进行媒体轻松录制的接口, 需要通过调用 MediaRecorder() 构造方法进行实例化.
-
-流程
-首先调用浏览器 api 获取录音权限,开始录音,作为录音器的输入源.也可以使用 video 或者 audio 标签中的声源,同时可以配合 videojs 实现直播流的录音和录像功能.
-实例化 Media">
 
 
 
@@ -174,7 +163,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -465,7 +454,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -575,7 +564,7 @@ MediaRecorder.onstart
 用来处理 start 事件, 该事件在媒体开始录制时触发（MediaRecorder.start()）.
 MediaRecorder.onstop
 用来处理 stop 事件, 该事件会在媒体录制结束时、媒体流（MediaStream）结束时、或者调用MediaRecorder.stop() 方法后触发.
-</code></pre><h2 id="使用-在-vue-中"><a href="#使用-在-vue-中" class="headerlink" title="使用(在 vue 中)"></a>使用(在 vue 中)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> constraints = &#123;</div><div class="line">  <span class="attr">audio</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">video</span>: <span class="literal">false</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">//获取录音权限并录音</span></div><div class="line"><span class="keyword">let</span> getMedia = navigator.mediaDevices || navigator.webkitGetUserMedia;</div><div class="line"><span class="keyword">if</span> (getMedia) &#123;</div><div class="line">  getMedia</div><div class="line">    .getUserMedia(constraints)</div><div class="line">    .then(<span class="function"><span class="params">mediaStream</span> =&gt;</span> &#123;</div><div class="line">      <span class="comment">//录音</span></div><div class="line">      <span class="comment">//初始化录音器</span></div><div class="line">      <span class="keyword">this</span>.recorder = <span class="keyword">new</span> MediaRecorder(mediaStream);</div><div class="line">      <span class="comment">//开始录音</span></div><div class="line">      <span class="keyword">this</span>.recorder.start();</div><div class="line">      <span class="comment">//结束录音时触发ondataavailable,返回格式为 blob</span></div><div class="line">      <span class="keyword">this</span>.recorder.ondataavailable = getRecordingData;</div><div class="line">    &#125;)</div><div class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(err.name + <span class="string">": "</span> + err.message);</div><div class="line">    &#125;);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"无法使用麦克风"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//获取录到 blob</span></div><div class="line">  getRecordingData(e) &#123;</div><div class="line">      <span class="keyword">this</span>.chunk = e.data;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//下载文件</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> blob = <span class="keyword">this</span>.thunk;</div><div class="line"><span class="keyword">if</span> (<span class="string">"msSaveOrOpenBlob"</span> <span class="keyword">in</span> navigator) &#123;</div><div class="line">        <span class="built_in">window</span>.navigator.msSaveOrOpenBlob(blob, fileUrl);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">let</span> downloadElement = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</div><div class="line">        <span class="keyword">let</span> href = <span class="built_in">window</span>.URL.createObjectURL(blob);</div><div class="line">        downloadElement.href = href;</div><div class="line">        downloadElement.download = fileUrl;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(downloadElement);</div><div class="line">        downloadElement.click();</div><div class="line">        <span class="built_in">document</span>.body.removeChild(downloadElement);</div><div class="line">        <span class="built_in">window</span>.URL.revokeObjectURL(href);</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="使用-在-vue-中"><a href="#使用-在-vue-中" class="headerlink" title="使用(在 vue 中)"></a>使用(在 vue 中)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> constraints = &#123;</span><br><span class="line">  audio: <span class="literal">true</span>,</span><br><span class="line">  video: <span class="literal">false</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//获取录音权限并录音</span></span><br><span class="line"><span class="keyword">let</span> getMedia = navigator.mediaDevices || navigator.webkitGetUserMedia;</span><br><span class="line"><span class="keyword">if</span> (getMedia) &#123;</span><br><span class="line">  getMedia</span><br><span class="line">    .getUserMedia(constraints)</span><br><span class="line">    .then(<span class="function"><span class="params">mediaStream</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">//录音</span></span><br><span class="line">      <span class="comment">//初始化录音器</span></span><br><span class="line">      <span class="keyword">this</span>.recorder = <span class="keyword">new</span> MediaRecorder(mediaStream);</span><br><span class="line">      <span class="comment">//开始录音</span></span><br><span class="line">      <span class="keyword">this</span>.recorder.start();</span><br><span class="line">      <span class="comment">//结束录音时触发ondataavailable,返回格式为 blob</span></span><br><span class="line">      <span class="keyword">this</span>.recorder.ondataavailable = getRecordingData;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err.name + <span class="string">": "</span> + err.message);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"无法使用麦克风"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取录到 blob</span></span><br><span class="line">  getRecordingData(e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.chunk = e.data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//下载文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blob = <span class="keyword">this</span>.thunk;</span><br><span class="line"><span class="keyword">if</span> (<span class="string">"msSaveOrOpenBlob"</span> <span class="keyword">in</span> navigator) &#123;</span><br><span class="line">        <span class="built_in">window</span>.navigator.msSaveOrOpenBlob(blob, fileUrl);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> downloadElement = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">        <span class="keyword">let</span> href = <span class="built_in">window</span>.URL.createObjectURL(blob);</span><br><span class="line">        downloadElement.href = href;</span><br><span class="line">        downloadElement.download = fileUrl;</span><br><span class="line">        <span class="built_in">document</span>.body.appendChild(downloadElement);</span><br><span class="line">        downloadElement.click();</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(downloadElement);</span><br><span class="line">        <span class="built_in">window</span>.URL.revokeObjectURL(href);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -724,7 +713,7 @@ MediaRecorder.onstop
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -738,7 +727,7 @@ MediaRecorder.onstop
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -769,7 +758,7 @@ MediaRecorder.onstop
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1518,9 +1507,14 @@ MediaRecorder.onstop
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

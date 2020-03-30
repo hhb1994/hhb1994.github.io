@@ -102,6 +102,7 @@
 <meta property="og:url" content="http://hhb1994.github.to/2017/04/07/2017.04.06mysql/index.html">
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/1.png">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/2.png">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/3.png">
@@ -112,10 +113,13 @@
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/9.png">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/10.png">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/11.png">
-<meta property="og:updated_time" content="2017-04-07T08:54:48.000Z">
+<meta property="article:published_time" content="2017-04-07T08:54:48.000Z">
+<meta property="article:modified_time" content="2017-04-07T08:54:48.000Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="express">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用node.js+express+mysql实现简单的网页数据写入到数据库功能">
-<meta name="twitter:description" content="前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一">
 <meta name="twitter:image" content="http://onep1caa3.bkt.clouddn.com/1.png">
 
 
@@ -173,7 +177,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -448,7 +452,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -510,7 +514,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一星期时间。写下这篇文章，便于以后翻到看看自己有多菜哈哈。  </p>
 <h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><p>简单的网页数据保存到mysql数据库的功能。（在windows平台）  </p>
 <h2 id="项目环境准备"><a href="#项目环境准备" class="headerlink" title="项目环境准备"></a>项目环境准备</h2><h3 id="1-node-js和npm的安装"><a href="#1-node-js和npm的安装" class="headerlink" title="1.node.js和npm的安装"></a>1.node.js和npm的安装</h3><h3 id="2-express的安装"><a href="#2-express的安装" class="headerlink" title="2.express的安装"></a>2.express的安装</h3><ul>
-<li>express的安装可以使用npm，可以使用命令 <code>npm install express -g</code> 来进行express的全局安装。express是构建网页基本框架的工具。<h2 id="mysql数据库的设计"><a href="#mysql数据库的设计" class="headerlink" title="mysql数据库的设计"></a>mysql数据库的设计</h2><h3 id="1-mysql下载安装与启动"><a href="#1-mysql下载安装与启动" class="headerlink" title="1.mysql下载安装与启动"></a>1.mysql下载安装与启动</h3>mysql的下载安装可以到mysql官网进行，具体的安装流程要取决于你的电脑，安装方法网上有很多，这里给出一篇我随便在百度搜索到的<a href="http://www.cnblogs.com/fnlingnzb-learner/p/6009153.html" target="_blank" rel="external">文章</a>，需要注意到的是注册的时候要填写数据库用户名和密码，请牢记你的用户名和密码，同时建议把mysql添加到系统启动目录，这样可以实现开机自启，避免了每次开机在命令行输入<code>net start mysql</code> 的繁琐步骤。当开机以后在系统进程里面看到一个叫mysqld.exe的进程时，说明mysql启动成功了. <img src="http://onep1caa3.bkt.clouddn.com/1.png" alt=""><h3 id="2-数据库可视化工具的使用"><a href="#2-数据库可视化工具的使用" class="headerlink" title="2.数据库可视化工具的使用"></a>2.数据库可视化工具的使用</h3>为了减少操作的难度，我使用了可视化的数据库操作工具，这里推荐一款名为Navicat for MySql的可视化工具，使用起来十分方便。操作也很简单，登陆数据库的时候，用户填root,密码就是配置数据库时的密码， 链接名可以随便起，端口号为3306，主机名默认localhost不用修改。登陆以后可以实现增删数据库，增删表的操作。  </li>
+<li>express的安装可以使用npm，可以使用命令 <code>npm install express -g</code> 来进行express的全局安装。express是构建网页基本框架的工具。<h2 id="mysql数据库的设计"><a href="#mysql数据库的设计" class="headerlink" title="mysql数据库的设计"></a>mysql数据库的设计</h2><h3 id="1-mysql下载安装与启动"><a href="#1-mysql下载安装与启动" class="headerlink" title="1.mysql下载安装与启动"></a>1.mysql下载安装与启动</h3>mysql的下载安装可以到mysql官网进行，具体的安装流程要取决于你的电脑，安装方法网上有很多，这里给出一篇我随便在百度搜索到的<a href="http://www.cnblogs.com/fnlingnzb-learner/p/6009153.html" target="_blank" rel="noopener">文章</a>，需要注意到的是注册的时候要填写数据库用户名和密码，请牢记你的用户名和密码，同时建议把mysql添加到系统启动目录，这样可以实现开机自启，避免了每次开机在命令行输入<code>net start mysql</code> 的繁琐步骤。当开机以后在系统进程里面看到一个叫mysqld.exe的进程时，说明mysql启动成功了. <img src="http://onep1caa3.bkt.clouddn.com/1.png" alt=""><h3 id="2-数据库可视化工具的使用"><a href="#2-数据库可视化工具的使用" class="headerlink" title="2.数据库可视化工具的使用"></a>2.数据库可视化工具的使用</h3>为了减少操作的难度，我使用了可视化的数据库操作工具，这里推荐一款名为Navicat for MySql的可视化工具，使用起来十分方便。操作也很简单，登陆数据库的时候，用户填root,密码就是配置数据库时的密码， 链接名可以随便起，端口号为3306，主机名默认localhost不用修改。登陆以后可以实现增删数据库，增删表的操作。  </li>
 </ul>
 <p><img src="http://onep1caa3.bkt.clouddn.com/2.png" alt="">  </p>
 <h3 id="3-配置mysql"><a href="#3-配置mysql" class="headerlink" title="3.配置mysql"></a>3.配置mysql</h3><p>以我自己的数据库为例，新建数据库azkaban（这是我学弟项目的名字），在这个数据库里新建表excutors。<br><img src="http://onep1caa3.bkt.clouddn.com/3.png" alt=""><br>接着设计表元素，这里我添加了id，host,port,active四个选项接着保存表。<br><img src="http://onep1caa3.bkt.clouddn.com/4.png" alt="">  </p>
@@ -666,7 +670,7 @@ port: 3306
 };
 </code></pre></blockquote>
 </li>
-<li><p>项目运行，在命令行输入<code>npm start</code>来启动应用，接着访问<a href="http://localhost:3000/register" target="_blank" rel="external">http://localhost:3000/register</a><br>查看网页。<br><img src="http://onep1caa3.bkt.clouddn.com/8.png" alt="">  </p>
+<li><p>项目运行，在命令行输入<code>npm start</code>来启动应用，接着访问<a href="http://localhost:3000/register" target="_blank" rel="noopener">http://localhost:3000/register</a><br>查看网页。<br><img src="http://onep1caa3.bkt.clouddn.com/8.png" alt="">  </p>
 </li>
 <li>输入数据查看是否能录入到数据库<br><img src="http://onep1caa3.bkt.clouddn.com/9.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/10.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/11.png" alt=""><br>这样我们就完成一个简单的功能的实现！</li>
 </ul>
@@ -831,7 +835,7 @@ port: 3306
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -845,7 +849,7 @@ port: 3306
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -876,7 +880,7 @@ port: 3306
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1625,9 +1629,14 @@ port: 3306
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

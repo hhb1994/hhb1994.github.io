@@ -96,25 +96,20 @@
 
 
 
-  <meta name="description" content="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；  
-2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：  
-
-（1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应">
+  <meta name="description" content="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；   2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：    （1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从输入url到页面加载完成中发生的事情">
 <meta property="og:url" content="http://hhb1994.github.to/2017/05/23/2017.05.23/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；  
-2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：  
-
-（1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应">
-<meta property="og:updated_time" content="2017-05-23T15:16:46.000Z">
+<meta property="og:description" content="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；   2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：    （1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-05-23T15:16:46.000Z">
+<meta property="article:modified_time" content="2017-05-23T15:16:46.000Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="http">
+<meta property="article:tag" content="dns">
+<meta property="article:tag" content="tcp&#x2F;ip">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从输入url到页面加载完成中发生的事情">
-<meta name="twitter:description" content="一个页面从输入URL到页面加载显示完成，这个过程都发生什么？1.url分割输入url之后，浏览器会把url分割成几个部分，包括协议，网络地址，资源路径，端口等；  
-2.域名解析判断网络地址是不是ip，如果是ip的话，向该ip地址发起http请求，如果网络地址是域名的话，进行DNS解析的步骤：  
-
-（1）本机向本地dns服务器发起DNS解析请求，本地服务器首先检查本地缓存中是否存在请求的域名对应">
 
 
 
@@ -171,7 +166,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -446,7 +441,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -692,7 +687,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -706,7 +701,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -737,7 +732,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1486,9 +1481,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

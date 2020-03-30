@@ -96,39 +96,21 @@
 
 
 
-  <meta name="description" content="使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  
-Radio  
-
-1.获取选中值，有三种方法  
-
-$(&amp;apos;input:radio:checked&amp;apos;).val()；
-$(&amp;quot;input[type=&amp;apos;radio&amp;apos;]:checked&amp;quot;).val();
-$(&amp;quot;input[name=&amp;apos;rd&amp;apos;]:chec">
+  <meta name="description" content="使用jQuery可以很方便地获取单选框的值，以下是详细的步骤   Radio    1.获取选中值，有三种方法    $(&amp;apos;input:radio:checked&amp;apos;).val()； $(&quot;input[type&#x3D;&amp;apos;radio&amp;apos;]:checked&quot;).val(); $(&quot;input[name&#x3D;&amp;apos;rd&amp;apos;]:chec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery获取单选框的值">
 <meta property="og:url" content="http://hhb1994.github.to/2017/04/21/2017.04.18radio&dropdownlist/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  
-Radio  
-
-1.获取选中值，有三种方法  
-
-$(&amp;apos;input:radio:checked&amp;apos;).val()；
-$(&amp;quot;input[type=&amp;apos;radio&amp;apos;]:checked&amp;quot;).val();
-$(&amp;quot;input[name=&amp;apos;rd&amp;apos;]:chec">
+<meta property="og:description" content="使用jQuery可以很方便地获取单选框的值，以下是详细的步骤   Radio    1.获取选中值，有三种方法    $(&amp;apos;input:radio:checked&amp;apos;).val()； $(&quot;input[type&#x3D;&amp;apos;radio&amp;apos;]:checked&quot;).val(); $(&quot;input[name&#x3D;&amp;apos;rd&amp;apos;]:chec">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/20170418205910.png">
 <meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/20170418205921.png">
-<meta property="og:updated_time" content="2017-04-21T12:43:04.000Z">
+<meta property="article:published_time" content="2017-04-21T12:43:04.000Z">
+<meta property="article:modified_time" content="2017-04-21T12:43:04.000Z">
+<meta property="article:author" content="韩宏斌">
+<meta property="article:tag" content="bootstrap">
+<meta property="article:tag" content="jQuery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery获取单选框的值">
-<meta name="twitter:description" content="使用jQuery可以很方便地获取单选框的值，以下是详细的步骤  
-Radio  
-
-1.获取选中值，有三种方法  
-
-$(&amp;apos;input:radio:checked&amp;apos;).val()；
-$(&amp;quot;input[type=&amp;apos;radio&amp;apos;]:checked&amp;quot;).val();
-$(&amp;quot;input[name=&amp;apos;rd&amp;apos;]:chec">
 <meta name="twitter:image" content="http://onep1caa3.bkt.clouddn.com/20170418205910.png">
 
 
@@ -186,7 +168,7 @@ $(&amp;quot;input[name=&amp;apos;rd&amp;apos;]:chec">
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -461,7 +443,7 @@ $(&amp;quot;input[name=&amp;apos;rd&amp;apos;]:chec">
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
 
                 
                 
@@ -708,7 +690,7 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
@@ -722,7 +704,7 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -753,7 +735,7 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -1502,9 +1484,14 @@ $(&quot;input[name=&apos;rd&apos;]:checked&quot;).val();
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })
