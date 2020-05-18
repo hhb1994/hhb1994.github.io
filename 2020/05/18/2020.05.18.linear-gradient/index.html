@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="Flux 是什么Flux 是 Facebook 推出的一种架构思想,专门解决软件的架构问题,和 mvc 类似,但是更加简洁和清晰. 概念 Flux 把一个应用分为四个部分:  View： 视图层 Action（动作）：视图层发出的消息（比如mouseClick） Dispatcher（派发器）：用来接收Actions、执行回调函数 Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Vi">
+  <meta name="description" content="使用 css3 中的linear-gradient,加上 css3 中的 动画(animation),可以轻松地实现动态渐变效果.(css 是最难的语言 😢.)  效果实现设置渐变背景参考linear-gradient api: https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;linear-gradient 简单示例: 123456789&#x2F;*">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flux架构的粗浅理解">
-<meta property="og:url" content="http://hhb1994.github.to/2019/09/04/2019.09.04.flux/index.html">
+<meta property="og:title" content="css 实现动态渐变效果">
+<meta property="og:url" content="http://hhb1994.github.to/2020/05/18/2020.05.18.linear-gradient/index.html">
 <meta property="og:site_name" content="ARTORIAS">
-<meta property="og:description" content="Flux 是什么Flux 是 Facebook 推出的一种架构思想,专门解决软件的架构问题,和 mvc 类似,但是更加简洁和清晰. 概念 Flux 把一个应用分为四个部分:  View： 视图层 Action（动作）：视图层发出的消息（比如mouseClick） Dispatcher（派发器）：用来接收Actions、执行回调函数 Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Vi">
+<meta property="og:description" content="使用 css3 中的linear-gradient,加上 css3 中的 动画(animation),可以轻松地实现动态渐变效果.(css 是最难的语言 😢.)  效果实现设置渐变背景参考linear-gradient api: https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;linear-gradient 简单示例: 123456789&#x2F;*">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2019/09/04/nhCSIQaKdi8JblG.png">
-<meta property="og:image" content="https://i.loli.net/2019/09/04/FWnPToBe3YqfScs.png">
-<meta property="article:published_time" content="2019-09-04T05:51:40.896Z">
-<meta property="article:modified_time" content="2019-09-04T06:28:55.230Z">
+<meta property="article:published_time" content="2020-05-18T08:30:27.765Z">
+<meta property="article:modified_time" content="2020-05-18T08:47:13.775Z">
 <meta property="article:author" content="韩宏斌">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2019/09/04/nhCSIQaKdi8JblG.png">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://hhb1994.github.to/2019/09/04/2019.09.04.flux/"/>
+  <link rel="canonical" href="http://hhb1994.github.to/2020/05/18/2020.05.18.linear-gradient/"/>
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>flux架构的粗浅理解 | ARTORIAS</title>
+  <title>css 实现动态渐变效果 | ARTORIAS</title>
   
 
 
@@ -381,7 +378,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2019/09/04/2019.09.04.flux/"/>
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2020/05/18/2020.05.18.linear-gradient/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="韩宏斌"/>
@@ -398,7 +395,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">flux架构的粗浅理解
+          <h1 class="post-title" itemprop="name headline">css 实现动态渐变效果
 
               
             
@@ -424,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-09-04 13:51:40 / 修改时间：14:28:55" itemprop="dateCreated datePublished" datetime="2019-09-04T13:51:40+08:00">2019-09-04</time>
+              <time title="创建时间：2020-05-18 16:30:27 / 修改时间：16:47:13" itemprop="dateCreated datePublished" datetime="2020-05-18T16:30:27+08:00">2020-05-18</time>
             
 
             
@@ -446,7 +443,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -465,8 +462,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/04/2019.09.04.flux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/04/2019.09.04.flux/" itemprop="commentCount"></span>
+                <a href="/2020/05/18/2020.05.18.linear-gradient/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/18/2020.05.18.linear-gradient/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -474,7 +471,7 @@
 
           
           
-            <span id="/2019/09/04/2019.09.04.flux/" class="leancloud_visitors" data-flag-title="flux架构的粗浅理解">
+            <span id="/2020/05/18/2020.05.18.linear-gradient/" class="leancloud_visitors" data-flag-title="css 实现动态渐变效果">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -505,33 +502,22 @@
       
 
       
-        <h2 id="Flux-是什么"><a href="#Flux-是什么" class="headerlink" title="Flux 是什么"></a>Flux 是什么</h2><p>Flux 是 Facebook 推出的一种架构思想,专门解决软件的架构问题,和 mvc 类似,但是更加简洁和清晰.</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><img src="https://i.loli.net/2019/09/04/nhCSIQaKdi8JblG.png" alt="flux"></p>
-<p>Flux 把一个应用分为四个部分:</p>
-<ul>
-<li>View： 视图层</li>
-<li>Action（动作）：视图层发出的消息（比如mouseClick）</li>
-<li>Dispatcher（派发器）：用来接收Actions、执行回调函数</li>
-<li>Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面</li>
-</ul>
-<p>Flux 最大的特点,就是数据的单向流动性.<br>以下是 Flux 运行时的步骤:</p>
-<ul>
-<li>在 view 层触发 Action</li>
-<li>Action 被传递到 Dispatcher</li>
-<li>Dispatcher 要求 store 进行对应的更新</li>
-<li>store 更新,触发 view 改变,从而更新页面</li>
-</ul>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>文件目录如下:<br><img src="https://i.loli.net/2019/09/04/FWnPToBe3YqfScs.png" alt="WX20190904-141112@2x"></p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Mybutton.js</span></span><br><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyButton</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> items = <span class="keyword">this</span>.props.items;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;ul&gt;</span><br><span class="line">                    &#123;items.map(<span class="function">(<span class="params">result, key</span>) =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> (</span><br><span class="line">                            &lt;div key=&#123;key&#125;&gt;&#123;result&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">                        )</span></span><br><span class="line"><span class="regexp">                    &#125;)&#125;</span></span><br><span class="line"><span class="regexp">                &lt;/u</span>l&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.props.onClick&#125;&gt;New Item&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> MyButton</span><br></pre></td></tr></table></figure>
-<p>对 Mybutton.js封装的 MybuttonController.js</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> MyButton <span class="keyword">from</span> <span class="string">'app/components/MyButton'</span></span><br><span class="line"><span class="keyword">import</span> listStore <span class="keyword">from</span> <span class="string">'app/stores/listStore'</span></span><br><span class="line"><span class="keyword">import</span> ButtonActions <span class="keyword">from</span> <span class="string">'app/actions/ButtonActions'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对Action发生器进行初始化，buttonActions能发出不同类型action给Dispatcher</span></span><br><span class="line"><span class="keyword">let</span> buttonActions = <span class="keyword">new</span> ButtonActions()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyButtonController</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="comment">//把props作为参数传递到super(),这样在constructor里即可访问this.props属性</span></span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            items: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="comment">//在组件挂载后绑定组件的私有方法_onChange到Store,之后listStore状态变化即可通知组件调用_onChange方法进行改变</span></span><br><span class="line">        listStore.addChangeListener(<span class="keyword">this</span>._onChange.bind(<span class="keyword">this</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="comment">//在组件移除后解除绑定组件的私有方法_onChange到Store</span></span><br><span class="line">        listStore.removeChangeListener(<span class="keyword">this</span>._onChange.bind(<span class="keyword">this</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//组件响应Store变化的回调函数</span></span><br><span class="line">    _onChange() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            items: listStore.getAll()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;MyButton</span><br><span class="line">                items=&#123;<span class="keyword">this</span>.state.items&#125;</span><br><span class="line">                onClick=&#123;<span class="keyword">this</span>.createNewItem&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    createNewItem() &#123;</span><br><span class="line">        <span class="comment">//调用Action发生器发出增加Item的Action</span></span><br><span class="line">        buttonActions.addNewItem(<span class="string">'new item'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> MyButtonController</span><br></pre></td></tr></table></figure>
-<p>在我们点击新增按钮后调用createNewItem方法发出一个’ADD_NEW_ITEM’的Action到Dispatcher</p>
-<p>接下来我们看看ButtonActions.js</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> AppDispatcher <span class="keyword">from</span> <span class="string">'app/dispatcher/AppDispatcher'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ButtonActions</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//发送ADD_NEW_ITEM的Action的方法</span></span><br><span class="line">    addNewItem(text) &#123;</span><br><span class="line">        <span class="comment">//调用Dispatcher获取actionType为ADD_NEW_ITEM的Action</span></span><br><span class="line">        AppDispatcher.dispatch(&#123;</span><br><span class="line">            actionType: <span class="string">'ADD_NEW_ITEM'</span>,</span><br><span class="line">            text: text</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ButtonActions</span><br></pre></td></tr></table></figure>
-<p>这里的addNewItem方法发起了一个actionType为ADD_NEW_ITEM的Action到Dispatcher</p>
-<p>然后我们再看AppDispatcher.js</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flux <span class="keyword">from</span> <span class="string">'flux'</span></span><br><span class="line"><span class="keyword">import</span> listStore <span class="keyword">from</span> <span class="string">'app/stores/listStore'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//拿到flux模块里的Dispatcher类</span></span><br><span class="line"><span class="keyword">let</span> Dispatcher = flux.Dispatcher;</span><br><span class="line"><span class="comment">//用Dispatcher类new一个AppDispatcher对象</span></span><br><span class="line"><span class="keyword">let</span> AppDispatcher = <span class="keyword">new</span> Dispatcher();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用register方法注册接收到各种actionType的Action之后的回调函数</span></span><br><span class="line">AppDispatcher.register(<span class="function"><span class="keyword">function</span> (<span class="params">action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (action.actionType) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD_NEW_ITEM'</span>:</span><br><span class="line">            listStore.addNewItemHandler(action.text)</span><br><span class="line">            listStore.emitChange()</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> AppDispatcher</span><br></pre></td></tr></table></figure>
-<p>最后是ListStore.js<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> EventEmitter <span class="keyword">from</span> <span class="string">'events'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListStore</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="comment">//初始化数据</span></span><br><span class="line">        <span class="keyword">this</span>.items = []</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回所有数据的方法</span></span><br><span class="line">    getAll() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//增加数据的处理函数</span></span><br><span class="line">    addNewItemHandler(text) &#123;</span><br><span class="line">        <span class="keyword">this</span>.items.push(text)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//提交变化</span></span><br><span class="line">    emitChange() &#123;</span><br><span class="line">        <span class="keyword">this</span>.emit(<span class="string">'change'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//监听函数，当有变化时调用注册的回调方法</span></span><br><span class="line">    addChangeListener(callback) &#123;</span><br><span class="line">        <span class="keyword">this</span>.on(<span class="string">'change'</span>, callback)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//remore监听函数</span></span><br><span class="line">    removeChangeListener(callback) &#123;</span><br><span class="line">        <span class="keyword">this</span>.removeListener(<span class="string">'change'</span>, callback)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//new一个listStore作为单例暴露给其它模块使用</span></span><br><span class="line"><span class="keyword">let</span> listStore = <span class="keyword">new</span> ListStore()</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> listStore</span><br></pre></td></tr></table></figure><br>它负责记录数据和状态并在有变化时改变View</p>
+        <blockquote>
+<p>使用 css3 中的<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient" target="_blank" rel="noopener">linear-gradient</a>,加上 css3 中的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations" target="_blank" rel="noopener">动画(animation)</a>,可以轻松地实现动态渐变效果.(css 是最难的语言 😢.)</p>
+</blockquote>
+<h1 id="效果实现"><a href="#效果实现" class="headerlink" title="效果实现"></a>效果实现</h1><h2 id="设置渐变背景"><a href="#设置渐变背景" class="headerlink" title="设置渐变背景"></a>设置渐变背景</h2><p>参考<code>linear-gradient</code> api:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient</a></p>
+<p>简单示例:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* 渐变轴为45度，从蓝色渐变到红色 */</span></span><br><span class="line"><span class="selector-tag">linear-gradient</span>(45<span class="selector-tag">deg</span>, <span class="selector-tag">blue</span>, <span class="selector-tag">red</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 从右下到左上、从蓝色渐变到红色 */</span></span><br><span class="line"><span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">left</span> <span class="selector-tag">top</span>, <span class="selector-tag">blue</span>, <span class="selector-tag">red</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */</span></span><br><span class="line"><span class="selector-tag">linear-gradient</span>(0<span class="selector-tag">deg</span>, <span class="selector-tag">blue</span>, <span class="selector-tag">green</span> 40%, <span class="selector-tag">red</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>参考<code>linear-gradient</code> api:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations</a></p>
+<p>创建动画序列，需要使用 animation 属性或其子属性，该属性允许配置动画时间、时长以及其他动画细节，但该属性不能配置动画的实际表现，动画的实际表现是由 @keyframes 规则实现，具体情况参见使用 keyframes 定义动画序列小节部分。</p>
+<p>animation 的子属性有:</p>
+<p>animation-delay<br>设置延时，即从元素加载完成之后到动画序列开始执行的这段时间。<br>animation-direction<br>设置动画在每次运行完后是反向运行还是重新回到开始位置重复运行。<br>animation-duration<br>设置动画一个周期的时长。<br>animation-iteration-count<br>设置动画重复次数， 可以指定 infinite 无限次重复动画<br>animation-name<br>指定由@keyframes 描述的关键帧名称。<br>animation-play-state<br>允许暂停和恢复动画。<br>animation-timing-function<br>设置动画速度， 即通过建立加速度曲线，设置动画在关键帧之间是如何变化。<br>animation-fill-mode<br>指定动画执行前后如何为目标元素应用样式。</p>
+<h2 id="结合背景与动画示例"><a href="#结合背景与动画示例" class="headerlink" title="结合背景与动画示例"></a>结合背景与动画示例</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">bg-change</span> 15<span class="selector-tag">s</span> <span class="selector-tag">infinite</span> <span class="selector-tag">ease</span> <span class="selector-tag">forwards</span>;</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(294<span class="selector-tag">deg</span>, <span class="selector-id">#76e345</span>, <span class="selector-id">#2395d5</span>);</span><br><span class="line"><span class="selector-tag">background-size</span>: 400% 400%;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> bg-change &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">28%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">73%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">28%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p><a href="https://www.gradient-animator.com/" target="_blank" rel="noopener">https://www.gradient-animator.com/</a></p>
+<p>一个生成动态渐变背景并可以实时预览的网站,无意中找到的.</p>
+<p>end.</p>
 
       
     </div>
@@ -586,7 +572,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/css/" rel="tag"># css</a>
           
         </div>
       
@@ -599,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/29/2019.08.29.cname/" rel="next" title="给 hexo博客添加免费域名">
-                <i class="fa fa-chevron-left"></i> 给 hexo博客添加免费域名
+              <a href="/2020/05/07/2020.05.07.mysql%E5%8E%BB%E9%87%8D/" rel="next" title="mysql数据去重">
+                <i class="fa fa-chevron-left"></i> mysql数据去重
               </a>
             
           </div>
@@ -608,10 +594,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/05/2019.09.05.ipv6/" rel="prev" title="熟悉ipv6">
-                熟悉ipv6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -935,7 +917,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flux-是什么"><span class="nav-number">1.</span> <span class="nav-text">Flux 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#效果实现"><span class="nav-number">1.</span> <span class="nav-text">效果实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置渐变背景"><span class="nav-number">1.1.</span> <span class="nav-text">设置渐变背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">1.2.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结合背景与动画示例"><span class="nav-number">1.3.</span> <span class="nav-text">结合背景与动画示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在最后"><span class="nav-number">2.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
@@ -1110,9 +1092,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://hhb1994.github.to/2019/09/04/2019.09.04.flux/";
-    this.page.identifier = "2019/09/04/2019.09.04.flux/";
-    this.page.title = 'flux架构的粗浅理解';
+    this.page.url = "http://hhb1994.github.to/2020/05/18/2020.05.18.linear-gradient/";
+    this.page.identifier = "2020/05/18/2020.05.18.linear-gradient/";
+    this.page.title = 'css 实现动态渐变效果';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
