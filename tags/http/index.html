@@ -99,7 +99,7 @@
   <meta name="description" content="a blog to improve myself🚀">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ARTORIAS">
-<meta property="og:url" content="http://hhb1994.github.to/tags/http/index.html">
+<meta property="og:url" content="http://hhb1994.github.to/tags/HTTP/index.html">
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="a blog to improve myself🚀">
 <meta property="og:locale" content="zh_CN">
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://hhb1994.github.to/tags/http/"/>
+  <link rel="canonical" href="http://hhb1994.github.to/tags/HTTP/"/>
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>标签: http | ARTORIAS</title>
+  <title>标签: HTTP | ARTORIAS</title>
   
 
 
@@ -386,7 +386,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>http<small>标签</small>
+        <h1>HTTP<small>标签</small>
         </h1>
       </div>
 
@@ -398,37 +398,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2017/05/24/2017.05.2huayu/" itemprop="url">
+          <a class="post-title-link" href="/2018/11/23/2018.11.23.HTTP/" itemprop="url">
             
-              <span itemprop="name">如何解决跨域问题</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-24T18:44:14+08:00"
-              content="2017-05-24">
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/05/24/2017.05.24speedup/" itemprop="url">
-            
-              <span itemprop="name">加快网站访问速度的方法</span>
+              <span itemprop="name">HTTP 协议</span>
             
           </a>
         
@@ -436,93 +408,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-24T11:30:44+08:00"
-              content="2017-05-24">
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/05/23/2017.05.23/" itemprop="url">
-            
-              <span itemprop="name">从输入url到页面加载完成中发生的事情</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-23T23:16:46+08:00"
-              content="2017-05-23">
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/04/05/2017.04.05cookie&session/" itemprop="url">
-            
-              <span itemprop="name">cookie与session的区别</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T20:15:18+08:00"
-              content="2017-04-05">
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/04/03/2017-04-03httpcode/" itemprop="url">
-            
-              <span itemprop="name">HTTP状态码总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-03T19:50:06+08:00"
-              content="2017-04-03">
-          04-03
+              datetime="2018-11-23T16:14:02+08:00"
+              content="2018-11-23">
+          11-23
         </time>
       </div>
 
@@ -1287,6 +1175,127 @@
       e.stopPropagation();
       if (isfetched === false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
+                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+      searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();
       };
