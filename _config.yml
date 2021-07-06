@@ -70,9 +70,6 @@ deploy:
   type: git
   repo: git@github.com:hhb1994/hhb1994.github.io.git
   branch: master
-  # -
-  #   type: leancloud_counter_security_sync
-
 search:
   path: search.json
   field: post
