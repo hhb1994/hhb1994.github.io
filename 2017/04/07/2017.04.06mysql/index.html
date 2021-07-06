@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用node.js+express+mysql实现简单的网页数据写入到数据库功能">
+<meta property="og:url" content="http://hhb1994.github.to/2017/04/07/2017.04.06mysql/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="前言最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/1.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/2.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/3.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/4.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/5.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/7.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/8.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/9.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/10.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/11.png">
+<meta property="article:published_time" content="2017-04-07T08:54:48.000Z">
+<meta property="article:modified_time" content="2017-04-07T08:54:48.000Z">
+<meta property="article:author" content="不愿透露姓名的小韩">
+<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="express">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://onep1caa3.bkt.clouddn.com/1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2017/04/07/2017.04.06mysql/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用node.js+express+mysql实现简单的网页数据写入到数据库功能 | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2017/04/07/2017.04.06mysql/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不愿透露姓名的小韩"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用node.js+express+mysql实现简单的网页数据写入到数据库功能
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-07 16:54:48" itemprop="dateCreated datePublished" datetime="2017-04-07T16:54:48+08:00">2017-04-07</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/04/07/2017.04.06mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/07/2017.04.06mysql/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/04/07/2017.04.06mysql/" class="leancloud_visitors" data-flag-title="使用node.js+express+mysql实现简单的网页数据写入到数据库功能">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近几天一直在搞这个东西，越学越发现自己的知识太少。从express搭建网页结构开始，发现需要掌握jade的缩进书写规则，真的蛋疼，一不小心就写错了。接着看怎么把数据导入到mysql，又需要ajax方法，由于我没有基础，只能先去看使用jquery封装的ajax方法，本身jquery也不太熟悉，又恶补了一波jquery。另外数据库这方面我也是小白，所以又去看了mysql的基本语句，前后用了将近一星期时间。写下这篇文章，便于以后翻到看看自己有多菜哈哈。  </p>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><p>简单的网页数据保存到mysql数据库的功能。（在windows平台）  </p>
+<h2 id="项目环境准备"><a href="#项目环境准备" class="headerlink" title="项目环境准备"></a>项目环境准备</h2><h3 id="1-node-js和npm的安装"><a href="#1-node-js和npm的安装" class="headerlink" title="1.node.js和npm的安装"></a>1.node.js和npm的安装</h3><h3 id="2-express的安装"><a href="#2-express的安装" class="headerlink" title="2.express的安装"></a>2.express的安装</h3><ul>
+<li>express的安装可以使用npm，可以使用命令 <code>npm install express -g</code> 来进行express的全局安装。express是构建网页基本框架的工具。<h2 id="mysql数据库的设计"><a href="#mysql数据库的设计" class="headerlink" title="mysql数据库的设计"></a>mysql数据库的设计</h2><h3 id="1-mysql下载安装与启动"><a href="#1-mysql下载安装与启动" class="headerlink" title="1.mysql下载安装与启动"></a>1.mysql下载安装与启动</h3>mysql的下载安装可以到mysql官网进行，具体的安装流程要取决于你的电脑，安装方法网上有很多，这里给出一篇我随便在百度搜索到的<a href="http://www.cnblogs.com/fnlingnzb-learner/p/6009153.html" target="_blank" rel="noopener">文章</a>，需要注意到的是注册的时候要填写数据库用户名和密码，请牢记你的用户名和密码，同时建议把mysql添加到系统启动目录，这样可以实现开机自启，避免了每次开机在命令行输入<code>net start mysql</code> 的繁琐步骤。当开机以后在系统进程里面看到一个叫mysqld.exe的进程时，说明mysql启动成功了. <img src="http://onep1caa3.bkt.clouddn.com/1.png" alt=""><h3 id="2-数据库可视化工具的使用"><a href="#2-数据库可视化工具的使用" class="headerlink" title="2.数据库可视化工具的使用"></a>2.数据库可视化工具的使用</h3>为了减少操作的难度，我使用了可视化的数据库操作工具，这里推荐一款名为Navicat for MySql的可视化工具，使用起来十分方便。操作也很简单，登陆数据库的时候，用户填root,密码就是配置数据库时的密码， 链接名可以随便起，端口号为3306，主机名默认localhost不用修改。登陆以后可以实现增删数据库，增删表的操作。  </li>
+</ul>
+<p><img src="http://onep1caa3.bkt.clouddn.com/2.png" alt="">  </p>
+<h3 id="3-配置mysql"><a href="#3-配置mysql" class="headerlink" title="3.配置mysql"></a>3.配置mysql</h3><p>以我自己的数据库为例，新建数据库azkaban（这是我学弟项目的名字），在这个数据库里新建表excutors。<br><img src="http://onep1caa3.bkt.clouddn.com/3.png" alt=""><br>接着设计表元素，这里我添加了id，host,port,active四个选项接着保存表。<br><img src="http://onep1caa3.bkt.clouddn.com/4.png" alt="">  </p>
+<h2 id="项目设计"><a href="#项目设计" class="headerlink" title="项目设计"></a>项目设计</h2><p>我们要实现的目的比较简单。使用<code>express demo1</code>可以新建名为demo1的工程，工程目录如下.<br><img src="http://onep1caa3.bkt.clouddn.com/5.png" alt="">  </p>
+<p>接下来的步骤：  </p>
+<ul>
+<li>在package.json中田间mysql依赖： <code>&quot;mysql&quot;:&quot;latest&quot;</code> ,使用node.js中的<code>npm install</code> 命令安装依赖包。  </li>
+<li>编写录入信息界面register.jade文件,用来实现简单的信息录入界面以及使用$.ajax()的post方法向服务器发起登陆请求。代码如下：  </li>
+</ul>
+<blockquote>
+<pre><code>doctype html
+html
+head
+title
+link(rel=&apos;stylesheet&apos;, href=&apos;/bootstrap-3.3.7-dist/css/bootstrap.min.css&apos;)
+script(src=&apos;/javascripts/jquery-3.1.1.min.js&apos;)
+script(src=&apos;/bootstrap-3.3.7-dist/js/bootstrap.min.js&apos;)
+body(style=&apos;background: #dcd9da&apos;)
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      .panel.panel-default(style=&apos;margin-top: 60px&apos;)
+        .panel-heading(style=&apos;background: #0d6aad&apos;)
+          h3(align=&apos;center&apos;, style=&apos;color: #ffffff;&apos;)
+            | azkaban
+        .panel-body(style=&apos;background: #e0e1ea&apos;)
+          .form-group
+            .input-group
+              span.input-group-addon host
+              input#host.form-control(type=&apos;text&apos;)
+          .form-group
+            .input-group
+              span.input-group-addon port
+              input#port.form-control(type=&apos;port&apos;)
+
+          .form-group
+            .input-group
+              span.input-group-addon active
+              input#active.form-control(type=&apos;text&apos;)
+          .form-group
+            button#register.btn.btn-success.btn-block(type=&apos;button&apos;)
+              | log in
+          #popup.alert.alert-warning
+            a#close.close(href=&apos;#&apos;) &amp;times;
+            div(align=&apos;center&apos;)
+              strong#popup-content(style=&apos;color: #b12e30;&apos;)
+script(type=&apos;text/javascript&apos;).
+  $(document).ready(function () {
+    var host = $(&quot;#host&quot;);
+    var port = $(&quot;#port&quot;);
+    var active = $(&quot;#active&quot;);
+    var register = $(&quot;#register&quot;);
+    var popup = $(&quot;#popup&quot;);
+    var popupContent = $(&quot;#popup-content&quot;);
+    var close = $(&quot;#close&quot;);
+    popup.hide();
+    close.click(function () {
+      popup.hide();
+    });
+    register.click(function () {
+      if (host.val() == &quot;&quot; || port.val() == &quot;&quot; || active.val() == &quot;&quot;) {
+        popup.show();
+        popupContent.html(&quot;can&apos;t be empty！&quot;);}  
+      else {
+        $.ajax({
+          url: &quot;/register/userRegister&quot;,
+          data: {
+            host: $(&quot;#host&quot;).val(),
+            port: $(&quot;#port&quot;).val(),
+            active: $(&quot;#active&quot;).val()
+                },
+          type: &quot;POST&quot;,
+          timeout: 36000,
+          dataType: &quot;text&quot;,
+          success: function (data, textStatus) {
+            var dataJson = eval(&quot;(&quot; + data + &quot;)&quot;);
+            if (dataJson.code == 200) {
+              alert(&quot;success&quot;);
+            } else if (dataJson.code == 400) {
+              popup.show();
+              popupContent.html(&quot;fail,please retry！&quot;);
+            } else {
+              popup.show();
+              popupContent.html(&quot;error！&quot;);
+            }
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(&quot;error:&quot; + textStatus);
+          }
+        });
+      }
+    });
+  });
+</code></pre></blockquote>
+<ul>
+<li>编写录入信息路由register.js文件  </li>
+</ul>
+<hr>
+<blockquote>
+<pre><code>var express = require(&apos;express&apos;);
+var router = express.Router();
+
+var mysql = require(&apos;mysql&apos;);
+var config = require(&apos;../model/config&apos;);
+
+var pool = mysql.createPool(config.mysql);
+/* GET home page. */
+router.get(&apos;/&apos;, function (req, res, next) {
+  res.render(&apos;register&apos;, {title: &apos;register&apos;});
+});
+router.post(&apos;/userRegister&apos;, function (req, res, next) {
+  var host = req.body.host;
+  var port = req.body.port;
+  var active = req.body.active; 
+  pool.getConnection(function (err, connection) {
+var $sql1 = &quot;INSERT INTO executors(id, host, port, active) VALUES(0,?,?,?)&quot;;
+connection.query($sql1, [host, port, active], function (err, result) {
+  console.log(result);
+  if (result) {
+result = {
+  code: 200,
+  msg: &apos;success&apos;
+};
+  } else {
+result = {
+  code: 400,
+  msg: &apos;fail&apos;
+};
+  }
+  res.json(result);
+  connection.release();
+});
+
+});
+  });
+module.exports = router;  
+</code></pre></blockquote>
+<ul>
+<li>在app.js中增加register的界面和路由  </li>
+</ul>
+<p><img src="http://onep1caa3.bkt.clouddn.com/7.png" alt=""> </p>
+<ul>
+<li><p>设置连接数据库参数model/config.js 。在这里我使用用户azkaban创建了数据库azkaban。 </p>
+<blockquote>
+<pre><code>module.exports = {
+  mysql: {
+host: &apos;127.0.0.1&apos;,
+user: &apos;azkaban&apos;,
+password: &apos;&apos;,
+database: &apos;azkaban&apos;,
+port: 3306
+  }
+};
+</code></pre></blockquote>
+</li>
+<li><p>项目运行，在命令行输入<code>npm start</code>来启动应用，接着访问<a href="http://localhost:3000/register" target="_blank" rel="noopener">http://localhost:3000/register</a><br>查看网页。<br><img src="http://onep1caa3.bkt.clouddn.com/8.png" alt="">  </p>
+</li>
+<li>输入数据查看是否能录入到数据库<br><img src="http://onep1caa3.bkt.clouddn.com/9.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/10.png" alt=""><br><img src="http://onep1caa3.bkt.clouddn.com/11.png" alt=""><br>这样我们就完成一个简单的功能的实现！</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="不愿透露姓名的小韩 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+            <a href="/tags/express/" rel="tag"># express</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/2017.04.05cookie&session/" rel="next" title="cookie与session的区别">
+                <i class="fa fa-chevron-left"></i> cookie与session的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/22/2017.04.21.git/" rel="prev" title="git的介绍和使用">
+                git的介绍和使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="不愿透露姓名的小韩"/>
+            
+              <p class="site-author-name" itemprop="name">不愿透露姓名的小韩</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">108</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">80</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现的功能"><span class="nav-number">2.</span> <span class="nav-text">实现的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目环境准备"><span class="nav-number">3.</span> <span class="nav-text">项目环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-node-js和npm的安装"><span class="nav-number">3.1.</span> <span class="nav-text">1.node.js和npm的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-express的安装"><span class="nav-number">3.2.</span> <span class="nav-text">2.express的安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql数据库的设计"><span class="nav-number">4.</span> <span class="nav-text">mysql数据库的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-mysql下载安装与启动"><span class="nav-number">4.1.</span> <span class="nav-text">1.mysql下载安装与启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据库可视化工具的使用"><span class="nav-number">4.2.</span> <span class="nav-text">2.数据库可视化工具的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-配置mysql"><span class="nav-number">4.3.</span> <span class="nav-text">3.配置mysql</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目设计"><span class="nav-number">5.</span> <span class="nav-text">项目设计</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不愿透露姓名的小韩</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://hhb1994.github.to/2017/04/07/2017.04.06mysql/";
+    this.page.identifier = "2017/04/07/2017.04.06mysql/";
+    this.page.title = '使用node.js+express+mysql实现简单的网页数据写入到数据库功能';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
+                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
