@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="神器workflowworkflow是什么Workflow 是一款 iOS 端的付费应用，通过流程化自动处理各种事情，内置 150+ 动作，如开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程。前段时间Apple把workflow团队收购，这款软件从18RMB售价变为免费。将来Appl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神器workflow介绍">
+<meta property="og:url" content="http://hhb1994.github.to/2017/03/27/2017.03.27workflow/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="神器workflowworkflow是什么Workflow 是一款 iOS 端的付费应用，通过流程化自动处理各种事情，内置 150+ 动作，如开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程。前段时间Apple把workflow团队收购，这款软件从18RMB售价变为免费。将来Appl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/workflow.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/workflow1.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/workflow2.png">
+<meta property="og:image" content="http://onep1caa3.bkt.clouddn.com/workflow3.png">
+<meta property="article:published_time" content="2017-03-27T12:14:02.000Z">
+<meta property="article:modified_time" content="2017-03-27T12:14:02.000Z">
+<meta property="article:author" content="不愿透露姓名的小韩">
+<meta property="article:tag" content="workflow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://onep1caa3.bkt.clouddn.com/workflow.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2017/03/27/2017.03.27workflow/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>神器workflow介绍 | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2017/03/27/2017.03.27workflow/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不愿透露姓名的小韩"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">神器workflow介绍
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-27 20:14:02" itemprop="dateCreated datePublished" datetime="2017-03-27T20:14:02+08:00">2017-03-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">软件</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/03/27/2017.03.27workflow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/27/2017.03.27workflow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/03/27/2017.03.27workflow/" class="leancloud_visitors" data-flag-title="神器workflow介绍">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="神器workflow"><a href="#神器workflow" class="headerlink" title="神器workflow"></a>神器workflow</h2><h3 id="workflow是什么"><a href="#workflow是什么" class="headerlink" title="workflow是什么"></a>workflow是什么</h3><p>Workflow 是一款 iOS 端的付费应用，通过流程化自动处理各种事情，内置 150+ 动作，如开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程。前段时间Apple把workflow团队收购，这款软件从18RMB售价变为免费。将来Apple可能把workflow整合进ios11，简单来说，workflow在不越狱的情况下，可以完成在ios封闭环境下几乎不可能完成的任务。  </p>
+<p>举个例子，对于分享截图这一功能。虽然我早已能一气呵成地打出整套动作“手机截屏－打开照片.app－翻找截图－编辑图片－分享至他人－删除截屏”，但无奈的地方在于：其实整套动作中只有两个环节需要投入思考：“截图如何编辑？”＋“分享对象是谁？”，但仍不得不例行公事般重复其余操作，不仅毫无技术含量可言，更糟糕的是来回跳转 APP 总会生硬打断连贯性，效率低下。如果，在生活中你遇到类似的烦恼，那么肯定也曾幻想过有这么一款工具，能够帮助用户在手机上将重心集中在解决任务的关键步骤，而其他次要动作则直接自动执行，无需人为干预，进而达成任务目的，使之形成一套高效率的完整工作流（类似于 Apple 在 Mac 平台推出的 Automator）。这就是workflow的作用所在。它可以在一步操作的前提下帮你完成一整套上述操作。<br><img src="http://onep1caa3.bkt.clouddn.com/workflow.png" alt="">   </p>
+<hr>
+<p>　</p>
+<h3 id="workflow的优点"><a href="#workflow的优点" class="headerlink" title="workflow的优点"></a>workflow的优点</h3><ul>
+<li>效率为王：通过 Workflow 创建的工作流程，使得原本在手机上需要繁琐步骤才能完成的任务，现在很可能只需一键搞定；</li>
+<li>四通发达：Workflow 内置的 150+ 动作(不断更新中)涵盖了大部分手机功能，并进一步延伸至第三方 APP，如 开启相机、获取当前 GPS 位置、生成 PDF、打开 URL 链接、新建 EeverNote 笔记等等，只要能巧妙组合，搭配合理，几乎能实现使用者任何的复杂任务流程；</li>
+<li>化繁为简：图形化的美观界面将复杂的代码部分完全隐藏至背后，极大降低了使用门槛。通过简单的拖曳操作来设定想要实现的功能步骤，而无需用户懂得任何代码；</li>
+<li>凌波微步：创建后的任务流程可以保存至桌面、摆放至“共享”菜单中、甚至能将自己的作品共享至他人使用，极大拓宽了 Workflow 适用场景；</li>
+<li>大有可为：高级用户调用 Workflow 内置的特殊功能 ( SSH 运行脚本、API 等) 后，还能创造更多可能，如与对接并控制网站服务器。这也恰恰说明 Workflow 具有极强的拓展性。 </li>
+</ul>
+<hr>
+<h3 id="如何创建workflow工作流"><a href="#如何创建workflow工作流" class="headerlink" title="如何创建workflow工作流"></a>如何创建workflow工作流</h3><p>比如我要完成截屏-打开相册-选择照片-分享给好友-删除这一系列操作，使用workflow的话，我们需要先定义这个动作。即创建workflow工作流，下面是详细的步骤。  </p>
+<ul>
+<li>可以看到workflow会给出很多动作，我们的目标是选择相册最后一张图片分享给别人，第一步就是选择分享最后一张照片还是最后一张截图；</li>
+<li>由于ios权限设置，我们必须设置一个获得相片访问权限的步骤，接着获取相册最后一张图片，也就是第二步；<br><img src="http://onep1caa3.bkt.clouddn.com/workflow1.png" alt="">  </li>
+<li>接着选择分享方式，可以通过分享菜单或者airdrop分享；</li>
+<li>第四步就是分享；<br><img src="http://onep1caa3.bkt.clouddn.com/workflow2.png" alt=""> </li>
+<li>分享完成之后就是删除照片的步骤了。<br><img src="http://onep1caa3.bkt.clouddn.com/workflow3.png" alt="">  <h5 id="在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。"><a href="#在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。" class="headerlink" title="在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。"></a>在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。</h5></li>
+</ul>
+<hr>
+<h3 id="提供一些额外的工作流"><a href="#提供一些额外的工作流" class="headerlink" title="提供一些额外的工作流"></a>提供一些额外的工作流</h3><p>workflow中有很多工作流，你也可以创作自己的工作流，分享自己的工作流，下面就是我收集的一些工作流，点击网址以后选择用workflow打开，添加工作流之后就可以使用了。workflow暂时不支持icloud同步，但是注册一个workflow账号在不同设备登陆也可以实现工作流的同步。  </p>
+<p>多用途通用视频下载 <a href="https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56" target="_blank" rel="noopener">https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56</a> 多引擎搜索<a href="https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d" target="_blank" rel="noopener">https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d</a>  图片处理   </p>
+<p>﻿<br><a href="https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf" target="_blank" rel="noopener">https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf</a>﻿<br>﻿<br>快捷开关﻿<br><a href="https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e" target="_blank" rel="noopener">https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e</a>﻿<br>﻿<br>多功能扫码工具箱﻿<br><a href="https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe多用途通用" target="_blank" rel="noopener">https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe多用途通用</a>﻿<br>﻿<br>视频下载﻿<br><a href="https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56" target="_blank" rel="noopener">https://workflow.is/workflows/54f8d777636e430fb901d5a2e4ccfe56</a>﻿<br>﻿<br>多引擎搜索﻿<br><a href="https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d" target="_blank" rel="noopener">https://workflow.is/workflows/7921f8c6ca7b48529cfe9b8d0f17466d</a>﻿<br>﻿<br>图片处理﻿<br><a href="https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf" target="_blank" rel="noopener">https://workflow.is/workflows/89a39d40eb0543d29202e7e0a30f27bf</a>﻿<br>﻿<br>快捷开关﻿<br><a href="https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e" target="_blank" rel="noopener">https://workflow.is/workflows/fef60e8bed1446f6bf1284ddd6e3e05e</a>﻿<br>﻿<br>多功能扫码工具箱﻿<br><a href="https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe" target="_blank" rel="noopener">https://workflow.is/workflows/4bb0a613d4cb464e879050448f05fcfe</a>﻿<br>﻿<br>﻿<br>workflow下载类型  规则﻿<br>﻿<br>下载YouTube视频﻿<br><a href="https://workflow.is/workflows/73971870942c49da96cae6a490aea8e0" target="_blank" rel="noopener">https://workflow.is/workflows/73971870942c49da96cae6a490aea8e0</a>﻿<br>﻿<br><a href="https://workflow.is/workflows/617578d73f8244a5afed2a1665c8e320" target="_blank" rel="noopener">https://workflow.is/workflows/617578d73f8244a5afed2a1665c8e320</a>﻿<br>﻿<br>下载视频的tumblr﻿<br><a href="https://workflow.is/workflows/f8656cbb90524dffa1fe2eba8975946e" target="_blank" rel="noopener">https://workflow.is/workflows/f8656cbb90524dffa1fe2eba8975946e</a>﻿<br>﻿<br>展开网址的tumblr﻿<br><a href="https://workflow.is/workflows/62a9534d3ee1467080cd4136578d3d35" target="_blank" rel="noopener">https://workflow.is/workflows/62a9534d3ee1467080cd4136578d3d35</a>﻿<br>﻿<br>下载Twitter的GIF﻿<br><a href="https://workflow.is/workflows/aa9821c4bce44b6f8febcbda6245c1f0" target="_blank" rel="noopener">https://workflow.is/workflows/aa9821c4bce44b6f8febcbda6245c1f0</a>﻿<br>﻿<br>获取Twitter的视频﻿<br><a href="https://workflow.is/workflows/087a0abf12c049dd9ab256afaec790c0" target="_blank" rel="noopener">https://workflow.is/workflows/087a0abf12c049dd9ab256afaec790c0</a>﻿<br>﻿<br>从保存的Instagram﻿<br><a href="https://workflow.is/workflows/3a4f22ce8e794c7489a059224f3bc0b0" target="_blank" rel="noopener">https://workflow.is/workflows/3a4f22ce8e794c7489a059224f3bc0b0</a>﻿<br>﻿<br>应用图像至相机胶卷﻿<br><a href="https://workflow.is/workflows/613a8f5e6e714cc9aecaa4e76d981248" target="_blank" rel="noopener">https://workflow.is/workflows/613a8f5e6e714cc9aecaa4e76d981248</a>﻿<br>﻿<br>新浪微博视频  先复制视频页地址 在运行﻿<br><a href="https://workflow.is/workflows/fd7fe0b7548046e689e9776b2182a8b1" target="_blank" rel="noopener">https://workflow.is/workflows/fd7fe0b7548046e689e9776b2182a8b1</a>﻿<br>﻿<br>保存网页为pdf到ibook﻿<br><a href="https://workflow.is/workflows/2027271452ce4712853838f43550d326" target="_blank" rel="noopener">https://workflow.is/workflows/2027271452ce4712853838f43550d326</a>﻿<br>﻿<br>保存了几张照片﻿<br><a href="https://workflow.is/workflows/a6487b004917494b88fe0fc01f0ffbc6" target="_blank" rel="noopener">https://workflow.is/workflows/a6487b004917494b88fe0fc01f0ffbc6</a>﻿<br>﻿<br>﻿<br>workflow分享类型  规则﻿<br>﻿<br>分享音乐到Instagram的﻿<br><a href="https://workflow.is/workflows/402507226b8844258dee694d58b126e9" target="_blank" rel="noopener">https://workflow.is/workflows/402507226b8844258dee694d58b126e9</a>﻿<br>﻿<br>分享最新照片﻿<br><a href="https://workflow.is/workflows/5f9c56bfe6de447598a6d0440697c470" target="_blank" rel="noopener">https://workflow.is/workflows/5f9c56bfe6de447598a6d0440697c470</a>﻿<br>﻿<br>分享音乐到Instagram的﻿<br><a href="https://workflow.is/workflows/402507226b8844258dee694d58b126e9" target="_blank" rel="noopener">https://workflow.is/workflows/402507226b8844258dee694d58b126e9</a>﻿<br>﻿<br>workflow备份类型  规则﻿<br>﻿<br>AB Backup备份﻿<br><a href="https://workflow.is/workflows/3db6bdcda3104b3b9bbaea8ddf655670" target="_blank" rel="noopener">https://workflow.is/workflows/3db6bdcda3104b3b9bbaea8ddf655670</a>﻿<br>﻿<br>备份workflow工作流﻿<br><a href="https://workflow.is/workflows/c5421ebe19bd4bf885da8b74d2cbaded" target="_blank" rel="noopener">https://workflow.is/workflows/c5421ebe19bd4bf885da8b74d2cbaded</a>﻿<br>﻿<br>保存到iCloud﻿<br><a href="https://workflow.is/workflows/08f3cc0e184844339eb2f5caa58a316b" target="_blank" rel="noopener">https://workflow.is/workflows/08f3cc0e184844339eb2f5caa58a316b</a>﻿<br>﻿<br>workflow音乐类型  规则﻿<br>﻿<br>播放我的音乐﻿<br><a href="https://workflow.is/workflows/39d58771c84c4a50af50b3a0e1f7bda7" target="_blank" rel="noopener">https://workflow.is/workflows/39d58771c84c4a50af50b3a0e1f7bda7</a>﻿<br>﻿<br>加入我的音乐﻿<br><a href="https://workflow.is/workflows/5bf4367cdef74e3cbe5d4078bdac9882" target="_blank" rel="noopener">https://workflow.is/workflows/5bf4367cdef74e3cbe5d4078bdac9882</a>﻿<br>﻿<br>添加一些歌曲﻿<br><a href="https://workflow.is/workflows/c5f6d0b19e7e4463af581c0011860443" target="_blank" rel="noopener">https://workflow.is/workflows/c5f6d0b19e7e4463af581c0011860443</a>﻿<br>﻿<br>获取歌曲信息﻿<br><a href="https://workflow.is/workflows/70900391fdd6423ab2e6d925abf148cc" target="_blank" rel="noopener">https://workflow.is/workflows/70900391fdd6423ab2e6d925abf148cc</a>﻿<br>﻿<br>随机播放﻿<br><a href="https://workflow.is/workflows/7e2dab4135c24808b36a5384cde60b7d" target="_blank" rel="noopener">https://workflow.is/workflows/7e2dab4135c24808b36a5384cde60b7d</a>﻿<br>﻿<br>现在播放﻿<br><a href="https://workflow.is/workflows/3d954aa947474ed8b93d13f5b9d18625" target="_blank" rel="noopener">https://workflow.is/workflows/3d954aa947474ed8b93d13f5b9d18625</a>﻿<br>﻿<br>workflow搜索类型  规则﻿<br>﻿<br>搜索电话号码﻿<br><a href="https://workflow.is/workflows/aa509941b57d48d4b51a0c2b1c06cf8c" target="_blank" rel="noopener">https://workflow.is/workflows/aa509941b57d48d4b51a0c2b1c06cf8c</a>﻿<br>﻿<br>谷歌高级搜索﻿<br><a href="https://workflow.is/workflows/6e7e0853ae664c5ea7a0bae7dad6941e" target="_blank" rel="noopener">https://workflow.is/workflows/6e7e0853ae664c5ea7a0bae7dad6941e</a>﻿<br>﻿<br>﻿<br>自定义搜索﻿<br><a href="https://workflow.is/workflows/ac4b4abac0a2490e872b7134f5f9ca8a" target="_blank" rel="noopener">https://workflow.is/workflows/ac4b4abac0a2490e872b7134f5f9ca8a</a>﻿<br>﻿<br>workflow手电筒类型  规则﻿<br>﻿<br>﻿<br>手电筒﻿<br><a href="https://workflow.is/workflows/31699d9bf6054e028c69286cdf932ce6" target="_blank" rel="noopener">https://workflow.is/workflows/31699d9bf6054e028c69286cdf932ce6</a>﻿<br>﻿<br>莫尔斯电码编码器手电筒﻿<br><a href="https://workflow.is/workflows/3f723d2d0e0a4c45b920281cf7d30284" target="_blank" rel="noopener">https://workflow.is/workflows/3f723d2d0e0a4c45b920281cf7d30284</a>﻿<br>﻿<br>workflow距离类型  规则﻿<br>﻿<br>旅行距离﻿<br><a href="https://workflow.is/workflows/5e86637a392147449e7f0aebb3b18cf4" target="_blank" rel="noopener">https://workflow.is/workflows/5e86637a392147449e7f0aebb3b18cf4</a>﻿<br>﻿<br>Biking Distance（骑行距离）﻿<br><a href="https://workflow.is/workflows/90b54056340742f2bd24ed45f894d22e" target="_blank" rel="noopener">https://workflow.is/workflows/90b54056340742f2bd24ed45f894d22e</a>﻿<br>﻿<br>workflow剪切板/书签类型  规则﻿<br>﻿<br>﻿<br>剪切板列表﻿<br><a href="https://workflow.is/workflows/db3321f2eec84c4eb2caf29a6df81286" target="_blank" rel="noopener">https://workflow.is/workflows/db3321f2eec84c4eb2caf29a6df81286</a>﻿<br>﻿<br>剪贴板翻译﻿<br><a href="https://workflow.is/workflows/5de0062c54c041a386be048dd84fa361" target="_blank" rel="noopener">https://workflow.is/workflows/5de0062c54c041a386be048dd84fa361</a>﻿<br>﻿<br>﻿<br>复制到剪贴板﻿<br><a href="https://workflow.is/workflows/3242da310c4a45ec8270a09e49e6aa37" target="_blank" rel="noopener">https://workflow.is/workflows/3242da310c4a45ec8270a09e49e6aa37</a>﻿<br>﻿<br>书签﻿<br><a href="https://workflow.is/workflows/86a36fe10ac54a0cbe21c0016e762dee" target="_blank" rel="noopener">https://workflow.is/workflows/86a36fe10ac54a0cbe21c0016e762dee</a>﻿<br>﻿<br>插接板书签离线﻿<br><a href="https://workflow.is/workflows/78e3d1afef39487db3d4a96d55e9a131" target="_blank" rel="noopener">https://workflow.is/workflows/78e3d1afef39487db3d4a96d55e9a131</a>﻿<br>﻿<br>﻿<br>workflow电池类型  规则﻿<br>电池﻿<br><a href="https://workflow.is/workflows/febeed3ed07a4c78b9e77c2f48136a2a" target="_blank" rel="noopener">https://workflow.is/workflows/febeed3ed07a4c78b9e77c2f48136a2a</a>﻿<br>﻿<br>低功耗模式﻿<br><a href="https://workflow.is/workflows/640ae7eb22f143a093c77215a6e373e2" target="_blank" rel="noopener">https://workflow.is/workflows/640ae7eb22f143a093c77215a6e373e2</a>﻿<br>﻿<br>workflow未分类类  规则﻿<br>﻿<br>IP和位置﻿<br>从通知中心中轻松找到你的IP和地理位置。﻿<br><a href="https://workflow.is/workflows/ea529c591a2740169388c0d2b8ca6505" target="_blank" rel="noopener">https://workflow.is/workflows/ea529c591a2740169388c0d2b8ca6505</a>﻿<br>﻿<br>调整照片和删除原始﻿<br>调整的原始照片，然后删除了原稿。非常适合在手机上节省磁盘空间。﻿<br><a href="https://workflow.is/workflows/014c0e9d263247979bc6a1c9894e07e4" target="_blank" rel="noopener">https://workflow.is/workflows/014c0e9d263247979bc6a1c9894e07e4</a>﻿<br>﻿<br>删除多张图片﻿<br><a href="https://workflow.is/workflows/c545d9c33b0f40d8a80712b282a19eb3" target="_blank" rel="noopener">https://workflow.is/workflows/c545d9c33b0f40d8a80712b282a19eb3</a>﻿<br>﻿<br>更新浪涌/ shadowrocket主配置﻿<br><a href="https://workflow.is/workflows/55ecb14722f94d7c8c44ce3ce24d81c8" target="_blank" rel="noopener">https://workflow.is/workflows/55ecb14722f94d7c8c44ce3ce24d81c8</a>﻿<br>﻿<br>计时器﻿<br><a href="https://workflow.is/workflows/93fd0318d0e14cdaa32c5d021effaa8b" target="_blank" rel="noopener">https://workflow.is/workflows/93fd0318d0e14cdaa32c5d021effaa8b</a>﻿<br>﻿<br>扩展和共享网址﻿<br><a href="https://workflow.is/workflows/acad8115a5564d6ea336b70b87dcab72" target="_blank" rel="noopener">https://workflow.is/workflows/acad8115a5564d6ea336b70b87dcab72</a>﻿<br>﻿<br>合并PDF文件﻿<br><a href="https://workflow.is/workflows/adbb5f464fba4bc68a42a31bf91d1c4c" target="_blank" rel="noopener">https://workflow.is/workflows/adbb5f464fba4bc68a42a31bf91d1c4c</a>﻿<br>﻿<br>抛硬币﻿<br><a href="https://workflow.is/workflows/4e37faab34864e1883c533754c788066" target="_blank" rel="noopener">https://workflow.is/workflows/4e37faab34864e1883c533754c788066</a>﻿<br>﻿<br>货币换算﻿<br><a href="https://workflow.is/workflows/50f0132cbe654370bc35189e1cf31b86" target="_blank" rel="noopener">https://workflow.is/workflows/50f0132cbe654370bc35189e1cf31b86</a>﻿<br>﻿<br>今天的天气﻿<br><a href="https://workflow.is/workflows/cf6db9a3c90c4bc7adec27f739480937" target="_blank" rel="noopener">https://workflow.is/workflows/cf6db9a3c90c4bc7adec27f739480937</a>﻿<br>﻿<br>翻译﻿<br><a href="https://workflow.is/workflows/a51df78f80414edf8469727f892d662d" target="_blank" rel="noopener">https://workflow.is/workflows/a51df78f80414edf8469727f892d662d</a>﻿<br>﻿<br>打开链接并复制密码﻿<br><a href="https://workflow.is/workflows/e5846d5f70db404a914db7c6ae07e6c8" target="_blank" rel="noopener">https://workflow.is/workflows/e5846d5f70db404a914db7c6ae07e6c8</a>﻿<br>﻿<br>通知中心翻页﻿<br><a href="https://workflow.is/workflows/7afbf6fa09204e5e837d52cab41f0497" target="_blank" rel="noopener">https://workflow.is/workflows/7afbf6fa09204e5e837d52cab41f0497</a>﻿<br>﻿<br>读书打卡﻿<br><a href="https://workflow.is/workflows/051cbf0e7741444b88ba1c77d35bd08d" target="_blank" rel="noopener">https://workflow.is/workflows/051cbf0e7741444b88ba1c77d35bd08d</a>﻿<br>﻿<br>﻿<br>流量查询﻿<br><a href="https://workflow.is/workflows/068d7774623245a8849b5a051c41ee6d" target="_blank" rel="noopener">https://workflow.is/workflows/068d7774623245a8849b5a051c41ee6d</a>﻿<br>﻿<br>查询和访问﻿<br><a href="https://workflow.is/workflows/dd00747828a14ebfbddb9aac32432acd" target="_blank" rel="noopener">https://workflow.is/workflows/dd00747828a14ebfbddb9aac32432acd</a>﻿<br>﻿<br>翻译文本﻿<br><a href="https://workflow.is/workflows/8d478a36a8eb41c782cbb74769eeb9b1" target="_blank" rel="noopener">https://workflow.is/workflows/8d478a36a8eb41c782cbb74769eeb9b1</a>﻿<br>﻿<br>安装字体﻿<br><a href="https://workflow.is/workflows/f9da142fe53946cd985459f96d2637e9" target="_blank" rel="noopener">https://workflow.is/workflows/f9da142fe53946cd985459f96d2637e9</a>﻿<br>﻿<br>网易音乐分享到推特﻿<br><a href="https://workflow.is/workflows/dc191b2487e147e489072c801592b10f" target="_blank" rel="noopener">https://workflow.is/workflows/dc191b2487e147e489072c801592b10f</a>﻿<br>﻿<br>通用下载﻿<br><a href="https://workflow.is/workflows/e645d621172347dabbe177fa24ef6a4b" target="_blank" rel="noopener">https://workflow.is/workflows/e645d621172347dabbe177fa24ef6a4b</a>﻿<br>﻿<br>举报 iMessage 垃圾短信﻿<br><a href="https://workflow.is/workflows/98fa7fba0e104daab0c7473d3519cfcd" target="_blank" rel="noopener">https://workflow.is/workflows/98fa7fba0e104daab0c7473d3519cfcd</a>﻿<br>﻿<br>分享最新一张图片﻿<br><a href="https://workflow.is/workflows/4b5e92f0777d4f59a37dbf2de267b79f" target="_blank" rel="noopener">https://workflow.is/workflows/4b5e92f0777d4f59a37dbf2de267b79f</a>﻿<br>﻿<br>扫描二维码﻿<br><a href="https://workflow.is/workflows/2be2c6a4cb1348c684d51075adba803b" target="_blank" rel="noopener">https://workflow.is/workflows/2be2c6a4cb1348c684d51075adba803b</a>﻿<br>﻿<br>向同一个剪贴板里添加内容﻿<br><a href="https://workflow.is/workflows/40f931a7526d4243bb703571565edf9c" target="_blank" rel="noopener">https://workflow.is/workflows/40f931a7526d4243bb703571565edf9c</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="不愿透露姓名的小韩 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/workflow/" rel="tag"># workflow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/27/2017.03.26-bibao/" rel="next" title="详细解释javascript中闭包的概念">
+                <i class="fa fa-chevron-left"></i> 详细解释javascript中闭包的概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/02/2017.04.02bootstrap/" rel="prev" title="使用bootstrap实现图片轮播效果">
+                使用bootstrap实现图片轮播效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="不愿透露姓名的小韩"/>
+            
+              <p class="site-author-name" itemprop="name">不愿透露姓名的小韩</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">107</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神器workflow"><span class="nav-number">1.</span> <span class="nav-text">神器workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow是什么"><span class="nav-number">1.1.</span> <span class="nav-text">workflow是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow的优点"><span class="nav-number">1.2.</span> <span class="nav-text">workflow的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何创建workflow工作流"><span class="nav-number">1.3.</span> <span class="nav-text">如何创建workflow工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">在保存这个工作流之后，我们只需要截屏，打开工作流widget，点击这个工作流，选择分享方式和分享对象，工作流就开始自己运作了，在分享完成之后，工作流会删除最后一张照片并自动关闭。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提供一些额外的工作流"><span class="nav-number">1.4.</span> <span class="nav-text">提供一些额外的工作流</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不愿透露姓名的小韩</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://hhb1994.github.to/2017/03/27/2017.03.27workflow/";
+    this.page.identifier = "2017/03/27/2017.03.27workflow/";
+    this.page.title = '神器workflow介绍';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
+                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="安装 echart.jsnpm npm install echarts --save yarn yarn add echarts 按需加载 ehcart.js全量加载: var echarts &#x3D; require(&amp;apos;echarts&amp;apos;); 默认使用 require(‘echarts’) 得到的是已经加载了所有图表和组件的 ECharts 包，因此体积会比较大，如果在项目中对体积要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts.js 绘制地图&#x2F;图表">
+<meta property="og:url" content="http://hhb1994.github.to/2020/02/11/2020.02.11.echart/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="安装 echart.jsnpm npm install echarts --save yarn yarn add echarts 按需加载 ehcart.js全量加载: var echarts &#x3D; require(&amp;apos;echarts&amp;apos;); 默认使用 require(‘echarts’) 得到的是已经加载了所有图表和组件的 ECharts 包，因此体积会比较大，如果在项目中对体积要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/11/ZvhJqsxPHdt7IKE.png">
+<meta property="og:image" content="https://i.loli.net/2020/02/11/QDVhovzdLZ7Tsyb.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/15/cnpjLi39XClMOFN.png">
+<meta property="article:published_time" content="2020-02-11T06:31:21.809Z">
+<meta property="article:modified_time" content="2020-04-15T06:56:07.441Z">
+<meta property="article:author" content="不愿透露姓名的小韩">
+<meta property="article:tag" content="echarts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/11/ZvhJqsxPHdt7IKE.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2020/02/11/2020.02.11.echart/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>echarts.js 绘制地图/图表 | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2020/02/11/2020.02.11.echart/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不愿透露姓名的小韩"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">echarts.js 绘制地图/图表
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-11 14:31:21" itemprop="dateCreated datePublished" datetime="2020-02-11T14:31:21+08:00">2020-02-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-15 14:56:07" itemprop="dateModified" datetime="2020-04-15T14:56:07+08:00">2020-04-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/02/11/2020.02.11.echart/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/11/2020.02.11.echart/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2020/02/11/2020.02.11.echart/" class="leancloud_visitors" data-flag-title="echarts.js 绘制地图/图表">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装-echart-js"><a href="#安装-echart-js" class="headerlink" title="安装 echart.js"></a>安装 echart.js</h1><p>npm</p>
+<pre><code>npm install echarts --save
+</code></pre><p>yarn</p>
+<pre><code>yarn add echarts
+</code></pre><h1 id="按需加载-ehcart-js"><a href="#按需加载-ehcart-js" class="headerlink" title="按需加载 ehcart.js"></a>按需加载 ehcart.js</h1><p>全量加载:</p>
+<pre><code>var echarts = require(&apos;echarts&apos;);
+</code></pre><p>默认使用 require(‘echarts’) 得到的是已经加载了所有图表和组件的 ECharts 包，因此体积会比较大，如果在项目中对体积要求比较苛刻，也可以只按需引入需要的模块。</p>
+<pre><code>// 引入 ECharts 主模块
+var echarts = require(&apos;echarts/lib/echarts&apos;);
+// 引入柱状图
+require(&apos;echarts/lib/chart/bar&apos;);
+// 引入提示框和标题组件
+require(&apos;echarts/lib/component/tooltip&apos;);
+require(&apos;echarts/lib/component/title&apos;);
+</code></pre><p>可以按需引入的模块列表见 <a href="https://github.com/apache/incubator-echarts/blob/master/index.js" target="_blank" rel="noopener">https://github.com/apache/incubator-echarts/blob/master/index.js</a></p>
+<h1 id="初始化-echart-js"><a href="#初始化-echart-js" class="headerlink" title="初始化 echart.js"></a>初始化 echart.js</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定图表的配置项和数据</span></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: <span class="string">"ECharts 入门示例"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;&#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    data: [<span class="string">"销量"</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  xAxis: &#123;</span><br><span class="line">    data: [<span class="string">"衬衫"</span>, <span class="string">"羊毛衫"</span>, <span class="string">"雪纺衫"</span>, <span class="string">"裤子"</span>, <span class="string">"高跟鞋"</span>, <span class="string">"袜子"</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  yAxis: &#123;&#125;,</span><br><span class="line">  series: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="string">"销量"</span>,</span><br><span class="line">      type: <span class="string">"bar"</span>,</span><br><span class="line">      data: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用刚指定的配置项和数据显示图表。</span></span><br><span class="line">myChart.setOption(option);</span><br></pre></td></tr></table></figure>
+<p>核心就是使用 <code>echart</code>的 <code>setOption</code>方法来显示图表.</p>
+<h1 id="echart-绘制图表"><a href="#echart-绘制图表" class="headerlink" title="echart 绘制图表"></a>echart 绘制图表</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">initTrending() &#123;</span><br><span class="line">     <span class="keyword">this</span>.trendingChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"trending"</span>));</span><br><span class="line">     <span class="keyword">this</span>.trendingChart.setOption(&#123;</span><br><span class="line">       tooltip: &#123;&#125;,</span><br><span class="line">       <span class="comment">//图例</span></span><br><span class="line">       legend: &#123;</span><br><span class="line">         data: [<span class="string">"新增确诊"</span>, <span class="string">"新增治愈"</span>, <span class="string">"死亡人数"</span>]</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment">//横坐标</span></span><br><span class="line">       xAxis: &#123;</span><br><span class="line">         data: [<span class="string">"02.04"</span>, <span class="string">"02.05"</span>, <span class="string">"02.06"</span>, <span class="string">"02.07"</span>, <span class="string">"02.08"</span>, <span class="string">"02.09"</span>, <span class="string">"02.10"</span>]</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment">//纵坐标</span></span><br><span class="line">       yAxis: &#123;&#125;,</span><br><span class="line">       <span class="comment">//数据集合</span></span><br><span class="line">       series: [</span><br><span class="line">         &#123;</span><br><span class="line">           name: <span class="string">"新增确诊"</span>,</span><br><span class="line">           type: <span class="string">"line"</span>,</span><br><span class="line">           <span class="comment">// symbol:true,</span></span><br><span class="line">           color: <span class="string">"#AD443D"</span>,</span><br><span class="line">           smooth: <span class="literal">true</span>,</span><br><span class="line">           data: [<span class="number">80</span>, <span class="number">67</span>, <span class="number">51</span>, <span class="number">42</span>, <span class="number">31</span>, <span class="number">20</span>, <span class="number">11</span>]</span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">           name: <span class="string">"新增治愈"</span>,</span><br><span class="line">           type: <span class="string">"line"</span>,</span><br><span class="line">           color: <span class="string">"#85B89E"</span>,</span><br><span class="line">           smooth: <span class="literal">true</span>,</span><br><span class="line">           data: [<span class="number">6</span>, <span class="number">12</span>, <span class="number">21</span>, <span class="number">23</span>, <span class="number">31</span>, <span class="number">21</span>, <span class="number">27</span>]</span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">           name: <span class="string">"死亡人数"</span>,</span><br><span class="line">           type: <span class="string">"line"</span>,</span><br><span class="line">           color: <span class="string">"grey"</span>,</span><br><span class="line">           smooth: <span class="literal">true</span>,</span><br><span class="line">           data: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">         &#125;</span><br><span class="line">       ]</span><br><span class="line">     &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>效果:</p>
+<p><img src="https://i.loli.net/2020/02/11/ZvhJqsxPHdt7IKE.png" alt="WX20200211-151258@2x.png"></p>
+<h1 id="echart-渲染地图"><a href="#echart-渲染地图" class="headerlink" title="echart 渲染地图"></a>echart 渲染地图</h1><p>首先需要下载地图文件.地图文件分为两种,一种是 <code>.js</code>格式,一种是<code>.json(.geoJson)</code>格式.<br>echart 官方目前不提供地图数据下载,需要从<a href="https://gallery.echartsjs.com/editor.html?c=xmCAi_XNuJ" target="_blank" rel="noopener">https://gallery.echartsjs.com/editor.html?c=xmCAi_XNuJ</a>下载.下载下来的数据格式为<code>.geoJson</code>,<br>关于 geojson 的介绍,可以看下<a href="https://juejin.im/post/5d8e0eaa5188250915506b9b" target="_blank" rel="noopener">https://juejin.im/post/5d8e0eaa5188250915506b9b</a>.<br>我们把需要的地图数据都下载下来备用.</p>
+<h2 id="注册地图"><a href="#注册地图" class="headerlink" title="注册地图"></a>注册地图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.mapChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main"</span>));</span><br><span class="line"></span><br><span class="line">echarts.registerMap(mapName, <span class="built_in">require</span>(<span class="string">`@/static/<span class="subst">$&#123;mapName&#125;</span>.json`</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="根据数据渲染地图不同区域颜色"><a href="#根据数据渲染地图不同区域颜色" class="headerlink" title="根据数据渲染地图不同区域颜色"></a>根据数据渲染地图不同区域颜色</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按需引入 echart 模块</span></span><br><span class="line"><span class="comment">//主模块</span></span><br><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts/lib/echarts"</span>);</span><br><span class="line"><span class="comment">//图标线组件</span></span><br><span class="line"><span class="comment">// require("echarts/lib/chart/line");</span></span><br><span class="line"><span class="comment">//地图图标模块</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/chart/map"</span>);</span><br><span class="line"><span class="comment">//提示框组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/tooltip"</span>);</span><br><span class="line"><span class="comment">//图例组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/legend"</span>);</span><br><span class="line"><span class="comment">//地图组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/geo"</span>);</span><br><span class="line"><span class="comment">//视觉映射组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/visualMap"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义 options</span></span><br><span class="line"></span><br><span class="line">options: &#123;</span><br><span class="line">    <span class="comment">//配置需要的提示框组件</span></span><br><span class="line">        tooltip: &#123;&#125;,</span><br><span class="line">        <span class="comment">//视觉映射组件</span></span><br><span class="line">        visualMap: &#123;</span><br><span class="line">            <span class="comment">//类型:分段式(根据数据大小划分为不同的区段,并根据不同区段来渲染颜色)</span></span><br><span class="line">          type: <span class="string">"piecewise"</span>,</span><br><span class="line">          <span class="comment">//定义不同区段的值域以及对应的颜色</span></span><br><span class="line">          pieces: [</span><br><span class="line">            &#123;</span><br><span class="line">              max: <span class="number">10</span>,</span><br><span class="line">              color: <span class="string">"#FAEBD2"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              min: <span class="number">10</span>,</span><br><span class="line">              max: <span class="number">100</span>,</span><br><span class="line">              color: <span class="string">"#E9A188"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              min: <span class="number">100</span>,</span><br><span class="line">              max: <span class="number">200</span>,</span><br><span class="line">              color: <span class="string">"#D56354"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              min: <span class="number">200</span>,</span><br><span class="line">              max: <span class="number">500</span>,</span><br><span class="line">              color: <span class="string">"#BB3A37"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              min: <span class="number">500</span>,</span><br><span class="line">              color: <span class="string">"#480F10"</span></span><br><span class="line">            &#125;</span><br><span class="line">          ],</span><br><span class="line">          calculable: <span class="literal">true</span>,</span><br><span class="line">          <span class="comment">//对应的数据索引</span></span><br><span class="line">          seriesIndex: [<span class="number">0</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//数据</span></span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="comment">//tooltip 名称</span></span><br><span class="line">            name: <span class="string">"确诊人数"</span>,</span><br><span class="line">            <span class="comment">//类型</span></span><br><span class="line">            type: <span class="string">"map"</span>,</span><br><span class="line">            <span class="comment">//对应 geo 索引</span></span><br><span class="line">            geoIndex: <span class="number">0</span>,</span><br><span class="line">            <span class="comment">//数据(通过 ajax 获取)</span></span><br><span class="line">            data: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name:<span class="string">"name"</span>,</span><br><span class="line">                    value:<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">//地图组件</span></span><br><span class="line">        geo: &#123;</span><br><span class="line">            <span class="comment">//地图名称(需要提前使用registerMap注册)</span></span><br><span class="line">          map: <span class="string">"zhejiang"</span>,</span><br><span class="line">          <span class="comment">//是否允许用户手动缩放</span></span><br><span class="line">          roam: <span class="literal">false</span>,</span><br><span class="line">          <span class="comment">//放大比例</span></span><br><span class="line">          zoom: <span class="number">1.2</span>,</span><br><span class="line">          <span class="comment">//标识名称</span></span><br><span class="line">          label: &#123;</span><br><span class="line">            show: <span class="literal">true</span>,</span><br><span class="line">            color: <span class="string">"rgba(0,0,0,0.4)"</span>,</span><br><span class="line">            fontSize: <span class="number">12</span></span><br><span class="line">          &#125;,</span><br><span class="line">          itemStyle: &#123;</span><br><span class="line">            borderColor: <span class="string">"rgba(0, 0, 0, 0.2)"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          emphasis: &#123;</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              areaColor: <span class="literal">null</span>,</span><br><span class="line">              shadowOffsetX: <span class="number">0</span>,</span><br><span class="line">              shadowOffsetY: <span class="number">0</span>,</span><br><span class="line">              shadowBlur: <span class="number">20</span>,</span><br><span class="line">              borderWidth: <span class="number">0</span>,</span><br><span class="line">              shadowColor: <span class="string">"rgba(0, 0, 0, 0.5)"</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>效果:<br><img src="https://i.loli.net/2020/02/11/QDVhovzdLZ7Tsyb.png" alt="WX20200211-150537@2x.png"></p>
+<h2 id="地图下钻-上浮"><a href="#地图下钻-上浮" class="headerlink" title="地图下钻/上浮"></a>地图下钻/上浮</h2><h3 id="地图下钻"><a href="#地图下钻" class="headerlink" title="地图下钻"></a>地图下钻</h3><p>监听点击事件,根据点击的名称 require 地图,注册地图,修改 options,接着 setOptions 就可以了.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mapChart.on(<span class="string">"click"</span>, (data) =&gt; &#123;</span><br><span class="line">  echarts.registerMap(data.name, <span class="built_in">require</span>(<span class="string">`@/static/<span class="subst">$&#123;data.name&#125;</span>.json`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.options.geo.map = data.name;</span><br><span class="line">  <span class="keyword">this</span>.mapChart.setOption(<span class="keyword">this</span>.options);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="地图上浮"><a href="#地图上浮" class="headerlink" title="地图上浮"></a>地图上浮</h3><p>与地图下钻的方法类似,使用父地图重新渲染就可以了.</p>
+<h2 id="添加地图标点"><a href="#添加地图标点" class="headerlink" title="添加地图标点"></a>添加地图标点</h2><p>在<code>option</code>中添加新的 series,类型为:<code>effectScatter</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">          type: <span class="string">"effectScatter"</span>,</span><br><span class="line">          <span class="comment">//坐标系统,因为我们使用的是geo 组件,所以选择geo.</span></span><br><span class="line">          coordinateSystem: <span class="string">"geo"</span>,</span><br><span class="line">          data: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="comment">//名称</span></span><br><span class="line">              name: <span class="string">"name"</span>,</span><br><span class="line">              <span class="comment">//点的坐标,可以到地图的 json 文件中查找或者从地图 app 中查找.</span></span><br><span class="line"></span><br><span class="line">              value: []</span><br><span class="line">            &#125;</span><br><span class="line">          ],</span><br><span class="line">          <span class="comment">// 标点的大小</span></span><br><span class="line">          symbolSize: <span class="number">12</span>,</span><br><span class="line">          showEffectOn: <span class="string">"render"</span>,</span><br><span class="line">          <span class="comment">//动态效果</span></span><br><span class="line">          rippleEffect: &#123;</span><br><span class="line">            <span class="comment">//周期</span></span><br><span class="line">            period: <span class="number">5</span>,</span><br><span class="line">            <span class="comment">//放大倍数</span></span><br><span class="line">            scale:  <span class="number">6</span></span><br><span class="line">          &#125;,</span><br><span class="line">          itemStyle: &#123;</span><br><span class="line">            color: <span class="string">"#FFB93D"</span>,</span><br><span class="line">            borderWidth: <span class="number">3</span>,</span><br><span class="line">            shadowColor: <span class="string">"rgba(0, 0, 0, 0.5)"</span>,</span><br><span class="line">            shadowBlur: <span class="number">6</span></span><br><span class="line">            <span class="comment">// borderColor: "red"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>如图:</p>
+<p><img src="https://i.loli.net/2020/04/15/cnpjLi39XClMOFN.png" alt="img"></p>
+<p>同时可以监听点击事件,根据 e.name 获取点击的名称.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echart.on(<span class="string">"click"</span>,e=&gt;&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="自定义地图"><a href="#自定义地图" class="headerlink" title="自定义地图"></a>自定义地图</h1><p>打开<a href="http://geojson.io" target="_blank" rel="noopener">http://geojson.io</a>，这是一个可以在线绘制 geoJson 的网站，就是因为它我们才能随心所欲的绘制我们想要的地图样式和 geoJson 数据。<br>绘制好的地图可以以 <code>json</code> 格式下载,在 <code>echart.js</code> 中使用<code>registerMap</code>注册以后就可以使用了.</p>
+<h1 id="附"><a href="#附" class="headerlink" title="附"></a>附</h1><p><a href="https://www.echartsjs.com/zh/api.html#echarts" target="_blank" rel="noopener">echart.js 官方教程</a></p>
+<p><a href="https://www.w3cschool.cn/echarts_tutorial/echarts_tutorial-mec528xa.html" target="_blank" rel="noopener">w3c echart 教程</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="不愿透露姓名的小韩 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/echarts/" rel="tag"># echarts</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/03/2020.02.03.enableHttpOverHttpsWebpage/" rel="next" title="在 chrome 中启用不安全的脚本的解决办法">
+                <i class="fa fa-chevron-left"></i> 在 chrome 中启用不安全的脚本的解决办法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/06/2020.03.06.listenScroll/" rel="prev" title="vue 项目 监听页面滚动并固定元素到顶部">
+                vue 项目 监听页面滚动并固定元素到顶部 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="不愿透露姓名的小韩"/>
+            
+              <p class="site-author-name" itemprop="name">不愿透露姓名的小韩</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">107</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-echart-js"><span class="nav-number">1.</span> <span class="nav-text">安装 echart.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按需加载-ehcart-js"><span class="nav-number">2.</span> <span class="nav-text">按需加载 ehcart.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化-echart-js"><span class="nav-number">3.</span> <span class="nav-text">初始化 echart.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echart-绘制图表"><span class="nav-number">4.</span> <span class="nav-text">echart 绘制图表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echart-渲染地图"><span class="nav-number">5.</span> <span class="nav-text">echart 渲染地图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册地图"><span class="nav-number">5.1.</span> <span class="nav-text">注册地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据数据渲染地图不同区域颜色"><span class="nav-number">5.2.</span> <span class="nav-text">根据数据渲染地图不同区域颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地图下钻-上浮"><span class="nav-number">5.3.</span> <span class="nav-text">地图下钻&#x2F;上浮</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地图下钻"><span class="nav-number">5.3.1.</span> <span class="nav-text">地图下钻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地图上浮"><span class="nav-number">5.3.2.</span> <span class="nav-text">地图上浮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加地图标点"><span class="nav-number">5.4.</span> <span class="nav-text">添加地图标点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义地图"><span class="nav-number">6.</span> <span class="nav-text">自定义地图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附"><span class="nav-number">7.</span> <span class="nav-text">附</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不愿透露姓名的小韩</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://hhb1994.github.to/2020/02/11/2020.02.11.echart/";
+    this.page.identifier = "2020/02/11/2020.02.11.echart/";
+    this.page.title = 'echarts.js 绘制地图/图表';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
+                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
