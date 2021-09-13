@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vue组件通信1.props&#x2F;$emit父传子:props 子传父:emit 2.provide&#x2F;inject在父组件用provide提供数据,在子组件用 inject 接收数据 3.vuex数据管理模式 4.$parent&#x2F;$child子组件内部通过$parent对父组件操作 父组件内部通过 $children 对子组件操作 5.eventbus使用一个空的vue实例作为中央事件总线, 使用$e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识点总结">
+<meta property="og:url" content="http://hhb1994.github.to/2021/09/13/2021.09.13.fe/index.html">
+<meta property="og:site_name" content="ARTORIAS">
+<meta property="og:description" content="vue组件通信1.props&#x2F;$emit父传子:props 子传父:emit 2.provide&#x2F;inject在父组件用provide提供数据,在子组件用 inject 接收数据 3.vuex数据管理模式 4.$parent&#x2F;$child子组件内部通过$parent对父组件操作 父组件内部通过 $children 对子组件操作 5.eventbus使用一个空的vue实例作为中央事件总线, 使用$e">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/09/07/FCkXmqIdQ8AKchi.png">
+<meta property="article:published_time" content="2021-09-13T07:22:26.781Z">
+<meta property="article:modified_time" content="2021-09-13T07:22:43.867Z">
+<meta property="article:author" content="不愿透露姓名的小韩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/07/FCkXmqIdQ8AKchi.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://hhb1994.github.to/2021/09/13/2021.09.13.fe/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端知识点总结 | ARTORIAS</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ARTORIAS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">like sing ,dance,rap & 🏀</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2021/09/13/2021.09.13.fe/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不愿透露姓名的小韩"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识点总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-09-13 15:22:26 / 修改时间：15:22:43" itemprop="dateCreated datePublished" datetime="2021-09-13T15:22:26+08:00">2021-09-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2021/09/13/2021.09.13.fe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/13/2021.09.13.fe/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2021/09/13/2021.09.13.fe/" class="leancloud_visitors" data-flag-title="前端知识点总结">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vue组件通信"><a href="#vue组件通信" class="headerlink" title="vue组件通信"></a>vue组件通信</h2><h3 id="1-props-emit"><a href="#1-props-emit" class="headerlink" title="1.props/$emit"></a>1.props/$emit</h3><p>父传子:<code>props</code></p>
+<p>子传父:<code>emit</code></p>
+<h3 id="2-provide-inject"><a href="#2-provide-inject" class="headerlink" title="2.provide/inject"></a>2.provide/inject</h3><p>在父组件用<code>provide</code>提供数据,在子组件用 <code>inject</code> 接收数据</p>
+<h3 id="3-vuex"><a href="#3-vuex" class="headerlink" title="3.vuex"></a>3.vuex</h3><p>数据管理模式</p>
+<h3 id="4-parent-child"><a href="#4-parent-child" class="headerlink" title="4.$parent/$child"></a>4.$parent/$child</h3><p>子组件内部通过$parent对父组件操作</p>
+<p>父组件内部通过 $children 对子组件操作</p>
+<h3 id="5-eventbus"><a href="#5-eventbus" class="headerlink" title="5.eventbus"></a>5.eventbus</h3><p>使用一个空的vue实例作为中央事件总线,</p>
+<p>使用$emit 发送事件</p>
+<p>使用$on来接收</p>
+<h3 id="6-attrs-listeners"><a href="#6-attrs-listeners" class="headerlink" title="6.$attrs/$listeners"></a>6.$attrs/$listeners</h3><h2 id="css垂直居中"><a href="#css垂直居中" class="headerlink" title="css垂直居中"></a>css垂直居中</h2><h3 id="设置行高-适用于单行文本"><a href="#设置行高-适用于单行文本" class="headerlink" title="设置行高(适用于单行文本)"></a>设置行高(适用于单行文本)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="position-absolute-margin-top"><a href="#position-absolute-margin-top" class="headerlink" title="position:absolute/margin-top"></a>position:absolute/margin-top</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#child</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: -<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="设置padding-top-padding-bottom"><a href="#设置padding-top-padding-bottom" class="headerlink" title="设置padding-top/padding-bottom"></a>设置padding-top/padding-bottom</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> &#123;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">align-items</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前端设计模式"><a href="#前端设计模式" class="headerlink" title="前端设计模式"></a>前端设计模式</h2><ul>
+<li>单例模式</li>
+</ul>
+<blockquote>
+<p>确保一个类只有一个实例,一般用于全局缓存,可以通过闭包来实现</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> single = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="comment">// 如果该实例存在，则直接返回，否则就对其实例化</span></span><br><span class="line">        <span class="keyword">if</span>( instance=== <span class="literal">undefined</span> )&#123;</span><br><span class="line">            instance= <span class="keyword">new</span> Construct();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// ... 生成单例的构造函数的代码</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getInstance : getInstance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>工厂模式</li>
+</ul>
+<blockquote>
+<p>创建对象的<code>常用设计模式</code>,为了不暴露创建对象的具体逻辑,将逻辑封装在一个函数中,这个函数就称为一个工厂</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安全模式创建的工厂方法函数</span></span><br><span class="line"><span class="keyword">let</span> UserFactory = <span class="function"><span class="keyword">function</span>(<span class="params">role</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> UserFactory) &#123;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> <span class="keyword">this</span>[role]();</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UserFactory(role);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//工厂方法函数的原型中设置所有对象的构造函数</span></span><br><span class="line">UserFactory.prototype = &#123;</span><br><span class="line">  SuperAdmin: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"超级管理员"</span>,</span><br><span class="line">    <span class="keyword">this</span>.viewPage = [<span class="string">'首页'</span>, <span class="string">'通讯录'</span>, <span class="string">'发现页'</span>, <span class="string">'应用数据'</span>, <span class="string">'权限管理'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  Admin: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"管理员"</span>,</span><br><span class="line">    <span class="keyword">this</span>.viewPage = [<span class="string">'首页'</span>, <span class="string">'通讯录'</span>, <span class="string">'发现页'</span>, <span class="string">'应用数据'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  NormalUser: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'普通用户'</span>,</span><br><span class="line">    <span class="keyword">this</span>.viewPage = [<span class="string">'首页'</span>, <span class="string">'通讯录'</span>, <span class="string">'发现页'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">let</span> superAdmin = UserFactory(<span class="string">'SuperAdmin'</span>);</span><br><span class="line"><span class="keyword">let</span> admin = UserFactory(<span class="string">'Admin'</span>) </span><br><span class="line"><span class="keyword">let</span> normalUser = UserFactory(<span class="string">'NormalUser'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代理模式</li>
+</ul>
+<blockquote>
+<p>代理模式为其他对象提供一种代理,当其他对象直接访问该对象时,如果开销较大,就可以通过这个代理层来控制该对象的访问</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 目标对象，是真正被代理的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Subject</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    Subject.prototype.request = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Proxy</span>(<span class="params">realSubject</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.realSubject = realSubject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Proxy</span>.prototype.request = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.realSubject.request();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>观察者模式</li>
+</ul>
+<blockquote>
+<p>也叫发布/订阅模式,一个订阅者和一个发布者,当一个特定的时间发生时,发布者会通知调用所有的订阅者.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventCenter = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> events = &#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">on</span>(<span class="params">event, handler</span>)</span>&#123;</span><br><span class="line">        events[event] = events[event] || [];</span><br><span class="line">        events[event].push(&#123;</span><br><span class="line">            handler: handler</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fire</span>(<span class="params">event, args</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!events[event]) &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; events[event].length; i++) &#123;</span><br><span class="line">            events[event][i].handler(args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">off</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">delete</span> events[event];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        on: on,</span><br><span class="line">        fire: fire,</span><br><span class="line">        off: off</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">EventCenter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'event received...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模块模式</li>
+</ul>
+<blockquote>
+<p>可以指定想暴露的属性和方法,并且不会污染全局.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'xxx'</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(name)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        name: name,</span><br><span class="line">        sayName: sayName</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数模式和混合模式</li>
+</ul>
+<blockquote>
+<p>构造函数和混合模式就是js中继承的两种实现方式，前者通过构造函数的形式定义类，通过new新增实例。而后者是将构造函数的引用属性和方法放到其原型上，子类是父类原型的一个实例。</p>
+</blockquote>
+<h2 id="js实现继承的方法"><a href="#js实现继承的方法" class="headerlink" title="js实现继承的方法"></a>js实现继承的方法</h2><p>定义父类:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个动物类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 属性</span></span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Animal'</span>;</span><br><span class="line">  <span class="comment">// 实例方法</span></span><br><span class="line">  <span class="keyword">this</span>.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在睡觉！'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型方法</span></span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在吃：'</span> + food);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>原型链继承</li>
+</ul>
+<p>将父类的实例作为子类的原型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Cat.prototype.name = <span class="string">'cat'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//　Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.eat(<span class="string">'fish'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">//true </span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造继承</li>
+</ul>
+<p>使用父类的构造函数来增强子类实例,等于复制父类的实例属性给子类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>实例继承</li>
+</ul>
+<p>为父类实例添加新特性,作为子类的实例返回</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="keyword">new</span> Animal();</span><br><span class="line">  instance.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">  <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>组合继承</li>
+</ul>
+<p>通过调用父类构造,继承父类的属性并保留传参的优点,然后通过将父类的实例作为子类原型实现函数复用.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>继承组合继承</li>
+</ul>
+<p>通过寄生方式,砍掉父类的实例属性,这样在调用父类的构造时,就不会初始化两次实例方法/属性.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 创建一个没有实例方法的类</span></span><br><span class="line">  <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  Super.prototype = Animal.prototype;</span><br><span class="line">  <span class="comment">//将实例作为子类的原型</span></span><br><span class="line">  Cat.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></span><br><span class="line">Cat.prototype.constructor = Cat; <span class="comment">// 需要修复下构造函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="前端优化图片加载"><a href="#前端优化图片加载" class="headerlink" title="前端优化图片加载"></a>前端优化图片加载</h2><ul>
+<li>对于较小的图片考虑base64</li>
+<li>图片懒加载</li>
+<li>图片压缩</li>
+<li>cdn</li>
+<li>雪碧图</li>
+</ul>
+<h2 id="面向对象语言的特征"><a href="#面向对象语言的特征" class="headerlink" title="面向对象语言的特征"></a>面向对象语言的特征</h2><ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h2 id="确定数据类型"><a href="#确定数据类型" class="headerlink" title="确定数据类型"></a>确定数据类型</h2><ul>
+<li>typeof</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)   ------------&gt; string</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b)   ------------&gt; number</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> c)   ------------&gt; object</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> d)   ------------&gt; object</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> e)   ------------&gt; <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function"><span class="title">console</span>.<span class="title">log</span>(<span class="params">typeof f</span>)   ------------&gt; <span class="title">function</span></span></span><br><span class="line"><span class="function">其中<span class="title">typeof</span>返回的类型都是字符串形式，需注意，例如：</span></span><br><span class="line"><span class="function"><span class="title">console</span>.<span class="title">log</span>(<span class="params">typeof a == <span class="string">"string"</span></span>) -------------&gt; <span class="title">true</span></span></span><br><span class="line"><span class="function"><span class="title">console</span>.<span class="title">log</span>(<span class="params">typeof a == String</span>) ---------------&gt; <span class="title">false</span></span></span><br><span class="line"><span class="function">另外<span class="title">typeof</span> 可以判断<span class="title">function</span>的类型；在判断除<span class="title">Object</span>类型的对象时比较方便。</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>instanceof</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(c <span class="keyword">instanceof</span> <span class="built_in">Array</span>) ---------------&gt; <span class="literal">true</span></span><br><span class="line">alert(d <span class="keyword">instanceof</span> <span class="built_in">Date</span>) </span><br><span class="line">alert(f <span class="keyword">instanceof</span> <span class="built_in">Function</span>) ------------&gt; <span class="literal">true</span></span><br><span class="line">alert(f <span class="keyword">instanceof</span> <span class="function"><span class="keyword">function</span>) ------------&gt; <span class="title">false</span></span></span><br><span class="line"><span class="function">注意：<span class="title">instanceof</span> 后面一定要是对象类型，并且大小写不能错，该方法适合一些条件选择或分支。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Object.prototype.toString.call()</p>
+</li>
+</ul>
+<h2 id="事件执行机制"><a href="#事件执行机制" class="headerlink" title="事件执行机制"></a>事件执行机制</h2><p>事件机制会经历三个阶段:</p>
+<ul>
+<li>捕获阶段</li>
+<li>触发阶段</li>
+<li>冒泡阶段</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(eventName,handler,useCapture);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>event 时间名称</li>
+<li>handler 回调函数</li>
+<li>useCapture 执行机制(当useCapture==true)是在捕获阶段实行,否则在冒泡阶段执行.</li>
+</ul>
+<p>捕获阶段由内到外,冒泡阶段由外到内</p>
+<h2 id="回流-重绘"><a href="#回流-重绘" class="headerlink" title="回流/重绘"></a>回流/重绘</h2><p>渲染树=dom树+css对象模型树</p>
+<p>渲染树布局生成盒模型</p>
+<p><img src="https://i.loli.net/2021/09/07/FCkXmqIdQ8AKchi.png" alt="img"></p>
+<p>回流必定导致重绘</p>
+<p>重绘不会回流</p>
+<p>导致回流的原因(dom尺寸变化,添加修改):</p>
+<ul>
+<li>宽高变化</li>
+<li>display:none</li>
+<li>浏览器窗口大小改变等</li>
+</ul>
+<p>导致重绘的原因(颜色变化)</p>
+<ul>
+<li>background-color变化</li>
+<li>color 变化等等</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>thank u !</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="https://i.loli.net/2019/06/14/5d02fd501cb3772530.jpg" alt="不愿透露姓名的小韩 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/06/2021.09.06.algorithmLearing/" rel="next" title="algorithmLearing">
+                <i class="fa fa-chevron-left"></i> algorithmLearing
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"
+                alt="不愿透露姓名的小韩"/>
+            
+              <p class="site-author-name" itemprop="name">不愿透露姓名的小韩</p>
+              <div class="site-description motion-element" itemprop="description">a blog to improve myself🚀</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">116</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hhb1994" title="GitHub &rarr; https://github.com/hhb1994" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hanhb1994924@gmail.com" title="E-Mail &rarr; mailto:hanhb1994924@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue组件通信"><span class="nav-number">1.</span> <span class="nav-text">vue组件通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-props-emit"><span class="nav-number">1.1.</span> <span class="nav-text">1.props&#x2F;$emit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-provide-inject"><span class="nav-number">1.2.</span> <span class="nav-text">2.provide&#x2F;inject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-vuex"><span class="nav-number">1.3.</span> <span class="nav-text">3.vuex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-parent-child"><span class="nav-number">1.4.</span> <span class="nav-text">4.$parent&#x2F;$child</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-eventbus"><span class="nav-number">1.5.</span> <span class="nav-text">5.eventbus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-attrs-listeners"><span class="nav-number">1.6.</span> <span class="nav-text">6.$attrs&#x2F;$listeners</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css垂直居中"><span class="nav-number">2.</span> <span class="nav-text">css垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置行高-适用于单行文本"><span class="nav-number">2.1.</span> <span class="nav-text">设置行高(适用于单行文本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-absolute-margin-top"><span class="nav-number">2.2.</span> <span class="nav-text">position:absolute&#x2F;margin-top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置padding-top-padding-bottom"><span class="nav-number">2.3.</span> <span class="nav-text">设置padding-top&#x2F;padding-bottom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">2.4.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端设计模式"><span class="nav-number">3.</span> <span class="nav-text">前端设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js实现继承的方法"><span class="nav-number">4.</span> <span class="nav-text">js实现继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端优化图片加载"><span class="nav-number">5.</span> <span class="nav-text">前端优化图片加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象语言的特征"><span class="nav-number">6.</span> <span class="nav-text">面向对象语言的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定数据类型"><span class="nav-number">7.</span> <span class="nav-text">确定数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件执行机制"><span class="nav-number">8.</span> <span class="nav-text">事件执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回流-重绘"><span class="nav-number">9.</span> <span class="nav-text">回流&#x2F;重绘</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不愿透露姓名的小韩</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://hhb1994.github.to/2021/09/13/2021.09.13.fe/";
+    this.page.identifier = "2021/09/13/2021.09.13.fe/";
+    this.page.title = '前端知识点总结';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://h123.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
+                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

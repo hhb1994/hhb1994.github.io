@@ -99,7 +99,7 @@
   <meta name="description" content="a blog to improve myself🚀">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ARTORIAS">
-<meta property="og:url" content="http://hhb1994.github.to/tags/Linux/index.html">
+<meta property="og:url" content="http://hhb1994.github.to/tags/linux/index.html">
 <meta property="og:site_name" content="ARTORIAS">
 <meta property="og:description" content="a blog to improve myself🚀">
 <meta property="og:locale" content="zh_CN">
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://hhb1994.github.to/tags/Linux/"/>
+  <link rel="canonical" href="http://hhb1994.github.to/tags/linux/"/>
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>标签: Linux | ARTORIAS</title>
+  <title>标签: linux | ARTORIAS</title>
   
 
 
@@ -386,7 +386,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Linux<small>标签</small>
+        <h1>linux<small>标签</small>
         </h1>
       </div>
 
@@ -398,9 +398,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/01/09/2019.01.09.linuxCommand/" itemprop="url">
+          <a class="post-title-link" href="/2020/08/18/2020.08.18.enablevideostation/" itemprop="url">
             
-              <span itemprop="name">Linux常用命令</span>
+              <span itemprop="name">如何让群辉 NAS 的 Video Station 重新正确获取元数据</span>
             
           </a>
         
@@ -408,9 +408,65 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-09T12:54:50+08:00"
-              content="2019-01-09">
-          01-09
+              datetime="2020-08-18T17:06:18+08:00"
+              content="2020-08-18">
+          08-18
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/07/03/2019.07.03.mac.chmod/" itemprop="url">
+            
+              <span itemprop="name">使用 chmod 修改 mac 文件权限</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-07-03T10:02:26+08:00"
+              content="2019-07-03">
+          07-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/07/01/2019.07.01.linux-screen/" itemprop="url">
+            
+              <span itemprop="name">linux 主机部署 ArchiSteamFarm</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-07-01T15:22:30+08:00"
+              content="2019-07-01">
+          07-01
         </time>
       </div>
 
@@ -471,7 +527,7 @@
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-count">116</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1263,77 +1319,6 @@
             var element = document.getElementById(url);
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'uxesVc8gSXs2UQAE99VJ3htO-9Nh9j0Va',
-                'X-LC-Key': 'XJjT2wuj1dJqoc46ioVTSKch',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
-       $(element).find(COUNT_CONTAINER_REF).text(time);
           }
           for (var i = 0; i < entries.length; i++) {
             var url = entries[i];
