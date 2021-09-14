@@ -374,6 +374,223 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2021/09/14/2021.09.14.cache-control/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不愿透露姓名的小韩"/>
+      <meta itemprop="description" content="a blog to improve myself🚀"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ARTORIAS"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/09/14/2021.09.14.cache-control/" class="post-title-link" itemprop="url">浏览器缓存机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-09-14 10:13:11 / 修改时间：10:38:44" itemprop="dateCreated datePublished" datetime="2021-09-14T10:13:11+08:00">2021-09-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2021/09/14/2021.09.14.cache-control/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/14/2021.09.14.cache-control/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2021/09/14/2021.09.14.cache-control/" class="leancloud_visitors" data-flag-title="浏览器缓存机制">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+浏览器与服务器通信的方式为应答模式,即浏览器发起请求,服务端响应请求,那么浏览器第一次发起请求后拿到请求结果, 会根据响应报文中http头的缓存标识决定是否缓存结果.
+
+
+
+浏览器在每次发起请求,都会在浏览器缓存中查找该请求的结果以及缓存标识
+浏览器每次拿到返回的请求结果都会将请求结果以及标识存入浏览器缓存
+
+强制缓存
+向浏览器缓存查找结果,并根据该结果的缓存规则来决定是否使用缓存结果
+
+不考虑协商缓存的情况下,存在以下三种情形:
+
+不存在强制缓存结果以及缓存标识,强制缓存失败,此时直接向服务器发起请求,与第一次向服务器发起请求相同
+
+
+
+
+存在强制缓存,但是已失效,则使用协商缓存
+
+
+
+存
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2021/09/14/2021.09.14.cache-control/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2021/09/13/2021.09.13.fe/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -419,12 +636,24 @@
                 
               
 
-              <time title="创建时间：2021-09-13 15:22:26 / 修改时间：15:22:43" itemprop="dateCreated datePublished" datetime="2021-09-13T15:22:26+08:00">2021-09-13</time>
+              <time title="创建时间：2021-09-13 15:22:26" itemprop="dateCreated datePublished" datetime="2021-09-13T15:22:26+08:00">2021-09-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-09-14 09:16:39" itemprop="dateModified" datetime="2021-09-14T09:16:39+08:00">2021-09-14</time>
               
             
           </span>
@@ -2200,185 +2429,6 @@ antd-mobile
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hhb1994.github.to/2021/07/06/2021.03.29.jssort/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不愿透露姓名的小韩"/>
-      <meta itemprop="description" content="a blog to improve myself🚀"/>
-      <meta itemprop="image" content="https://i.loli.net/2019/06/13/5d020f29e45b438739.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ARTORIAS"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/07/06/2021.03.29.jssort/" class="post-title-link" itemprop="url">2021.03.29.jssort</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-07-06 09:06:34" itemprop="dateCreated datePublished" datetime="2021-07-06T09:06:34+08:00">2021-07-06</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2021/07/06/2021.03.29.jssort/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/07/06/2021.03.29.jssort/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2021/07/06/2021.03.29.jssort/" class="leancloud_visitors" data-flag-title="2021.03.29.jssort">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-title:js排序实现tags:[sort]
-categories:随笔1.冒泡排序
-1.从头开始遍历数组的两个相邻元素,如果第一个比较大,则交换顺序,否则不变,这样一轮下来,最后一个数字为最大的数字;
-2.对除了最后一个数以外的数据进行遍历,直到只剩下一个数;
-
-function bubbleSort(arr: Array&lt;number&gt;) &#123;    let arrLength = arr.length    // for    for (let i = arrLength - 1; i &gt; 0; i--) &#123;        for (let j =
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2021/07/06/2021.03.29.jssort/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2429,7 +2479,7 @@ function bubbleSort(arr: Array&lt;number&gt;) &#123;    let arrLength = arr.leng
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">116</span>
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

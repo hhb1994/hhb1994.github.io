@@ -104,8 +104,9 @@
 <meta property="og:description" content="vue组件通信1.props&#x2F;$emit父传子:props 子传父:emit 2.provide&#x2F;inject在父组件用provide提供数据,在子组件用 inject 接收数据 3.vuex数据管理模式 4.$parent&#x2F;$child子组件内部通过$parent对父组件操作 父组件内部通过 $children 对子组件操作 5.eventbus使用一个空的vue实例作为中央事件总线, 使用$e">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/09/07/FCkXmqIdQ8AKchi.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/14/4ehpyTXWf65CmZg.png">
 <meta property="article:published_time" content="2021-09-13T07:22:26.781Z">
-<meta property="article:modified_time" content="2021-09-13T07:22:43.867Z">
+<meta property="article:modified_time" content="2021-09-14T01:16:39.418Z">
 <meta property="article:author" content="不愿透露姓名的小韩">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/09/07/FCkXmqIdQ8AKchi.png">
@@ -422,12 +423,24 @@
                 
               
 
-              <time title="创建时间：2021-09-13 15:22:26 / 修改时间：15:22:43" itemprop="dateCreated datePublished" datetime="2021-09-13T15:22:26+08:00">2021-09-13</time>
+              <time title="创建时间：2021-09-13 15:22:26" itemprop="dateCreated datePublished" datetime="2021-09-13T15:22:26+08:00">2021-09-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-09-14 09:16:39" itemprop="dateModified" datetime="2021-09-14T09:16:39+08:00">2021-09-14</time>
               
             
           </span>
@@ -636,6 +649,63 @@
 <li>background-color变化</li>
 <li>color 变化等等</li>
 </ul>
+<h2 id="如何优化前端性能"><a href="#如何优化前端性能" class="headerlink" title="如何优化前端性能"></a>如何优化前端性能</h2><h3 id="减少http请求"><a href="#减少http请求" class="headerlink" title="减少http请求"></a>减少http请求</h3><p>一个完整的http请求,需要经历dns查询/tcp握手/客户端http请求/服务端接收请求/服务端处理请求并发回响应/浏览器接收响应等过程.</p>
+<p>通过将多个小文件合并为一个大文件,可以减少http请求的此时.</p>
+<h3 id="使用-http2"><a href="#使用-http2" class="headerlink" title="使用 http2"></a>使用 http2</h3><p>http2的优点</p>
+<ul>
+<li>解析速度快(http2是基于帧的协议)</li>
+<li>多路复用(多个请求共用一个http连接)</li>
+<li>首部压缩</li>
+<li>优先级</li>
+<li>流量控制</li>
+<li>服务端推送</li>
+</ul>
+<h3 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h3><p>ssr</p>
+<h3 id="静态资源使用cdn"><a href="#静态资源使用cdn" class="headerlink" title="静态资源使用cdn"></a>静态资源使用cdn</h3><h3 id="css文件放在头部-js文件放在底部"><a href="#css文件放在头部-js文件放在底部" class="headerlink" title="css文件放在头部/js文件放在底部"></a>css文件放在头部/js文件放在底部</h3><h3 id="使用字体图标iconfont代替图片图标"><a href="#使用字体图标iconfont代替图片图标" class="headerlink" title="使用字体图标iconfont代替图片图标"></a>使用字体图标iconfont代替图片图标</h3><h3 id="善用缓存"><a href="#善用缓存" class="headerlink" title="善用缓存"></a>善用缓存</h3><h3 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h3><ul>
+<li>JavaScript：UglifyPlugin</li>
+<li>CSS ：MiniCssExtractPlugin</li>
+<li>HTML：HtmlWebpackPlugin</li>
+<li>gzip压缩(accept-encoding:gzip)</li>
+</ul>
+<h3 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h3><ul>
+<li>图片延迟加载</li>
+<li>响应式图片</li>
+<li>调整图片大小</li>
+<li>降低图片质量</li>
+<li>使用css3替代图片</li>
+<li>使用webp格式的图片</li>
+</ul>
+<h3 id="通过webpack按需加载代码"><a href="#通过webpack按需加载代码" class="headerlink" title="通过webpack按需加载代码"></a>通过webpack按需加载代码</h3><h4 id="根据文件内容生成文件名-结合import动态引入组件实现按需加载"><a href="#根据文件内容生成文件名-结合import动态引入组件实现按需加载" class="headerlink" title="根据文件内容生成文件名,结合import动态引入组件实现按需加载"></a>根据文件内容生成文件名,结合import动态引入组件实现按需加载</h4><h4 id="提取第三方库"><a href="#提取第三方库" class="headerlink" title="提取第三方库"></a>提取第三方库</h4><h3 id="减少重绘重拍"><a href="#减少重绘重拍" class="headerlink" title="减少重绘重拍"></a>减少重绘重拍</h3><p>浏览器渲染过程</p>
+<ul>
+<li>解析html生成dom树</li>
+<li>解析css生成css规则树</li>
+<li>将dom树与css树合并生成渲染树</li>
+<li>遍历渲染树开始布局,计算每个节点的位置大小信息</li>
+<li>将渲染树每个节点绘制到屏幕</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/14/4ehpyTXWf65CmZg.png" alt="img"></p>
+<ul>
+<li>重拍</li>
+</ul>
+<p>当改变 DOM 元素位置或大小时，会导致浏览器重新生成渲染树，这个过程叫重排。</p>
+<ul>
+<li>重绘</li>
+</ul>
+<p>当重新生成渲染树后，就要将渲染树每个节点绘制到屏幕，这个过程叫重绘。不是所有的动作都会导致重排，例如改变字体颜色，只会导致重绘。记住，重排会导致重绘，重绘不会导致重排 。</p>
+<h3 id="使用事件委托"><a href="#使用事件委托" class="headerlink" title="使用事件委托"></a>使用事件委托</h3><p>时间委托利用了事件冒泡,只指定一个时间处理程序,就可以管理某一类型的所有事件.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;苹果&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;li&gt;香蕉&lt;/</span>li&gt;</span><br><span class="line">  &lt;li&gt;凤梨&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>).onclick = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> target = event.target</span><br><span class="line">  <span class="keyword">if</span> (target.nodeName === <span class="string">'LI'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>).forEach(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  e.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.innerHTML)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="使用requestAnimationFrame"><a href="#使用requestAnimationFrame" class="headerlink" title="使用requestAnimationFrame"></a>使用requestAnimationFrame</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * If run as a requestAnimationFrame callback, this</span></span><br><span class="line"><span class="comment"> * will be run at the start of the frame.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateScreen</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Make visual updates here.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">requestAnimationFrame(updateScreen);</span><br></pre></td></tr></table></figure>
+<h3 id="使用位操作"><a href="#使用位操作" class="headerlink" title="使用位操作"></a>使用位操作</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取模</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (value % <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="comment">// 奇数</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 偶数 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 位操作</span></span><br><span class="line"><span class="keyword">if</span> (value &amp; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 奇数</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 偶数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取整</span></span><br><span class="line">~~<span class="number">10.12</span> <span class="comment">// 10</span></span><br><span class="line">~~<span class="number">10</span> <span class="comment">// 10</span></span><br><span class="line">~~<span class="string">'1.5'</span> <span class="comment">// 1</span></span><br><span class="line">~~<span class="literal">undefined</span> <span class="comment">// 0</span></span><br><span class="line">~~<span class="literal">null</span> <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位掩码</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span></span><br><span class="line"><span class="keyword">const</span> c = <span class="number">4</span></span><br><span class="line"><span class="keyword">const</span> options = a | b | c</span><br></pre></td></tr></table></figure>
+<h3 id="不要覆盖原生方法"><a href="#不要覆盖原生方法" class="headerlink" title="不要覆盖原生方法"></a>不要覆盖原生方法</h3><h3 id="降低css选择器的复杂性"><a href="#降低css选择器的复杂性" class="headerlink" title="降低css选择器的复杂性"></a>降低css选择器的复杂性</h3><h4 id="浏览器读取选择器原则-从右到左"><a href="#浏览器读取选择器原则-从右到左" class="headerlink" title="浏览器读取选择器原则:从右到左"></a>浏览器读取选择器原则:从右到左</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#block</span> <span class="selector-class">.text</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找所有的 <code>p</code>元素</li>
+<li>查找结果1中是否有类名为<code>text</code></li>
+<li>查找结果2中是否有id为<code>block</code></li>
+</ul>
+<h4 id="css选择器优先级"><a href="#css选择器优先级" class="headerlink" title="css选择器优先级"></a>css选择器优先级</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内联 &gt; ID选择器 &gt; 类选择器 &gt; 标签选择器</span><br></pre></td></tr></table></figure>
+<h3 id="使用flex布局"><a href="#使用flex布局" class="headerlink" title="使用flex布局"></a>使用flex布局</h3><h3 id="使用transform和opacity属性更改来实现动画"><a href="#使用transform和opacity属性更改来实现动画" class="headerlink" title="使用transform和opacity属性更改来实现动画"></a>使用transform和opacity属性更改来实现动画</h3><p><code>transform</code>和<code>opacity</code>属性的更改不会导致触发重绘与重拍.</p>
 
       
     </div>
@@ -703,6 +773,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/09/14/2021.09.14.cache-control/" rel="prev" title="浏览器缓存机制">
+                浏览器缓存机制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -782,7 +856,7 @@
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">116</span>
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1064,7 +1138,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue组件通信"><span class="nav-number">1.</span> <span class="nav-text">vue组件通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-props-emit"><span class="nav-number">1.1.</span> <span class="nav-text">1.props&#x2F;$emit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-provide-inject"><span class="nav-number">1.2.</span> <span class="nav-text">2.provide&#x2F;inject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-vuex"><span class="nav-number">1.3.</span> <span class="nav-text">3.vuex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-parent-child"><span class="nav-number">1.4.</span> <span class="nav-text">4.$parent&#x2F;$child</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-eventbus"><span class="nav-number">1.5.</span> <span class="nav-text">5.eventbus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-attrs-listeners"><span class="nav-number">1.6.</span> <span class="nav-text">6.$attrs&#x2F;$listeners</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css垂直居中"><span class="nav-number">2.</span> <span class="nav-text">css垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置行高-适用于单行文本"><span class="nav-number">2.1.</span> <span class="nav-text">设置行高(适用于单行文本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-absolute-margin-top"><span class="nav-number">2.2.</span> <span class="nav-text">position:absolute&#x2F;margin-top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置padding-top-padding-bottom"><span class="nav-number">2.3.</span> <span class="nav-text">设置padding-top&#x2F;padding-bottom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">2.4.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端设计模式"><span class="nav-number">3.</span> <span class="nav-text">前端设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js实现继承的方法"><span class="nav-number">4.</span> <span class="nav-text">js实现继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端优化图片加载"><span class="nav-number">5.</span> <span class="nav-text">前端优化图片加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象语言的特征"><span class="nav-number">6.</span> <span class="nav-text">面向对象语言的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定数据类型"><span class="nav-number">7.</span> <span class="nav-text">确定数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件执行机制"><span class="nav-number">8.</span> <span class="nav-text">事件执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回流-重绘"><span class="nav-number">9.</span> <span class="nav-text">回流&#x2F;重绘</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue组件通信"><span class="nav-number">1.</span> <span class="nav-text">vue组件通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-props-emit"><span class="nav-number">1.1.</span> <span class="nav-text">1.props&#x2F;$emit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-provide-inject"><span class="nav-number">1.2.</span> <span class="nav-text">2.provide&#x2F;inject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-vuex"><span class="nav-number">1.3.</span> <span class="nav-text">3.vuex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-parent-child"><span class="nav-number">1.4.</span> <span class="nav-text">4.$parent&#x2F;$child</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-eventbus"><span class="nav-number">1.5.</span> <span class="nav-text">5.eventbus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-attrs-listeners"><span class="nav-number">1.6.</span> <span class="nav-text">6.$attrs&#x2F;$listeners</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css垂直居中"><span class="nav-number">2.</span> <span class="nav-text">css垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置行高-适用于单行文本"><span class="nav-number">2.1.</span> <span class="nav-text">设置行高(适用于单行文本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-absolute-margin-top"><span class="nav-number">2.2.</span> <span class="nav-text">position:absolute&#x2F;margin-top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置padding-top-padding-bottom"><span class="nav-number">2.3.</span> <span class="nav-text">设置padding-top&#x2F;padding-bottom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">2.4.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端设计模式"><span class="nav-number">3.</span> <span class="nav-text">前端设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js实现继承的方法"><span class="nav-number">4.</span> <span class="nav-text">js实现继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端优化图片加载"><span class="nav-number">5.</span> <span class="nav-text">前端优化图片加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象语言的特征"><span class="nav-number">6.</span> <span class="nav-text">面向对象语言的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定数据类型"><span class="nav-number">7.</span> <span class="nav-text">确定数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件执行机制"><span class="nav-number">8.</span> <span class="nav-text">事件执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回流-重绘"><span class="nav-number">9.</span> <span class="nav-text">回流&#x2F;重绘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何优化前端性能"><span class="nav-number">10.</span> <span class="nav-text">如何优化前端性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少http请求"><span class="nav-number">10.1.</span> <span class="nav-text">减少http请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-http2"><span class="nav-number">10.2.</span> <span class="nav-text">使用 http2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端渲染"><span class="nav-number">10.3.</span> <span class="nav-text">服务端渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态资源使用cdn"><span class="nav-number">10.4.</span> <span class="nav-text">静态资源使用cdn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css文件放在头部-js文件放在底部"><span class="nav-number">10.5.</span> <span class="nav-text">css文件放在头部&#x2F;js文件放在底部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用字体图标iconfont代替图片图标"><span class="nav-number">10.6.</span> <span class="nav-text">使用字体图标iconfont代替图片图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#善用缓存"><span class="nav-number">10.7.</span> <span class="nav-text">善用缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件"><span class="nav-number">10.8.</span> <span class="nav-text">压缩文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片优化"><span class="nav-number">10.9.</span> <span class="nav-text">图片优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过webpack按需加载代码"><span class="nav-number">10.10.</span> <span class="nav-text">通过webpack按需加载代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根据文件内容生成文件名-结合import动态引入组件实现按需加载"><span class="nav-number">10.10.1.</span> <span class="nav-text">根据文件内容生成文件名,结合import动态引入组件实现按需加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取第三方库"><span class="nav-number">10.10.2.</span> <span class="nav-text">提取第三方库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少重绘重拍"><span class="nav-number">10.11.</span> <span class="nav-text">减少重绘重拍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用事件委托"><span class="nav-number">10.12.</span> <span class="nav-text">使用事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用requestAnimationFrame"><span class="nav-number">10.13.</span> <span class="nav-text">使用requestAnimationFrame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用位操作"><span class="nav-number">10.14.</span> <span class="nav-text">使用位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不要覆盖原生方法"><span class="nav-number">10.15.</span> <span class="nav-text">不要覆盖原生方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降低css选择器的复杂性"><span class="nav-number">10.16.</span> <span class="nav-text">降低css选择器的复杂性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器读取选择器原则-从右到左"><span class="nav-number">10.16.1.</span> <span class="nav-text">浏览器读取选择器原则:从右到左</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css选择器优先级"><span class="nav-number">10.16.2.</span> <span class="nav-text">css选择器优先级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用flex布局"><span class="nav-number">10.17.</span> <span class="nav-text">使用flex布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用transform和opacity属性更改来实现动画"><span class="nav-number">10.18.</span> <span class="nav-text">使用transform和opacity属性更改来实现动画</span></a></li></ol></li></ol></div>
             
 
           </div>
